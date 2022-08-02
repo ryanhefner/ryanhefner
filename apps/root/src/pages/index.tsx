@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { Link } from 'components/base'
+import { ProjectLink } from 'components/projects'
 import { PageWrapper } from 'components/site'
 
 const IndexPage = () => (
@@ -17,6 +18,13 @@ const IndexPage = () => (
             Active Projects
           </Heading>
         </Link>
+        <Box my={8}>
+          <ProjectLink
+            name="Pregraph"
+            description="GraphQL API analytics, caching, and federation tools."
+            slug="/projects/pregraph"
+          />
+        </Box>
       </Box>
       {/* <Box flexBasis={{ base: '100%', md: '50%' }} mb={16}>
         <Link href="/thoughts">
