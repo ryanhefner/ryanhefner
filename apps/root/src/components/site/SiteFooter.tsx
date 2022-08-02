@@ -20,10 +20,18 @@ export const SiteFooter = () => {
         May all your days be rad 🤙.
       </Text>
       <HStack spacing={{ base: 3, md: 6 }} mb={{ base: 5, md: 0 }}>
-        <Link href="https://www.github.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://www.github.com/ryanhefner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Text as="span" fontFamily="mono" fontSize="sm">GitHub</Text>
         </Link>
-        <Link href="https://www.twitter.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://www.twitter.com/ryanhefner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Text as="span" fontFamily="mono" fontSize="sm">Twitter</Text>
         </Link>
       </HStack>
