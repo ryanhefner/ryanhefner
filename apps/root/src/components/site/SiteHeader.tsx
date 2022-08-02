@@ -12,34 +12,24 @@ export const SiteHeader = () => (
     pb={{ base: 6 }}
     px={{ base: 6, md: 24 }}
   >
-    <Link href="/" passHref>
-      <a>
-        <HStack>
-          {/* <Box display="inline-block" borderRadius="full" bgColor="black" w={2} h={2} /> */}
-          <Text fontSize="lg" fontWeight="medium">Ryan Hefner - All Play</Text>
-        </HStack>
-      </a>
+    <Link href="/">
+      <HStack>
+        {/* <Box display="inline-block" borderRadius="full" bgColor="black" w={2} h={2} /> */}
+        <Text fontSize="lg" fontWeight="medium">Ryan Hefner - All Play</Text>
+      </HStack>
     </Link>
     <HStack as="nav" spacing={{ base: 3, md: 6 }} mr={{ base: 0, md: 10 }}>
-      <Link href="/projects" passHref>
-        <a>
-          <Text as="span" fontSize="lg">Projects</Text>
-        </a>
+      <Link href="/projects">
+        <Text as="span" fontSize="lg">Projects</Text>
       </Link>
-      {/* <Link href="/thoughts" passHref>
-        <a>
-          <Text as="span" fontSize="lg">Thoughts</Text>
-        </a>
+      {/* <Link href="/thoughts">
+        <Text as="span" fontSize="lg">Thoughts</Text>
       </Link> */}
-      <Link href="/about" passHref>
-        <a>
-          <Text as="span" fontSize="lg">About</Text>
-        </a>
+      <Link href="/about">
+        <Text as="span" fontSize="lg">About</Text>
       </Link>
-      <Link href="/now" passHref>
-        <a>
-          <Text as="span" fontSize="lg">Now</Text>
-        </a>
+      <Link href="/now">
+        <Text as="span" fontSize="lg">Now</Text>
       </Link>
     </HStack>
   </Flex>
