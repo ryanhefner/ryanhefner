@@ -1,6 +1,15 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@pregraph-int/*": [
+        "../../libs/*/src/index.ts"
+      ],
+      "*": [
+        "./src/*"
+      ],
+    },
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "allowJs": true,
