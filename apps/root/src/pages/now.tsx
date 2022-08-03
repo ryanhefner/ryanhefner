@@ -1,14 +1,13 @@
 import { Box, Heading, Link, ListItem, Text, UnorderedList } from '@chakra-ui/react'
 import { PageWrapper } from 'components/site'
+import { PageHeading } from 'components/typography'
 
 const NowPage = () => (
   <PageWrapper>
-    <Heading as="h1" fontSize={{ base: '6xl', md: '9xl' }} fontWeight="medium" lineHeight="none">
-      Now
-    </Heading>
+    <PageHeading>Now</PageHeading>
     <Box my={16}>
       <Text fontFamily="mono">
-        <Text as="span" fontSize="xs" fontWeight="medium" textTransform="uppercase">Updated:</Text><br />
+        <Text as="span" fontSize="xs" fontWeight="medium" textTransform="uppercase">Updated</Text><br />
         August 3rd, 2022 — from Atlanta, GA
       </Text>
     </Box>

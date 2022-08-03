@@ -2,6 +2,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { Link } from 'components/base'
 import { ProjectLink } from 'components/projects'
 import { PageWrapper } from 'components/site'
+import { SectionHeading } from 'components/typography'
 import { getProjectsByUrls } from 'data/projects'
 
 const IndexPage = () => {
@@ -20,12 +21,10 @@ const IndexPage = () => {
           Software Engineer + Eternal Tinkerer
         </Text>
       </Heading>
-      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={{ base: 16, md: 32 }}>
+      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={{ base: 16, md: 24 }}>
         <Box flexBasis={{ base: '100%', md: '50%' }}>
           <Link href="/projects">
-            <Heading as="h2" fontSize={{ base: '4xl', lg: '5xl' }} fontWeight="medium">
-              Active Projects
-            </Heading>
+            <SectionHeading>Active Projects</SectionHeading>
           </Link>
           <Box my={8}>
             {activeProjects.map((project) => (
@@ -35,9 +34,7 @@ const IndexPage = () => {
         </Box>
         {/* <Box flexBasis={{ base: '100%', md: '50%' }} mb={16}>
           <Link href="/thoughts">
-            <Heading as="h2" fontSize={{ base: '3xl', md: '5xl' }} fontWeight="medium">
-              Recent Thoughts
-            </Heading>
+            <SectionHeading>Recent Thoughts</SectionHeading>
           </Link>
         </Box> */}
       </Flex>

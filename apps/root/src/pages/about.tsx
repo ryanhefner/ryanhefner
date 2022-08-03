@@ -31,7 +31,7 @@ const AboutPage = () => (
         </Text>
       </Box>
     </Box>
-    <Box my={16}>
+    <Box mt={{ base: 16, md: 24 }} mb={16}>
       <Heading as="h3" fontWeight="medium">
         Clients
       </Heading>
