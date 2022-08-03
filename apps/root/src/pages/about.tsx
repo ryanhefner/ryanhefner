@@ -1,5 +1,7 @@
-import { Box,Center, Flex, Heading, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Heading, Link, Text } from '@chakra-ui/react'
+import { ClientGrid, ClientGridItem } from 'components/clients'
 import { PageWrapper } from 'components/site'
+import { clients } from 'data/clients'
 
 const AboutPage = () => (
   <PageWrapper>
@@ -33,50 +35,9 @@ const AboutPage = () => (
       <Heading as="h3" fontWeight="medium">
         Clients
       </Heading>
-      <Flex flexWrap="wrap">
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="AIGA" src="/assets/clients/aiga.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Apple" src="/assets/clients/apple.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="AT&amp;T" src="/assets/clients/at-and-t.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="DirecTV" src="/assets/clients/directv.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="EA Sports" src="/assets/clients/ea-sports.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Electronic Arts" src="/assets/clients/ea.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="GoodRx" src="/assets/clients/goodrx.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="NBC" src="/assets/clients/nbc.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Nintendo" src="/assets/clients/nintendo.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Ohio University" src="/assets/clients/ohio-university.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Oscar" src="/assets/clients/oscar.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Spotify" src="/assets/clients/spotify.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Vimeo" src="/assets/clients/vimeo.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-        <Center flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }} minH={{ base: 120, md: 180, lg: 180 }}>
-          <Image alt="Warner Brothers" src="/assets/clients/warner-bros.svg" w={{ base: '75%', lg: '50%' }} />
-        </Center>
-      </Flex>
+      <ClientGrid>
+        {clients.map((client) => <ClientGridItem key={client.imageUrl} {...client} />)}
+      </ClientGrid>
     </Box>
     <Box my={16}>
       <Heading as="h3" fontWeight="medium">
