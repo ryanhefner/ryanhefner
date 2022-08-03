@@ -8,6 +8,9 @@ export const theme = extendTheme(
       blue: {
         [500]: '#235EF8',
       },
+      yellow: {
+        [300]: '#F5FA1F',
+      },
     },
     components: {
       Tag,
