@@ -15,8 +15,8 @@ const IndexPage = () => {
           Software Engineer + Eternal Tinkerer
         </Text>
       </Heading>
-      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={16}>
-        <Box flexBasis={{ base: '100%', md: '50%' }} mb={16}>
+      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={32}>
+        <Box flexBasis={{ base: '100%', md: '50%' }}>
           <Link href="/projects">
             <Heading as="h2" fontSize={{ base: '3xl', md: '5xl' }} fontWeight="medium">
               Active Projects
