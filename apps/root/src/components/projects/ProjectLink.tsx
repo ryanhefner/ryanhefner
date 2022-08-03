@@ -16,7 +16,7 @@ export const ProjectLink = ({ description, name, url }) => (
         {name}
       </Heading>
       {description && (
-        <Text color="gray.500" fontSize="xl">
+        <Text color="gray.500" fontSize="xl" mt={2}>
           {description}
         </Text>
       )}
