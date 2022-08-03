@@ -9,7 +9,7 @@ const NowPage = () => (
     <Box my={16}>
       <Text fontFamily="mono">
         <Text as="span" fontSize="xs" fontWeight="medium" textTransform="uppercase">Updated:</Text><br />
-        August 3rd, 2022 — from Atlanta, GA
+        August 3rd, 2022 — from Atlanta, GA
       </Text>
     </Box>
     <Box my={16}>
