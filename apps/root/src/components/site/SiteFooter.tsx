@@ -13,7 +13,7 @@ export const SiteFooter = () => {
       alignItems={{ base: 'flex-start', md: 'center' }}
       justifyContent="space-between"
       py={{ base: 6 }}
-      px={{ base: 6, md: 24 }}
+      px={{ base: 6, sm: 10, md: 16, xl: 24 }}
     >
       <Text fontFamily="mono" fontSize="sm">
         Ryan Hefner &copy; <Text as="span">2004 - {`${(new Date()).getFullYear()}`}. </Text>

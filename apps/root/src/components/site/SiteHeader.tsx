@@ -10,7 +10,7 @@ export const SiteHeader = () => (
     w="100%"
     pt={{ base: 6, md: 20 }}
     pb={{ base: 6 }}
-    px={{ base: 6, md: 24 }}
+    px={{ base: 6, sm: 10, md: 16, xl: 24 }}
   >
     <Link href="/">
       <HStack>
