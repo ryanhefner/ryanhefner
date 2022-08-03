@@ -21,12 +21,12 @@ const AboutPage = () => (
           Constantly in pursuit of exploring new, but not always exciting, ideas
           <em> (has hammer, sees nails)</em>. I love crafting well designed
           and nicely coded software that gracefully solves the issue at hand,
-          for me and—I hope—others as well.
+          both for me and—I hope—others as well.
         </Text>
         <Text fontSize={{ base: 'xl', md: '2xl' }} mt="8">
-          If I am not writing code, coming up with more random ideas, or solving
-          my clients’ issues, you can find me hanging with my two kids, trying
-          to find some surf in a <em>mostly</em> landlocked state, or getting
+          If I am not writing code, coming up with more random project ideas, or
+          solving my clients’ issues, you can find me hanging with my two kids,
+          trying to find some surf in a <em>mostly</em> landlocked state, or getting
           lost while running trails or on the search for the next random skate spot.
         </Text>
       </Box>
