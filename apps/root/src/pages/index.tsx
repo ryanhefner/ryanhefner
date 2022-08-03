@@ -9,16 +9,21 @@ const IndexPage = () => {
 
   return (
     <PageWrapper>
-      <Heading as="h1" fontSize={{ base: '6xl', md: '9xl' }} fontWeight="medium" lineHeight="none">
+      <Heading
+        as="h1"
+        fontSize={{ base: '6xl', sm: '7xl', md: '8xl', xl: '9xl' }}
+        fontWeight="medium"
+        lineHeight="none"
+      >
         Ryan Hefner<br />
         <Text color="gray.600">
           Software Engineer + Eternal Tinkerer
         </Text>
       </Heading>
-      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={32}>
+      <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={{ base: 16, md: 32 }}>
         <Box flexBasis={{ base: '100%', md: '50%' }}>
           <Link href="/projects">
-            <Heading as="h2" fontSize={{ base: '3xl', md: '5xl' }} fontWeight="medium">
+            <Heading as="h2" fontSize={{ base: '4xl', lg: '5xl' }} fontWeight="medium">
               Active Projects
             </Heading>
           </Link>
