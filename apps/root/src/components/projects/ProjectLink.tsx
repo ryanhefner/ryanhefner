@@ -1,8 +1,12 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { Link } from 'components/base'
 
-export const ProjectLink = ({ description, name, slug }) => (
-  <Link href={slug}>
+export const ProjectLink = ({ description, name, url }) => (
+  <Link
+    href={url}
+    target={url.startsWith('http') ? '_blank' : '_self'}
+    rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
+  >
     <Box pb={16} pr={10}>
       <Heading
         as="h3"
