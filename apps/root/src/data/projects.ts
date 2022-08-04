@@ -36,7 +36,7 @@ export const projects = [
   },
   {
     name: 'Beta Codes',
-    description: 'Tools to help you launch/grow your sites &amp; software products.',
+    description: 'Tools to help you launch/grow your sites & software products.',
     url: 'https://www.betacodes.io',
   },
   {
@@ -56,7 +56,7 @@ export const projects = [
   // },
   {
     name: 'Tick Tock Track',
-    description: 'Time tracking for me, and you (but mostly, me).',
+    description: 'Time tracking for me, and you (but mostly me).',
     url: 'https://www.ticktocktrack.com',
   },
   {
