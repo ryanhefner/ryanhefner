@@ -19,7 +19,7 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const metaUrl = `${location.origin}${location.pathname}`
+  const metaUrl = `https://www.ryanhefner.com${router.asPath.split('?')[0]}`
 
   const getLayout = Component.getLayout || ((page) => page)
 
