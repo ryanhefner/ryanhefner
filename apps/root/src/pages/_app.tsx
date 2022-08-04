@@ -16,6 +16,9 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
+const TITLE = 'All Play - The online home of Ryan Hefner, Software Engineer &amp; Eternal Tinkerer'
+const DESCRIPTION = 'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.'
+
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
@@ -42,7 +45,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <title>All Play - The online home of Ryan Hefner, Software Engineer &amp; Eternal Tinkerer</title>
+        <title>{TITLE}</title>
+        <meta name="description" content={DESCRIPTION} />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:site_name" content="https://www.ryanhefner.com" />
         <meta property="og:url" content={metaUrl} />
         <meta property="og:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
@@ -50,6 +56,8 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="twitter:site" content="@ryanhefner" />
         <meta name="twitter:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
         <meta name="twitter:url" content={metaUrl} />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
         <link rel="canonical" href={metaUrl} />
       </Head>
       <ChakraProvider theme={theme}>
