@@ -16,7 +16,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-const TITLE = 'All Play - The online home of Ryan Hefner, Software Engineer &amp; Eternal Tinkerer'
+const TITLE = 'All Play - The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
 const DESCRIPTION = 'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.'
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
