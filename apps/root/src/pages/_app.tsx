@@ -1,8 +1,10 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, useEffect } from 'react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { ChakraProvider } from '@chakra-ui/react'
+import * as Fathom from 'fathom-client'
 import { SiteLayout } from 'components/layouts'
 import { theme } from 'styles'
 
@@ -15,7 +17,25 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
+  const router = useRouter()
+
   const getLayout = Component.getLayout || ((page) => page)
+
+  useEffect(() => {
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+      includedDomains: ['ryanhefner.com'],
+    })
+
+    const handleRouteChangeComplete = () => {
+      Fathom.trackPageview()
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChangeComplete)
+    }
+  }, [])
 
   return (
     <>
