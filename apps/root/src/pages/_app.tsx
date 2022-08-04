@@ -23,7 +23,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
 
   useEffect(() => {
     Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-      includedDomains: ['ryanhefner.com'],
+      includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
     })
 
     const handleRouteChangeComplete = () => {
