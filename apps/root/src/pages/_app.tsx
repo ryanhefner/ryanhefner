@@ -19,6 +19,8 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
+  const metaUrl = `${location.origin}${location.pathname}`
+
   const getLayout = Component.getLayout || ((page) => page)
 
   useEffect(() => {
@@ -41,6 +43,14 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Head>
         <title>All Play - The online home of Ryan Hefner, Software Engineer &amp; Eternal Tinkerer</title>
+        <meta property="og:site_name" content="https://www.ryanhefner.com" />
+        <meta property="og:url" content={metaUrl} />
+        <meta property="og:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ryanhefner" />
+        <meta name="twitter:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
+        <meta name="twitter:url" content={metaUrl} />
+        <link rel="canonical" href={metaUrl} />
       </Head>
       <ChakraProvider theme={theme}>
         <SiteLayout>

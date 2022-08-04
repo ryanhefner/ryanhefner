@@ -4,10 +4,18 @@ import { ProjectGrid, ProjectGridItem, ProjectLink } from 'components/projects'
 import { PageWrapper } from 'components/site'
 import { projects } from 'data/projects'
 
+const TITLE = 'Projects | Ryan Hefner - All Play'
+const DESCRIPTION = 'Some of the projects I’ve had the pleasure to build/contribute to.'
+
 const ProjectsPage = () => (
   <>
     <Head>
-      <title>Ryan Hefner - All Play - Projects</title>
+      <title>{TITLE}</title>
+      <meta name="description" content={DESCRIPTION} />
+      <meta property="og:title" content={TITLE} />
+      <meta property="og:description" content={DESCRIPTION} />
+      <meta name="twitter:title" content={TITLE} />
+      <meta name="twitter:description" content={DESCRIPTION} />
     </Head>
     <PageWrapper>
       <Heading as="h1" fontSize={{ base: '6xl', md: '9xl' }} fontWeight="medium" lineHeight="none">
