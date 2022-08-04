@@ -7,10 +7,10 @@ export const ProjectLink = ({ description, name, url }) => (
     target={url.startsWith('http') ? '_blank' : '_self'}
     rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
   >
-    <Box pb={16} pr={10}>
+    <Box>
       <Heading
         as="h3"
-        fontSize={{ base: '4xl', md: '2xl', lg: '4xl' }}
+        fontSize={{ base: '4xl', md: '3xl', lg: '4xl' }}
         fontWeight="medium"
       >
         {name}
