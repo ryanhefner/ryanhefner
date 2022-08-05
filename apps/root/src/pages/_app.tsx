@@ -51,10 +51,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:site_name" content="https://www.ryanhefner.com" />
         <meta property="og:url" content={metaUrl} />
-        <meta property="og:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
+        <meta property="og:image" content="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ryanhefner" />
-        <meta name="twitter:image" content="https://www.ryanhefner.com/assets/ryan-hefner-peace.jpg" />
+        <meta name="twitter:image" content="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
         <meta name="twitter:url" content={metaUrl} />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
