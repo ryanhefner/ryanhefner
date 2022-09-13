@@ -30,7 +30,7 @@ const AboutPage = () => (
         <Box maxW="container.md">
           <Text fontSize={{ base: 'xl', md: '2xl' }}>
             I’m a software engineer (by necessity) and product designer (by heart) based out of
-            Atlanta, GA—by way of Brooklyn, NY—originally hailing from Toledo, OH.
+            Atlanta, GA—by way of Brooklyn, NY—originally hailing from the Toledo, OH area.
             Constantly in pursuit of exploring new, but not always exciting, ideas
             <em> (has hammer, sees nails)</em>. I love crafting well designed
             and nicely coded software that gracefully solves the issue at hand,
