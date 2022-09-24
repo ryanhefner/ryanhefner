@@ -45,6 +45,11 @@ export const projects = [
     url: 'https://www.pkgstats.com',
   },
   {
+    name: 'Color Sets',
+    description: 'Hand-crafted digital tools for designers and developers.',
+    url: 'https://www.colorsets.com',
+  },
+  {
     name: 'Jam Sessions',
     description: 'Community of creators, makers, doers and thinkers.',
     url: 'https://www.jamsessions.org',
