@@ -31,14 +31,18 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       Fathom.trackPageview()
     }
 
-    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-      includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
-    })
+    if (process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
+      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+        includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
+      })
 
-    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+      router.events.on('routeChangeComplete', handleRouteChangeComplete)
+    }
 
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChangeComplete)
+      if (process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
+        router.events.off('routeChangeComplete', handleRouteChangeComplete)
+      }
     }
   }, [])
 
