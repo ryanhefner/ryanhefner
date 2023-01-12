@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect } from 'react'
+import { ReactElement, ReactNode, useEffect, useMemo } from 'react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -22,18 +22,18 @@ const DESCRIPTION = 'The online archive and playspace for Ryan Hefner, software 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const metaUrl = `https://www.ryanhefner.com${router.asPath.split('?')[0]}`
+  const metaUrl = useMemo(() => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`, [router.asPath])
 
   const getLayout = Component.getLayout || ((page) => page)
 
   useEffect(() => {
-    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-      includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
-    })
-
     const handleRouteChangeComplete = () => {
       Fathom.trackPageview()
     }
+
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+      includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
+    })
 
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
