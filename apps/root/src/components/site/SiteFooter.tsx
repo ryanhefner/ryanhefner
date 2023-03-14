@@ -25,6 +25,7 @@ export const SiteFooter = () => {
           href="https://www.github.com/ryanhefner"
           target="_blank"
           rel="noopener noreferrer"
+          title="@ryanhefner on GitHub"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">GitHub</Text>
         </Link>
@@ -32,6 +33,7 @@ export const SiteFooter = () => {
           href="https://www.twitter.com/ryanhefner"
           target="_blank"
           rel="noopener noreferrer"
+          title="@ryanhefner on Twitter"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">Twitter</Text>
         </Link>
