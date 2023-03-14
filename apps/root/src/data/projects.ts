@@ -73,6 +73,11 @@ export const projects = [
 
 export const oss = [
   {
+    name: 'react-marquease',
+    description: 'HTML <marquee>s, the React way (with some handy control features).',
+    url: 'https://www.pkgstats.com/pkg:react-marquease',
+  },
+  {
     name: 'react-contentful',
     description: 'React library for interacting with and rendering Contenful data.',
     url: 'https://www.pkgstats.com/pkg:react-contentful',
