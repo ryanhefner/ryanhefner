@@ -21,7 +21,7 @@ export const projects = [
   // },
   {
     name: 'Pregraph',
-    description: 'GraphQL API analytics, caching, and federation tools.',
+    description: 'GraphQL API analytics, caching, and federation tools and services.',
     url: 'https://www.pregraph.com',
   },
   {
