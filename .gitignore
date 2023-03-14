@@ -39,7 +39,7 @@ testem.log
 Thumbs.db
 
 # Next.js
-# .next
+.next
 
 # Env Vars
 .env
