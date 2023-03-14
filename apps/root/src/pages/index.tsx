@@ -1,12 +1,12 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { Link } from '../components/base'
-import { ProjectLink } from '../components/projects'
+import { ProjectGrid, ProjectGridItem, ProjectLink } from '../components/projects'
 import { PageWrapper } from '../components/site'
 import { SectionHeading } from '../components/typography'
 import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
-  const activeProjects = getProjectsByUrls(['https://www.pregraph.com'])
+  const activeProjects = getProjectsByUrls(['https://casters.io', 'https://www.pregraph.com'])
 
   return (
     <PageWrapper>
@@ -22,15 +22,17 @@ const IndexPage = () => {
         </Text>
       </Heading>
       <Flex flexDir={{ base: 'column', md: 'row' }} w="full" mt={{ base: 16, md: 24 }}>
-        <Box flexBasis={{ base: '100%', md: '50%' }}>
+        <Box flexBasis={{ base: 'full' }}>
           <Link href="/projects">
             <SectionHeading>Active Projects</SectionHeading>
           </Link>
-          <Box my={8}>
+          <ProjectGrid>
             {activeProjects.map((project) => (
-              <ProjectLink key={project.url} {...project} />
+              <ProjectGridItem key={project.url}>
+                <ProjectLink {...project} />
+              </ProjectGridItem>
             ))}
-          </Box>
+          </ProjectGrid>
         </Box>
         {/* <Box flexBasis={{ base: '100%', md: '50%' }} mb={16}>
           <Link href="/thoughts">
