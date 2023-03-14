@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { Box, Heading, Link, Text } from '@chakra-ui/react'
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { Link } from '../components/base'
 import { ClientGrid, ClientGridItem } from '../components/clients'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
@@ -57,22 +58,25 @@ const AboutPage = () => (
           Elsewhere
         </Heading>
         <Text fontSize="3xl" mt={8}>
-          <Link href="https://www.github.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.github.com/ryanhefner" target="_blank" title="@ryanhefner on GitHub" rel="noopener noreferrer">
             GitHub
           </Link> /{` `}
-          <Link href="https://www.twitter.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.twitter.com/ryanhefner" target="_blank" title="@ryanhefner on Twitter" rel="noopener noreferrer">
             Twitter
           </Link> /{` `}
-          <Link href="https://www.instagram.com/instagram" target="_blank" rel="noopener noreferrer">
+          <Link href="https://read.cv/ryanhefner" target="_blank" title="@ryanhefner on read.cv" rel="noopener noreferrer">
+            Read.cv
+          </Link> /{` `}
+          <Link href="https://www.instagram.com/instagram" target="_blank" title="@ryanhefner on Instagram" rel="noopener noreferrer">
             Instagram
           </Link> /{` `}
-          <Link href="https://www.dribbble.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.dribbble.com/ryanhefner" target="_blank" title="@ryanhefner on Dribbble" rel="noopener noreferrer">
             Dribbble
           </Link> /{` `}
-          <Link href="https://open.spotify.com/user/ryanhefner" target="_blank" rel="noopener noreferrer">
+          <Link href="https://open.spotify.com/user/ryanhefner" target="_blank" title="@ryanhefner on Spotify" rel="noopener noreferrer">
             Spotify
           </Link> /{` `}
-          <Link href="https://www.vimeo.com/ryanhefner" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.vimeo.com/ryanhefner" target="_blank" title="@ryanhefner on Vimeo" rel="noopener noreferrer">
             Vimeo
           </Link>
         </Text>
