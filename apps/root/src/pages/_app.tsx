@@ -1,12 +1,12 @@
-import { ReactElement, ReactNode, useEffect, useMemo } from 'react'
+import { ReactElement, ReactNode, useMemo } from 'react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChakraProvider } from '@chakra-ui/react'
-import * as Fathom from 'fathom-client'
-import { SiteLayout } from 'components/layouts'
-import { theme } from 'styles'
+import { SiteLayout } from '../components/layouts'
+import { Fathom } from '../libs/fathom'
+import { theme } from '../styles'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -25,26 +25,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const metaUrl = useMemo(() => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`, [router.asPath])
 
   const getLayout = Component.getLayout || ((page) => page)
-
-  useEffect(() => {
-    const handleRouteChangeComplete = () => {
-      Fathom.trackPageview()
-    }
-
-    if (process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
-      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-        includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
-      })
-
-      router.events.on('routeChangeComplete', handleRouteChangeComplete)
-    }
-
-    return () => {
-      if (process.env.NEXT_PUBLIC_FATHOM_SITE_ID) {
-        router.events.off('routeChangeComplete', handleRouteChangeComplete)
-      }
-    }
-  }, [])
 
   return (
     <>
@@ -66,6 +46,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       <ChakraProvider theme={theme}>
         <SiteLayout>
+          <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
           {getLayout(<Component {...pageProps} />)}
         </SiteLayout>
       </ChakraProvider>
