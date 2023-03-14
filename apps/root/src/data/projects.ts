@@ -9,11 +9,11 @@ export const projects = [
   //   description: 'Co-op owned ecommerce and curency platform.',
   //   url: '/projects/neighborgoods',
   // },
-  // {
-  //   name: 'Casters',
-  //   description: 'Real-time communication and data streaming tools.',
-  //   url: '/projects/casters',
-  // },
+  {
+    name: 'Casters',
+    description: 'Building blocks for building real-time connected experiences.',
+    url: 'https://casters.io',
+  },
   // {
   //   name: 'Socket Logs',
   //   description: 'Real-time, remote console log viewer/recorder.',
