@@ -1,4 +1,5 @@
-import { Flex, HStack, Link, Text, useColorModeValue } from '@chakra-ui/react'
+import { Flex, HStack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Link } from '../base'
 
 export const SiteFooter = () => {
   const bgColor = useColorModeValue('black', 'white')

@@ -1,5 +1,5 @@
 import { Flex, HStack, Text } from '@chakra-ui/react'
-import { Link } from 'components/base'
+import { Link } from '../base'
 
 export const SiteHeader = () => (
   <Flex

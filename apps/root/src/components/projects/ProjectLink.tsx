@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'components/base'
+import { Link } from '../base'
 
 export const ProjectLink = ({ description, name, url }) => (
   <Link

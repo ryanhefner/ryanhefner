@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'components/base'
-import { PageWrapper } from 'components/site'
+import { Link } from '../../components/base'
+import { PageWrapper } from '../../components/site'
 
 const ProjectsArchivePage = () => (
   <>

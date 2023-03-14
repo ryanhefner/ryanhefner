@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Box, Heading, Link, ListItem, Text, UnorderedList } from '@chakra-ui/react'
-import { PageWrapper } from 'components/site'
-import { PageHeading } from 'components/typography'
+import { PageWrapper } from '../components/site'
+import { PageHeading } from '../components/typography'
 
 const TITLE = 'What I’m working on now | Ryan Hefner - All Play'
 const DESCRIPTION = 'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'

@@ -1,9 +1,9 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'components/base'
-import { ProjectLink } from 'components/projects'
-import { PageWrapper } from 'components/site'
-import { SectionHeading } from 'components/typography'
-import { getProjectsByUrls } from 'data/projects'
+import { Link } from '../components/base'
+import { ProjectLink } from '../components/projects'
+import { PageWrapper } from '../components/site'
+import { SectionHeading } from '../components/typography'
+import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
   const activeProjects = getProjectsByUrls(['https://www.pregraph.com'])

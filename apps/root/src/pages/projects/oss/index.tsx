@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { Heading, Text } from '@chakra-ui/react'
-import { Link } from 'components/base'
-import { ProjectGrid, ProjectGridItem, ProjectLink } from 'components/projects'
-import { PageWrapper } from 'components/site'
-import { oss as projects } from 'data/projects'
+import { Link } from '../../../components/base'
+import { ProjectGrid, ProjectGridItem, ProjectLink } from '../../../components/projects'
+import { PageWrapper } from '../../../components/site'
+import { oss as projects } from '../../../data/projects'
 
 const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
 const DESCRIPTION = 'It has been fun writing and maintaing open source software. Here are some of my contributions to the developer community.'

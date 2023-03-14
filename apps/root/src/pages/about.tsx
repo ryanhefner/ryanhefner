@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { Box, Heading, Link, Text } from '@chakra-ui/react'
-import { ClientGrid, ClientGridItem } from 'components/clients'
-import { PageWrapper } from 'components/site'
-import { clients } from 'data/clients'
+import { ClientGrid, ClientGridItem } from '../components/clients'
+import { PageWrapper } from '../components/site'
+import { clients } from '../data/clients'
 
 const TITLE = 'All about me | Ryan Hefner - All Play'
 const DESCRIPTION = 'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'

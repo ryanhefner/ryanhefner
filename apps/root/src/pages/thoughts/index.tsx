@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
-import { PageWrapper } from 'components/site/PageWrapper'
+import { PageWrapper } from '../../components/site/PageWrapper'
 
 const ThoughtsIndexPage = () => (
   <PageWrapper>
