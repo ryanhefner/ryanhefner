@@ -1,2 +1,2 @@
-export * from './PageHeading';
-export * from './SectionHeading';
+export * from './PageHeading'
+export * from './SectionHeading'

@@ -1,2 +1,2 @@
-export * from './ClientGrid';
-export * from './ClientGridItem';
+export * from './ClientGrid'
+export * from './ClientGridItem'

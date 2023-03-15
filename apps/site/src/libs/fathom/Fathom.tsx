@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import { Suspense, useEffect } from 'react';
-import { load, trackPageview } from 'fathom-client';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect } from 'react'
+import { load, trackPageview } from 'fathom-client'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 interface FathomProps {
-  siteId?: string;
-  includedDomains?: string[];
+  siteId?: string
+  includedDomains?: string[]
 }
 
 const TrackPageView = ({ siteId, includedDomains }: FathomProps) => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     if (siteId) {
-      load(siteId, { includedDomains });
+      load(siteId, { includedDomains })
     }
-  }, [siteId, includedDomains]);
+  }, [siteId, includedDomains])
 
   useEffect(() => {
     if (siteId) {
-      trackPageview();
+      trackPageview()
     }
-  }, [pathname, searchParams, siteId]);
+  }, [pathname, searchParams, siteId])
 
-  return null;
-};
+  return null
+}
 
 const Fathom = ({
   siteId,
@@ -35,6 +35,6 @@ const Fathom = ({
   <Suspense fallback={null}>
     <TrackPageView {...{ siteId, includedDomains }} />
   </Suspense>
-);
+)
 
-export default Fathom;
+export default Fathom

@@ -1,3 +1,3 @@
-export * from './ProjectGrid';
-export * from './ProjectGridItem';
-export * from './ProjectLink';
+export * from './ProjectGrid'
+export * from './ProjectGridItem'
+export * from './ProjectLink'

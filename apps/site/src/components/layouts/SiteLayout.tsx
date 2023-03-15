@@ -1,5 +1,5 @@
-import { Box, Flex } from '@chakra-ui/react';
-import { SiteHeader, SiteFooter } from '../site';
+import { Box, Flex } from '@chakra-ui/react'
+import { SiteHeader, SiteFooter } from '../site'
 
 export const SiteLayout = ({ children }) => (
   <>
@@ -10,4 +10,4 @@ export const SiteLayout = ({ children }) => (
     </Flex>
     <Box h={100} bgColor="blue.500"></Box>
   </>
-);
+)

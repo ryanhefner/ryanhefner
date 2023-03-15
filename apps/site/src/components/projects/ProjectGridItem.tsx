@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react'
 
 export const ProjectGridItem = ({ children }) => (
   <Box
@@ -8,4 +8,4 @@ export const ProjectGridItem = ({ children }) => (
   >
     {children}
   </Box>
-);
+)

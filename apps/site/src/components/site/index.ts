@@ -1,3 +1,3 @@
-export * from './PageWrapper';
-export * from './SiteHeader';
-export * from './SiteFooter';
+export * from './PageWrapper'
+export * from './SiteHeader'
+export * from './SiteFooter'

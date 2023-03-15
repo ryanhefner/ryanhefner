@@ -72,7 +72,7 @@ export const projects = [
     description: 'Product studio/consultancy overseeing all these bad boys.',
     url: 'https://www.playnice.studio',
   },
-];
+]
 
 export const oss = [
   {
@@ -322,7 +322,7 @@ export const oss = [
       'Flexible React component for composing rotators, carousels, slideshows and more.',
     url: 'https://www.pkgstats.com/pkg:react-rotator',
   },
-];
+]
 
 export const archive = [
   {
@@ -330,14 +330,14 @@ export const archive = [
     description: '',
     url: '',
   },
-];
+]
 
 export const projectsMap = {
   projects,
   oss,
   archive,
-};
+}
 
 export const getProjectsByUrls = (urls, source = 'projects') => {
-  return projectsMap[source].filter((project) => urls.includes(project.url));
-};
+  return projectsMap[source].filter((project) => urls.includes(project.url))
+}

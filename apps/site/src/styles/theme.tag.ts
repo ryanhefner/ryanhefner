@@ -1,4 +1,4 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { ComponentStyleConfig } from '@chakra-ui/react'
 
 export const Tag: ComponentStyleConfig = {
   variants: {
@@ -10,4 +10,4 @@ export const Tag: ComponentStyleConfig = {
   defaultProps: {
     variant: 'outline',
   },
-};
+}

@@ -1,5 +1,5 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { PageWrapper } from '../../components/site/PageWrapper';
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { PageWrapper } from '../../components/site/PageWrapper'
 
 const ThoughtsIndexPage = () => (
   <PageWrapper>
@@ -15,6 +15,6 @@ const ThoughtsIndexPage = () => (
       <Text fontSize="2xl" maxW="container.md"></Text>
     </Box>
   </PageWrapper>
-);
+)
 
-export default ThoughtsIndexPage;
+export default ThoughtsIndexPage

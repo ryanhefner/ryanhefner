@@ -1,4 +1,4 @@
-import { Center, Image } from '@chakra-ui/react';
+import { Center, Image } from '@chakra-ui/react'
 
 export const ClientGridItem = ({ name, imageUrl }) => (
   <Center
@@ -7,4 +7,4 @@ export const ClientGridItem = ({ name, imageUrl }) => (
   >
     <Image alt={name} src={imageUrl} w={{ base: '75%', md: '50%' }} />
   </Center>
-);
+)

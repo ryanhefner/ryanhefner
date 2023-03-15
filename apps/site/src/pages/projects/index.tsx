@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import { Heading } from '@chakra-ui/react';
+import Head from 'next/head'
+import { Heading } from '@chakra-ui/react'
 import {
   ProjectGrid,
   ProjectGridItem,
   ProjectLink,
-} from '../../components/projects';
-import { PageWrapper } from '../../components/site';
-import { projects } from '../../data/projects';
+} from '../../components/projects'
+import { PageWrapper } from '../../components/site'
+import { projects } from '../../data/projects'
 
-const TITLE = 'Projects | Ryan Hefner - All Play';
+const TITLE = 'Projects | Ryan Hefner - All Play'
 const DESCRIPTION =
-  'Some of the projects I’ve had the pleasure to build/contribute to.';
+  'Some of the projects I’ve had the pleasure to build/contribute to.'
 
 const ProjectsPage = () => (
   <>
@@ -48,6 +48,6 @@ const ProjectsPage = () => (
       </Box> */}
     </PageWrapper>
   </>
-);
+)
 
-export default ProjectsPage;
+export default ProjectsPage

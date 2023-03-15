@@ -1,19 +1,19 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { Link } from '../components/base';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { Link } from '../components/base'
 import {
   ProjectGrid,
   ProjectGridItem,
   ProjectLink,
-} from '../components/projects';
-import { PageWrapper } from '../components/site';
-import { SectionHeading } from '../components/typography';
-import { getProjectsByUrls } from '../data/projects';
+} from '../components/projects'
+import { PageWrapper } from '../components/site'
+import { SectionHeading } from '../components/typography'
+import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
   const activeProjects = getProjectsByUrls([
     'https://casters.io',
     'https://www.pregraph.com',
-  ]);
+  ])
 
   return (
     <PageWrapper>
@@ -51,7 +51,7 @@ const IndexPage = () => {
         </Box> */}
       </Flex>
     </PageWrapper>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage

@@ -1,5 +1,5 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { Link } from '../base';
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { Link } from '../base'
 
 export const ProjectLink = ({ description, name, url }) => (
   <Link
@@ -22,4 +22,4 @@ export const ProjectLink = ({ description, name, url }) => (
       )}
     </Box>
   </Link>
-);
+)

@@ -1,1 +1,1 @@
-export * from './fathom';
+export * from './fathom'

@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react'
 
 export const PageHeading = ({ children, ...rest }) => (
   <Heading
@@ -10,4 +10,4 @@ export const PageHeading = ({ children, ...rest }) => (
   >
     {children}
   </Heading>
-);
+)

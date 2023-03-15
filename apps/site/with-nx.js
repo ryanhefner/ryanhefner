@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-exports.withNx = void 0;
-const tslib_1 = require('tslib');
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+exports.withNx = void 0
+const tslib_1 = require('tslib')
 function regexEqual(x, y) {
   return (
     x instanceof RegExp &&
@@ -10,7 +10,7 @@ function regexEqual(x, y) {
     x.global === y.global &&
     x.ignoreCase === y.ignoreCase &&
     x.multiline === y.multiline
-  );
+  )
 }
 /**
  * Do not remove or rename this function. Production builds inline `with-nx.js` file with a replacement
@@ -20,17 +20,17 @@ function getWithNxContext() {
   return {
     workspaceRoot: '/Users/ryanhefner/Code/org-ryanhefner/ryanhefner',
     libsDir: 'libs',
-  };
+  }
 }
 function withNx(nextConfig = {}, context = getWithNxContext()) {
-  var _a;
+  var _a
   // If `next-compose-plugins` is used, the context argument is invalid.
   if (!context.libsDir || !context.workspaceRoot) {
-    context = getWithNxContext();
+    context = getWithNxContext()
   }
-  const userWebpack = nextConfig.webpack || ((x) => x);
+  const userWebpack = nextConfig.webpack || ((x) => x)
   const { nx } = nextConfig,
-    validNextConfig = tslib_1.__rest(nextConfig, ['nx']);
+    validNextConfig = tslib_1.__rest(nextConfig, ['nx'])
   return Object.assign(
     Object.assign(
       {
@@ -47,8 +47,8 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
          * Update babel to support our monorepo setup.
          * The 'upward' mode allows the root babel.config.json and per-project .babelrc files to be picked up.
          */
-        options.defaultLoaders.babel.options.babelrc = true;
-        options.defaultLoaders.babel.options.rootMode = 'upward';
+        options.defaultLoaders.babel.options.babelrc = true
+        options.defaultLoaders.babel.options.rootMode = 'upward'
         /*
          * Modify the Next.js webpack config to allow workspace libs to use css modules.
          * Note: This would be easier if Next.js exposes css-loader and sass-loader on `defaultLoaders`.
@@ -56,12 +56,12 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
         // Include workspace libs in css/sass loaders
         const includes = [
           require('path').join(context.workspaceRoot, context.libsDir),
-        ];
+        ]
         const nextCssLoaders = config.module.rules.find(
           (rule) => typeof rule.oneOf === 'object'
-        );
+        )
         // webpack config is not as expected
-        if (!nextCssLoaders) return config;
+        if (!nextCssLoaders) return config
         /*
          *  1. Modify css loader to enable module support for workspace libs
          */
@@ -69,13 +69,13 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
           (rule) =>
             rule.sideEffects === false &&
             regexEqual(rule.test, /\.module\.css$/)
-        );
+        )
         // Might not be found if Next.js webpack config changes in the future
         if (nextCssLoader && nextCssLoader.issuer) {
           nextCssLoader.issuer.or = nextCssLoader.issuer.and
             ? nextCssLoader.issuer.and.concat(includes)
-            : includes;
-          delete nextCssLoader.issuer.and;
+            : includes
+          delete nextCssLoader.issuer.and
         }
         /*
          *  2. Modify sass loader to enable module support for workspace libs
@@ -84,13 +84,13 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
           (rule) =>
             rule.sideEffects === false &&
             regexEqual(rule.test, /\.module\.(scss|sass)$/)
-        );
+        )
         // Might not be found if Next.js webpack config changes in the future
         if (nextSassLoader && nextSassLoader.issuer) {
           nextSassLoader.issuer.or = nextSassLoader.issuer.and
             ? nextSassLoader.issuer.and.concat(includes)
-            : includes;
-          delete nextSassLoader.issuer.and;
+            : includes
+          delete nextSassLoader.issuer.and
         }
         /*
          *  3. Modify error loader to ignore css modules used by workspace libs
@@ -105,33 +105,33 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
                 'Read more: https://err.sh/next.js/css-modules-npm' ||
               rule.use.options.reason ===
                 'CSS Modules cannot be imported from within node_modules.\nRead more: https://err.sh/next.js/css-modules-npm')
-        );
+        )
         // Might not be found if Next.js webpack config changes in the future
         if (nextErrorCssModuleLoader) {
-          nextErrorCssModuleLoader.exclude = includes;
+          nextErrorCssModuleLoader.exclude = includes
         }
         /**
          * 4. Modify css loader to allow global css from node_modules to be imported from workspace libs
          */
         const nextGlobalCssLoader = nextCssLoaders.oneOf.find((rule) => {
-          var _a, _b;
+          var _a, _b
           return (_b =
             (_a = rule.include) === null || _a === void 0 ? void 0 : _a.and) ===
             null || _b === void 0
             ? void 0
-            : _b.find((include) => regexEqual(include, /node_modules/));
-        });
+            : _b.find((include) => regexEqual(include, /node_modules/))
+        })
         // Might not be found if Next.js webpack config changes in the future
         if (nextGlobalCssLoader && nextGlobalCssLoader.issuer) {
           nextGlobalCssLoader.issuer.or = nextGlobalCssLoader.issuer.and
             ? nextGlobalCssLoader.issuer.and.concat(includes)
-            : includes;
-          delete nextGlobalCssLoader.issuer.and;
+            : includes
+          delete nextGlobalCssLoader.issuer.and
         }
         /**
          * 5. Add env variables prefixed with NX_
          */
-        addNxEnvVariables(config);
+        addNxEnvVariables(config)
         /**
          * 6. Add SVGR support if option is on.
          */
@@ -170,45 +170,43 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
                 },
               },
             ],
-          });
+          })
         }
-        return userWebpack(config, options);
+        return userWebpack(config, options)
       },
     }
-  );
+  )
 }
-exports.withNx = withNx;
+exports.withNx = withNx
 function getNxEnvironmentVariables() {
   return Object.keys(process.env)
     .filter((env) => /^NX_/i.test(env))
     .reduce((env, key) => {
-      env[key] = process.env[key];
-      return env;
-    }, {});
+      env[key] = process.env[key]
+      return env
+    }, {})
 }
 function addNxEnvVariables(config) {
-  var _a;
+  var _a
   const maybeDefinePlugin =
     (_a = config.plugins) === null || _a === void 0
       ? void 0
       : _a.find((plugin) => {
-          var _a;
+          var _a
           return (_a = plugin.definitions) === null || _a === void 0
             ? void 0
-            : _a['process.env.NODE_ENV'];
-        });
+            : _a['process.env.NODE_ENV']
+        })
   if (maybeDefinePlugin) {
-    const env = getNxEnvironmentVariables();
+    const env = getNxEnvironmentVariables()
     Object.entries(env)
       .map(([name, value]) => [`process.env.${name}`, `"${value}"`])
       .filter(([name]) => !maybeDefinePlugin.definitions[name])
-      .forEach(
-        ([name, value]) => (maybeDefinePlugin.definitions[name] = value)
-      );
+      .forEach(([name, value]) => (maybeDefinePlugin.definitions[name] = value))
   }
 }
 // Support for older generated code: `const withNx = require('@nrwl/next/plugins/with-nx');`
-module.exports = withNx;
+module.exports = withNx
 // Support for newer generated code: `const { withNx } = require(...);`
-module.exports.withNx = withNx;
+module.exports.withNx = withNx
 //# sourceMappingURL=with-nx.js.map

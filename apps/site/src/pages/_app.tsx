@@ -1,35 +1,35 @@
-import { ReactElement, ReactNode, useMemo } from 'react';
-import { NextPage } from 'next';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ChakraProvider } from '@chakra-ui/react';
-import { SiteLayout } from '../components/layouts';
-import { Fathom } from '../libs/fathom';
-import { theme } from '../styles';
+import { ReactElement, ReactNode, useMemo } from 'react'
+import { NextPage } from 'next'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { ChakraProvider } from '@chakra-ui/react'
+import { SiteLayout } from '../components/layouts'
+import { Fathom } from '../libs/fathom'
+import { theme } from '../styles'
 
 export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
+  Component: NextPageWithLayout
+}
 
 const TITLE =
-  'All Play - The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer';
+  'All Play - The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
 const DESCRIPTION =
-  'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.';
+  'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.'
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
-  const router = useRouter();
+  const router = useRouter()
 
   const metaUrl = useMemo(
     () => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`,
     [router.asPath]
-  );
+  )
 
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout || ((page) => page)
 
   return (
     <>
@@ -62,7 +62,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         </SiteLayout>
       </ChakraProvider>
     </>
-  );
+  )
 }
 
-export default CustomApp;
+export default CustomApp

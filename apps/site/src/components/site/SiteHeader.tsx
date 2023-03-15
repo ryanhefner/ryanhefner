@@ -1,5 +1,5 @@
-import { Flex, HStack, Text } from '@chakra-ui/react';
-import { Link } from '../base';
+import { Flex, HStack, Text } from '@chakra-ui/react'
+import { Link } from '../base'
 
 export const SiteHeader = () => (
   <Flex
@@ -41,4 +41,4 @@ export const SiteHeader = () => (
       </Link>
     </HStack>
   </Flex>
-);
+)

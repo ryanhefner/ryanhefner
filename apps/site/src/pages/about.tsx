@@ -1,13 +1,13 @@
-import Head from 'next/head';
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { Link } from '../components/base';
-import { ClientGrid, ClientGridItem } from '../components/clients';
-import { PageWrapper } from '../components/site';
-import { clients } from '../data/clients';
+import Head from 'next/head'
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { Link } from '../components/base'
+import { ClientGrid, ClientGridItem } from '../components/clients'
+import { PageWrapper } from '../components/site'
+import { clients } from '../data/clients'
 
-const TITLE = 'All about me | Ryan Hefner - All Play';
+const TITLE = 'All about me | Ryan Hefner - All Play'
 const DESCRIPTION =
-  'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.';
+  'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
 
 const AboutPage = () => (
   <>
@@ -141,6 +141,6 @@ const AboutPage = () => (
       </Flex> */}
     </PageWrapper>
   </>
-);
+)
 
-export default AboutPage;
+export default AboutPage

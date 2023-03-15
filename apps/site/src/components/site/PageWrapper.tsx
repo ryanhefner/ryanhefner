@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react'
 
 export const PageWrapper = ({ children, ...rest }) => (
   <Box
@@ -9,4 +9,4 @@ export const PageWrapper = ({ children, ...rest }) => (
   >
     {children}
   </Box>
-);
+)

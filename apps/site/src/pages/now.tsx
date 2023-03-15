@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from 'next/head'
 import {
   Box,
   Heading,
@@ -6,13 +6,13 @@ import {
   ListItem,
   Text,
   UnorderedList,
-} from '@chakra-ui/react';
-import { PageWrapper } from '../components/site';
-import { PageHeading } from '../components/typography';
+} from '@chakra-ui/react'
+import { PageWrapper } from '../components/site'
+import { PageHeading } from '../components/typography'
 
-const TITLE = 'What I’m working on now | Ryan Hefner - All Play';
+const TITLE = 'What I’m working on now | Ryan Hefner - All Play'
 const DESCRIPTION =
-  'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.';
+  'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
 const NowPage = () => (
   <>
@@ -123,6 +123,6 @@ const NowPage = () => (
       </Box>
     </PageWrapper>
   </>
-);
+)
 
-export default NowPage;
+export default NowPage

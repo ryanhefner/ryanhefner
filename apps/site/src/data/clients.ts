@@ -55,4 +55,4 @@ export const clients = [
     name: 'Warner Brothers',
     imageUrl: '/assets/clients/warner-bros.svg',
   },
-];
+]
