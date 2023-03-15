@@ -38,5 +38,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Next.js
+.next
+
 # Env Vars
 .env
