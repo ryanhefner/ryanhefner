@@ -8,12 +8,12 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/root-e2e/cypress.config.ts",
-        "devServerTarget": "root:serve:development",
+        "devServerTarget": "site:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "root:serve:production"
+          "devServerTarget": "site:serve:production"
         }
       }
     },
@@ -26,5 +26,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["root"]
+  "implicitDependencies": ["site"]
 }

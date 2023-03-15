@@ -31,7 +31,7 @@
       }
     }
   },
-  "defaultProject": "root",
+  "defaultProject": "site",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
