@@ -23,6 +23,7 @@
     "next": "^13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-marquease": "^0.1.5",
     "regenerator-runtime": "^0.13.9",
     "tslib": "^2.3.0"
   },
