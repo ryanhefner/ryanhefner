@@ -8,7 +8,7 @@ import { withOss } from '../data/oss'
 import { cleanUrl } from '../utils'
 import { theme } from '../styles'
 
-const TITLE = 'Made w/ Open-source Software | Ryan Hefner - All Play'
+const TITLE = 'Made w/ Open-Source Software | Ryan Hefner - All Play'
 const DESCRIPTION =
   'A listing of the open-source software I use to build this site.'
 
