@@ -2,16 +2,17 @@ import Head from 'next/head'
 import {
   Box,
   Heading,
-  Link,
   ListItem,
+  OrderedList,
   Text,
   UnorderedList,
 } from '@chakra-ui/react'
+import { FootnoteLink, Link } from '../../components/base'
 import { NowLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 
-const TITLE = 'What I’m working on now | Ryan Hefner - All Play'
+const TITLE = 'What I’m working on, now | Ryan Hefner - All Play'
 const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
@@ -41,51 +42,128 @@ const NowPage = () => (
           March 17th, 2023 — from Atlanta, GA
         </Text>
       </Box>
-      <Box my={16}>
-        <Heading as="h3" fontWeight="medium">
-          Create/updating this site
-        </Heading>
-        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
-          I made the mistake of building my last portfolio in a technology that
-          I didn’t have the time to keep up and maintain. This version is way
-          more stripped down, although should be generally easier to maintain as
-          well, as I continue to build this out and flesh out more
-          areas/information to add.
-          <br />
-          <br />I will be posting more here as new updates make it to the site.
-        </Text>
+      <Box my={16} maxW="container.md">
         <Heading as="h3" fontWeight="medium" mt={16}>
-          Shiny new product:{` `}
+          New library release:{` `}
           <Link
             color="blue.500"
-            href="https://www.pregraph.com"
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            Pregraph
-          </Link>
-        </Heading>
-        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
-          After working across several apps that have all either implemented—or
-          are utilizing—GraphQL APIs, I have come across some common
-          issues/areas that could be added to make them easier to analyze,
-          optimize, and expand.
-          <br />
-          <br />
-          The first tool to get the gears flowing was releasing a general
-          purpose Apollo Link,{` `}
-          <Link
-            color="blue.500"
-            href="https://github.com/pregraph/apollo-link-performance"
+            href="https://github.com/ryanhefner/react-marquease"
             rel="nofollow noopener noreferrer"
             target="_blank"
           >
-            apollo-link-performance
+            react-marquease
           </Link>
-          ,{` `}
-          for logging GraphQL API requests to your current analytics service.
-          With more features to make their way into that link shortly.
+        </Heading>
+        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+          I have been working on a new library that I am really excited about.
         </Text>
+        <Heading as="h3" fontWeight="medium" mt={16}>
+          New project / collaboration:{' '}
+          <Link color="blue.500" href="https://communal.works" target="_blank">
+            communal.works
+          </Link>
+        </Heading>
+        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+          I have been working on a new project with a friend of mine,{' '}
+          <Link
+            color="blue.500"
+            href="https://www.jon.black"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            Jon Black
+          </Link>
+          . We have been exploring what a community of like-minded and socially
+          conscience people coming together to help each other, and potentially
+          collaborate on projects, or consulting opportunities, would look like.
+        </Text>
+        <UnorderedList fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
+          <ListItem>How would it operate?</ListItem>
+          <ListItem>
+            What system or tools could be setup to help facilitate collaboration
+            and efficiency?
+          </ListItem>
+          <ListItem>How would the community grow and self-regulate?</ListItem>
+        </UnorderedList>
+        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+          These are just a few of the questions we have been trying to put
+          answers to. And, in the meantime we threw up a quick site where we can
+          start answering those and defining what communal.works is.
+        </Text>
+        <Heading as="h3" fontWeight="medium" mt={16}>
+          Site updates
+        </Heading>
+        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+          After launching this new version of the site back in August of last
+          year, I haven’t done many updates to it. But, over the last couple of
+          weeks I have had a few things in motion that seemed like it warranted
+          some updates to be made.
+          <br />
+          <br />
+          With that said, here are a few of the updates I’ve made over the last
+          week:
+        </Text>
+        <UnorderedList fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
+          <ListItem>
+            Add{' '}
+            <Link
+              color="blue.500"
+              href="https://casters.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Casters
+            </Link>{' '}
+            <FootnoteLink href="#footnote-1">1</FootnoteLink>
+            {` `}
+            to{' '}
+            <Link href="/" color="blue.500">
+              home
+            </Link>{' '}
+            and{' '}
+            <Link href="/projects" color="blue.500">
+              projects
+            </Link>{' '}
+            pages.
+          </ListItem>
+          <ListItem>
+            Add new{' '}
+            <Link href="/withoss" color="blue.500">
+              w/ OSS
+            </Link>{' '}
+            (with open-source software) page.
+            <FootnoteLink href="#footnote-2">2</FootnoteLink>
+          </ListItem>
+          <ListItem>
+            Obviously, this is new <code>/now</code> page, and with that I have
+            created an archive of previous <code>/now</code> pages. You can find
+            a link to the previous below.
+          </ListItem>
+          <ListItem>
+            I have been really happy with using{' '}
+            <Link
+              color="blue.500"
+              href="https://usefathom.com"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              Fathom
+            </Link>{' '}
+            on this site for analytics. I realized that I may not have had it
+            fully integrated properly, and after reviewing the docs in the
+            library I used to integrate it with,{` `}
+            <Link
+              color="blue.500"
+              href="https://github.com/derrickreimer/fathom-client"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
+              fathom-client
+            </Link>
+            , I realized they have a new documentation on how to set it up. So,
+            that was updated, which is nice.
+          </ListItem>
+        </UnorderedList>
         <Heading as="h3" fontWeight="medium" mt={16}>
           Personal goals
         </Heading>
@@ -97,13 +175,53 @@ const NowPage = () => (
           mt={8}
         >
           <UnorderedList>
-            <ListItem>Save weekends for kids</ListItem>
+            <ListItem>Save weekends for kids: ✅</ListItem>
             <ListItem>
-              Get final home renovations projects done, so we can move in
+              Get final home renovations projects done, so we can move in: ✅
             </ListItem>
-            <ListItem>Daily trail run (weekdays)</ListItem>
-            <ListItem>Daily rowing session (weekdays)</ListItem>
+            <ListItem>
+              <s>Daily trail run (weekdays)</s>
+            </ListItem>
+            <ListItem>
+              <s>Daily rowing session (weekdays)</s>
+            </ListItem>
+            <ListItem>
+              Daily Peloton session
+              <FootnoteLink href="#footnote-3">3</FootnoteLink> (at least
+              weekdays, ideally all days)
+            </ListItem>
           </UnorderedList>
+        </Text>
+        <Heading as="h4" fontSize="2xl" fontWeight="medium" mt={24}>
+          Footnotes
+        </Heading>
+        <Text
+          as="span"
+          display="block"
+          fontSize={{ base: 'sm', md: 'md' }}
+          maxW="container.md"
+          mt={4}
+          ml={4}
+        >
+          <OrderedList spacing={3}>
+            <ListItem id="footnote-1">
+              Casters – This is a new project I am working on. I think it’s
+              going to be really cool, and useful, but not ready to get into all
+              of that here/now. Expect more updates on this over the coming
+              weeks/months.
+            </ListItem>
+            <ListItem id="footnote-2">
+              w/ OSS page – This is a concept that I like and will probably be
+              expanding on more. Don’t be surprised if some more projects spin
+              out of this idea.
+            </ListItem>
+            <ListItem id="footnote-3">
+              Daily Peloton session – Unfortunately, once we moved into our
+              house, I had to relocate the rowing machine to a space that makes
+              it inconvenient to use. So, luckily we also picked up a Peloton
+              bike, and that is now my goto for exercise.
+            </ListItem>
+          </OrderedList>
         </Text>
       </Box>
     </PageWrapper>
