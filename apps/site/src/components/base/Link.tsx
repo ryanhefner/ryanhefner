@@ -1,10 +1,8 @@
 import NextLink from 'next/link'
-import { chakra, Link as ChakraLink } from '@chakra-ui/react'
-
-const ChakraNextLink = chakra(NextLink)
+import { Link as ChakraLink } from '@chakra-ui/react'
 
 export const Link = ({ children, href, ...rest }) => (
-  <ChakraNextLink href={href} passHref legacyBehavior>
-    <ChakraLink {...rest}>{children}</ChakraLink>
-  </ChakraNextLink>
+  <ChakraLink as={NextLink} href={href} {...rest}>
+    {children}
+  </ChakraLink>
 )
