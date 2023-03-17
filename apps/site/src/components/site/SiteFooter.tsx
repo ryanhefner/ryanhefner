@@ -1,7 +1,15 @@
-import { Flex, HStack, Image, Text, useColorModeValue } from '@chakra-ui/react'
+import {
+  Flex,
+  HStack,
+  Image,
+  Text,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import { Link } from '../base'
 
 export const SiteFooter = () => {
+  const { colorMode } = useColorMode()
   const bgColor = useColorModeValue('black', 'white')
   const color = useColorModeValue('white', 'black')
 
@@ -21,7 +29,12 @@ export const SiteFooter = () => {
         flexDir={{ base: 'column', md: 'row-reverse' }}
       >
         <Link href="/withoss">
-          <Image alt="With OSS" src="/assets/oss.svg" h={6} />
+          <Image
+            alt="With OSS"
+            src="/assets/oss.svg"
+            h={6}
+            filter={colorMode === 'light' ? '' : 'invert(1)'}
+          />
         </Link>
         <Text fontFamily="mono" fontSize="sm">
           Ryan Hefner &copy;{' '}
