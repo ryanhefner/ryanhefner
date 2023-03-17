@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 
 import { Link } from '../components/base'
 import { PageWrapper } from '../components/site'
@@ -57,17 +57,28 @@ const ProjectsPage = () => {
                 {project.name}
               </Text>
               <Text flex={1}>{project.description}</Text>
-              <Link
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                justifySelf="flex-end"
-                mt={{ base: 6, md: 0 }}
-              >
-                <Text as="span" fontFamily="mono" fontSize="sm">
-                  {cleanUrl(project.url)}
-                </Text>
-              </Link>
+              <Box mt={{ base: 6, md: 0 }}>
+                {project.urls.map((url, index) => (
+                  <>
+                    {index > 0 && (
+                      <Text as="span" fontFamily="mono" fontSize="md">
+                        {' '}
+                        /{' '}
+                      </Text>
+                    )}
+                    <Link
+                      key={url}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Text as="span" fontFamily="mono" fontSize="sm">
+                        {cleanUrl(url)}
+                      </Text>
+                    </Link>
+                  </>
+                ))}
+              </Box>
             </Flex>
           ))}
         </Flex>
