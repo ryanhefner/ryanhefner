@@ -28,7 +28,7 @@ export const SiteFooter = () => {
       px={{ base: 6, sm: 10, md: 16, xl: 24 }}
     >
       <Flex
-        alignItems="center"
+        alignItems={{ base: 'flex-start', md: 'center' }}
         gap={{ base: 3, md: 6 }}
         flexDir={{ base: 'column', md: 'row-reverse' }}
       >
