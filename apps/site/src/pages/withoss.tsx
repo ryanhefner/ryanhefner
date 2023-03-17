@@ -14,6 +14,7 @@ const DESCRIPTION =
 
 const OssPage = () => {
   const borderColor = useColorModeValue('black', theme.colors.gray[700])
+
   return (
     <>
       <Head>
@@ -46,7 +47,7 @@ const OssPage = () => {
         <Flex flexDir="column" my={24}>
           <Box borderBottom={`2px solid ${borderColor}`}>
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
-              Open-source Software
+              Open-Source Software
             </Heading>
           </Box>
           {withOss.map((project) => (
