@@ -44,9 +44,11 @@ const OssPage = () => {
           software I use to build this site.
         </Text>
         <Flex flexDir="column" my={24}>
-          <Flex borderBottom={`2px solid ${borderColor}`} py={2}>
-            <Text fontWeight="bold">Open-source Software</Text>
-          </Flex>
+          <Box borderBottom={`2px solid ${borderColor}`}>
+            <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
+              Open-source Software
+            </Heading>
+          </Box>
           {withOss.map((project) => (
             <Flex
               key={project.name}
