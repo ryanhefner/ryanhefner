@@ -1,4 +1,5 @@
 import {
+  chakra,
   Flex,
   HStack,
   Image,
@@ -7,6 +8,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { Link } from '../base'
+
+const Break = chakra('br')
 
 export const SiteFooter = () => {
   const { colorMode } = useColorMode()
@@ -39,6 +42,7 @@ export const SiteFooter = () => {
         <Text fontFamily="mono" fontSize="sm">
           Ryan Hefner &copy;{' '}
           <Text as="span">2004 - {`${new Date().getFullYear()}`}. </Text>
+          <Break display={{ base: 'block', md: 'none' }} />
           May all your days be rad 🤙.
         </Text>
       </Flex>
