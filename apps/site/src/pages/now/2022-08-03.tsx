@@ -38,7 +38,11 @@ const NowPage = () => (
             Updated
           </Text>
           <br />
-          August 3rd, 2022 — from Atlanta, GA
+          August 3rd, 2022
+          <br />
+          <Text as="span" color="gray.600">
+            via Atlanta, GA
+          </Text>
         </Text>
       </Box>
       <Box my={16}>

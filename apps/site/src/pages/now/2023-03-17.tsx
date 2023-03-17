@@ -39,7 +39,11 @@ const NowPage = () => (
             Updated
           </Text>
           <br />
-          March 17th, 2023 — from Atlanta, GA
+          March 17th, 2023
+          <br />
+          <Text as="span" color="gray.600">
+            via Atlanta, GA
+          </Text>
         </Text>
       </Box>
       <Box my={16} maxW="container.md">
