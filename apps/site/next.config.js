@@ -10,6 +10,14 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/now',
+        destination: '/now/2023-03-17',
+      },
+    ]
+  },
 }
 
 module.exports = withNx(nextConfig)
