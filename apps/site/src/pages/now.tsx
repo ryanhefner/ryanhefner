@@ -88,7 +88,13 @@ const NowPage = () => (
         <Heading as="h3" fontWeight="medium" mt={16}>
           Personal goals
         </Heading>
-        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+        <Text
+          as="span"
+          display="block"
+          fontSize={{ base: 'xl', md: '2xl' }}
+          maxW="container.md"
+          mt={8}
+        >
           <UnorderedList>
             <ListItem>Save weekends for kids</ListItem>
             <ListItem>
