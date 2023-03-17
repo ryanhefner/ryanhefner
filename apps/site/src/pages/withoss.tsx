@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Head from 'next/head'
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 
@@ -11,7 +12,7 @@ const TITLE = 'Built w/ Open-source Software | Ryan Hefner - All Play'
 const DESCRIPTION =
   'A listing of the open-source software I have used to build this site.'
 
-const ProjectsPage = () => {
+const OssPage = () => {
   const borderColor = useColorModeValue('black', theme.colors.gray[700])
   return (
     <>
@@ -59,24 +60,19 @@ const ProjectsPage = () => {
               <Text flex={1}>{project.description}</Text>
               <Box mt={{ base: 6, md: 0 }}>
                 {project.urls.map((url, index) => (
-                  <>
+                  <Fragment key={url}>
                     {index > 0 && (
                       <Text as="span" fontFamily="mono" fontSize="md">
                         {' '}
                         /{' '}
                       </Text>
                     )}
-                    <Link
-                      key={url}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link href={url} target="_blank" rel="noopener noreferrer">
                       <Text as="span" fontFamily="mono" fontSize="sm">
                         {cleanUrl(url)}
                       </Text>
                     </Link>
-                  </>
+                  </Fragment>
                 ))}
               </Box>
             </Flex>
@@ -87,4 +83,4 @@ const ProjectsPage = () => {
   )
 }
 
-export default ProjectsPage
+export default OssPage
