@@ -11,6 +11,7 @@ import { FootnoteLink, Link } from '../../components/base'
 import { NowLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
+import { ProjectLink } from '../../constants'
 
 const TITLE = 'What I’m working on, now | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -60,6 +61,32 @@ const NowPage = () => (
         </Heading>
         <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
           I have been working on a new library that I am really excited about.
+          This one has been in the works for a while, and has actually had a
+          couple versions over the years. I am not sure why it took me so long
+          to get this out, but I have a vanila JS version, as well as a React
+          Class version, but this is the one that I wanted to release, and
+          actually uses the least amount of code amongst the three.
+          <br />
+          <br />
+          The library is called, `react-marquease`, and it’s pretty much what it
+          is called, an easy way to add a {`<marquee>`}-like component to your
+          React application.
+          <br />
+          <br />I have already used it in both the{' '}
+          <Link
+            href={ProjectLink.COMMUNAL_WORKS}
+            color="blue.500"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            communal.works
+          </Link>{' '}
+          site, and even in the sub-{`<footer>`} on this site (just scroll
+          down).
+          <br />
+          <br />I have a few more updates I plan on making to it, but it should
+          be ready for normal use, and I plan on throwing this one on a bunch of
+          sites.
         </Text>
         <Heading as="h3" fontWeight="medium" mt={16}>
           New project / collaboration:{' '}
