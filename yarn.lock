@@ -9442,6 +9442,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-marquease@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-marquease/-/react-marquease-0.1.6.tgz#35f21c8724e67f3b33cbce3ad3d7a45895bcf51a"
+  integrity sha512-FtFfPtm9JsX15UeWGlLDyU59OA0JZdbpocC9SjPe/d/j1DQ6VxUzUM6T5HZMd8UG9nwaZx8/OR8tPPnP+7quBQ==
+
 react-remove-scroll-bar@^2.3.3:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.4.tgz#53e272d7a5cb8242990c7f144c44d8bd8ab5afd9"

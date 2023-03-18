@@ -7,8 +7,9 @@ import {
   Text,
   UnorderedList,
 } from '@chakra-ui/react'
-import { PageWrapper } from '../components/site'
-import { PageHeading } from '../components/typography'
+import { NowLayout } from '../../components/layouts'
+import { PageWrapper } from '../../components/site'
+import { PageHeading } from '../../components/typography'
 
 const TITLE = 'What I’m working on now | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -37,7 +38,11 @@ const NowPage = () => (
             Updated
           </Text>
           <br />
-          August 3rd, 2022 — from Atlanta, GA
+          August 3rd, 2022
+          <br />
+          <Text as="span" color="gray.600">
+            via Atlanta, GA
+          </Text>
         </Text>
       </Box>
       <Box my={16}>
@@ -88,7 +93,13 @@ const NowPage = () => (
         <Heading as="h3" fontWeight="medium" mt={16}>
           Personal goals
         </Heading>
-        <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
+        <Text
+          as="span"
+          display="block"
+          fontSize={{ base: 'xl', md: '2xl' }}
+          maxW="container.md"
+          mt={8}
+        >
           <UnorderedList>
             <ListItem>Save weekends for kids</ListItem>
             <ListItem>
@@ -99,30 +110,10 @@ const NowPage = () => (
           </UnorderedList>
         </Text>
       </Box>
-      <Box pt={{ base: 10, md: 10 }} pb={{ base: 10, md: 24 }}>
-        <Text>
-          What is this page?
-          <br />
-          This “Now” page was inspired by{` `}
-          <Link
-            href="https://sive.rs"
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-          >
-            Derek Sivers
-          </Link>
-          . Find more, or submit your own, at{` `}
-          <Link
-            href="https://nownownow.com"
-            rel="nofollow noreferrer noopener"
-            target="_blank"
-          >
-            nownownow.com &rarr;
-          </Link>
-        </Text>
-      </Box>
     </PageWrapper>
   </>
 )
+
+NowPage.getLayout = (page) => <NowLayout>{page}</NowLayout>
 
 export default NowPage
