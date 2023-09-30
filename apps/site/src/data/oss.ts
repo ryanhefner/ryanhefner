@@ -21,7 +21,7 @@ export const withOss = [
     urls: ['https://emotion.sh/'],
   },
   {
-    name: 'Frame Motion',
+    name: 'Framer Motion',
     description: 'A production-ready, open source motion library for React',
     urls: ['https://www.framer.com/motion/'],
   },
