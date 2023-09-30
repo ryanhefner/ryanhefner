@@ -35,6 +35,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Head>
         <title>{TITLE}</title>
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
         <meta name="description" content={DESCRIPTION} />
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESCRIPTION} />
@@ -44,7 +45,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           property="og:image"
           content="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg"
         />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ryanhefner" />
         <meta
           name="twitter:image"
