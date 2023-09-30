@@ -205,7 +205,7 @@ function addNxEnvVariables(config) {
       .forEach(([name, value]) => (maybeDefinePlugin.definitions[name] = value))
   }
 }
-// Support for older generated code: `const withNx = require('@nrwl/next/plugins/with-nx');`
+// Support for older generated code: `const withNx = require('@nx/next/plugins/with-nx');`
 module.exports = withNx
 // Support for newer generated code: `const { withNx } = require(...);`
 module.exports.withNx = withNx
