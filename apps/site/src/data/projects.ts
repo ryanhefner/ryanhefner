@@ -4,6 +4,11 @@ export const projects = [
     description: 'Open source software contributions to the community.',
     url: '/projects/oss',
   },
+  {
+    name: 'Standard Sets',
+    description: 'Common data sets and tools to transform formats.',
+    url: 'https://www.standardsets.com',
+  },
   // {
   //   name: 'Neighborgoods',
   //   description: 'Co-op owned ecommerce and curency platform.',
