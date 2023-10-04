@@ -26,7 +26,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const metaUrl = useMemo(
     () => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`,
-    [router.asPath]
+    [router.asPath],
   )
 
   const getLayout = Component.getLayout || ((page) => page)
