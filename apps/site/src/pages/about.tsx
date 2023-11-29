@@ -5,7 +5,7 @@ import { ClientGrid, ClientGridItem } from '../components/clients'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
 
-const TITLE = 'All about me | Ryan Hefner - All Play'
+const TITLE = 'Some more about me'
 const DESCRIPTION =
   'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
 
