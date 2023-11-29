@@ -1,14 +1,14 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
-
+import { SiteMeta } from 'next-meta'
 import { Link } from '../components/base'
 import { PageWrapper } from '../components/site'
 import { withOss } from '../data/oss'
 import { cleanUrl } from '../utils'
 import { theme } from '../styles'
 
-const TITLE = 'Made w/ Open-Source Software | Ryan Hefner - All Play'
+const TITLE = 'Made w/ Open-Source Software'
 const DESCRIPTION =
   'A listing of the open-source software I use to build this site.'
 
@@ -17,14 +17,7 @@ const OssPage = () => {
 
   return (
     <>
-      <Head>
-        <title>{TITLE}</title>
-        <meta name="description" content={DESCRIPTION} />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-      </Head>
+      <SiteMeta description={DESCRIPTION} headComponent={Head} title={TITLE} />
       <PageWrapper>
         <Heading
           as="h1"
