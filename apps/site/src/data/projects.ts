@@ -5,7 +5,7 @@ export const projects = [
     url: '/projects/oss',
   },
   {
-    name: 'AccessCache',
+    name: 'Access Cache',
     description: 'The—anything—API.',
     url: 'https://github.com/accesscache',
   },
