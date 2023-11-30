@@ -6,8 +6,7 @@ export const ProjectGridItem = ({ children }) => (
       base: '100%',
       md: '50%',
       lg: '33.3%',
-      xl: '25%',
-      '2xl': '20%',
+      '2xl': '25%',
     }}
     pr={{ base: 0, md: 5, lg: 10 }}
     pb={16}
