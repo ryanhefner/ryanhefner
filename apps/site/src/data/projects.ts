@@ -86,6 +86,12 @@ export const projects = [
 
 export const oss = [
   {
+    name: 'next-meta',
+    description:
+      'Easily compose and manage meta and open graph tags in your Next.js app/site.',
+    url: 'https://www.pkgstats.com/pkg:next-meta',
+  },
+  {
     name: 'react-marquease',
     description:
       'HTML <marquee>s, the React way (with some handy control features).',
