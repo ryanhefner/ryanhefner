@@ -39,14 +39,13 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       <MetaProvider
         baseUrl="https://www.ryanhefner.com"
-        headComponent={Head}
         imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg"
         title={TITLE}
         description={DESCRIPTION}
         siteName="Ryan Hefner - All Play"
         twitterCreator="@ryanhefner"
         twitterSite="@ryanhefner"
-        twitterCardType="summary_large_image"
+        twitterCard="summary_large_image"
         url={metaUrl}
       >
         <ChakraProvider theme={theme}>

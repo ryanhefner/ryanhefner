@@ -1,5 +1,4 @@
-import { Fragment } from 'react'
-import Head from 'next/head'
+import React, { Fragment } from 'react'
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { Link } from '../components/base'
@@ -17,7 +16,7 @@ const OssPage = () => {
 
   return (
     <>
-      <SiteMeta description={DESCRIPTION} headComponent={Head} title={TITLE} />
+      <SiteMeta description={DESCRIPTION} title={TITLE} />
       <PageWrapper>
         <Heading
           as="h1"

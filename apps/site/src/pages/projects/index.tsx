@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import { Heading } from '@chakra-ui/react'
+import { SiteMeta } from 'next-meta'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -14,14 +14,7 @@ const DESCRIPTION =
 
 const ProjectsPage = () => (
   <>
-    <Head>
-      <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-    </Head>
+    <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
       <Heading
         as="h1"
