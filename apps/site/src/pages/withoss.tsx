@@ -31,7 +31,14 @@ const OssPage = () => {
           fontWeight="medium"
           lineHeight="none"
         >
-          w/
+          w
+          <Text
+            as="span"
+            display="inline-block"
+            transform={{ base: 'translateY(-11px)', md: 'translateY(-22px)' }}
+          >
+            /
+          </Text>
           <Image
             display="inline-block"
             src="/assets/oss.svg"
