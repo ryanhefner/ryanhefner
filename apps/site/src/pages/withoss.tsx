@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { Link } from '../components/base'
 import { PageWrapper } from '../components/site'
@@ -24,7 +24,15 @@ const OssPage = () => {
           fontWeight="medium"
           lineHeight="none"
         >
-          w/ OSS
+          w/
+          <Image
+            display="inline-block"
+            src="/oss.svg"
+            alt="Open-Source Software"
+            filter="invert(1)"
+            h={{ base: 24, md: 32 }}
+            ml={3}
+          />
         </Heading>
         <Text
           as="p"
