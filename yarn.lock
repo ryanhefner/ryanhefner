@@ -7207,10 +7207,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-next-meta@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/next-meta/-/next-meta-0.1.7.tgz#400a9b03c21c9784bb50a20c097052fafafd0c71"
-  integrity sha512-nKpebnYLcAFYoTyELPYj7gWFwDhuHg4G76JmhC4JSvdGfY5KDVfNKjhzBvLML+BjLh0sPBGXTytJcExXKoyq/A==
+next-meta@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/next-meta/-/next-meta-0.1.8.tgz#be31e3dbc41e5a0d27790bf05040ba2aa9c4e802"
+  integrity sha512-BVznk4x8FSkWaL1KuSjzb/95daxZ2Dmj2+xuSi2YWWajARo1hyuiMEG+N7FH10tx/TE6XgjP759+UxSFic5QLg==
 
 next@^13.5.3:
   version "13.5.3"
