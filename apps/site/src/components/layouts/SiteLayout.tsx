@@ -35,7 +35,7 @@ export const SiteLayout = ({ children }) => {
               href="https://www.github.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on GitHub"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               GitHub
             </Link>{' '}
@@ -44,7 +44,7 @@ export const SiteLayout = ({ children }) => {
               href="https://www.twitter.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Twitter"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Twitter
             </Link>{' '}
@@ -53,16 +53,25 @@ export const SiteLayout = ({ children }) => {
               href="https://read.cv/ryanhefner"
               target="_blank"
               title="@ryanhefner on read.cv"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Read.cv
+            </Link>{' '}
+            /{` `}
+            <Link
+              href="https://posts.cv/ryanhefner"
+              target="_blank"
+              title="@ryanhefner on posts.cv"
+              rel="noopener noreferrer nofollow"
+            >
+              Posts.cv
             </Link>{' '}
             /{` `}
             <Link
               href="https://www.instagram.com/instagram"
               target="_blank"
               title="@ryanhefner on Instagram"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Instagram
             </Link>{' '}
@@ -71,7 +80,7 @@ export const SiteLayout = ({ children }) => {
               href="https://www.dribbble.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Dribbble"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Dribbble
             </Link>{' '}
@@ -80,7 +89,7 @@ export const SiteLayout = ({ children }) => {
               href="https://open.spotify.com/user/ryanhefner"
               target="_blank"
               title="@ryanhefner on Spotify"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Spotify
             </Link>{' '}
@@ -89,7 +98,7 @@ export const SiteLayout = ({ children }) => {
               href="https://www.vimeo.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Vimeo"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
             >
               Vimeo
             </Link>
