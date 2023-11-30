@@ -11,8 +11,8 @@ import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
   const activeProjects = getProjectsByUrls([
-    'https://casters.io',
-    'https://www.pregraph.com',
+    'https://www.standardsets.com',
+    'https://github.com/accesscache',
   ])
 
   return (
