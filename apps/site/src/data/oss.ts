@@ -38,4 +38,10 @@ export const withOss = [
     description: 'A React component for creating a marquee effect',
     urls: ['https://github.com/ryanhefner/react-marquease'],
   },
+  {
+    name: 'next-meta',
+    description:
+      'Easily compose and manage meta and open graph tags in your Next.js app/site.',
+    urls: ['https://github.com/ryanhefner/next-meta'],
+  },
 ]
