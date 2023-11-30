@@ -36,7 +36,7 @@ const IndexPage = () => {
           <Link href="/projects">
             <SectionHeading>Active Projects</SectionHeading>
           </Link>
-          <ProjectGrid>
+          <ProjectGrid mt={8}>
             {activeProjects.map((project) => (
               <ProjectGridItem key={project.url}>
                 <ProjectLink {...project} />
