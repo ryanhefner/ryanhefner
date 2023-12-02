@@ -1,4 +1,3 @@
-import { Heading } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { SiteLayout } from '../../components/layouts'
 import {
@@ -8,6 +7,7 @@ import {
 } from '../../components/projects'
 import { PageWrapper } from '../../components/site'
 import { projects } from '../../data/projects'
+import { PageHeading } from '../../components/typography'
 
 const TITLE = 'Projects | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -17,15 +17,7 @@ const ProjectsPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '12xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-        ml={{ base: 0, md: -4 }}
-      >
-        Projects
-      </Heading>
+      <PageHeading>Projects</PageHeading>
       <ProjectGrid>
         {projects.map((project) => (
           <ProjectGridItem key={project.url}>

@@ -14,6 +14,7 @@ import { PageWrapper } from '../components/site'
 import { withOss } from '../data/oss'
 import { cleanUrl } from '../utils'
 import { theme } from '../styles'
+import { PageHeading } from '../components/typography'
 
 const TITLE = 'Made w/ Open-Source Software'
 const DESCRIPTION =
@@ -32,12 +33,7 @@ const OssPage = () => {
           gap={12}
           justify={{ base: 'flex-start', xl: 'space-between' }}
         >
-          <Heading
-            as="h1"
-            fontSize={{ base: '6xl', md: '12xl' }}
-            fontWeight="medium"
-            lineHeight="none"
-          >
+          <PageHeading ml={0}>
             w
             <Text as="span" display="inline-block">
               /
@@ -50,7 +46,7 @@ const OssPage = () => {
               h={{ base: 24, md: 32 }}
               ml={3}
             />
-          </Heading>
+          </PageHeading>
           <Text as="p" fontSize={{ base: 'lg', md: '2xl' }} maxW="container.sm">
             In an attempt for transparency, and paying respect for the hard work
             of the open-source community, here is a list of the open-source

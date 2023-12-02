@@ -9,6 +9,7 @@ import { ClientGrid, ClientGridItem } from '../components/clients'
 import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
+import { PageHeading } from '../components/typography'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =
@@ -40,14 +41,7 @@ const AboutPage = () => (
           />
         </ShaderGradientCanvas> */}
       </Box>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '12xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-      >
-        About
-      </Heading>
+      <PageHeading>About</PageHeading>
       <Box mt={16}>
         <Box maxW="container.md">
           <Text fontSize={{ base: 'xl', md: '2xl' }}>

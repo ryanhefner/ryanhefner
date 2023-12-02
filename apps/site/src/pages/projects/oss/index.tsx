@@ -1,4 +1,4 @@
-import { Heading, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { Link } from '../../../components/base'
 import { SiteLayout } from '../../../components/layouts'
@@ -9,6 +9,7 @@ import {
 } from '../../../components/projects'
 import { PageWrapper } from '../../../components/site'
 import { oss as projects } from '../../../data/projects'
+import { PageHeading } from '../../../components/typography'
 
 const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -18,17 +19,12 @@ const OSSIndexPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '12xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-      >
+      <PageHeading>
         <Text as="span" color="gray.600">
           <Link href="/projects">Projects</Link>
         </Text>{' '}
         / Open–Source Software
-      </Heading>
+      </PageHeading>
       <ProjectGrid>
         {projects.map((project) => (
           <ProjectGridItem key={project.url}>
