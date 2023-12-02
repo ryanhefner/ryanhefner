@@ -4,6 +4,7 @@ import { Link } from '../base'
 import { PageWrapper } from '../site'
 import { theme } from '../../styles'
 import { nowPages } from '../../data/now'
+import { SiteLayout } from './SiteLayout'
 
 export const NowLayout = ({ children }) => {
   const pathname = usePathname()
@@ -11,7 +12,7 @@ export const NowLayout = ({ children }) => {
   const borderColor = useColorModeValue('black', theme.colors.gray[700])
 
   return (
-    <>
+    <SiteLayout>
       {children}
       <PageWrapper>
         <Box>
@@ -70,6 +71,6 @@ export const NowLayout = ({ children }) => {
           </Text>
         </Box>
       </PageWrapper>
-    </>
+    </SiteLayout>
   )
 }
