@@ -2,6 +2,7 @@ import { Center, Text } from '@chakra-ui/react'
 import { Link } from '../components/base'
 import { PageWrapper } from '../components/site'
 import { PageHeading } from '../components/typography'
+import { SiteLayout } from '../components/layouts'
 
 const Custom404Page = () => (
   <PageWrapper pos="relative">
@@ -16,7 +17,9 @@ const Custom404Page = () => (
       pb={{ base: 16, md: 32 }}
     >
       <Text fontWeight="semibold">404</Text>
-      <PageHeading>You peeking in on me!?</PageHeading>
+      <PageHeading fontSize={{ base: '6xl', sm: '7xl', md: '9xl' }}>
+        You peeking in on me!?
+      </PageHeading>
       <Text fontSize="2xl" mt={16}>
         Sorry, nothing to see here.
       </Text>
@@ -26,5 +29,7 @@ const Custom404Page = () => (
     </Center>
   </PageWrapper>
 )
+
+Custom404Page.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default Custom404Page
