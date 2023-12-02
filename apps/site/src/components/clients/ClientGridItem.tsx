@@ -11,7 +11,7 @@ export const ClientGridItem = ({ name, imageUrl }) => {
       <Image
         alt={name}
         src={imageUrl}
-        w={{ base: '75%', md: '50%' }}
+        w={{ base: '75%', md: '62.75%' }}
         filter={colorMode === 'light' ? '' : 'invert(1)'}
       />
     </Center>
