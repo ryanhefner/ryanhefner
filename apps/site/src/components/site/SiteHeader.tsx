@@ -10,13 +10,13 @@ export const SiteHeader = () => (
     w="100%"
     pos="sticky"
     top={0}
-    isolation="isolate"
-    // mixBlendMode="screen"
+    zIndex={1}
+    mixBlendMode="difference"
     pt={{ base: 6, md: 20 }}
     pb={{ base: 6 }}
     px={{ base: 6, sm: 10, md: 16, xl: 24 }}
   >
-    <Link href="/">
+    <Link href="/" color="white">
       <HStack>
         {/* <Box display="inline-block" borderRadius="full" bgColor="black" w={2} h={2} /> */}
         <Text fontSize="lg" fontWeight="medium">
@@ -30,6 +30,7 @@ export const SiteHeader = () => (
       columnGap={{ base: 3, md: 6 }}
       rowGap={0}
       mr={{ base: 0, md: 10 }}
+      color="white"
     >
       <Link href="/projects">
         <Text as="span" fontSize="lg">
