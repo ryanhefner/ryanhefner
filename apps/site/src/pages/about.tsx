@@ -1,7 +1,12 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
+import * as reactSpring from '@react-spring/three'
+import * as drei from '@react-three/drei'
+import * as fiber from '@react-three/fiber'
 import { Link } from '../components/base'
 import { ClientGrid, ClientGridItem } from '../components/clients'
+import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
 
@@ -12,10 +17,32 @@ const DESCRIPTION =
 const AboutPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
-    <PageWrapper>
+    <PageWrapper position="relative">
+      <Box
+        display="block"
+        width="20px"
+        height="140px"
+        bg="blue.500"
+        position="absolute"
+        top="45px"
+        left={0}
+      >
+        <ShaderGradientCanvas
+          importedFiber={{ ...fiber, ...drei, ...reactSpring }}
+          style={{
+            position: 'absolute',
+            top: 0,
+          }}
+        >
+          {/* <ShaderGradient
+            control="query"
+            urlString="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.2&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%2352ff89&color2=%23dbba95&color3=%23d0bce1&embedMode=off&envPreset=city&fov=45&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=0&shader=defaults&type=plane&uDensity=1.3&uFrequency=5.5&uSpeed=0.4&uStrength=4&uTime=0&wireframe=false&zoomOut=false"
+          /> */}
+        </ShaderGradientCanvas>
+      </Box>
       <Heading
         as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
+        fontSize={{ base: '6xl', md: '12xl' }}
         fontWeight="medium"
         lineHeight="none"
       >
@@ -74,6 +101,15 @@ const AboutPage = () => (
             Twitter
           </Link>{' '}
           /{` `}
+          <Link
+            href="https://posts.cv/ryanhefner"
+            target="_blank"
+            title="@ryanhefner on posts.cv"
+            rel="noopener noreferrer"
+          >
+            Posts.cv
+          </Link>{' '}
+          |{` `}
           <Link
             href="https://read.cv/ryanhefner"
             target="_blank"
@@ -135,5 +171,7 @@ const AboutPage = () => (
     </PageWrapper>
   </>
 )
+
+AboutPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default AboutPage

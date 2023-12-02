@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { Link } from '../components/base'
+import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { withOss } from '../data/oss'
 import { cleanUrl } from '../utils'
@@ -25,43 +26,41 @@ const OssPage = () => {
     <>
       <SiteMeta description={DESCRIPTION} title={TITLE} />
       <PageWrapper>
-        <Heading
-          as="h1"
-          fontSize={{ base: '6xl', md: '9xl' }}
-          fontWeight="medium"
-          lineHeight="none"
+        <Flex
+          align={{ base: 'flex-start', xl: 'center' }}
+          flexDir={{ base: 'column', xl: 'row' }}
+          gap={12}
+          justify={{ base: 'flex-start', xl: 'space-between' }}
         >
-          w
-          <Text
-            as="span"
-            display="inline-block"
-            transform={{ base: 'translateY(-11px)', md: 'translateY(-22px)' }}
+          <Heading
+            as="h1"
+            fontSize={{ base: '6xl', md: '12xl' }}
+            fontWeight="medium"
+            lineHeight="none"
           >
-            /
+            w
+            <Text as="span" display="inline-block">
+              /
+            </Text>
+            <Image
+              display="inline-block"
+              src="/assets/oss.svg"
+              alt="Open-Source Software"
+              filter="invert(1)"
+              h={{ base: 24, md: 32 }}
+              ml={3}
+            />
+          </Heading>
+          <Text as="p" fontSize={{ base: 'lg', md: '2xl' }} maxW="container.sm">
+            In an attempt for transparency, and paying respect for the hard work
+            of the open-source community, here is a list of the open-source
+            software I use to build this site.
           </Text>
-          <Image
-            display="inline-block"
-            src="/assets/oss.svg"
-            alt="Open-Source Software"
-            filter="invert(1)"
-            h={{ base: 24, md: 32 }}
-            ml={3}
-          />
-        </Heading>
-        <Text
-          as="p"
-          fontSize={{ base: 'lg', md: '2xl' }}
-          mt={12}
-          maxW="container.md"
-        >
-          In an attempt for transparency, and paying respect for the hard work
-          of the open-source community, here is a list of the open-source
-          software I use to build this site.
-        </Text>
+        </Flex>
         <Flex flexDir="column" my={24}>
           <Box borderBottom={`2px solid ${borderColor}`}>
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
-              Open Source Software
+              Open-source Software
             </Heading>
           </Box>
           {withOss.map((project) => (
@@ -99,5 +98,7 @@ const OssPage = () => {
     </>
   )
 }
+
+OssPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default OssPage

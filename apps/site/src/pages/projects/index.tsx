@@ -1,5 +1,6 @@
 import { Heading } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+import { SiteLayout } from '../../components/layouts'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -18,9 +19,10 @@ const ProjectsPage = () => (
     <PageWrapper>
       <Heading
         as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
+        fontSize={{ base: '6xl', md: '12xl' }}
         fontWeight="medium"
         lineHeight="none"
+        ml={{ base: 0, md: -4 }}
       >
         Projects
       </Heading>
@@ -42,5 +44,7 @@ const ProjectsPage = () => (
     </PageWrapper>
   </>
 )
+
+ProjectsPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default ProjectsPage

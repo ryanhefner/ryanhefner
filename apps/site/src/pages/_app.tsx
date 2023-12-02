@@ -5,7 +5,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChakraProvider } from '@chakra-ui/react'
 import { MetaProvider } from 'next-meta'
-import { SiteLayout } from '../components/layouts'
+import '@fontbase/suisse-intl'
+import '@fontbase/suisse-mono'
 import { Fathom } from '../libs/fathom'
 import { theme } from '../styles'
 
@@ -49,10 +50,8 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         url={metaUrl}
       >
         <ChakraProvider theme={theme}>
-          <SiteLayout>
-            <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
-            {getLayout(<Component {...pageProps} />)}
-          </SiteLayout>
+          <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
+          {getLayout(<Component {...pageProps} />)}
         </ChakraProvider>
       </MetaProvider>
     </>

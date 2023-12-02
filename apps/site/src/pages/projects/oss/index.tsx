@@ -1,6 +1,7 @@
 import { Heading, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { Link } from '../../../components/base'
+import { SiteLayout } from '../../../components/layouts'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -19,14 +20,14 @@ const OSSIndexPage = () => (
     <PageWrapper>
       <Heading
         as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
+        fontSize={{ base: '6xl', md: '12xl' }}
         fontWeight="medium"
         lineHeight="none"
       >
         <Text as="span" color="gray.600">
           <Link href="/projects">Projects</Link>
         </Text>{' '}
-        / Open Source Software
+        / Open–Source Software
       </Heading>
       <ProjectGrid>
         {projects.map((project) => (
@@ -38,5 +39,7 @@ const OSSIndexPage = () => (
     </PageWrapper>
   </>
 )
+
+OSSIndexPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default OSSIndexPage
