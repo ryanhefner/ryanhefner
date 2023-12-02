@@ -1,5 +1,6 @@
 import { Box, Heading, Image, Text } from '@chakra-ui/react'
 import { Link } from '../base'
+import { CopyRight } from '../typography'
 
 export const ProjectLink = ({
   description,
@@ -36,7 +37,11 @@ export const ProjectLink = ({
       </Heading>
       {description && (
         <Text color="gray.500" fontSize="xl" mt={2}>
-          {description}
+          <CopyRight
+            copy={description}
+            optimalLength={100}
+            minimalLength={70}
+          />
         </Text>
       )}
     </Box>
