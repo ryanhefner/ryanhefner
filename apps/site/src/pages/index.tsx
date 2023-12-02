@@ -38,7 +38,15 @@ const IndexPage = () => {
           <Link href="/projects">
             <SectionHeading>Active Projects</SectionHeading>
           </Link>
-          <ProjectGrid mt={6}>
+          <ProjectGrid
+            mt={6}
+            showImages
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)',
+            }}
+          >
             {activeProjects.map((project) => (
               <ProjectGridItem key={project.url}>
                 <ProjectLink {...project} />
