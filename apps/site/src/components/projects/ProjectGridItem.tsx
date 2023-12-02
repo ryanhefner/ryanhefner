@@ -1,16 +1,15 @@
-import { Box } from '@chakra-ui/react'
+import { GridItem } from '@chakra-ui/react'
 
 export const ProjectGridItem = ({ children }) => (
-  <Box
+  <GridItem
     flexBasis={{
       base: '100%',
-      md: '50%',
-      lg: '33.3%',
-      '2xl': '25%',
+      md: '45%',
+      lg: '30%',
+      '2xl': '22%',
     }}
-    pr={{ base: 0, md: 5, lg: 10 }}
-    pb={16}
+    pb={12}
   >
     {children}
-  </Box>
+  </GridItem>
 )

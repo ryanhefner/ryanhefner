@@ -1,18 +1,35 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading, Image, Text } from '@chakra-ui/react'
 import { Link } from '../base'
 
-export const ProjectLink = ({ description, name, url }) => (
+export const ProjectLink = ({
+  description,
+  imageUrl,
+  name,
+  url,
+}: {
+  description?: string
+  imageUrl?: string
+  name: string
+  url?: string
+}) => (
   <Link
     href={url}
     target={url.startsWith('http') ? '_blank' : '_self'}
     rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
   >
     <Box>
-      <Heading
-        as="h3"
-        fontSize={{ base: '4xl', md: '3xl', lg: '4xl' }}
-        fontWeight="medium"
-      >
+      {imageUrl && (
+        <Image
+          bgColor="black"
+          // borderRadius="3xl"
+          src={imageUrl}
+          alt={name}
+          w="full"
+          aspectRatio="16 / 9"
+          mb={5}
+        />
+      )}
+      <Heading as="h3" fontSize="2xl" fontWeight="medium">
         {name}
       </Heading>
       {description && (
