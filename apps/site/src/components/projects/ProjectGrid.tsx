@@ -1,6 +1,7 @@
+import React from 'react'
 import { Grid } from '@chakra-ui/react'
 
-export const ProjectGrid = ({ children, ...props }) => (
+export const ProjectGrid = ({ children, showImages = false, ...props }) => (
   <Grid
     gap={{ base: 0, md: 5, lg: 10 }}
     mt={16}
@@ -14,6 +15,8 @@ export const ProjectGrid = ({ children, ...props }) => (
     }}
     {...props}
   >
-    {children}
+    {React.Children.map(children, (child) =>
+      React.cloneElement(child, { showImages }),
+    )}
   </Grid>
 )

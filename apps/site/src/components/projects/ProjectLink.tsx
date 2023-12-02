@@ -5,11 +5,13 @@ export const ProjectLink = ({
   description,
   imageUrl,
   name,
+  showImages,
   url,
 }: {
   description?: string
   imageUrl?: string
   name: string
+  showImages?: boolean
   url?: string
 }) => (
   <Link
@@ -18,7 +20,7 @@ export const ProjectLink = ({
     rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
   >
     <Box>
-      {imageUrl && (
+      {imageUrl && showImages ? (
         <Image
           bgColor="black"
           // borderRadius="3xl"
@@ -28,7 +30,7 @@ export const ProjectLink = ({
           aspectRatio="16 / 9"
           mb={5}
         />
-      )}
+      ) : null}
       <Heading as="h3" fontSize="2xl" fontWeight="medium">
         {name}
       </Heading>

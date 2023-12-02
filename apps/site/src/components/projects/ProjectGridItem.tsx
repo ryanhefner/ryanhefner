@@ -1,6 +1,7 @@
+import React from 'react'
 import { GridItem } from '@chakra-ui/react'
 
-export const ProjectGridItem = ({ children }) => (
+export const ProjectGridItem = ({ children, showImages = false }) => (
   <GridItem
     flexBasis={{
       base: '100%',
@@ -10,6 +11,6 @@ export const ProjectGridItem = ({ children }) => (
     }}
     pb={12}
   >
-    {children}
+    {React.cloneElement(children, { showImages })}
   </GridItem>
 )
