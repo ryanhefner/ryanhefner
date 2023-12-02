@@ -50,21 +50,21 @@ export const SiteLayout = ({ children }) => {
             </Link>{' '}
             /{` `}
             <Link
-              href="https://read.cv/ryanhefner"
-              target="_blank"
-              title="@ryanhefner on read.cv"
-              rel="noopener noreferrer nofollow"
-            >
-              Read.cv
-            </Link>{' '}
-            /{` `}
-            <Link
               href="https://posts.cv/ryanhefner"
               target="_blank"
               title="@ryanhefner on posts.cv"
               rel="noopener noreferrer nofollow"
             >
               Posts.cv
+            </Link>{' '}
+            |{` `}
+            <Link
+              href="https://read.cv/ryanhefner"
+              target="_blank"
+              title="@ryanhefner on read.cv"
+              rel="noopener noreferrer nofollow"
+            >
+              Read.cv
             </Link>{' '}
             /{` `}
             <Link
