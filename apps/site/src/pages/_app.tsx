@@ -7,6 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { MetaProvider } from 'next-meta'
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
+import { LinkCard } from '@linkcards/next'
 import { Fathom } from '../libs/fathom'
 import { theme } from '../styles'
 
@@ -49,6 +50,15 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         twitterCard="summary_large_image"
         url={metaUrl}
       >
+        <LinkCard
+          accountUrl={
+            process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL ??
+            'https://www.ryanhefner.com'
+          }
+          siteUrl={process.env.NEXT_PUBLIC_SITE_URL}
+          imageWidth={2400}
+          imageHeight={1260}
+        />
         <ChakraProvider theme={theme}>
           <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
           {getLayout(<Component {...pageProps} />)}
