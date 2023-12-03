@@ -10,6 +10,7 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  transpilePackages: ['@linkcards/next'],
   async rewrites() {
     return [
       {
@@ -19,7 +20,7 @@ const nextConfig = {
       {
         source: '/.jpg',
         destination: '/og-image/.jpg',
-      }
+      },
     ]
   },
 }
