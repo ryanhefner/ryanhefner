@@ -40,7 +40,6 @@ const IndexPage = () => {
           </Link>
           <ProjectGrid
             mt={6}
-            showImages
             templateColumns={{
               base: 'repeat(1, 1fr)',
               md: 'repeat(2, 1fr)',
