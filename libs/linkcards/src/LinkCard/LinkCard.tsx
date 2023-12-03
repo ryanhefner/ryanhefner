@@ -11,15 +11,13 @@ const LinkCard = ({ accountUrl, siteUrl, ...rest }: LinkCardProps) => {
 
   const isHome = pathname === '/'
   const url = isHome ? siteUrl : `${siteUrl}${pathname}`
+  const imageUrl = `${accountUrl}/${encodeURIComponent(
+    url,
+  )}.jpg?url=${encodeURIComponent(url)}`
 
-  return (
-    <SiteMeta
-      imageUrl={`${accountUrl}/${encodeURIComponent(
-        url,
-      )}.jpg?url=${encodeURIComponent(url)}`}
-      {...rest}
-    />
-  )
+  console.debug(imageUrl)
+
+  return <SiteMeta imageUrl={imageUrl} {...rest} />
 }
 
 export default LinkCard
