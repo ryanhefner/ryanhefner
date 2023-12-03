@@ -19,9 +19,10 @@ export const CopyRight = ({
               key={`good-gap-${index}`}
               bgColor="yellow.300"
               color="yellow.800"
+              fontFamily="mono"
             >
-              &nbsp;
               {index === 0 && `+${goodGap * -1}`}
+              &nbsp;
             </Text>
           ))
       : []
