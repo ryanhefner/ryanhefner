@@ -14,7 +14,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/:path*/social-image.jpg',
+        source: '/:path*/social-image',
         destination: '/og-image/:path*',
       },
     ]
