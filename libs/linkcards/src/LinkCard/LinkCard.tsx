@@ -13,9 +13,7 @@ const LinkCard = ({ accountUrl, siteUrl, ...rest }: LinkCardProps) => {
   const url = isHome ? siteUrl : `${siteUrl}${pathname}`
   const imageUrl = `${accountUrl}/${encodeURIComponent(
     url,
-  )}.jpg?url=${encodeURIComponent(url)}`
-
-  console.debug(imageUrl)
+  )}/social-image.jpg?url=${encodeURIComponent(url)}`
 
   return <SiteMeta imageUrl={imageUrl} {...rest} />
 }
