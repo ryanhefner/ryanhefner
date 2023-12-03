@@ -31,7 +31,7 @@ export const CopyRight = ({
       {good}
       <Text as="span" bgColor="red.100" color="red.800">
         {bad}
-      </Text>
+      </Text>{' '}
       {goodGapFill}
     </>
   )
