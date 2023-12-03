@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@fontbase/suisse-intl": ["libs/suisse-intl/src/index.css"],
-      "@fontbase/suisse-mono": ["libs/suisse-mono/src/index.css"]
+      "@fontbase/suisse-mono": ["libs/suisse-mono/src/index.css"],
+      "@linkcards/next": ["libs/linkcards/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,15 @@
+{
+  "name": "@linkcards/next",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "peerDependencies": {
+    "next-meta": "^0.0.1"
+  }
+}
