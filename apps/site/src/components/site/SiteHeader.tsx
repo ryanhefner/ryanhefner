@@ -29,7 +29,6 @@ export const SiteHeader = () => (
       flexWrap="wrap"
       columnGap={{ base: 3, md: 6 }}
       rowGap={0}
-      mr={{ base: 0, md: 10 }}
       color="white"
     >
       <Link href="/projects">
