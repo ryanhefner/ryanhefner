@@ -10,6 +10,18 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:path*.jpg',
+        destination: '/og-image/:path*',
+      },
+      {
+        source: '/.jpg',
+        destination: '/og-image/.jpg',
+      }
+    ]
+  },
 }
 
 module.exports = withNx(nextConfig)
