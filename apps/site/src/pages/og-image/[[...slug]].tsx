@@ -58,18 +58,18 @@ const SharePage = () => {
       color="white"
       h="100%"
       minH="100vh"
-      p={24}
+      p={12}
     >
       <Flex justify="space-between">
-        <Heading as="h1" fontSize="6xl" fontWeight={500} lineHeight="none">
+        <Heading as="h1" fontSize="3xl" fontWeight={500} lineHeight="none">
           Ryan Hefner – All Play
         </Heading>
-        <Heading as="h2" fontSize="6xl" fontWeight={500} lineHeight="none">
+        <Heading as="h2" fontSize="3xl" fontWeight={500} lineHeight="none">
           {title}
         </Heading>
       </Flex>
       <Flex flex={1} align="center">
-        <Heading as="h3" fontSize="12xl" fontWeight={500} lineHeight="1.15">
+        <Heading as="h3" fontSize="8xl" fontWeight={500} lineHeight="1.15">
           {body}
         </Heading>
       </Flex>
@@ -77,8 +77,8 @@ const SharePage = () => {
         fontFamily="mono"
         justify="space-between"
         borderTop={`1px solid ${borderColor}`}
-        fontSize="4xl"
-        pt={24}
+        fontSize="2xl"
+        pt={12}
       >
         <Text>@ryanhefner</Text>
         <Text>{`ryanhefner.com${path === '.jpg' ? '' : `/${path}`}`}</Text>
