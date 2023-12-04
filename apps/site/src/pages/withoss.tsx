@@ -5,6 +5,7 @@ import {
   Heading,
   Image,
   Text,
+  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
@@ -21,6 +22,7 @@ const DESCRIPTION =
   'A listing of the open-source software I use to build this site.'
 
 const OssPage = () => {
+  const { colorMode } = useColorMode()
   const borderColor = useColorModeValue('black', theme.colors.gray[700])
 
   return (
@@ -42,7 +44,7 @@ const OssPage = () => {
               display="inline-block"
               src="/assets/oss.svg"
               alt="Open-Source Software"
-              filter="invert(1)"
+              filter={colorMode === 'dark' ? '' : 'invert(1)'}
               h={{ base: 24, md: 32 }}
               ml={3}
             />
