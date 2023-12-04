@@ -1,10 +1,10 @@
-import { ReactElement, ReactNode, useMemo } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChakraProvider } from '@chakra-ui/react'
-import { MetaProvider } from 'next-meta'
+import { MetaProvider, SiteMeta } from 'next-meta'
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import { LinkCard } from '@linkcards/next'
@@ -19,6 +19,8 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+
 const TITLE =
   'The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
 const DESCRIPTION =
@@ -27,10 +29,10 @@ const DESCRIPTION =
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const metaUrl = useMemo(
-    () => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`,
-    [router.asPath],
-  )
+  const path = router.asPath.split('?')[0]
+  const isHome = path === '/'
+  const url = isHome ? siteUrl : `${siteUrl}${path}`
+  const ogImageUrl = `${url}/social-image.jpg`
 
   const getLayout = Component.getLayout || ((page) => page)
 
@@ -40,24 +42,22 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
       </Head>
       <MetaProvider
-        baseUrl="https://www.ryanhefner.com"
-        imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg"
+        baseUrl={siteUrl}
         title={TITLE}
         description={DESCRIPTION}
         siteName="Ryan Hefner - All Play"
         twitterCreator="@ryanhefner"
         twitterSite="@ryanhefner"
         twitterCard="summary_large_image"
-        url={metaUrl}
+        url={path}
       >
+        <SiteMeta imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
         <LinkCard
-          accountUrl={
-            process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL ??
-            'https://www.ryanhefner.com'
-          }
-          siteUrl={process.env.NEXT_PUBLIC_SITE_URL}
-          imageWidth={2400}
-          imageHeight={1260}
+          accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
+          templateUrl={ogImageUrl}
+          url={url}
+          imageWidth={1200}
+          imageHeight={630}
         />
         <ChakraProvider theme={theme}>
           <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
