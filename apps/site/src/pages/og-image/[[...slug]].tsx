@@ -81,7 +81,7 @@ const SharePage = () => {
         pt={12}
       >
         <Text>@ryanhefner</Text>
-        <Text>{`ryanhefner.com${path === '.jpg' ? '' : `/${path}`}`}</Text>
+        <Text>{`ryanhefner.com${path === '/' ? '' : `/${path}`}`}</Text>
       </Flex>
     </Flex>
   )
