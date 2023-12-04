@@ -16,7 +16,7 @@ const SharePage = () => {
     case 'about':
       title = 'About'
       body =
-        'I’m a designer, developer, and entrepreneur living in Portland, Oregon.'
+        'I’m a software engineer and product designer living in Atlanta, GA.'
       break
 
     case 'withoss':
