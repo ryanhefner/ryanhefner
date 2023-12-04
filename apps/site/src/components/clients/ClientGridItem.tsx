@@ -1,19 +1,22 @@
-import { Center, Image, useColorMode } from '@chakra-ui/react'
+import { GridItem, Image, useColorMode } from '@chakra-ui/react'
 
 export const ClientGridItem = ({ name, imageUrl }) => {
   const { colorMode } = useColorMode()
 
   return (
-    <Center
-      flexBasis={{ base: '50%', md: '33.3%', lg: '20%' }}
+    <GridItem
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
       minH={{ base: 120, md: 180 }}
+      w="full"
     >
       <Image
         alt={name}
         src={imageUrl}
-        w={{ base: '75%', md: '50%' }}
+        w={{ base: '75%', md: '62.75%' }}
         filter={colorMode === 'light' ? '' : 'invert(1)'}
       />
-    </Center>
+    </GridItem>
   )
 }

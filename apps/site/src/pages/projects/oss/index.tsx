@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import { Heading, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
+import { SiteMeta } from 'next-meta'
 import { Link } from '../../../components/base'
+import { SiteLayout } from '../../../components/layouts'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -8,6 +9,7 @@ import {
 } from '../../../components/projects'
 import { PageWrapper } from '../../../components/site'
 import { oss as projects } from '../../../data/projects'
+import { PageHeading } from '../../../components/typography'
 
 const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -15,26 +17,14 @@ const DESCRIPTION =
 
 const OSSIndexPage = () => (
   <>
-    <Head>
-      <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-    </Head>
+    <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-      >
+      <PageHeading>
         <Text as="span" color="gray.600">
           <Link href="/projects">Projects</Link>
         </Text>{' '}
-        / Open Source Software
-      </Heading>
+        / Open–Source Software
+      </PageHeading>
       <ProjectGrid>
         {projects.map((project) => (
           <ProjectGridItem key={project.url}>
@@ -45,5 +35,7 @@ const OSSIndexPage = () => (
     </PageWrapper>
   </>
 )
+
+OSSIndexPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default OSSIndexPage

@@ -5,9 +5,22 @@ export const projects = [
     url: '/projects/oss',
   },
   {
+    name: 'Access Cache',
+    description: 'The—anything—API.',
+    url: 'https://github.com/accesscache',
+    imageUrl: '/images/projects/accesscache.png',
+  },
+  {
+    name: 'PlayStack',
+    description: 'JavaScript mono-repo/meta-framework for web artisans.',
+    url: 'https://github.com/playstack',
+    imageUrl: '/images/projects/accesscache.png',
+  },
+  {
     name: 'Standard Sets',
     description: 'Common data sets and tools to transform formats.',
     url: 'https://www.standardsets.com',
+    imageUrl: '/images/projects/accesscache.png',
   },
   // {
   //   name: 'Neighborgoods',
@@ -80,6 +93,12 @@ export const projects = [
 ]
 
 export const oss = [
+  {
+    name: 'next-meta',
+    description:
+      'Easily compose and manage meta and open graph tags in your Next.js app/site.',
+    url: 'https://www.pkgstats.com/pkg:next-meta',
+  },
   {
     name: 'react-marquease',
     description:

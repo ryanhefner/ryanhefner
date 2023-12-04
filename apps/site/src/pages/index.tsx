@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { Link } from '../components/base'
+import { SiteLayout } from '../components/layouts'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -11,15 +12,16 @@ import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
   const activeProjects = getProjectsByUrls([
-    'https://casters.io',
-    'https://www.pregraph.com',
+    'https://www.standardsets.com',
+    'https://github.com/accesscache',
+    'https://github.com/playstack',
   ])
 
   return (
     <PageWrapper>
       <Heading
         as="h1"
-        fontSize={{ base: '6xl', sm: '7xl', md: '8xl', xl: '9xl' }}
+        fontSize={{ base: '6xl', sm: '7xl', md: '8xl', '2xl': '9xl' }}
         fontWeight="medium"
         lineHeight="none"
       >
@@ -36,7 +38,14 @@ const IndexPage = () => {
           <Link href="/projects">
             <SectionHeading>Active Projects</SectionHeading>
           </Link>
-          <ProjectGrid>
+          <ProjectGrid
+            mt={6}
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)',
+            }}
+          >
             {activeProjects.map((project) => (
               <ProjectGridItem key={project.url}>
                 <ProjectLink {...project} />
@@ -53,5 +62,7 @@ const IndexPage = () => {
     </PageWrapper>
   )
 }
+
+IndexPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default IndexPage

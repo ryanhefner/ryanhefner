@@ -1,0 +1,26 @@
+/* inter-latin-100-normal */
+@font-face {
+  font-family: 'Suisse Intl Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src: url(./files/SuisseIntlMono-Thin-WebXL.woff2) format('woff2'), url(./files/SuisseIntlMono-Thin-WebXL.woff) format('woff');
+}
+
+/* inter-latin-400-normal */
+@font-face {
+  font-family: 'Suisse Intl Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./files/SuisseIntlMono-Regular-WebXL.woff2) format('woff2'), url(./files/SuisseIntlMono-Regular-WebXL.woff) format('woff');
+}
+
+/* inter-latin-800-normal */
+@font-face {
+  font-family: 'Suisse Intl Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(./files/SuisseIntlMono-Bold-WebXL.woff2) format('woff2'), url(./files/SuisseIntlMono-Bold-WebXL.woff2) format('woff');
+}

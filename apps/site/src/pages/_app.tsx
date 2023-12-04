@@ -1,10 +1,13 @@
-import { ReactElement, ReactNode, useMemo } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ChakraProvider } from '@chakra-ui/react'
-import { SiteLayout } from '../components/layouts'
+import { MetaProvider, SiteMeta } from 'next-meta'
+import '@fontbase/suisse-intl'
+import '@fontbase/suisse-mono'
+import { LinkCard } from '@linkcards/next'
 import { Fathom } from '../libs/fathom'
 import { theme } from '../styles'
 
@@ -16,51 +19,51 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+
 const TITLE =
-  'All Play - The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
+  'The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
 const DESCRIPTION =
   'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.'
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const metaUrl = useMemo(
-    () => `https://www.ryanhefner.com${router.asPath.split('?')[0]}`,
-    [router.asPath]
-  )
+  const path = router.asPath.split('?')[0]
+  const isHome = path === '/'
+  const url = isHome ? siteUrl : `${siteUrl}${path}`
+  const ogImageUrl = `${url}/social-image.jpg`
 
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
     <>
       <Head>
-        <title>{TITLE}</title>
-        <meta name="description" content={DESCRIPTION} />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:site_name" content="https://www.ryanhefner.com" />
-        <meta property="og:url" content={metaUrl} />
-        <meta
-          property="og:image"
-          content="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg"
-        />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@ryanhefner" />
-        <meta
-          name="twitter:image"
-          content="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg"
-        />
-        <meta name="twitter:url" content={metaUrl} />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-        <link rel="canonical" href={metaUrl} />
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
       </Head>
-      <ChakraProvider theme={theme}>
-        <SiteLayout>
+      <MetaProvider
+        baseUrl={siteUrl}
+        title={TITLE}
+        description={DESCRIPTION}
+        siteName="Ryan Hefner - All Play"
+        twitterCreator="@ryanhefner"
+        twitterSite="@ryanhefner"
+        twitterCard="summary_large_image"
+        url={path}
+      >
+        <SiteMeta imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
+        <LinkCard
+          accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
+          templateUrl={ogImageUrl}
+          url={url}
+          imageWidth={1200}
+          imageHeight={630}
+        />
+        <ChakraProvider theme={theme}>
           <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
           {getLayout(<Component {...pageProps} />)}
-        </SiteLayout>
-      </ChakraProvider>
+        </ChakraProvider>
+      </MetaProvider>
     </>
   )
 }

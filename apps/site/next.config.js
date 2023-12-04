@@ -10,6 +10,15 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  transpilePackages: ['@linkcards/next'],
+  async rewrites() {
+    return [
+      {
+        source: '/:path*/social-image',
+        destination: '/og-image/:path*',
+      },
+    ]
+  },
 }
 
 module.exports = withNx(nextConfig)

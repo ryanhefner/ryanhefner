@@ -8,6 +8,16 @@ import { Tag } from './theme.tag'
 
 export const theme = extendTheme(
   {
+    fonts: {
+      body: `Suisse Intl, sans-serif`,
+      heading: `Suisse Intl, sans-serif`,
+      mono: `Suisse Intl Mono, monospace`,
+    },
+    fontSizes: {
+      '10xl': '10rem',
+      '11xl': '11rem',
+      '12xl': '12rem',
+    },
     colors: {
       blue: {
         [500]: '#235EF8',
@@ -43,5 +53,5 @@ export const theme = extendTheme(
     },
   },
   withDefaultColorScheme({ colorScheme: 'whiteAlpha' }),
-  baseTheme
+  baseTheme,
 )

@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import { Heading } from '@chakra-ui/react'
+import { SiteMeta } from 'next-meta'
+import { SiteLayout } from '../../components/layouts'
 import {
   ProjectGrid,
   ProjectGridItem,
@@ -7,6 +7,7 @@ import {
 } from '../../components/projects'
 import { PageWrapper } from '../../components/site'
 import { projects } from '../../data/projects'
+import { PageHeading } from '../../components/typography'
 
 const TITLE = 'Projects | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -14,23 +15,9 @@ const DESCRIPTION =
 
 const ProjectsPage = () => (
   <>
-    <Head>
-      <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-    </Head>
+    <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-      >
-        Projects
-      </Heading>
+      <PageHeading>Projects</PageHeading>
       <ProjectGrid>
         {projects.map((project) => (
           <ProjectGridItem key={project.url}>
@@ -49,5 +36,7 @@ const ProjectsPage = () => (
     </PageWrapper>
   </>
 )
+
+ProjectsPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default ProjectsPage

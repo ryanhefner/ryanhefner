@@ -8,11 +8,15 @@ export const SiteHeader = () => (
     alignItems={{ base: 'flex-start', md: 'center' }}
     justifyContent="space-between"
     w="100%"
+    pos="sticky"
+    top={0}
+    zIndex={1}
+    mixBlendMode="difference"
     pt={{ base: 6, md: 20 }}
     pb={{ base: 6 }}
     px={{ base: 6, sm: 10, md: 16, xl: 24 }}
   >
-    <Link href="/">
+    <Link href="/" color="white">
       <HStack>
         {/* <Box display="inline-block" borderRadius="full" bgColor="black" w={2} h={2} /> */}
         <Text fontSize="lg" fontWeight="medium">
@@ -20,14 +24,27 @@ export const SiteHeader = () => (
         </Text>
       </HStack>
     </Link>
-    <HStack as="nav" spacing={{ base: 3, md: 6 }} mr={{ base: 0, md: 10 }}>
+    <Flex
+      as="nav"
+      flexWrap="wrap"
+      columnGap={{ base: 3, md: 6 }}
+      rowGap={0}
+      color="white"
+    >
       <Link href="/projects">
         <Text as="span" fontSize="lg">
           Projects
         </Text>
       </Link>
       {/* <Link href="/thoughts">
-        <Text as="span" fontSize="lg">Thoughts</Text>
+        <Text as="span" fontSize="lg">
+          Thoughts
+        </Text>
+      </Link> */}
+      {/* <Link href="/updates">
+        <Text as="span" fontSize="lg">
+          Updates
+        </Text>
       </Link> */}
       <Link href="/about">
         <Text as="span" fontSize="lg">
@@ -39,6 +56,6 @@ export const SiteHeader = () => (
           Now
         </Text>
       </Link>
-    </HStack>
+    </Flex>
   </Flex>
 )

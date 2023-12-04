@@ -1,33 +1,25 @@
-import Head from 'next/head'
 import { Box, Heading, Text } from '@chakra-ui/react'
+import { SiteMeta } from 'next-meta'
+// import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
+// import * as reactSpring from '@react-spring/three'
+// import * as drei from '@react-three/drei'
+// import * as fiber from '@react-three/fiber'
 import { Link } from '../components/base'
 import { ClientGrid, ClientGridItem } from '../components/clients'
+import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
+import { PageHeading } from '../components/typography'
 
-const TITLE = 'All about me | Ryan Hefner - All Play'
+const TITLE = 'Some more about me'
 const DESCRIPTION =
   'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
 
 const AboutPage = () => (
   <>
-    <Head>
-      <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-    </Head>
+    <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
-      <Heading
-        as="h1"
-        fontSize={{ base: '6xl', md: '9xl' }}
-        fontWeight="medium"
-        lineHeight="none"
-      >
-        About
-      </Heading>
+      <PageHeading>About</PageHeading>
       <Box mt={16}>
         <Box maxW="container.md">
           <Text fontSize={{ base: 'xl', md: '2xl' }}>
@@ -81,6 +73,15 @@ const AboutPage = () => (
             Twitter
           </Link>{' '}
           /{` `}
+          <Link
+            href="https://posts.cv/ryanhefner"
+            target="_blank"
+            title="@ryanhefner on posts.cv"
+            rel="noopener noreferrer"
+          >
+            Posts.cv
+          </Link>{' '}
+          |{` `}
           <Link
             href="https://read.cv/ryanhefner"
             target="_blank"
@@ -142,5 +143,7 @@ const AboutPage = () => (
     </PageWrapper>
   </>
 )
+
+AboutPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export default AboutPage
