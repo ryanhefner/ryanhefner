@@ -2,9 +2,12 @@ import { Text } from '@chakra-ui/react'
 
 export const CopyRight = ({
   copy = '',
+  enabled = false,
   minimalLength = 80,
   optimalLength = 160,
 }) => {
+  if (!enabled) return copy
+
   const good = copy.slice(0, optimalLength)
   const bad = copy.slice(optimalLength)
   const goodGap = good.length - minimalLength
