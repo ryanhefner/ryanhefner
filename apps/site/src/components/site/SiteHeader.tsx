@@ -36,16 +36,16 @@ export const SiteHeader = () => (
           Projects
         </Text>
       </Link>
-      <Link href="/thoughts">
+      {/* <Link href="/thoughts">
         <Text as="span" fontSize="lg">
           Thoughts
         </Text>
-      </Link>
-      <Link href="/updates">
+      </Link> */}
+      {/* <Link href="/updates">
         <Text as="span" fontSize="lg">
           Updates
         </Text>
-      </Link>
+      </Link> */}
       <Link href="/about">
         <Text as="span" fontSize="lg">
           About
