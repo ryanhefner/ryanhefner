@@ -21,7 +21,7 @@ const IndexPage = () => {
     <PageWrapper>
       <Heading
         as="h1"
-        fontSize={{ base: '6xl', sm: '7xl', md: '8xl' }}
+        fontSize={{ base: '6xl', sm: '7xl', md: '8xl', '2xl': '9xl' }}
         fontWeight="medium"
         lineHeight="none"
       >
