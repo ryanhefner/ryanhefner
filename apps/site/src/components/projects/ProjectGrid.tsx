@@ -6,7 +6,6 @@ export const ProjectGrid = ({ children, showImages = false, ...props }) => (
     gap={{ base: 0, md: 5, lg: 10 }}
     mt={16}
     w="full"
-    flexWrap="wrap"
     templateColumns={{
       base: 'repeat(1, 1fr)',
       md: 'repeat(2, 1fr)',
