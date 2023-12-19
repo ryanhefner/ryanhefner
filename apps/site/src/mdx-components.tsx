@@ -44,7 +44,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         borderRadius="sm"
         color="white"
         colorScheme="blackAlpha"
-        style={{ textWrap: 'balance' }}
+        style={{ textWrap: 'wrap' }}
         variant="solid"
         px={2}
         py={1}
