@@ -5,7 +5,7 @@ export const PageHeading = ({ children, ...rest }) => (
     as="h1"
     fontSize={{ base: '6xl', sm: '9xl', xl: '12xl' }}
     fontWeight="medium"
-    lineHeight="none"
+    lineHeight={1}
     ml={{ base: 0, md: -4 }}
     {...rest}
   >
