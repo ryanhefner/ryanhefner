@@ -1,16 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNx = require('./with-nx.js')
+const { composePlugins, withNx } = require('@nx/next')
+const withMdx = require('@next/mdx')()
 
-/**
- * @type {import('./with-nx.js').WithNxOptions}
- **/
 const nextConfig = {
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   nx: {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['@linkcards/next'],
   async rewrites() {
     return [
@@ -22,4 +20,6 @@ const nextConfig = {
   },
 }
 
-module.exports = withNx(nextConfig)
+const plugins = [withNx, withMdx]
+
+module.exports = composePlugins(...plugins)(nextConfig)
