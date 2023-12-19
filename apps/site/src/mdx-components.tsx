@@ -55,6 +55,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <PageHeading
         fontSize={{ base: '7xl', md: '10xl' }}
         maxW="container.xl"
+        mt={{ base: 12, md: 16 }}
         mb={{ base: 16, md: 24 }}
         ml="auto"
         mx="auto"
