@@ -1,4 +1,4 @@
-import { Flex, HStack, Tag, Text, VStack } from '@chakra-ui/react'
+import { Flex, Tag, Text, VStack } from '@chakra-ui/react'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 import { SiteLayout } from './SiteLayout'
@@ -28,13 +28,11 @@ export const PostLayout = ({ children }) => {
           borderTop="2px solid black"
           pt={6}
         >
-          <VStack alignItems="flex-start" spacing={0}>
-            <Text color="gray.600" fontSize="md">
+          <VStack alignItems="flex-start" fontFamily="mono" spacing={0}>
+            <Text color="gray.600" fontSize="xs" textTransform="uppercase">
               Posted
             </Text>
-            <Text fontFamily="mono" fontSize="md">
-              Dec 19, 2023
-            </Text>
+            <Text fontSize="md">Dec 19, 2023</Text>
           </VStack>
           <Flex
             flexWrap="wrap"
