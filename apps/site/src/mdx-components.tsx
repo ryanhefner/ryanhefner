@@ -66,10 +66,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children }) => (
       <Heading
         as="h2"
-        fontSize={{ base: '4xl', md: '6xl' }}
+        fontSize={{ base: '5xl', md: '7xl' }}
         fontWeight="medium"
         maxW="container.md"
-        mt={{ base: 16, md: 24 }}
+        mt={{ base: 12, md: 16 }}
         mb={4}
         mx="auto"
         w="full"
@@ -83,7 +83,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         fontSize={{ base: '3xl', md: '5xl' }}
         fontWeight="medium"
         maxW="container.md"
-        mt={{ base: 16, md: 24 }}
+        mt={{ base: 12, md: 16 }}
         mb={4}
         mx="auto"
         w="full"
@@ -94,10 +94,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ children }) => (
       <Heading
         as="h4"
+        color="gray.500"
         fontSize={{ base: '2xl', md: '4xl' }}
         fontWeight="medium"
         maxW="container.md"
-        mt={{ base: 16, md: 24 }}
+        mt={{ base: 12, md: 16 }}
         mb={4}
         mx="auto"
         w="full"
@@ -108,10 +109,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h5: ({ children }) => (
       <Heading
         as="h5"
+        color="gray.500"
         fontSize={{ base: 'xl', md: '3xl' }}
         fontWeight="medium"
         maxW="container.md"
-        mt={{ base: 16, md: 24 }}
+        mt={{ base: 12, md: 16 }}
         mb={4}
         mx="auto"
         w="full"
