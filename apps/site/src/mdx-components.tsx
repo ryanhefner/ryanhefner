@@ -8,10 +8,16 @@ import {
   OrderedList,
   Text,
   UnorderedList,
+  chakra,
+  useColorModeValue,
 } from '@chakra-ui/react'
+import { Highlight, themes } from 'prism-react-renderer'
 import { PageHeading } from './components/typography'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
+  const codeBg = useColorModeValue('gray.100', 'gray.800')
+  const codeColor = useColorModeValue('black', 'white')
+
   return {
     blockquote: ({ children }) => (
       <Box
@@ -38,19 +44,65 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Box>
     ),
-    code: (props) => (
-      <Code
-        bgColor="black"
-        borderRadius="sm"
-        color="white"
-        colorScheme="blackAlpha"
-        variant="solid"
-        whiteSpace="normal"
-        px={2}
-        py={1}
-        {...props}
-      />
-    ),
+    code: (props) => {
+      return props.className ? (
+        <Highlight
+          code={props.children.toString()}
+          language={props.className.replace('language-', '')}
+          theme={themes.nightOwl}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <Box
+              borderRadius={3}
+              fontSize="md"
+              fontFamily="mono"
+              data-language={props.className.replace('language-', '')}
+            >
+              <Box
+                as="pre"
+                className={className}
+                borderRadius={3}
+                overflowX="auto"
+                style={style}
+                py={3}
+              >
+                {tokens
+                  .filter((line, i, array) =>
+                    line.length === 1 && line[0].empty && i === array.length - 1
+                      ? false
+                      : true,
+                  )
+                  .map((line, i) => {
+                    const lineProps = getLineProps({ line, key: i })
+                    return (
+                      <chakra.div key={i} px="3" {...lineProps}>
+                        <chakra.span opacity={0.3} mr="4" fontSize="xs">
+                          {i + 1}
+                        </chakra.span>
+                        {/* {showLines && (
+                      )} */}
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        ))}
+                      </chakra.div>
+                    )
+                  })}
+              </Box>
+            </Box>
+          )}
+        </Highlight>
+      ) : (
+        <Code
+          bgColor={codeBg}
+          borderRadius={3}
+          color={codeColor}
+          colorScheme="whiteAlpha"
+          px={1}
+          py={1}
+          {...props}
+        />
+      )
+    },
     h1: ({ children }) => (
       <PageHeading
         fontSize={{ base: '7xl', md: '10xl' }}
@@ -141,10 +193,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Box
         as="pre"
         bgColor="black"
-        borderRadius="sm"
+        borderRadius={3}
         maxW="container.md"
         mx="auto"
-        my={0}
+        my={4}
         w="100%"
       >
         {children}
