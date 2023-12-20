@@ -1,9 +1,13 @@
-import { Flex, Tag, Text, VStack } from '@chakra-ui/react'
+import { Flex, Tag, Text, VStack, useColorModeValue } from '@chakra-ui/react'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 import { SiteLayout } from './SiteLayout'
 
 export const PostLayout = ({ children }) => {
+  const borderColor = useColorModeValue('black', 'white')
+  const tagColor = useColorModeValue('black', 'white')
+  const tagOutlineColor = useColorModeValue('black', 'white')
+
   return (
     <SiteLayout>
       <PageWrapper fontSize="xl" pb={24}>
@@ -25,7 +29,7 @@ export const PostLayout = ({ children }) => {
           mx="auto"
           w="full"
           mt={24}
-          borderTop="2px solid black"
+          borderTop={`2px solid ${borderColor}`}
           pt={6}
         >
           <VStack alignItems="flex-start" fontFamily="mono" spacing={0}>
@@ -42,11 +46,11 @@ export const PostLayout = ({ children }) => {
             <Link href="/tags/open-source-software">
               <Tag
                 borderRadius="full"
-                color="black"
+                color={tagColor}
                 fontSize="lg"
                 px={3}
                 py={2}
-                outlineColor="black"
+                outlineColor={tagOutlineColor}
                 outlineOffset={-1}
                 variant="outline"
                 _hover={{
@@ -61,11 +65,11 @@ export const PostLayout = ({ children }) => {
             <Link href="/tags/react">
               <Tag
                 borderRadius="full"
-                color="black"
+                color={tagColor}
                 fontSize="lg"
                 px={3}
                 py={2}
-                outlineColor="black"
+                outlineColor={tagOutlineColor}
                 outlineOffset={-1}
                 variant="outline"
                 _hover={{
@@ -80,11 +84,11 @@ export const PostLayout = ({ children }) => {
             <Link href="/tags/next-js">
               <Tag
                 borderRadius="full"
-                color="black"
+                color={tagColor}
                 fontSize="lg"
                 px={3}
                 py={2}
-                outlineColor="black"
+                outlineColor={tagOutlineColor}
                 outlineOffset={-1}
                 variant="outline"
                 _hover={{
