@@ -12,6 +12,7 @@ export const theme = extendTheme(
       body: `Suisse Intl, sans-serif`,
       heading: `Suisse Intl, sans-serif`,
       mono: `Suisse Intl Mono, monospace`,
+      serif: `Suisse Works, serif`,
     },
     fontSizes: {
       '10xl': '10rem',
