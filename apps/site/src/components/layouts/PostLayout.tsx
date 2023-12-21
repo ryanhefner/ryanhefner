@@ -10,7 +10,7 @@ export const PostLayout = ({ children }) => {
 
   return (
     <SiteLayout>
-      <PageWrapper fontSize="xl" pb={24}>
+      <PageWrapper fontSize={{ base: 'lg', md: 'xl' }} pb={24}>
         <Flex
           fontWeight="medium"
           justifyContent="space-between"
