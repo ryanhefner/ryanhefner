@@ -21,12 +21,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     blockquote: ({ children }) => (
       <Box
-        py={8}
-        pl={12}
+        py={{ base: 4, md: 8 }}
+        pl={{ base: 8, md: 12 }}
         pos="relative"
         fontFamily="serif"
         fontSize={{ base: '4xl', md: '6xl' }}
         fontStyle="italic"
+        letterSpacing={{ base: -1, md: -2 }}
         lineHeight="none"
         maxW="container.md"
         mx="auto"
@@ -121,6 +122,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         as="h2"
         fontSize={{ base: '5xl', md: '7xl' }}
         fontWeight="medium"
+        letterSpacing={-3}
         maxW="container.md"
         mt={{ base: 12, md: 16 }}
         mb={4}
@@ -135,6 +137,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         as="h3"
         fontSize={{ base: '3xl', md: '5xl' }}
         fontWeight="medium"
+        letterSpacing={-2}
         maxW="container.md"
         mt={{ base: 12, md: 16 }}
         mb={4}
@@ -150,6 +153,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         color="gray.500"
         fontSize={{ base: '2xl', md: '4xl' }}
         fontWeight="medium"
+        letterSpacing={-1}
         maxW="container.md"
         mt={{ base: 12, md: 16 }}
         mb={4}
@@ -165,6 +169,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         color="gray.500"
         fontSize={{ base: 'xl', md: '3xl' }}
         fontWeight="medium"
+        letterSpacing={-1}
         maxW="container.md"
         mt={{ base: 12, md: 16 }}
         mb={4}
