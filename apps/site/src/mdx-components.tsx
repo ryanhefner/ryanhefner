@@ -28,7 +28,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         fontSize={{ base: '4xl', md: '6xl' }}
         fontStyle="italic"
         letterSpacing={{ base: -1, md: -2 }}
-        lineHeight="none"
+        lineHeight={1.2}
         maxW="container.md"
         mx="auto"
         w="full"
@@ -77,13 +77,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                     const lineProps = getLineProps({ line, key: i })
                     return (
                       <chakra.div key={i} px="3" {...lineProps}>
-                        <chakra.span opacity={0.3} mr="4" fontSize="xs">
+                        <chakra.span
+                          fontFamily="mono"
+                          fontSize={{ base: 'xs', md: 'sm' }}
+                          opacity={0.3}
+                          mr="4"
+                        >
                           {i + 1}
                         </chakra.span>
                         {/* {showLines && (
                       )} */}
                         {line.map((token, key) => (
-                          <span key={key} {...getTokenProps({ token, key })} />
+                          <chakra.span
+                            key={key}
+                            fontFamily="mono"
+                            fontSize={{ base: 'sm', md: 'md' }}
+                            {...getTokenProps({ token, key })}
+                          />
                         ))}
                       </chakra.div>
                     )
@@ -122,9 +132,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         as="h2"
         fontSize={{ base: '5xl', md: '7xl' }}
         fontWeight="medium"
-        letterSpacing={-3}
+        letterSpacing={-2}
         maxW="container.md"
-        mt={{ base: 12, md: 16 }}
+        mt={{ base: 8, md: 12 }}
         mb={4}
         mx="auto"
         w="full"
@@ -137,9 +147,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         as="h3"
         fontSize={{ base: '3xl', md: '5xl' }}
         fontWeight="medium"
-        letterSpacing={-2}
+        letterSpacing={-1}
         maxW="container.md"
-        mt={{ base: 12, md: 16 }}
+        mt={{ base: 8, md: 12 }}
         mb={4}
         mx="auto"
         w="full"
@@ -155,7 +165,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         fontWeight="medium"
         letterSpacing={-1}
         maxW="container.md"
-        mt={{ base: 12, md: 16 }}
+        mt={{ base: 8, md: 12 }}
         mb={4}
         mx="auto"
         w="full"
@@ -171,7 +181,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         fontWeight="medium"
         letterSpacing={-1}
         maxW="container.md"
-        mt={{ base: 12, md: 16 }}
+        mt={{ base: 6, md: 10 }}
         mb={4}
         mx="auto"
         w="full"
@@ -183,6 +193,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: (props) => <ListItem {...props} />,
     ol: (props) => (
       <OrderedList
+        fontSize={{ base: 'xl', md: '2xl' }}
         maxW="container.md"
         my={4}
         mx="auto"
@@ -209,6 +220,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     ul: (props) => (
       <UnorderedList
+        fontSize={{ base: 'xl', md: '2xl' }}
         maxW="container.md"
         my={4}
         mx="auto"
