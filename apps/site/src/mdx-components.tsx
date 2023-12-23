@@ -79,7 +79,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                       <chakra.div key={i} px="3" {...lineProps}>
                         <chakra.span
                           fontFamily="mono"
-                          fontSize={{ base: 'xs', md: 'sm' }}
+                          fontSize="xs"
                           opacity={0.3}
                           mr="4"
                         >
@@ -91,7 +91,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                           <chakra.span
                             key={key}
                             fontFamily="mono"
-                            fontSize={{ base: 'sm', md: 'md' }}
+                            fontSize="sm"
                             {...getTokenProps({ token, key })}
                           />
                         ))}
@@ -195,7 +195,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <OrderedList
         fontSize={{ base: 'xl', md: '2xl' }}
         maxW="container.md"
-        my={4}
+        my={6}
         mx="auto"
         pl={12}
         w="full"
@@ -222,7 +222,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <UnorderedList
         fontSize={{ base: 'xl', md: '2xl' }}
         maxW="container.md"
-        my={4}
+        my={6}
         mx="auto"
         pl={12}
         w="full"
