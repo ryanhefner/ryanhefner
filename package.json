@@ -24,7 +24,7 @@
     "@react-three/fiber": "^8.15.11",
     "@swc/helpers": "~0.5.2",
     "@types/mdx": "^2.0.10",
-    "@types/three": "^0.159.0",
+    "@types/three": "^0.160.0",
     "core-js": "^3.6.5",
     "fathom-client": "^3.5.0",
     "framer-motion": "^10.16.12",
@@ -36,7 +36,7 @@
     "react-marquease": "^0.1.6",
     "regenerator-runtime": "^0.14.0",
     "shadergradient": "^1.2.4",
-    "three": "^0.159.0",
+    "three": "^0.160.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
