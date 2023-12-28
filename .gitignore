@@ -43,3 +43,6 @@ Thumbs.db
 
 # Env Vars
 .env
+
+# contentlayer
+.contentlayer
