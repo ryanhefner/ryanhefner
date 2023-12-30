@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "contentlayer": "contentlayer -c ./apps/site/contentlayer.config.ts",
+    "contentlayer": "contentlayer build -c ./apps/site/contentlayer.config.ts",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
@@ -14,6 +14,7 @@
     "@chakra-ui/styled-system": "^2.6.1",
     "@chakra-ui/system": "^2.2.2",
     "@chakra-ui/theme-tools": "^2.0.5",
+    "@date-fns/utc": "^1.1.1",
     "@emotion/react": "^11.11.3",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "11.11.0",

@@ -2026,6 +2026,11 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@date-fns/utc@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@date-fns/utc/-/utc-1.1.1.tgz#ac6e93a0e35d2827cfc8ca012f32854f958815c7"
+  integrity sha512-xHqw5SkB6z2OpouO/6BqLSL1nEI2jLC6WIXT01TNFfffU0Os8U/Gk2yxoKB/qbY44tfnGbqUF+nkST5QqLJpDA==
+
 "@effect-ts/core@^0.60.5":
   version "0.60.5"
   resolved "https://registry.yarnpkg.com/@effect-ts/core/-/core-0.60.5.tgz#df79049e1be4a576ab6b45abbe92c831bda62361"
