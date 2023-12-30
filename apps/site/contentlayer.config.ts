@@ -3,12 +3,14 @@ import { format } from 'date-fns'
 
 export const Now = defineDocumentType(() => ({
   name: 'Now',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: 'now/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    preview: { type: 'boolean', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     url: {
@@ -20,13 +22,15 @@ export const Now = defineDocumentType(() => ({
 
 export const Thought = defineDocumentType(() => ({
   name: 'Thought',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: 'thoughts/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    preview: { type: 'boolean', required: false },
     slug: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     url: {
@@ -38,13 +42,15 @@ export const Thought = defineDocumentType(() => ({
 
 export const Update = defineDocumentType(() => ({
   name: 'Update',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: 'updates/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    preview: { type: 'boolean', required: false },
     slug: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
     url: {
@@ -55,6 +61,6 @@ export const Update = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: 'apps/site/src/docs/**/*',
+  contentDirPath: 'apps/site/src/docs',
   documentTypes: [Now, Thought, Update],
 })
