@@ -39,6 +39,7 @@
     "react-marquease": "^0.1.6",
     "regenerator-runtime": "^0.14.0",
     "shadergradient": "^1.2.4",
+    "slugify": "^1.6.6",
     "three": "^0.160.0",
     "tslib": "^2.3.0"
   },
@@ -99,4 +100,3 @@
     "includedScripts": []
   }
 }
-
