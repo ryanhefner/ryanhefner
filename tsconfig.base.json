@@ -22,5 +22,6 @@
       "@linkcards/next": ["libs/linkcards/src/index.ts"]
     }
   },
+  "include": ["./.contentlayer/generated"],
   "exclude": ["node_modules", "tmp"]
 }
