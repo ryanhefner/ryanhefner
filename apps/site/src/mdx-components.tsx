@@ -65,7 +65,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
             <Box
               as="pre"
               className={className}
-              borderRadius={3}
+              borderRadius={4}
               overflowX="auto"
               style={style}
               py={3}
@@ -108,7 +108,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     ) : (
       <Code
         bgColor={codeBg}
-        borderRadius={3}
+        borderRadius={4}
         color={codeColor}
         colorScheme="whiteAlpha"
         px={1}
@@ -120,7 +120,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
   h1: ({ children }) => (
     <PageHeading
       fontSize={{ base: '7xl', md: '10xl' }}
-      maxW="container.xl"
+      // maxW="container.xl"
       mt={{ base: 12, md: 16 }}
       mb={{ base: 16, md: 24 }}
       ml="auto"
@@ -212,14 +212,28 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     <Box
       as="pre"
       bgColor="black"
-      borderRadius={3}
-      maxW="container.md"
+      borderRadius={4}
+      maxW="container.lg"
       mx="auto"
       my={4}
       w="100%"
     >
       {children}
     </Box>
+  ),
+  Subheading: (props) => (
+    <Heading
+      fontFamily="serif"
+      fontSize={{ base: '2xl', md: '4xl' }}
+      fontStyle="italic"
+      fontWeight="normal"
+      letterSpacing={{ base: -1, md: -2 }}
+      maxW="container.lg"
+      mt={{ base: -8, md: -12 }}
+      mb={{ base: 16, md: 24 }}
+      mx="auto"
+      {...props}
+    />
   ),
   ul: (props) => (
     <UnorderedList
