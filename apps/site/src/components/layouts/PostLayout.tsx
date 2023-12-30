@@ -11,6 +11,7 @@ import {
 import { SiteMeta } from 'next-meta'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { format } from 'date-fns'
+import { UTCDateMini } from '@date-fns/utc'
 import slugify from 'slugify'
 import { Thought, allThoughts } from 'contentlayer/generated'
 import { mdxComponents } from '../../mdx-components'
@@ -66,7 +67,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                 Posted
               </Text>
               <Text fontSize="md" whiteSpace="nowrap">
-                {format(thought.date, 'MMM dd, yyyy')}
+                {format(new UTCDateMini(thought.date), 'MMM dd, yyyy')}
               </Text>
             </VStack>
             <VStack alignItems="flex-start" spacing={1}>
@@ -129,7 +130,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                     spacing={{ base: 3, md: 4 }}
                   >
                     <Text as="span" fontFamily="mono" fontSize="sm">
-                      {format(item.date, 'yyyy-MM-dd')}
+                      {format(new UTCDateMini(item.date), 'yyyy-MM-dd')}
                     </Text>
                     <Text as="span" fontSize="lg" fontWeight="medium">
                       {item.title}

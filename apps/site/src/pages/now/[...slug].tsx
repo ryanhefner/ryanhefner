@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import { UTCDateMini } from '@date-fns/utc'
 import { allNows, Now } from 'contentlayer/generated'
 import { NowLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
@@ -11,7 +12,7 @@ NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
 
 export const getStaticPaths = async () => {
   const paths = allNows.map((now) => ({
-    params: { slug: [format(now.date, 'yyyy-MM-dd')] },
+    params: { slug: [format(new UTCDateMini(now.date), 'yyyy-MM-dd')] },
   }))
 
   return {
@@ -22,7 +23,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const now = allNows.find(
-    (now) => format(now.date, 'yyyy-MM-dd') === params.slug[0],
+    (now) => format(new UTCDateMini(now.date), 'yyyy-MM-dd') === params.slug[0],
   )
 
   return {

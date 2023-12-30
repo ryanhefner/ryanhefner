@@ -1,6 +1,7 @@
 import { Box, Text, useColorModeValue } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 import { format } from 'date-fns'
+import { UTCDateMini } from '@date-fns/utc'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { Now } from 'contentlayer/generated'
 import { PageWrapper } from '../../components/site'
@@ -38,10 +39,10 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
               Updated
             </Text>
             <br />
-            {format(new Date(), 'MMMM do, yyyy')}
+            {format(new UTCDateMini(now.date), 'MMMM do, yyyy')}
             <br />
             <Text as="span" color="gray.600">
-              via Atlanta, GA
+              {`via ${now.location ?? 'Atlanta, GA'}`}
             </Text>
           </Text>
         </Box>

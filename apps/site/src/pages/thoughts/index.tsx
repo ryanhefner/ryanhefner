@@ -1,5 +1,6 @@
 import { Box, HStack, Text, useColorModeValue } from '@chakra-ui/react'
 import { format } from 'date-fns'
+import { UTCDateMini } from '@date-fns/utc'
 import { allThoughts } from 'contentlayer/generated'
 import { Link } from '../../components/base'
 import { PageWrapper } from '../../components/site/PageWrapper'
@@ -45,7 +46,7 @@ const ThoughtsIndexPage = () => {
                   fontSize={{ base: 'sm', md: 'md' }}
                   lineHeight={1.875}
                 >
-                  {format(item.date, 'yyyy-MM-dd')}
+                  {format(new UTCDateMini(item.date), 'yyyy-MM-dd')}
                 </Text>
                 <Text as="span" fontWeight="medium">
                   {item.title}
