@@ -1,108 +1,145 @@
-import { Flex, Tag, Text, VStack, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Tag,
+  Text,
+  VStack,
+  useColorModeValue,
+} from '@chakra-ui/react'
+import { SiteMeta } from 'next-meta'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { format } from 'date-fns'
+import slugify from 'slugify'
+import { Thought, allThoughts } from 'contentlayer/generated'
+import { mdxComponents } from '../../mdx-components'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 import { SiteLayout } from './SiteLayout'
 
-export const PostLayout = ({ children }) => {
+interface PostLayoutProps {
+  thought?: Thought
+}
+
+export const PostLayout = ({ thought }: PostLayoutProps) => {
   const borderColor = useColorModeValue('black', 'white')
+  const codeBg = useColorModeValue('gray.100', 'gray.800')
+  const codeColor = useColorModeValue('black', 'white')
   const tagColor = useColorModeValue('black', 'white')
   const tagOutlineColor = useColorModeValue('black', 'white')
 
+  const MDXContent = useMDXComponent(thought.body.code)
+
   return (
-    <SiteLayout>
-      <PageWrapper fontSize={{ base: 'lg', md: 'xl' }} pb={24}>
-        <Flex
-          fontWeight="medium"
-          justifyContent="space-between"
-          maxW="container.xl"
-          mx="auto"
-          pos="relative"
-          zIndex={1}
-          w="full"
-        >
-          <Link href="/thoughts">Thoughts /</Link>
-        </Flex>
-        {children}
-        <Flex
-          justifyContent="space-between"
-          maxW="container.lg"
-          mx="auto"
-          w="full"
-          mt={24}
-          borderTop={`2px solid ${borderColor}`}
-          pt={6}
-        >
-          <VStack alignItems="flex-start" fontFamily="mono" spacing={0}>
-            <Text color="gray.600" fontSize="xs" textTransform="uppercase">
-              Posted
-            </Text>
-            <Text fontSize="md">Dec 19, 2023</Text>
-          </VStack>
+    <>
+      <SiteMeta title={thought.title} description={thought.description} />
+      <SiteLayout>
+        <PageWrapper fontSize={{ base: 'lg', md: 'xl' }} pb={24}>
           <Flex
-            flexWrap="wrap"
-            justifyContent={{ base: 'flex-end', md: 'flex-start' }}
-            gap={2}
+            fontSize={{ base: 'xl', md: '2xl' }}
+            fontWeight="medium"
+            justifyContent="space-between"
+            // maxW="container.xl"
+            mx="auto"
+            // pos="relative"
+            // zIndex={1}
+            w="full"
           >
-            <Link href="/tags/open-source-software">
-              <Tag
-                borderRadius="full"
-                color={tagColor}
-                fontSize="lg"
-                px={3}
-                py={2}
-                outlineColor={tagOutlineColor}
-                outlineOffset={-1}
-                variant="outline"
-                _hover={{
-                  bgColor: 'blue.500',
-                  color: 'white',
-                  outlineColor: 'blue.500',
-                }}
-              >
-                Open-source Software
-              </Tag>
-            </Link>
-            <Link href="/tags/react">
-              <Tag
-                borderRadius="full"
-                color={tagColor}
-                fontSize="lg"
-                px={3}
-                py={2}
-                outlineColor={tagOutlineColor}
-                outlineOffset={-1}
-                variant="outline"
-                _hover={{
-                  bgColor: 'blue.500',
-                  color: 'white',
-                  outlineColor: 'blue.500',
-                }}
-              >
-                React
-              </Tag>
-            </Link>
-            <Link href="/tags/next-js">
-              <Tag
-                borderRadius="full"
-                color={tagColor}
-                fontSize="lg"
-                px={3}
-                py={2}
-                outlineColor={tagOutlineColor}
-                outlineOffset={-1}
-                variant="outline"
-                _hover={{
-                  bgColor: 'blue.500',
-                  color: 'white',
-                  outlineColor: 'blue.500',
-                }}
-              >
-                NextJS
-              </Tag>
-            </Link>
+            <Link href="/thoughts">Thoughts /</Link>
           </Flex>
-        </Flex>
-      </PageWrapper>
-    </SiteLayout>
+          <MDXContent components={mdxComponents({ codeBg, codeColor })} />
+          <Flex
+            flexDir={{ base: 'column', md: 'row' }}
+            justifyContent="space-between"
+            maxW="container.lg"
+            mx="auto"
+            w="full"
+            mt={24}
+            borderTop={`1px solid ${borderColor}`}
+            borderBottom={`2px solid ${borderColor}`}
+            py={6}
+            gap={{ base: 6, md: 4 }}
+          >
+            <VStack alignItems="flex-start" fontFamily="mono" spacing={0}>
+              <Text color="gray.500" fontSize="xs" textTransform="uppercase">
+                Posted
+              </Text>
+              <Text fontSize="md" whiteSpace="nowrap">
+                {format(thought.date, 'MMM dd, yyyy')}
+              </Text>
+            </VStack>
+            <VStack alignItems="flex-start" spacing={1}>
+              <Text
+                color="gray.500"
+                display={{ base: 'block', md: 'none' }}
+                fontFamily="mono"
+                fontSize="xs"
+                textTransform="uppercase"
+              >
+                Tags
+              </Text>
+              <Flex flexWrap="wrap" gap={2}>
+                {thought?.tags?.map((tag) => (
+                  <Link key={tag} href={`/tags/${slugify(tag.toLowerCase())}`}>
+                    <Tag
+                      borderRadius="full"
+                      color={tagColor}
+                      fontSize="lg"
+                      px={3}
+                      py={2}
+                      outlineColor={tagOutlineColor}
+                      outlineOffset={-1}
+                      variant="outline"
+                      _hover={{
+                        bgColor: 'blue.500',
+                        color: 'white',
+                        outlineColor: 'blue.500',
+                      }}
+                    >
+                      {tag}
+                    </Tag>
+                  </Link>
+                ))}
+              </Flex>
+            </VStack>
+          </Flex>
+          <Box mt={24} mx="auto">
+            <Heading
+              as="h3"
+              borderBottom={`2px solid ${borderColor}`}
+              fontSize="xl"
+              fontWeight="semibold"
+              pb={3}
+            >
+              More Thoughts
+            </Heading>
+            {allThoughts
+              .filter((item) => item.slug !== thought.slug)
+              .sort((a, b) => {
+                if (a.date > b.date) return -1
+                if (a.date < b.date) return 1
+                return 0
+              })
+              .map((item, index) => (
+                <Link key={item.date} href={`/thoughts/${item.slug}`}>
+                  <HStack
+                    borderBottom={`1px solid ${borderColor}`}
+                    py={2}
+                    spacing={{ base: 3, md: 4 }}
+                  >
+                    <Text as="span" fontFamily="mono" fontSize="sm">
+                      {format(item.date, 'yyyy-MM-dd')}
+                    </Text>
+                    <Text as="span" fontSize="lg" fontWeight="medium">
+                      {item.title}
+                    </Text>
+                  </HStack>
+                </Link>
+              ))}
+          </Box>
+        </PageWrapper>
+      </SiteLayout>
+    </>
   )
 }
