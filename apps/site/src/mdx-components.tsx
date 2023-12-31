@@ -14,7 +14,11 @@ import {
 import { Highlight, themes } from 'prism-react-renderer'
 import { PageHeading } from './components/typography'
 
-export const mdxComponents = ({ codeBg, codeColor }) => ({
+export const mdxComponents = ({
+  borderColor = 'black',
+  codeBg,
+  codeColor,
+}) => ({
   a: (props) => (
     <chakra.a
       color="blue.500"
@@ -117,6 +121,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
       />
     )
   },
+  del: (props) => <Text as="del" textDecoration="line-through" {...props} />,
   h1: ({ children }) => (
     <PageHeading
       fontSize={{ base: '7xl', md: '10xl' }}
@@ -133,9 +138,13 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
   h2: ({ children }) => (
     <Heading
       as="h2"
-      fontSize={{ base: '5xl', md: '7xl' }}
+      fontSize={
+        children === 'Footnotes'
+          ? { base: 'xl', md: '2xl' }
+          : { base: '5xl', md: '7xl' }
+      }
       fontWeight="medium"
-      letterSpacing={-2}
+      letterSpacing={children === 'Footnotes' ? 0 : -2}
       maxW="container.md"
       mt={{ base: 8, md: 16 }}
       mb={4}
@@ -193,7 +202,16 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     </Heading>
   ),
   img: (props) => <Image w="100%" alt="" {...props} />,
-  li: (props) => <ListItem {...props} />,
+  li: (props) => (
+    <ListItem
+      fontSize={
+        props?.id?.startsWith('user-content-fn')
+          ? { base: 'sm', md: 'md' }
+          : undefined
+      }
+      {...props}
+    />
+  ),
   ol: (props) => (
     <OrderedList
       fontSize={{ base: 'xl', md: '2xl' }}
