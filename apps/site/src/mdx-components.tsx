@@ -14,11 +14,7 @@ import {
 import { Highlight, themes } from 'prism-react-renderer'
 import { PageHeading } from './components/typography'
 
-export const mdxComponents = ({
-  borderColor = 'black',
-  codeBg,
-  codeColor,
-}) => ({
+export const mdxComponents = ({ codeBg, codeColor }) => ({
   a: (props) => (
     <chakra.a
       color="blue.500"
