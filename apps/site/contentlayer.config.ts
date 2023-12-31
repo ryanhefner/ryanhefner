@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import remarkGfm from 'remark-gfm'
 import { format } from 'date-fns'
 
 export const Newsletter = defineDocumentType(() => ({
@@ -84,4 +85,7 @@ export const Update = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'apps/site/src/docs',
   documentTypes: [Now, Thought, Update],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+  },
 })
