@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 
 export const Newsletter = defineDocumentType(() => ({
   name: 'Newsletter',
-  filePathPattern: 'newsletters/**/*.mdx',
+  filePathPattern: 'newsletters/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -24,7 +24,7 @@ export const Newsletter = defineDocumentType(() => ({
 
 export const Now = defineDocumentType(() => ({
   name: 'Now',
-  filePathPattern: 'now/**/*.mdx',
+  filePathPattern: 'now/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -44,7 +44,7 @@ export const Now = defineDocumentType(() => ({
 
 export const Thought = defineDocumentType(() => ({
   name: 'Thought',
-  filePathPattern: 'thoughts/**/*.mdx',
+  filePathPattern: 'thoughts/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -64,7 +64,7 @@ export const Thought = defineDocumentType(() => ({
 
 export const Update = defineDocumentType(() => ({
   name: 'Update',
-  filePathPattern: 'updates/**/*.mdx',
+  filePathPattern: 'updates/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
