@@ -12,7 +12,7 @@ tags:
   - Series
   - GitHub
   - React
-preview: "true"
+preview: true
 share: "true"
 filename: streamlining-my-publishing-workflow-part-1-origins
 ---
