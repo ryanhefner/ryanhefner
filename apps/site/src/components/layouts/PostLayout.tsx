@@ -32,6 +32,14 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
 
   const MDXContent = useMDXComponent(thought.body.code)
 
+  const moreThoughts = allThoughts
+    .filter((item) => item.slug !== thought.slug)
+    .sort((a, b) => {
+      if (a.date > b.date) return -1
+      if (a.date < b.date) return 1
+      return 0
+    })
+
   return (
     <>
       <SiteMeta title={thought.title} description={thought.description} />
@@ -105,24 +113,18 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
               </Flex>
             </VStack>
           </Flex>
-          <Box mt={24} mx="auto">
-            <Heading
-              as="h3"
-              borderBottom={`2px solid ${borderColor}`}
-              fontSize="xl"
-              fontWeight="semibold"
-              pb={3}
-            >
-              More Thoughts
-            </Heading>
-            {allThoughts
-              .filter((item) => item.slug !== thought.slug)
-              .sort((a, b) => {
-                if (a.date > b.date) return -1
-                if (a.date < b.date) return 1
-                return 0
-              })
-              .map((item, index) => (
+          {moreThoughts.length ? (
+            <Box mt={24} mx="auto">
+              <Heading
+                as="h3"
+                borderBottom={`2px solid ${borderColor}`}
+                fontSize="xl"
+                fontWeight="semibold"
+                pb={3}
+              >
+                More Thoughts
+              </Heading>
+              {moreThoughts.map((item, index) => (
                 <Link key={item.date} href={`/thoughts/${item.slug}`}>
                   <HStack
                     borderBottom={`1px solid ${borderColor}`}
@@ -138,7 +140,8 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                   </HStack>
                 </Link>
               ))}
-          </Box>
+            </Box>
+          ) : null}
         </PageWrapper>
       </SiteLayout>
     </>
