@@ -18,7 +18,7 @@ filename: streamlining-my-publishing-workflow-part-1-origins
 ---
 
 # Streamlining My Publishing Workflow
-<Subheader>Part 1 of 3 in a series on how I streamlined my publishing workflow with Obsidian, GitHub, and NextJS + Contentlayer + Vercel.</Subheader>
+<Subheading>Part 1 of 3 in a series on how I streamlined my publishing workflow with Obsidian, GitHub, and NextJS + Contentlayer + Vercel.</Subheading>
 
 In this series, I document how I settled on my writing tool of choice, the criteria and exploration in the various tools I tried, and the final setup I landed on for making publishing content to this site something I will actually do, and enjoy it.
 
