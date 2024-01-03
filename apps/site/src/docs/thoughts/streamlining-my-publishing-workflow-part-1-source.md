@@ -62,4 +62,4 @@ My current flow is that I use Field Notes to capture all of the stuff I am worki
 For me, Markdown offers the majority of the formatting needs for writing and documentation, and probably due to my open-source work my preference has heavily skewed towards doing all things in Markdown, so I don't have to do the dance of converting between different formats to Markdown, and potentially back.
 
 
-[^1] 
+[^1]: The goal was to create a writing app that encouraged you to write daily and track your streaks, and what not. Ultimately I lost traction on it when I realized that Firebase + the other stuff I wanted to track was kind of gross in the No-SQL world. 
