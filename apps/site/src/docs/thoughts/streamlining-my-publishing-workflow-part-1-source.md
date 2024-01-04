@@ -4,15 +4,14 @@ description: My journey through the world of productivity and writing software a
 date: 2023-12-29
 slug: streamlining-my-publishing-workflow-part-1-source
 tags:
-  - Obsidian
   - NextJS
-  - MDX
-  - Markdown
   - OSS
   - Series
   - GitHub
   - React
   - Process
+  - Tools
+  - Obsidian
 preview: true
 share: "true"
 filename: streamlining-my-publishing-workflow-part-1-source
@@ -27,7 +26,7 @@ In this series, I document how I settled on my writing tool of choice, the crite
 - Part 2: Defining the criteria and exploring various options
 - Part 3: Deciding on the final setup and configuring the workflow
 
-## Settling on a Single Source of Truth
+## Settling on a “Single” Source of Truth
 Over the years I have bounced around between a bunch of different tools to capture ideas and things I need to do. A lot of those have been dedicated to-do apps, while others have been various writing tools/to-do hybrids, but none of them have been both as simple as I want, while at the same time being flexible enough for both a quick to-do list and the ability to support longer form copy/articles/etc. when the case arises for that. Now those two formats–to-do’s and articles–don’t necessarily have to live together, and in fact I don't often start on a list or document within a specific context, it’s more fluid than that.
 
 Before I get into my current workflow, I think it’s important to reflect on some of my previous attempts to organize my idea capture workflow and explain what has worked and where things did not quite line up with my ideal flow.
@@ -63,7 +62,7 @@ My current flow is that I use Field Notes to capture all of the stuff I am worki
 For me, Markdown offers the majority of the formatting needs for writing and documentation, and probably due to my open-source work my preference has heavily skewed towards doing all things in Markdown, so I don't have to do the dance of converting between different formats to Markdown, and potentially back.
 
 
-![Obsidian - A private and flexible writing app that adapts to the way you think.](obsidian.svg "Obsidian - A private and flexible writing app that adapts to the way you think.")
+![Obsidian - A private and flexible writing app that adapts to the way you think.](attachments/obsidian.svg "Obsidian - A private and flexible writing app that adapts to the way you think.")
 ### Obsidian
 
 
