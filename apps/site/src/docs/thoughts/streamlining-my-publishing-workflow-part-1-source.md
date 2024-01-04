@@ -62,7 +62,7 @@ My current flow is that I use Field Notes to capture all of the stuff I am worki
 For me, Markdown offers the majority of the formatting needs for writing and documentation, and probably due to my open-source work my preference has heavily skewed towards doing all things in Markdown, so I don't have to do the dance of converting between different formats to Markdown, and potentially back.
 
 
-![Obsidian - A private and flexible writing app that adapts to the way you think.](attachments/obsidian.svg "Obsidian - A private and flexible writing app that adapts to the way you think.")
+![Obsidian - A private and flexible writing app that adapts to the way you think.](/attachments/obsidian.svg "Obsidian - A private and flexible writing app that adapts to the way you think.")
 ### Obsidian
 
 
