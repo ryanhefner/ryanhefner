@@ -3,7 +3,7 @@ import {
   Flex,
   Heading,
   HStack,
-  Tag,
+  // Tag,
   Text,
   VStack,
   useColorModeValue,
@@ -12,7 +12,7 @@ import { SiteMeta } from 'next-meta'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import { format } from 'date-fns'
 import { UTCDateMini } from '@date-fns/utc'
-import slugify from 'slugify'
+// import slugify from 'slugify'
 import { Thought, allThoughts } from 'contentlayer/generated'
 import { mdxComponents } from '../../mdx-components'
 import { Link } from '../base'
@@ -27,8 +27,8 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
   const borderColor = useColorModeValue('black', 'white')
   const codeBg = useColorModeValue('gray.100', 'gray.800')
   const codeColor = useColorModeValue('black', 'white')
-  const tagColor = useColorModeValue('black', 'white')
-  const tagOutlineColor = useColorModeValue('black', 'white')
+  // const tagColor = useColorModeValue('black', 'white')
+  // const tagOutlineColor = useColorModeValue('black', 'white')
 
   const MDXContent = useMDXComponent(thought.body.code)
 
@@ -78,7 +78,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                 {format(new UTCDateMini(thought.date), 'MMM dd, yyyy')}
               </Text>
             </VStack>
-            <VStack alignItems="flex-start" spacing={1}>
+            {/* <VStack alignItems="flex-start" spacing={1}>
               <Text
                 color="gray.500"
                 display={{ base: 'block', md: 'none' }}
@@ -111,7 +111,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                   </Link>
                 ))}
               </Flex>
-            </VStack>
+            </VStack> */}
           </Flex>
           {moreThoughts.length ? (
             <Box mt={24} mx="auto">
