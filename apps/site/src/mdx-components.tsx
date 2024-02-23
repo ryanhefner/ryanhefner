@@ -119,7 +119,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
   del: (props) => <Text as="del" textDecoration="line-through" {...props} />,
   h1: ({ children }) => (
     <PageHeading
-      fontSize={{ base: '6xl', md: '10xl', xl: '12xl' }}
+      fontSize={{ base: '6xl', md: '10xl' }}
       // maxW="container.xl"
       mt={{ base: 12, md: 16 }}
       mb={{ base: 16, md: 24 }}
