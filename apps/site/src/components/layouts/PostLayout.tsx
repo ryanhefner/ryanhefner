@@ -78,7 +78,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                 {format(new UTCDateMini(thought.date), 'MMM dd, yyyy')}
               </Text>
             </VStack>
-            <VStack alignItems="flex-start" spacing={1}>
+            {/* <VStack alignItems="flex-start" spacing={1}>
               <Text
                 color="gray.500"
                 display={{ base: 'block', md: 'none' }}
@@ -111,7 +111,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                   </Link>
                 ))}
               </Flex>
-            </VStack>
+            </VStack> */}
           </Flex>
           {moreThoughts.length ? (
             <Box mt={24} mx="auto">
