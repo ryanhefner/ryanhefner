@@ -43,8 +43,7 @@ export const NowLayout = ({ children }) => {
                       border={`1px solid ${borderColor}`}
                       bgColor={
                         (index === 0 && pathname === '/now') ||
-                        pathname.split('/').pop() ===
-                          format(date, 'yyyy-MM-dd', { })
+                        pathname.split('/').pop() === format(date, 'yyyy-MM-dd')
                           ? selectedBgColor
                           : 'transparent'
                       }
