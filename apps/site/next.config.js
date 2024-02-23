@@ -9,6 +9,7 @@ const withContentlayer = createContentlayerPlugin({
 
 const nextConfig = {
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
+  poweredByHeader: false,
   nx: {
     // Set this to true if you would like to to use SVGR
     // See: https://github.com/gregberge/svgr
