@@ -29,7 +29,6 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
       pos="relative"
       fontFamily="serif"
       fontSize={{ base: '4xl', md: '6xl' }}
-      fontStyle="italic"
       letterSpacing={{ base: -1, md: -2 }}
       lineHeight={1.2}
       maxW="container.md"
@@ -197,7 +196,24 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
       {children}
     </Heading>
   ),
-  img: (props) => <Image w="100%" alt="" {...props} />,
+  img: (props) => (
+    <Image
+      alt=""
+      pos="relative"
+      mx={{ base: -4, md: -20, lg: -24 }}
+      w={{
+        base: 'calc(100% + 48px)',
+        md: 'calc(100% + 160px)',
+        lg: 'calc(100% + 192px)',
+      }}
+      maxW={{
+        base: 'calc(100% + 48px)',
+        md: 'calc(100% + 160px)',
+        lg: 'calc(100% + 192px)',
+      }}
+      {...props}
+    />
+  ),
   li: (props) => (
     <ListItem
       fontSize={
