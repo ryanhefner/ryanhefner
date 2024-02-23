@@ -32,6 +32,7 @@ export const Now = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     location: { type: 'string', required: false, defaultValue: 'Atlanta, GA' },
     preview: { type: 'boolean', required: false },
+    slug: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: false },
   },
   computedFields: {
@@ -84,6 +85,7 @@ export const Update = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'apps/site/src/docs',
+  disableImportAliasWarning: true,
   documentTypes: [Now, Thought, Update],
   mdx: {
     remarkPlugins: [remarkGfm],
