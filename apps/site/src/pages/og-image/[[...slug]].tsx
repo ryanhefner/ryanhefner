@@ -95,7 +95,7 @@ export const getStaticPaths = async () => {
 
   const nowPaths = allNows.map((now) => ({
     params: {
-      slug: ['now', now.date],
+      slug: ['now', now.slug],
     },
   }))
 
@@ -125,7 +125,7 @@ export const getStaticProps = async ({ params }) => {
   let body = ''
 
   if (path.startsWith('/now')) {
-    const now = allNows.find((now) => now.date === slug[1])
+    const now = allNows.find((now) => now.slug === slug[1])
     title = 'Now'
     body = now?.title ?? ''
   } else if (path.startsWith('/thoughts')) {
