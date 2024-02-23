@@ -200,7 +200,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     <Image
       alt=""
       pos="relative"
-      mx={{ base: -4, md: -20, lg: -24 }}
+      mx={{ base: -6, md: -20, lg: -24 }}
       w={{
         base: 'calc(100% + 48px)',
         md: 'calc(100% + 160px)',
