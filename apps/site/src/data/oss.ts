@@ -16,6 +16,11 @@ export const withOss = [
     urls: ['https://chakra-ui.com/'],
   },
   {
+    name: 'Contentlayer',
+    description: 'Content made easy for developers',
+    urls: ['https://contentlayer.dev/'],
+  },
+  {
     name: 'Emotion',
     description: 'The Next Generation of CSS-in-JS',
     urls: ['https://emotion.sh/'],
