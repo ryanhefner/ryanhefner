@@ -1,0 +1,67 @@
+/* inter-latin-400-normal */
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./files/SuisseWorks-Regular-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-Regular-WebXL.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./files/SuisseWorks-RegularItalic-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-RegularItalic-WebXL.woff) format('woff');
+}
+
+/* inter-latin-500-normal */
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./files/SuisseWorks-Book-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-Book-WebXL.woff2) format('woff');
+}
+
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./files/SuisseWorks-BookItalic-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-BookItalic-WebXL.woff2) format('woff');
+}
+
+/* inter-latin-600-normal */
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(./files/SuisseWorks-Medium-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-Medium-WebXL.woff2) format('woff');
+}
+
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: url(./files/SuisseWorks-MediumItalic-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-MediumItalic-WebXL.woff2) format('woff');
+}
+
+/* inter-latin-800-normal */
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(./files/SuisseWorks-Bold-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-Bold-WebXL.woff2) format('woff');
+}
+
+@font-face {
+  font-family: 'Suisse Works';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  src: url(./files/SuisseWorks-BoldItalic-WebXL.woff2) format('woff2'), url(./files/SuisseWorks-BoldItalic-WebXL.woff2) format('woff');
+}

@@ -1,4 +1,5 @@
 import { Flex, HStack, Text } from '@chakra-ui/react'
+import { allThoughts, allUpdates } from 'contentlayer/generated'
 import { Link } from '../base'
 
 export const SiteHeader = () => (
@@ -18,7 +19,6 @@ export const SiteHeader = () => (
   >
     <Link href="/" color="white">
       <HStack>
-        {/* <Box display="inline-block" borderRadius="full" bgColor="black" w={2} h={2} /> */}
         <Text fontSize="lg" fontWeight="medium">
           Ryan Hefner - All Play
         </Text>
@@ -36,16 +36,20 @@ export const SiteHeader = () => (
           Projects
         </Text>
       </Link>
-      {/* <Link href="/thoughts">
-        <Text as="span" fontSize="lg">
-          Thoughts
-        </Text>
-      </Link> */}
-      {/* <Link href="/updates">
-        <Text as="span" fontSize="lg">
-          Updates
-        </Text>
-      </Link> */}
+      {allThoughts.length ? (
+        <Link href="/thoughts">
+          <Text as="span" fontSize="lg">
+            Thoughts
+          </Text>
+        </Link>
+      ) : null}
+      {allUpdates.length ? (
+        <Link href="/updates">
+          <Text as="span" fontSize="lg">
+            Updates
+          </Text>
+        </Link>
+      ) : null}
       <Link href="/about">
         <Text as="span" fontSize="lg">
           About

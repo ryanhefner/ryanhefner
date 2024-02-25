@@ -1,9 +1,11 @@
 import { Box, Heading, HStack, Text, useColorModeValue } from '@chakra-ui/react'
 import { usePathname } from 'next/navigation'
+import { format } from 'date-fns'
+import { UTCDateMini } from '@date-fns/utc'
+import { allNows } from 'contentlayer/generated'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 import { theme } from '../../styles'
-import { nowPages } from '../../data/now'
 import { SiteLayout } from './SiteLayout'
 
 export const NowLayout = ({ children }) => {
@@ -21,32 +23,43 @@ export const NowLayout = ({ children }) => {
               Now Archive
             </Heading>
           </Box>
-          {nowPages.map((page, index) => (
-            <Link key={page.date} href={`/now/${page.date}`}>
-              <HStack borderBottom={`1px solid ${borderColor}`} py={2}>
-                <Box
-                  borderRadius="full"
-                  boxSize={2}
-                  border={`1px solid ${borderColor}`}
-                  bgColor={
-                    (index === 0 && pathname === '/now') ||
-                    pathname.split('/').pop() === page.date
-                      ? selectedBgColor
-                      : 'transparent'
-                  }
-                  ml={2}
-                />
-                <Text
-                  as="span"
-                  fontFamily="mono"
-                  fontSize="sm"
-                >{`${page.date} - `}</Text>
-                <Text as="span" fontWeight="medium">
-                  {page.title}
-                </Text>
-              </HStack>
-            </Link>
-          ))}
+          {allNows
+            .sort((a, b) => {
+              if (a.date > b.date) return -1
+              if (a.date < b.date) return 1
+              return 0
+            })
+            .map((now, index) => {
+              const date = new UTCDateMini(now.date)
+              return (
+                <Link
+                  key={now.date}
+                  href={`/now/${format(date, 'yyyy-MM-dd')}`}
+                >
+                  <HStack borderBottom={`1px solid ${borderColor}`} py={2}>
+                    <Box
+                      borderRadius="full"
+                      boxSize={2}
+                      border={`1px solid ${borderColor}`}
+                      bgColor={
+                        (index === 0 && pathname === '/now') ||
+                        pathname.split('/').pop() === format(date, 'yyyy-MM-dd')
+                          ? selectedBgColor
+                          : 'transparent'
+                      }
+                      ml={2}
+                    />
+                    <Text as="span" fontFamily="mono" fontSize="sm">{`${format(
+                      date,
+                      'yyyy-MM-dd',
+                    )} - `}</Text>
+                    <Text as="span" fontWeight="medium">
+                      {now.title}
+                    </Text>
+                  </HStack>
+                </Link>
+              )
+            })}
         </Box>
         <Box mt={{ base: 10, md: 10 }} mb={{ base: 10, md: 24 }}>
           <Text>

@@ -23,6 +23,7 @@ const IndexPage = () => {
         as="h1"
         fontSize={{ base: '6xl', sm: '7xl', md: '8xl', '2xl': '9xl' }}
         fontWeight="medium"
+        letterSpacing={{ base: -2, md: -4 }}
         lineHeight="none"
       >
         Ryan Hefner

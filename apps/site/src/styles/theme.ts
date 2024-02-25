@@ -12,6 +12,7 @@ export const theme = extendTheme(
       body: `Suisse Intl, sans-serif`,
       heading: `Suisse Intl, sans-serif`,
       mono: `Suisse Intl Mono, monospace`,
+      serif: `Suisse Works, serif`,
     },
     fontSizes: {
       '10xl': '10rem',
@@ -36,6 +37,9 @@ export const theme = extendTheme(
     },
     styles: {
       global: (props) => ({
+        html: {
+          bg: 'blue.500',
+        },
         body: {
           color: mode('black', 'white')(props),
           bg: mode('white', 'black')(props),

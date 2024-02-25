@@ -21,8 +21,8 @@ const AboutPage = () => (
     <PageWrapper>
       <PageHeading>About</PageHeading>
       <Box mt={16}>
-        <Box maxW="container.md">
-          <Text fontSize={{ base: 'xl', md: '2xl' }}>
+        <Box fontSize="xl" maxW="container.md">
+          <Text>
             I’m a software engineer (by necessity) and product designer (by
             heart) based out of Atlanta, GA—by way of Brooklyn, NY—originally
             hailing from the Toledo, OH area. Constantly in pursuit of exploring
@@ -31,7 +31,7 @@ const AboutPage = () => (
             and nicely coded software that gracefully solves the issue at hand,
             both for me and—I hope—others as well.
           </Text>
-          <Text fontSize={{ base: 'xl', md: '2xl' }} mt="8">
+          <Text mt="8">
             If I am not writing code, coming up with more random project ideas,
             or solving my clients’ issues, you can find me hanging with my two
             kids, trying to find some surf in a <em>mostly</em> landlocked
