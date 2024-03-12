@@ -18,7 +18,7 @@ export const SiteLayout = ({ children }) => {
 
   const minH = useMemo(() => {
     if (isSafari) {
-      return 'fill-available'
+      return '-webkit-fill-available'
     }
 
     return '100vh'
