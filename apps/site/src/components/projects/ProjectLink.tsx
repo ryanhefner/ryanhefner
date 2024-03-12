@@ -6,13 +6,13 @@ export const ProjectLink = ({
   description,
   imageUrl,
   name,
-  showImages,
+  showImage,
   url,
 }: {
   description?: string
   imageUrl?: string
   name: string
-  showImages?: boolean
+  showImage?: boolean
   url?: string
 }) => (
   <Link
@@ -21,9 +21,9 @@ export const ProjectLink = ({
     rel={url.startsWith('http') ? 'noopener noreferrer' : ''}
   >
     <Box>
-      {imageUrl && showImages ? (
+      {imageUrl && showImage ? (
         <Image
-          bgColor="black"
+          bgColor="gray.200"
           // borderRadius="3xl"
           src={imageUrl}
           alt={name}
@@ -32,7 +32,7 @@ export const ProjectLink = ({
           mb={5}
         />
       ) : null}
-      <Heading as="h3" fontSize="2xl" fontWeight="medium">
+      <Heading as="h3" fontSize="xl" fontWeight="medium">
         {name}
       </Heading>
       {description && (
