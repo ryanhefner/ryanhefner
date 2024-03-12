@@ -9,7 +9,7 @@ import { ClientGrid, ClientGridItem } from '../components/clients'
 import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { clients } from '../data/clients'
-import { PageHeading } from '../components/typography'
+import { PageHeading, SectionHeading } from '../components/typography'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =
@@ -41,9 +41,7 @@ const AboutPage = () => (
         </Box>
       </Box>
       <Box mt={{ base: 16, md: 24 }} mb={16}>
-        <Heading as="h3" fontWeight="medium">
-          Clients
-        </Heading>
+        <SectionHeading>Clients</SectionHeading>
         <ClientGrid>
           {clients.map((client) => (
             <ClientGridItem key={client.imageUrl} {...client} />
@@ -51,10 +49,8 @@ const AboutPage = () => (
         </ClientGrid>
       </Box>
       <Box my={16}>
-        <Heading as="h3" fontWeight="medium">
-          Elsewhere
-        </Heading>
-        <Text fontSize="3xl" mt={8}>
+        <SectionHeading>Elsewhere</SectionHeading>
+        <Text fontSize="2xl" mt={8}>
           <Link
             href="https://www.github.com/ryanhefner"
             target="_blank"
