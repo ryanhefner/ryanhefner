@@ -24,7 +24,6 @@ export const ProjectLink = ({
       {imageUrl && showImage ? (
         <Image
           bgColor="gray.200"
-          // borderRadius="3xl"
           src={imageUrl}
           alt={name}
           w="full"
@@ -36,12 +35,7 @@ export const ProjectLink = ({
         {name}
       </Heading>
       {description && (
-        <Text
-          color="gray.500"
-          fontSize="xl"
-          maxW="full"
-          wordBreak="break-word"
-        >
+        <Text color="gray.500" fontSize="xl" maxW="full" wordBreak="break-word">
           <CopyRight
             copy={description}
             optimalLength={100}
