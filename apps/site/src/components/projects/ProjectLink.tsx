@@ -39,7 +39,6 @@ export const ProjectLink = ({
         <Text
           color="gray.500"
           fontSize="xl"
-          mt={2}
           maxW="full"
           wordBreak="break-word"
         >
