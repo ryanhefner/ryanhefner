@@ -25,20 +25,11 @@ const ThoughtsIndexPage = () => {
             <Link key={item.date} href={`/thoughts/${item.slug}`}>
               <HStack
                 borderBottom={`1px solid ${borderColor}`}
-                align="flex-start"
+                align={{ base: 'flex-start', md: 'center' }}
                 fontSize={{ base: 'lg', md: 'xl' }}
                 py={2.5}
                 spacing={{ base: 3, md: 4 }}
               >
-                {/* <Box
-                  borderRadius="full"
-                  boxSize={2}
-                  border={`1px solid ${borderColor}`}
-                  bgColor="transparent"
-                  flex="0 0 auto"
-                  ml={2}
-                  my={1.5}
-                /> */}
                 <Text
                   as="span"
                   flex="0 0 auto"
@@ -48,7 +39,7 @@ const ThoughtsIndexPage = () => {
                 >
                   {format(new UTCDateMini(item.date), 'yyyy-MM-dd')}
                 </Text>
-                <Text as="span" fontWeight="medium">
+                <Text as="span" fontSize="lg" fontWeight="medium">
                   {item.title}
                 </Text>
               </HStack>

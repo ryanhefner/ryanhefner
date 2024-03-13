@@ -49,7 +49,7 @@ const IndexPage = () => {
           >
             {activeProjects.map((project) => (
               <ProjectGridItem key={project.url}>
-                <ProjectLink {...project} />
+                <ProjectLink {...project} showImage />
               </ProjectGridItem>
             ))}
           </ProjectGrid>
