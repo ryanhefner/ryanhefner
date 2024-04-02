@@ -5,8 +5,13 @@
   "projectType": "application",
   "targets": {
     "build": {
+      "dependsOn": [
+        "site:prebuild"
+      ],
       "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/site"
@@ -44,7 +49,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/site"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/site"
+      ],
       "options": {
         "jestConfig": "apps/site/jest.config.ts",
         "passWithNoTests": true
@@ -52,9 +59,13 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/site/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/site/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     }
   },
