@@ -1,8 +1,9 @@
 import { getServerSideSitemapLegacy } from 'next-sitemap'
 import { GetServerSideProps } from 'next'
-import slugify from '@sindresorhus/slugify'
+import { allNows, allThoughts } from 'contentlayer/generated'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const fields = [
@@ -23,14 +24,42 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       lastmod: new Date().toISOString(),
     },
     {
-      loc: `${BASE_URL}/now`,
-      lastmod: new Date().toISOString(),
-    },
-    {
       loc: `${BASE_URL}/withoss`,
       lastmod: new Date().toISOString(),
     },
   ]
+
+  // Now
+  const nowFields = allNows.map((now) => ({
+    loc: `${BASE_URL}/now/${now.slug}`,
+    lastmod: now.date,
+  }))
+
+  if (nowFields.length) {
+    fields.push(
+      {
+        loc: `${BASE_URL}/now`,
+        lastmod: new Date().toISOString(),
+      },
+      ...nowFields,
+    )
+  }
+
+  // Thoughts
+  const thoughtFields = allThoughts.map((thought) => ({
+    loc: `${BASE_URL}/thoughts/${thought.slug}`,
+    lastmod: thought.date,
+  }))
+
+  if (thoughtFields.length) {
+    fields.push(
+      {
+        loc: `${BASE_URL}/thoughts`,
+        lastmod: new Date().toISOString(),
+      },
+      ...thoughtFields,
+    )
+  }
 
   return getServerSideSitemapLegacy(ctx, fields)
 }
