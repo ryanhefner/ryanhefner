@@ -17,6 +17,7 @@
     "@nx/next": "15.8.6"
   },
   "scripts": {
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "npx next-sitemap"
   }
 }
