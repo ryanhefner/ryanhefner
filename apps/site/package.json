@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "next start",
-    "postbuild": "npx next-sitemap"
+    "postbuild": "npx next-sitemap",
+    "prebuild": "rimraf public/robots.txt public/sitemap.xml public/sitemap-0.xml"
   }
 }
