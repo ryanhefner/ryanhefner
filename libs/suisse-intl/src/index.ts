@@ -109,3 +109,5 @@ export const SuisseIntl = localFont({
     'Noto Color Emoji',
   ],
 })
+
+export default SuisseIntl
