@@ -19,7 +19,11 @@
       "@fontbase/suisse-mono": ["libs/suisse-mono/src/index.css"],
       "@fontbase/suisse-works": ["libs/suisse-works/src/index.css"],
       "@linkcards/next": ["libs/linkcards/src/index.ts"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer": ["libs/contentlayer/src/index.ts"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "react-transistor-fm": ["libs/transistor/react/src/index.ts"],
+      "react-web-audio": ["libs/audio/src/index.ts"],
+      "transistor-client": ["libs/transistor/client/src/index.ts"]
     }
   },
   "include": ["./.contentlayer/generated"],
