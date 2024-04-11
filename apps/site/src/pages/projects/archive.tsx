@@ -1,5 +1,6 @@
-import Head from 'next/head'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import Head from 'next/head'
+
 import { Link } from '../../components/base'
 import { PageWrapper } from '../../components/site'
 
@@ -16,9 +17,7 @@ const ProjectsArchivePage = () => (
         lineHeight="none"
       >
         <Text as="span" color="gray.600">
-          <Link href="/projects" passHref>
-            <a>Projects</a>
-          </Link>
+          <Link href="/projects">Projects</Link>
         </Text>{' '}
         / Archive
       </Heading>
