@@ -1,8 +1,9 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { useTransistor } from 'react-transistor-fm'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useWebAudioContext } from 'react-web-audio'
+import { TransistorClient } from 'transistor-client'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts/SiteLayout'
@@ -10,31 +11,33 @@ import { AudioPlayer } from '../components/media'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
-const IndexPage = () => {
+const newsletters = [
+  {
+    id: 3,
+    slug: '/002-stacking-packages',
+    title: '002 – Stacking the Packages',
+  },
+  {
+    id: 2,
+    slug: '/001-focusing-distractions',
+    title: '001 – Focusing Distractions',
+  },
+  {
+    id: 1,
+    slug: '/000-welcome',
+    title: '000 – Welcome to, All Play!',
+  },
+]
+
+const IndexPage = ({
+  episodes = [],
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [currentAudioSourceNode, setCurrentAudioSourceNode] =
     useState<AudioBufferSourceNode | null>(null)
   const [currentUrl, setCurrentUrl] = useState<string | null>(null)
   const [currentTime, setCurrentTime] = useState(0)
-  const [episodes, setEpisodes] = useState([])
 
-  const { client } = useTransistor()
   const { audioContext, play } = useWebAudioContext()
-
-  useEffect(() => {
-    const asyncFetch = async () => {
-      if (client && SHOW_ID) {
-        client
-          .episodes(SHOW_ID)
-          .then((response) => {
-            setEpisodes(response.data)
-            console.debug(response.data)
-          })
-          .catch(console.error)
-      }
-    }
-
-    asyncFetch()
-  }, [client])
 
   const handlePlayClick = useCallback(
     (url: string) => {
@@ -115,11 +118,11 @@ const IndexPage = () => {
         </Link>{' '}
         for the newsletter.
       </Text>
-      <Flex flexDir="column" mt={24} gap={2}>
+      <Flex flexDir="column" mt={24} gap={1.5}>
         <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
           Episodes
         </Heading>
-        {episodes.map((episode, index) => (
+        {episodes.map((episode: any, index: number) => (
           <AudioPlayer
             key={episode.id}
             duration={episode.attributes.duration}
@@ -134,10 +137,10 @@ const IndexPage = () => {
         <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
           Newsletters
         </Heading>
-        {episodes.map((episode) => (
+        {newsletters.map((newsletter: any) => (
           <Link
-            key={episode.id}
-            href={`/episodes/${episode.attributes.slug}`}
+            key={newsletter.id}
+            href={`/newsletters${newsletter.slug}`}
             _hover={{
               textDecoration: 'none',
             }}
@@ -148,7 +151,7 @@ const IndexPage = () => {
               justifyContent="space-between"
               py={4}
             >
-              <Text fontSize="md">{episode.attributes.title}</Text>
+              <Text fontSize="md">{newsletter.title}</Text>
             </Flex>
           </Link>
         ))}
@@ -158,5 +161,25 @@ const IndexPage = () => {
 }
 
 IndexPage.getLayout = (page: ReactNode) => <SiteLayout>{page}</SiteLayout>
+
+export const getStaticProps = (async () => {
+  const transistorClient = new TransistorClient({
+    apiKey: process.env.TRANSISTOR_API_KEY,
+  })
+  let episodes = []
+
+  try {
+    const response = await transistorClient.episodes(SHOW_ID as string)
+    episodes = response.data
+  } catch (err) {
+    console.error(err)
+  }
+
+  return {
+    props: {
+      episodes,
+    },
+  }
+}) satisfies GetStaticProps<{ episodes: any[] }>
 
 export default IndexPage
