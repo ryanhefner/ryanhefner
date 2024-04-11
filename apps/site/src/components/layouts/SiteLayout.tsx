@@ -1,11 +1,15 @@
-import { useCallback, useMemo, useState } from 'react'
+import { PropsWithChildren, useCallback, useMemo, useState } from 'react'
+
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { isSafari } from 'react-device-detect'
 import Marquee from 'react-marquease'
-import { Link } from '../base'
-import { SiteHeader, SiteFooter } from '../site'
 
-export const SiteLayout = ({ children }) => {
+import { Link } from '../base'
+import { SiteFooter, SiteHeader } from '../site'
+
+type SiteLayoutProps = PropsWithChildren
+
+export const SiteLayout = ({ children }: SiteLayoutProps) => {
   const [pauseMarquee, setPauseMarquee] = useState(false)
 
   const handleMouseEnter = useCallback(() => {
