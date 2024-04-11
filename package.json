@@ -27,6 +27,7 @@
     "@react-three/fiber": "^8.15.11",
     "@sindresorhus/slugify": "^2.2.1",
     "@swc/helpers": "~0.5.2",
+    "axios": "^1.6.8",
     "contentlayer": "^0.3.4",
     "core-js": "3.36.1",
     "date-fns": "^3.0.6",
@@ -36,6 +37,7 @@
     "next": "^14.1.0",
     "next-contentlayer": "^0.3.4",
     "next-meta": "^0.1.9",
+    "next-proper": "^0.2.0",
     "next-sitemap": "^4.2.3",
     "node-fetch": "^3.3.2",
     "prism-react-renderer": "^2.3.1",
@@ -51,7 +53,8 @@
     "shadergradient": "^1.2.4",
     "three": "^0.163.0",
     "tslib": "^2.3.0",
-    "warning": "^4.0.3"
+    "warning": "^4.0.3",
+    "waveform-data": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",

@@ -5908,7 +5908,7 @@ axe-core@=4.7.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.7.0.tgz#34ba5a48a8b564f67e103f0aa5768d76e15bbbbf"
   integrity sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==
 
-axios@^1.6.0:
+axios@^1.6.0, axios@^1.6.8:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
   integrity sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==
@@ -12824,6 +12824,11 @@ next-meta@^0.1.9:
   resolved "https://registry.yarnpkg.com/next-meta/-/next-meta-0.1.9.tgz#b8c551aae3b53b7a54ee7bfda7156277ec324442"
   integrity sha512-jJAMKDykq+cNqLRF2jbX/LKY9ttCdIc7gGqrx4wURjQsjJkUpPZLdDiPoUKDd0BQovoh+ohvAPNYTMT2ROG/xQ==
 
+next-proper@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/next-proper/-/next-proper-0.2.0.tgz#f90bda7d1eb8c875b9f4740ad58ccd1c3f195ca5"
+  integrity sha512-qN8e14rYdMCXU9Hv2PWFXBdkTknLL4yM4ks0vt5NCdwFrAbOlXBCw9uz28DbYwhka+UevWV3bgnlNtePDMLBwg==
+
 next-sitemap@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-4.2.3.tgz#5db3f650351a51e84b9fd6b58c5af2f9257b5058"
@@ -16923,6 +16928,11 @@ watchpack@^2.4.1:
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
+
+waveform-data@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/waveform-data/-/waveform-data-4.5.0.tgz#bece7802adbecf48e594ad18d408beab2152a62d"
+  integrity sha512-fLT8yLGUuVhDBMVVOD2AGqHlLLVT/zfGlSIKgfqMCwFJGtkvY9eEhu0EL9W55lFJQt4r53X5Ncj86ymTGJlJTA==
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
