@@ -1,8 +1,9 @@
 import { Center, Text } from '@chakra-ui/react'
+
 import { Link } from '../components/base'
+import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { PageHeading } from '../components/typography'
-import { SiteLayout } from '../components/layouts'
 
 const Custom404Page = () => (
   <PageWrapper pos="relative">
