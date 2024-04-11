@@ -1,4 +1,6 @@
-import 'isomorphic-fetch'
+// import 'isomorphic-fetch'
+// import nodeFetch from 'node-fetch'
+import axios from 'axios'
 
 import type { User } from './types'
 
@@ -11,9 +13,14 @@ interface TransistorRequestOptions {
   headers: Record<string, any>
 }
 
+const DEFAULT_API_URL = 'https://api.transistor.fm/v1'
+const DEFAULT_HEADERS = {
+  'Content-Type': 'application/json',
+}
+
 export class TransistorClient {
   private _apiKey?: string
-  private _apiUrl = 'https://api.transistor.fm/v1'
+  private _apiUrl = DEFAULT_API_URL
   private _options: TransistorClientOptions
 
   public constructor(options: TransistorClientOptions) {
@@ -28,14 +35,22 @@ export class TransistorClient {
     if (apiUrl) {
       this._apiUrl = apiUrl
     }
+
+    if (apiUrl === DEFAULT_API_URL && !apiKey) {
+      console.warn(
+        'An `apiKey` is required when interfacing directly with the Transistor `apiUrl`.',
+      )
+    }
   }
 
   public _request<T>(
     path: string,
+    data?: any,
     method = 'GET',
     options?: TransistorRequestOptions,
   ): Promise<T> {
-    const headers = {
+    const headers: Record<string, string> = {
+      ...DEFAULT_HEADERS,
       ...(options?.headers || {}),
     }
 
@@ -43,16 +58,13 @@ export class TransistorClient {
       headers['x-api-key'] = this._apiKey
     }
 
-    return fetch(`${this._apiUrl}${path}`, {
+    return axios(`${this._apiUrl}${path}`, {
       method,
+      data,
       ...(options || {}),
       headers,
     }).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.statusText)
-      }
-
-      return response.json() as Promise<T>
+      return response.data as T
     })
   }
 
@@ -65,7 +77,9 @@ export class TransistorClient {
   // }
 
   public episodes(showId: string): Promise<any> {
-    return this._request(`/episodes?showId=${showId}`)
+    return this._request('/episodes', {
+      showId,
+    })
   }
 
   public me(): Promise<User> {
