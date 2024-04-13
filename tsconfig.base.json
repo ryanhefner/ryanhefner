@@ -24,6 +24,7 @@
       "emails": ["libs/emails/src/index.ts"],
       "newsletter": ["libs/newsletter/src/index.ts"],
       "props": ["libs/props/src/index.ts"],
+      "react-fathom": ["libs/fathom/src/index.ts"],
       "react-transistor-fm": ["libs/transistor/react/src/index.ts"],
       "react-web-audio": ["libs/audio/src/index.ts"],
       "transistor-client": ["libs/transistor/client/src/index.ts"]
