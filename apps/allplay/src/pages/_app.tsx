@@ -7,6 +7,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
+import { NextPagesFathomProvider } from 'react-fathom'
 import { TransistorProvider } from 'react-transistor-fm'
 import { WebAudioProvider } from 'react-web-audio'
 import { TransistorClient } from 'transistor-client'
@@ -64,13 +65,25 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           imageWidth={1200}
           imageHeight={630}
         />
-        <ChakraProvider theme={theme}>
-          <TransistorProvider client={transistorClient}>
-            <WebAudioProvider>
-              {getLayout(<Component {...pageProps} />)}
-            </WebAudioProvider>
-          </TransistorProvider>
-        </ChakraProvider>
+        <NextPagesFathomProvider
+          clientOptions={{
+            includedDomains: [
+              'localhost:4201',
+              'allplay-fm-git-feat-rss-2-ryan-hefners-projects-39d86e79.vercel.app',
+              'allplay.fm',
+              'www.allplay.fm',
+            ],
+          }}
+          siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? ''}
+        >
+          <ChakraProvider theme={theme}>
+            <TransistorProvider client={transistorClient}>
+              <WebAudioProvider>
+                {getLayout(<Component {...pageProps} />)}
+              </WebAudioProvider>
+            </TransistorProvider>
+          </ChakraProvider>
+        </NextPagesFathomProvider>
       </MetaProvider>
     </>
   )
