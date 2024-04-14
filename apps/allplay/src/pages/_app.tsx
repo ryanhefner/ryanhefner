@@ -67,12 +67,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         />
         <NextPagesFathomProvider
           clientOptions={{
-            includedDomains: [
-              'localhost:4201',
-              'allplay-fm-git-feat-rss-2-ryan-hefners-projects-39d86e79.vercel.app',
-              'allplay.fm',
-              'www.allplay.fm',
-            ],
+            includedDomains: ['allplay.fm', 'www.allplay.fm'],
           }}
           siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? ''}
         >
