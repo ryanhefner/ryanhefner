@@ -1,13 +1,12 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 
 import { Flex, Heading, Text } from '@chakra-ui/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { useWebAudioContext } from 'react-web-audio'
 import { TransistorClient } from 'transistor-client'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts/SiteLayout'
-import { AudioPlayer } from '../components/media'
+import { EpisodeList } from '../components/media/EpisodeList'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -32,50 +31,6 @@ const newsletters = [
 const IndexPage = ({
   episodes = [],
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [currentAudioSourceNode, setCurrentAudioSourceNode] =
-    useState<AudioBufferSourceNode | null>(null)
-  const [currentUrl, setCurrentUrl] = useState<string | null>(null)
-  const [currentTime, setCurrentTime] = useState(0)
-
-  const { audioContext, play } = useWebAudioContext()
-
-  const handlePlayClick = useCallback(
-    (url: string) => {
-      const playAsync = async () => {
-        setCurrentUrl(url)
-
-        const audioBufferSourceNode = await play(url)
-        setCurrentAudioSourceNode(audioBufferSourceNode)
-      }
-
-      if (currentUrl === url && currentAudioSourceNode) {
-        currentAudioSourceNode.stop()
-        setCurrentAudioSourceNode(null)
-      } else {
-        playAsync()
-      }
-    },
-    [currentAudioSourceNode, currentUrl, play],
-  )
-
-  useEffect(() => {
-    let raf: number | null
-
-    const tick = () => {
-      setCurrentTime(audioContext?.currentTime ?? 0)
-
-      raf = requestAnimationFrame(tick)
-    }
-
-    raf = audioContext ? requestAnimationFrame(tick) : null
-
-    return () => {
-      if (raf) {
-        cancelAnimationFrame(raf)
-      }
-    }
-  }, [audioContext])
-
   return (
     <Flex
       flexDir="column"
@@ -118,21 +73,7 @@ const IndexPage = ({
         </Link>{' '}
         for the newsletter.
       </Text>
-      <Flex flexDir="column" mt={24} gap={1.5}>
-        <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
-          Episodes
-        </Heading>
-        {episodes.map((episode: any, index: number) => (
-          <AudioPlayer
-            key={episode.id}
-            duration={episode.attributes.duration}
-            isPlaying={index === 0}
-            slug={episode.attributes.slug}
-            title={episode.attributes.title}
-            url={episode.attributes.media_url}
-          />
-        ))}
-      </Flex>
+      <EpisodeList mt={24} episodes={episodes} />
       <Flex flexDir="column" mt={24}>
         <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
           Newsletters

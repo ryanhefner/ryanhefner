@@ -15,6 +15,8 @@ import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
+import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
+
 import { theme } from '../styles'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
@@ -74,7 +76,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           <ChakraProvider theme={theme}>
             <TransistorProvider client={transistorClient}>
               <WebAudioProvider>
-                {getLayout(<Component {...pageProps} />)}
+                <PodcastPlayerProvider>
+                  {getLayout(<Component {...pageProps} />)}
+                </PodcastPlayerProvider>
               </WebAudioProvider>
             </TransistorProvider>
           </ChakraProvider>

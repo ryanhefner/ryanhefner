@@ -1,88 +1,103 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useRef, useState } from 'react'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import Timecode from 'react-timecode'
-import { useWebAudioContext } from 'react-web-audio'
 
 import { Link } from '../base'
 import { PlayButton } from '../buttons'
 
+import { Waveform } from './Waveform'
+import { PodcastPlayerContext } from '../../contexts'
+
 type AudioPlayerProps = {
   duration: number
-  isPlaying?: boolean
+  isSelected?: boolean
   slug: string
   title: string
   url: string
-  onPlay?: (url: string) => void
-  onProgress?: (time: number) => void
+  onPlay?: () => void
 }
 
 export const AudioPlayer = ({
   duration,
-  isPlaying,
+  isSelected,
   slug,
   title,
   url,
-  onProgress,
+  onPlay,
 }: AudioPlayerProps) => {
-  const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null)
-  const [currentTime, setCurrentState] = useState(0)
+  const [waveformWidth, setWaveformWidth] = useState(0)
+  const [waveformHeight, setWaveformHeight] = useState(0)
 
-  const { audioContext, load, play } = useWebAudioContext()
+  const linkRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const loadAsync = async () => {
-      const buffer = await load(url)
-      setAudioBuffer(buffer)
-    }
+  const { currentTime, isPlaying } = useContext(PodcastPlayerContext)
 
-    loadAsync()
-  }, [load, url])
-
-  const handlePlayClick = useCallback((url: string) => {
-    const playAsync = async () => {}
-
-    playAsync()
-  }, [])
+  const handlePlayClick = useCallback(() => {
+    onPlay?.()
+  }, [onPlay])
 
   return (
     <Flex
       // borderBottom="1px solid"
       // borderColor="gray.800"
       alignItems="center"
-      bg={isPlaying ? 'white' : 'gray.900'}
+      bg={isSelected ? 'white' : 'gray.900'}
       borderRadius="full"
-      color={isPlaying ? 'black' : 'white'}
-      gap={3}
+      color={isSelected ? 'black' : 'white'}
+      gap={1}
       justifyContent="space-between"
       transition="all 0.2s ease-in-out"
       _hover={{
-        bg: isPlaying ? 'gray.100' : 'gray.800',
+        bg: isSelected ? 'gray.100' : 'gray.800',
       }}
     >
       <PlayButton
-        onClick={() => handlePlayClick(url)}
-        isPlaying={isPlaying}
+        flex="0 0 auto"
+        onClick={handlePlayClick}
+        isPlaying={isSelected && isPlaying}
         m={2}
         mr={0}
       />
       <Link
         href={`/episodes/${slug}`}
         flex={1}
+        pl={2}
         pos="relative"
         _hover={{
           textDecoration: 'none',
         }}
       >
-        <Flex justifyContent="space-between">
+        {isSelected ? (
+          <Waveform
+            color={isSelected ? '#ddd' : '#333'}
+            slug={slug}
+            zIndex={0}
+            height={`${waveformHeight}px`}
+            width={`${waveformWidth}px`}
+          />
+        ) : null}
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          zIndex={1}
+          pos="absolute"
+          top={0}
+          right={0}
+          bottom={0}
+          left={2}
+          ref={linkRef}
+        >
           <Text fontSize="md">{title}</Text>
           <HStack spacing={1} mr={5}>
-            {isPlaying ? (
+            {isSelected ? (
               <>
-                <Text>
-                  <Timecode format="mm:ss" time={currentTime * 1000} />
+                <Text fontFamily="monospace" fontSize="md">
+                  <Timecode format="mm:ss" time={currentTime} />
                 </Text>
-                <Text>/</Text>
+                <Text fontFamily="monospace" fontSize="md">
+                  /
+                </Text>
               </>
             ) : null}
             <Text fontFamily="monospace" fontSize="md">
@@ -90,17 +105,18 @@ export const AudioPlayer = ({
             </Text>
           </HStack>
         </Flex>
-        {isPlaying ? (
+        {isSelected ? (
           <Box
             bg="red.500"
             borderRadius="sm"
             boxShadow="lg"
             pos="absolute"
-            top="-15px"
-            left={`${(currentTime / duration) * 100}%`}
-            h="calc(100% + 30px)"
-            w={1}
+            top="-2px"
+            left={`${(currentTime / (duration * 1000)) * 100}%`}
+            h="calc(100% + 4px)"
+            w="3px"
             cursor="grab"
+            zIndex={2}
           />
         ) : null}
       </Link>

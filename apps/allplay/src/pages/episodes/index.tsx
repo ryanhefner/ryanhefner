@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
-import { Flex, Heading } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { TransistorClient } from 'transistor-client'
 
 import { SiteLayout } from '../../components/layouts'
-import { AudioPlayer } from '../../components/media'
+import { EpisodeList } from '../../components/media/EpisodeList'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -20,21 +20,7 @@ const EpisodesIndexPage = ({
       px={{ base: 4, md: 8 }}
       py={{ base: 12, md: 24 }}
     >
-      <Flex flexDir="column" mt={24} gap={1.5}>
-        <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
-          Episodes
-        </Heading>
-        {episodes.map((episode: any, index: number) => (
-          <AudioPlayer
-            key={episode.id}
-            duration={episode.attributes.duration}
-            isPlaying={index === 0}
-            slug={episode.attributes.slug}
-            title={episode.attributes.title}
-            url={episode.attributes.media_url}
-          />
-        ))}
-      </Flex>
+      <EpisodeList mt={24} episodes={episodes} />
     </Flex>
   )
 }
