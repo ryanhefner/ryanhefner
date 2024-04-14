@@ -7,7 +7,7 @@ export const SiteFooter = () => (
   <Flex
     alignItems={{ base: 'flex-start', md: 'center' }}
     flexDir={{ base: 'column-reverse', md: 'row' }}
-    gap={3}
+    gap={6}
     justifyContent="space-between"
     px={{ base: 4, md: 8 }}
     py={{ base: 6, md: 12 }}
