@@ -106,6 +106,10 @@ export const WebAudioProvider = ({
           const audioBuffer =
             audioBufferMapRef.current.get(url) ?? (await load(url))
 
+          if (!audioBuffer) {
+            return null
+          }
+
           const source = localAudioContext.createBufferSource()
           source.buffer = audioBuffer
           source.connect(localAudioContext.destination)
@@ -114,7 +118,7 @@ export const WebAudioProvider = ({
           }
           source.start(startOffset)
 
-          return source
+          return { audioBuffer, audioBufferSourceNode: source }
         } catch (err) {
           onError?.(err)
           onErrorLocal?.(err)

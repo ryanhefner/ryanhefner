@@ -14,8 +14,11 @@ type WebAudioContextValues = {
   load: (url: string) => Promise<AudioBuffer | null>
   play: (
     url: string,
-    options?: PlayOptions,
-  ) => Promise<AudioBufferSourceNode | null>
+    options?: PlayOptions | undefined,
+  ) => Promise<{
+    audioBuffer: AudioBuffer
+    audioBufferSourceNode: AudioBufferSourceNode
+  } | null>
 }
 
 export const WebAudioContext = createContext<WebAudioContextValues>({
