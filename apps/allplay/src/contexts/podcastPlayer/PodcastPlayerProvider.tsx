@@ -32,7 +32,9 @@ export const PodcastPlayerProvider = ({
   const audioBufferSourceNodeRef = useRef<AudioBufferSourceNode | null>(null)
   const intervalRef = useRef<NodeJS.Timeout | undefined>()
 
-  const { play } = useWebAudioContext()
+  const { play: playContext } = useWebAudioContext()
+
+  const play = useCallback(() => {}, [])
 
   useEffect(() => {
     const asyncPlay = async () => {
@@ -42,7 +44,9 @@ export const PodcastPlayerProvider = ({
         return
       }
 
-      const playResponse = await play(currentEpisode.attributes.media_url)
+      const playResponse = await playContext(
+        currentEpisode.attributes.media_url,
+      )
 
       if (playResponse) {
         setStartTime(Date.now())
@@ -58,7 +62,7 @@ export const PodcastPlayerProvider = ({
     if (!isPlaying && currentEpisode) {
       asyncPlay()
     }
-  }, [currentEpisode, currentTime, isPlaying, play])
+  }, [currentEpisode, currentTime, isPlaying, playContext])
 
   useEffect(() => {
     clearTimeout(intervalRef.current)
