@@ -10,6 +10,9 @@ export const PodcastPlayerContext = createContext<{
   startTime?: number
   currentTime: number
   isPlaying: boolean
+  isEnded: boolean
+  getAudioBuffer: () => AudioBuffer | null
+  getAudioBufferSourceNode: () => AudioBufferSourceNode | null
 }>({
   currentEpisode: null,
   setCurrentEpisode: (value: any) => undefined,
@@ -18,4 +21,7 @@ export const PodcastPlayerContext = createContext<{
   startTime: undefined,
   currentTime: 0,
   isPlaying: false,
+  isEnded: false,
+  getAudioBuffer: () => null,
+  getAudioBufferSourceNode: () => null,
 })

@@ -116,7 +116,7 @@ export const WebAudioProvider = ({
           if (onEnded) {
             source.addEventListener('ended', onEnded)
           }
-          source.start(startOffset)
+          source.start(0, startOffset)
 
           return { audioBuffer, audioBufferSourceNode: source }
         } catch (err) {

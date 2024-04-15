@@ -1,4 +1,4 @@
-import { useCallback, useContext, useRef, useState } from 'react'
+import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import Timecode from 'react-timecode'
@@ -33,14 +33,26 @@ export const AudioPlayer = ({
 
   const { currentTime, isPlaying } = useContext(PodcastPlayerContext)
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWaveformWidth(linkRef.current?.clientWidth ?? 0)
+      setWaveformHeight(linkRef.current?.clientHeight ?? 0)
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const handlePlayClick = useCallback(() => {
     onPlay?.()
   }, [onPlay])
 
   return (
     <Flex
-      // borderBottom="1px solid"
-      // borderColor="gray.800"
       alignItems="center"
       bg={isSelected ? 'white' : 'gray.900'}
       borderRadius="full"
@@ -64,6 +76,7 @@ export const AudioPlayer = ({
         flex={1}
         pl={2}
         pos="relative"
+        h={10}
         _hover={{
           textDecoration: 'none',
         }}
@@ -86,9 +99,18 @@ export const AudioPlayer = ({
           right={0}
           bottom={0}
           left={2}
+          overflow="clip"
           ref={linkRef}
         >
-          <Text fontSize="md">{title}</Text>
+          <Text
+            fontSize="md"
+            overflow="clip"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+            w={isSelected ? 'calc(100% - 114px)' : 'calc(100% - 50px)'}
+          >
+            {title}
+          </Text>
           <HStack spacing={1} mr={5}>
             {isSelected ? (
               <>
@@ -111,9 +133,9 @@ export const AudioPlayer = ({
             borderRadius="sm"
             boxShadow="lg"
             pos="absolute"
-            top="-2px"
+            top="-5px"
             left={`${(currentTime / (duration * 1000)) * 100}%`}
-            h="calc(100% + 4px)"
+            h="calc(100% + 10px)"
             w="3px"
             cursor="grab"
             zIndex={2}

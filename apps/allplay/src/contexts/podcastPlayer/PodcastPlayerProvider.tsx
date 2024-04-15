@@ -27,6 +27,7 @@ export const PodcastPlayerProvider = ({
   const [startTime, setStartTime] = useState<number | undefined>()
   const [currentTime, setCurrentTime] = useState<number>(0)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isEnded, setIsEnded] = useState(false)
 
   const audioBufferRef = useRef<AudioBuffer | null>(null)
   const audioBufferSourceNodeRef = useRef<AudioBufferSourceNode | null>(null)
@@ -34,40 +35,41 @@ export const PodcastPlayerProvider = ({
 
   const { play: playContext } = useWebAudioContext()
 
-  const play = useCallback(() => {}, [])
-
-  useEffect(() => {
+  const play = useCallback((url: string, startOffset: number = 0) => {
     const asyncPlay = async () => {
-      setIsPlaying(true)
-
-      if (currentTime && audioBufferSourceNodeRef.current) {
-        return
-      }
-
-      const playResponse = await playContext(
-        currentEpisode.attributes.media_url,
-      )
+      const playResponse = await playContext(url, {
+        onEnded: () => {
+          console.debug('onEnded')
+          setIsEnded(true)
+        },
+        startOffset: startOffset / 1000,
+      })
 
       if (playResponse) {
-        setStartTime(Date.now())
+        setIsPlaying(true)
+        setStartTime(Date.now() - startOffset)
         const { audioBuffer, audioBufferSourceNode } = playResponse
         audioBufferRef.current = audioBuffer
         audioBufferSourceNodeRef.current = audioBufferSourceNode
         return
       }
 
-      console.debug('No playResponse for: ', currentEpisode)
+      console.warn('No playResponse for: ', url)
     }
 
-    if (!isPlaying && currentEpisode) {
-      asyncPlay()
+    asyncPlay()
+  }, [])
+
+  useEffect(() => {
+    if (currentEpisode) {
+      play(currentEpisode.attributes.media_url)
     }
-  }, [currentEpisode, currentTime, isPlaying, playContext])
+  }, [currentEpisode, play])
 
   useEffect(() => {
     clearTimeout(intervalRef.current)
 
-    if (isPlaying && startTime) {
+    if (!isEnded && isPlaying && startTime) {
       intervalRef.current = setInterval(() => {
         setCurrentTime(Date.now() - startTime)
       }, 250)
@@ -76,7 +78,7 @@ export const PodcastPlayerProvider = ({
     return () => {
       clearInterval(intervalRef.current)
     }
-  }, [isPlaying, startTime])
+  }, [isEnded, isPlaying, startTime])
 
   const setCurrentEpisode = useCallback(
     (value: any) => {
@@ -86,6 +88,7 @@ export const PodcastPlayerProvider = ({
           setLastEpisode(value)
           setCurrentTime(0)
           setIsPlaying(false)
+          setIsEnded(false)
           audioBufferSourceNodeRef.current?.stop()
           newEpisode = true
           return value
@@ -98,13 +101,18 @@ export const PodcastPlayerProvider = ({
         if (isPlaying) {
           setIsPlaying(false)
           audioBufferSourceNodeRef.current?.stop()
-        } else {
-          setIsPlaying(true)
-          audioBufferSourceNodeRef.current?.start(currentTime)
+        } else if (currentEpisode) {
+          play(currentEpisode.attributes.media_url, currentTime)
         }
       }
     },
-    [currentTime, isPlaying],
+    [currentEpisode, currentTime, isPlaying, play],
+  )
+
+  const getAudioBuffer = useCallback(() => audioBufferRef.current, [])
+  const getAudioBufferSourceNode = useCallback(
+    () => audioBufferSourceNodeRef.current,
+    [],
   )
 
   return (
@@ -117,6 +125,9 @@ export const PodcastPlayerProvider = ({
         startTime,
         currentTime,
         isPlaying,
+        isEnded,
+        getAudioBuffer,
+        getAudioBufferSourceNode,
       }}
     >
       {children}
