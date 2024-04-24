@@ -13,11 +13,13 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
+import { EpisodeList } from '../../components/media/EpisodeList'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const EpisodePage = ({
   episode,
+  episodes,
   transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
@@ -110,6 +112,10 @@ const EpisodePage = ({
           </Flex>
         </Box>
       </Flex>
+      <EpisodeList
+        episodes={episodes.filter((item: any) => item.id !== episode.id)}
+        title="More Episodes"
+      />
     </Flex>
   )
 }
@@ -141,13 +147,14 @@ export const getStaticProps = (async ({ params }) => {
   })
 
   let episode = null
+  let episodes = []
   let transcript = null
 
   if (SHOW_ID) {
-    const episodes = await transistorClient.episodes(SHOW_ID)
-    episode = episodes.data.find(
-      (item: any) => item.attributes.slug === slug?.[0],
-    )
+    episodes = await transistorClient
+      .episodes(SHOW_ID)
+      .then((response) => response.data)
+    episode = episodes.find((item: any) => item.attributes.slug === slug?.[0])
 
     if (episode) {
       const turndownService = new TurndownService()
@@ -174,9 +181,10 @@ export const getStaticProps = (async ({ params }) => {
   return {
     props: {
       episode,
+      episodes,
       transcript,
     },
   }
-}) satisfies GetStaticProps<{ episode: any; transcript: any }>
+}) satisfies GetStaticProps<{ episode: any; episodes: any[]; transcript: any }>
 
 export default EpisodePage
