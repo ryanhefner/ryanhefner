@@ -80,6 +80,10 @@ export class TransistorClient {
     })
   }
 
+  public episode(id: string): Promise<any> {
+    return this._request(`/episodes/${id}`)
+  }
+
   public me(): Promise<User> {
     return this._request('/')
   }
