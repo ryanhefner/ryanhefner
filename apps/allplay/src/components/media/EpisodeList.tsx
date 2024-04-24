@@ -7,9 +7,10 @@ import { PodcastPlayerContext } from '../../contexts'
 
 interface EpisodeListProps extends ChakraProps {
   episodes: any[]
+  title?: string
 }
 
-export const EpisodeList = ({ episodes = [] }: EpisodeListProps) => {
+export const EpisodeList = ({ episodes = [], title }: EpisodeListProps) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
   const handlePlay = useCallback(
@@ -24,7 +25,7 @@ export const EpisodeList = ({ episodes = [] }: EpisodeListProps) => {
   return (
     <Flex flexDir="column" mt={24} gap={1.5}>
       <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
-        Episodes
+        {title ?? 'Episodes'}
       </Heading>
       {episodes.map((episode: any, index: number) => (
         <AudioPlayer
