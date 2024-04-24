@@ -109,16 +109,16 @@ export const AudioPlayer = ({
 
     const handleMouseUp = (evt: Event | MouseEvent) => {
       setIsDragging(false)
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('pointermove', handleMouseMove)
+      window.removeEventListener('pointerup', handleMouseUp)
     }
 
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('mouseup', handleMouseUp)
+      window.addEventListener('pointermove', handleMouseMove)
+      window.addEventListener('pointerup', handleMouseUp)
     } else {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('pointermove', handleMouseMove)
+      window.removeEventListener('pointerup', handleMouseUp)
     }
   }, [isDragging])
 
@@ -238,7 +238,7 @@ export const AudioPlayer = ({
             w="3px"
             cursor="grab"
             zIndex={2}
-            onMouseDown={handleMouseDown}
+            onPointerDown={handleMouseDown}
             pointerEvents="all"
             style={{
               left: scrubberOffset,
