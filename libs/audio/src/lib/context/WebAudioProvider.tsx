@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { PropsWithChildren, useCallback, useEffect, useRef } from 'react'
 
 import { WebAudioContext } from './WebAudioContext'
 import type { PlayOptions } from './WebAudioContext'
@@ -21,14 +15,14 @@ export const WebAudioProvider = ({
   onError,
   onStateChange,
 }: WebAudioProviderProps) => {
-  const [audioContext, setAudioContext] = useState<AudioContext | null>(null)
+  const audioContextRef = useRef<AudioContext | null>(null)
   const audioBufferMapRef = useRef<Map<string, AudioBuffer>>(new Map())
 
   const handleStateChange = useCallback(() => {
-    if (audioContext) {
-      onStateChange?.(audioContext.state)
+    if (audioContextRef.current) {
+      onStateChange?.(audioContextRef.current.state)
     }
-  }, [audioContext, onStateChange])
+  }, [onStateChange])
 
   const flush = useCallback((url: string) => {
     if (audioBufferMapRef.current?.has(url)) {
@@ -44,22 +38,18 @@ export const WebAudioProvider = ({
   }, [])
 
   const init = useCallback(() => {
-    if (!audioContext) {
-      const localAudioContext = new window.AudioContext()
-      localAudioContext.addEventListener('statechange', handleStateChange)
-
-      setAudioContext(localAudioContext)
-
-      return localAudioContext
+    if (!audioContextRef.current) {
+      audioContextRef.current = new window.AudioContext()
+      audioContextRef.current.addEventListener('statechange', handleStateChange)
     }
 
-    return audioContext
-  }, [audioContext, handleStateChange])
+    return audioContextRef.current
+  }, [handleStateChange])
 
   const load = useCallback(
     (url: string): Promise<AudioBuffer | null> => {
       const loadAsync = async () => {
-        const localAudioContext = audioContext ?? init()
+        const localAudioContext = audioContextRef.current ?? init()
 
         if (audioBufferMapRef.current.has(url)) {
           return null
@@ -88,7 +78,7 @@ export const WebAudioProvider = ({
 
       return loadAsync()
     },
-    [audioContext, init, onError],
+    [init, onError],
   )
 
   const play = useCallback(
@@ -97,7 +87,7 @@ export const WebAudioProvider = ({
 
       const playAsync = async () => {
         try {
-          const localAudioContext = audioContext ?? init()
+          const localAudioContext = audioContextRef.current ?? init()
 
           if (localAudioContext.state === 'suspended') {
             await localAudioContext.resume()
@@ -128,7 +118,7 @@ export const WebAudioProvider = ({
 
       return playAsync()
     },
-    [audioContext, init, load, onError],
+    [init, load, onError],
   )
 
   useEffect(() => {
@@ -139,9 +129,11 @@ export const WebAudioProvider = ({
     }
   }, [load, preloadAudio])
 
+  const getAudioContext = useCallback(() => audioContextRef.current, [])
+
   return (
     <WebAudioContext.Provider
-      value={{ audioContext, flush, getBuffer, init, load, play }}
+      value={{ getAudioContext, flush, getBuffer, init, load, play }}
     >
       {children}
     </WebAudioContext.Provider>

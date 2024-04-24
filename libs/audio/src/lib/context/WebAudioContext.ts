@@ -7,7 +7,7 @@ export type PlayOptions = {
 }
 
 type WebAudioContextValues = {
-  audioContext?: AudioContext | null
+  getAudioContext: () => AudioContext | null
   flush: (url: string) => boolean
   getBuffer: (url: string) => AudioBuffer | undefined
   init: () => AudioContext | null
@@ -22,7 +22,7 @@ type WebAudioContextValues = {
 }
 
 export const WebAudioContext = createContext<WebAudioContextValues>({
-  audioContext: null,
+  getAudioContext: () => null,
   flush: (url: string) => false,
   getBuffer: (url: string) => undefined,
   init: () => null,
