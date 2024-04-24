@@ -75,7 +75,7 @@ export const PodcastPlayerProvider = ({
         const nextTime = Date.now() - startTime
         setCurrentTime(nextTime)
 
-        if (nextTime >= currentEpisode.duration * 1000) {
+        if (nextTime >= currentEpisode.attributes.duration * 1000) {
           clearInterval(intervalRef.current)
           setIsEnded(true)
           setIsPlaying(false)
@@ -86,7 +86,7 @@ export const PodcastPlayerProvider = ({
     return () => {
       clearInterval(intervalRef.current)
     }
-  }, [isEnded, isPlaying, startTime])
+  }, [currentEpisode, isEnded, isPlaying, startTime])
 
   const setCurrentEpisode = useCallback(
     (value: any) => {
