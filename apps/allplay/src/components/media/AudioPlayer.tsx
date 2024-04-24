@@ -75,7 +75,7 @@ export const AudioPlayer = ({
 
   const { seek } = useContext(PodcastPlayerContext)
 
-  const { currentTime, getAudioBuffer, isPlaying } =
+  const { currentTime, getAudioBuffer, isPlaying, isEnded } =
     useContext(PodcastPlayerContext)
 
   useEffect(() => {
@@ -134,7 +134,9 @@ export const AudioPlayer = ({
     () =>
       isDragging
         ? `calc(${dragPercent * 100}% - 3px)`
-        : `calc(${Math.min(1, Math.max(0, currentTime / (duration * 1000))) * 100}% - 3px)`,
+        : isEnded
+          ? 'calc(100% - 3px)'
+          : `calc(${Math.min(1, Math.max(0, currentTime / (duration * 1000))) * 100}% - 3px)`,
     [currentTime, dragPercent, duration, isDragging],
   )
 
@@ -214,7 +216,11 @@ export const AudioPlayer = ({
                     <Timecode
                       format="mm:ss"
                       time={
-                        isDragging ? duration * 1000 * dragPercent : currentTime
+                        isDragging
+                          ? duration * 1000 * dragPercent
+                          : isEnded
+                            ? duration * 1000
+                            : currentTime
                       }
                     />
                   </Text>
@@ -239,7 +245,7 @@ export const AudioPlayer = ({
           <Box
             bg="red.500"
             borderRadius="sm"
-            boxShadow="lg"
+            boxShadow="sm"
             pos="absolute"
             top={size === AudioPlayerSize.LARGE ? '-15px' : '-5px'}
             h={

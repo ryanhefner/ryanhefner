@@ -79,6 +79,7 @@ export const PodcastPlayerProvider = ({
           clearInterval(intervalRef.current)
           setIsEnded(true)
           setIsPlaying(false)
+          setCurrentTime(0)
         }
       }, 250)
     }
@@ -110,6 +111,7 @@ export const PodcastPlayerProvider = ({
           setIsPlaying(false)
           audioBufferSourceNodeRef.current?.stop()
         } else if (currentEpisode) {
+          setIsEnded(false)
           play(currentEpisode.attributes.media_url, currentTime)
         }
       }
@@ -125,6 +127,7 @@ export const PodcastPlayerProvider = ({
   const seek = useCallback(
     (url: string, offset: number) => {
       audioBufferSourceNodeRef.current?.stop()
+      setIsEnded(false)
       play(url, offset)
     },
     [play],
