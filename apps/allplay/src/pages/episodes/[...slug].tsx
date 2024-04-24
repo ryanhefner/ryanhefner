@@ -22,6 +22,8 @@ const EpisodePage = ({
   episodes,
   transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.debug(episode)
+
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
   const handlePlay = useCallback(() => {
@@ -78,7 +80,7 @@ const EpisodePage = ({
           </Flex>
         </Box>
         <Box flex={1}>
-          <Heading as="h2" fontSize="lg">
+          <Heading as="h2" fontSize="lg" pos="sticky" top={24}>
             Transcript
           </Heading>
           <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
@@ -91,6 +93,8 @@ const EpisodePage = ({
                     fontFamily="monospace"
                     fontSize="sm"
                     mt="3px"
+                    pos="sticky"
+                    top={32}
                     whiteSpace="nowrap"
                   >
                     <Timecode
