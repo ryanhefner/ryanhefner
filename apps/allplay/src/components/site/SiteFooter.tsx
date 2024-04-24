@@ -14,7 +14,7 @@ export const SiteFooter = () => (
   >
     <HStack spacing={4} alignItems="center">
       <Text color="gray.400">
-        {`© ${new Date().getFullYear()} — `}
+        {`© ${new Date().getFullYear()} — `}All Play FM +{' '}
         <Link color="white" href="https://www.ryanhefner.com">
           Ryan Hefner
         </Link>
