@@ -57,7 +57,12 @@ const EpisodePage = ({
         />
       </Box>
       <Flex flexDir={{ base: 'column', md: 'row' }} gap={{ base: 24, md: 32 }}>
-        <Box flex="0 0 30%">
+        <Box
+          flex="0 0 30%"
+          alignSelf="flex-start"
+          pos="sticky"
+          top={{ base: 16, md: 24 }}
+        >
           <Heading as="h2" fontSize="lg">
             Show Notes
           </Heading>
@@ -80,7 +85,12 @@ const EpisodePage = ({
           </Flex>
         </Box>
         <Box flex={1}>
-          <Heading as="h2" fontSize="lg" pos="sticky" top={24}>
+          <Heading
+            as="h2"
+            fontSize="lg"
+            pos="sticky"
+            top={{ base: 16, md: 24 }}
+          >
             Transcript
           </Heading>
           <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
@@ -94,7 +104,7 @@ const EpisodePage = ({
                     fontSize="sm"
                     mt="3px"
                     pos="sticky"
-                    top={32}
+                    top={{ base: 24, md: 32 }}
                     whiteSpace="nowrap"
                   >
                     <Timecode
