@@ -1,4 +1,5 @@
 import {
+  RefObject,
   useCallback,
   useContext,
   useEffect,
@@ -29,6 +30,30 @@ type AudioPlayerProps = {
   title?: string
   url: string
   onPlay?: () => void
+}
+
+const getDragPercent = (
+  event: PointerEvent | React.PointerEvent<HTMLDivElement>,
+  ref: RefObject<HTMLDivElement>,
+) => {
+  let percent = 0
+
+  if (!ref.current) {
+    return percent
+  }
+
+  const { left: refLeft, right: refRight } = ref.current.getBoundingClientRect()
+
+  if (event.clientX > refLeft && event.clientX < refRight) {
+    percent = Math.max(
+      0,
+      Math.min(1, (event.clientX - refLeft) / ref.current.clientWidth),
+    )
+  } else if (event.clientX > refRight) {
+    percent = 1
+  }
+
+  return percent
 }
 
 export const AudioPlayer = ({
@@ -74,40 +99,23 @@ export const AudioPlayer = ({
   const audioBuffer = useMemo(() => getAudioBuffer(), [isPlaying, url])
 
   const handleMouseDown = useCallback(
-    (evt: React.MouseEvent<HTMLDivElement>) => {
+    (evt: React.PointerEvent<HTMLDivElement>) => {
       setIsDragging(true)
+      const percent = getDragPercent(evt, dragRef)
+      setDragPercent(percent)
+      seek(url, duration * 1000 * percent)
     },
     [],
   )
 
   useEffect(() => {
-    const handleMouseMove = (evt: MouseEvent | Event) => {
-      const event = evt as MouseEvent
-
-      if (dragRef.current) {
-        let percent = 0
-
-        const { left: dragRefLeft, right: dragRefRight } =
-          dragRef.current.getBoundingClientRect()
-
-        if (event.clientX > dragRefLeft && event.clientX < dragRefRight) {
-          percent = Math.max(
-            0,
-            Math.min(
-              1,
-              (event.clientX - dragRefLeft) / dragRef.current.clientWidth,
-            ),
-          )
-        } else if (event.clientX > dragRefRight) {
-          percent = 1
-        }
-
-        setDragPercent(percent)
-        seek(url, duration * 1000 * percent)
-      }
+    const handleMouseMove = (evt: PointerEvent | Event) => {
+      const percent = getDragPercent(evt as PointerEvent, dragRef)
+      setDragPercent(percent)
+      seek(url, duration * 1000 * percent)
     }
 
-    const handleMouseUp = (evt: Event | MouseEvent) => {
+    const handleMouseUp = (evt: PointerEvent | Event) => {
       setIsDragging(false)
       window.removeEventListener('pointermove', handleMouseMove)
       window.removeEventListener('pointerup', handleMouseUp)
@@ -233,8 +241,12 @@ export const AudioPlayer = ({
             borderRadius="sm"
             boxShadow="lg"
             pos="absolute"
-            top="-5px"
-            h="calc(100% + 10px)"
+            top={size === AudioPlayerSize.LARGE ? '-15px' : '-5px'}
+            h={
+              size === AudioPlayerSize.LARGE
+                ? 'calc(100% + 30px)'
+                : 'calc(100% + 10px)'
+            }
             w="3px"
             cursor="grab"
             zIndex={2}
