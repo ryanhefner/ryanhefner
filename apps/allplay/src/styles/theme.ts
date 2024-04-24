@@ -48,7 +48,7 @@ export const theme = extendTheme(
     styles: {
       global: (props: any) => ({
         html: {
-          bg: 'blue.500',
+          bg: 'black',
         },
         body: {
           color: mode('white', 'black')(props),
