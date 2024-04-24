@@ -10,7 +10,11 @@ interface EpisodeListProps extends ChakraProps {
   title?: string
 }
 
-export const EpisodeList = ({ episodes = [], title }: EpisodeListProps) => {
+export const EpisodeList = ({
+  episodes = [],
+  title,
+  ...rest
+}: EpisodeListProps) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
   const handlePlay = useCallback(
@@ -23,7 +27,7 @@ export const EpisodeList = ({ episodes = [], title }: EpisodeListProps) => {
   )
 
   return (
-    <Flex flexDir="column" mt={24} gap={1.5}>
+    <Flex flexDir="column" gap={1.5} {...rest}>
       <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
         {title ?? 'Episodes'}
       </Heading>

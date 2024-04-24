@@ -20,7 +20,7 @@ const EpisodesIndexPage = ({
       px={{ base: 4, md: 8 }}
       py={{ base: 12, md: 24 }}
     >
-      <EpisodeList mt={24} episodes={episodes} />
+      <EpisodeList episodes={episodes} />
     </Flex>
   )
 }

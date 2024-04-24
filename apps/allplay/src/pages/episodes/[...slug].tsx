@@ -114,6 +114,7 @@ const EpisodePage = ({
       </Flex>
       <EpisodeList
         episodes={episodes.filter((item: any) => item.id !== episode.id)}
+        mt={24}
         title="More Episodes"
       />
     </Flex>
