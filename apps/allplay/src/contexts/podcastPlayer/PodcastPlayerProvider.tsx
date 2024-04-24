@@ -39,8 +39,9 @@ export const PodcastPlayerProvider = ({
     const asyncPlay = async () => {
       const playResponse = await playContext(url, {
         onEnded: () => {
-          console.debug('onEnded')
-          setIsEnded(true)
+          // console.debug('onEnded')
+          // setIsEnded(true)
+          // setIsPlaying(false)
         },
         startOffset: startOffset / 1000,
       })
@@ -57,7 +58,7 @@ export const PodcastPlayerProvider = ({
       console.warn('No playResponse for: ', url)
     }
 
-    asyncPlay()
+    return asyncPlay()
   }, [])
 
   useEffect(() => {
@@ -71,7 +72,14 @@ export const PodcastPlayerProvider = ({
 
     if (!isEnded && isPlaying && startTime) {
       intervalRef.current = setInterval(() => {
-        setCurrentTime(Date.now() - startTime)
+        const nextTime = Date.now() - startTime
+        setCurrentTime(nextTime)
+
+        if (nextTime >= currentEpisode.duration * 1000) {
+          clearInterval(intervalRef.current)
+          setIsEnded(true)
+          setIsPlaying(false)
+        }
       }, 250)
     }
 
@@ -114,6 +122,13 @@ export const PodcastPlayerProvider = ({
     () => audioBufferSourceNodeRef.current,
     [],
   )
+  const seek = useCallback(
+    (url: string, offset: number) => {
+      audioBufferSourceNodeRef.current?.stop()
+      play(url, offset)
+    },
+    [play],
+  )
 
   return (
     <PodcastPlayerContext.Provider
@@ -128,6 +143,7 @@ export const PodcastPlayerProvider = ({
         isEnded,
         getAudioBuffer,
         getAudioBufferSourceNode,
+        seek,
       }}
     >
       {children}
