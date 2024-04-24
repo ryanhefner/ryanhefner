@@ -19,6 +19,7 @@
       "@fontbase/suisse-mono": ["libs/suisse-mono/src/index.css"],
       "@fontbase/suisse-works": ["libs/suisse-works/src/index.css"],
       "@linkcards/next": ["libs/linkcards/src/index.ts"],
+      "@waveforms/react": ["libs/waveforms/src/index.ts"],
       "contentlayer": ["libs/contentlayer/src/index.ts"],
       "contentlayer/generated": ["./.contentlayer/generated"],
       "emails": ["libs/emails/src/index.ts"],
