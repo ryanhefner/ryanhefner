@@ -60,7 +60,7 @@ const EpisodePage = ({
         <Box
           flex="0 0 30%"
           alignSelf="flex-start"
-          pos="sticky"
+          pos={{ base: 'relative', md: 'sticky' }}
           top={{ base: 16, md: 24 }}
         >
           <Heading as="h2" fontSize="lg">
