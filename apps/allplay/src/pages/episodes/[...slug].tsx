@@ -61,7 +61,7 @@ const EpisodePage = ({
           flex="0 0 30%"
           alignSelf="flex-start"
           pos={{ base: 'relative', md: 'sticky' }}
-          top={{ base: 16, md: 24 }}
+          top={{ base: 0, md: 24 }}
         >
           <Heading as="h2" fontSize="lg">
             Show Notes
