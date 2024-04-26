@@ -168,7 +168,7 @@ export const AudioPlayer = ({
       />
       <Flex ref={dragRef} flex={1} pos="relative" ml={2}>
         <Link
-          href={`/episodes/${slug}`}
+          href={`/podcast/${slug}`}
           flex={1}
           h={10}
           _hover={{

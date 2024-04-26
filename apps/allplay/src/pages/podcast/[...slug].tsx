@@ -2,6 +2,8 @@ import { ReactNode, useCallback, useContext } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import axios from 'axios'
+import { NewsletterForm } from 'newsletter'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Markdown from 'react-markdown'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
@@ -9,7 +11,6 @@ import { TransistorClient } from 'transistor-client'
 import TurndownService from 'turndown'
 
 import { SiteLayout } from '../../components/layouts'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
@@ -41,7 +42,7 @@ const EpisodePage = ({
         <Heading
           as="h1"
           fontSize={{ base: '3xl', md: '7xl' }}
-          letterSpacing={-1}
+          letterSpacing={{ base: -1, md: -2 }}
         >
           {episode?.attributes?.title ?? 'No episode title'}
         </Heading>
@@ -67,12 +68,6 @@ const EpisodePage = ({
             Show Notes
           </Heading>
           <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
-            {/* <MDXContent
-              components={mdxComponents({
-                codeBg: 'gray.800',
-                codeColor: 'white',
-              })}
-            /> */}
             <Markdown
               components={mdxComponents({
                 codeBg: 'gray.800',
@@ -131,6 +126,14 @@ const EpisodePage = ({
         mt={24}
         title="More Episodes"
       />
+      <Box id="#signup" mt={24}>
+        <Heading as="h3">Subscribe to the newletter</Heading>
+        <Text color="gray.400">
+          Get updates when new episodes are posted, and other fun stuff that I
+          am into.
+        </Text>
+        <NewsletterForm />
+      </Box>
     </Flex>
   )
 }
@@ -166,9 +169,19 @@ export const getStaticProps = (async ({ params }) => {
   let transcript = null
 
   if (SHOW_ID) {
-    episodes = await transistorClient
-      .episodes(SHOW_ID)
-      .then((response) => response.data)
+    episodes = await transistorClient.episodes(SHOW_ID).then((response) =>
+      response.data.sort((a: any, b: any) => {
+        if (a.attributes.number > b.attributes.number) {
+          return 1
+        }
+
+        if (a.attributes.number < b.attributes.number) {
+          return -1
+        }
+
+        return 0
+      }),
+    )
     episode = episodes.find((item: any) => item.attributes.slug === slug?.[0])
 
     if (episode) {

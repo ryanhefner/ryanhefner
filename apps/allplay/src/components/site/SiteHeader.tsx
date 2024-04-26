@@ -18,11 +18,11 @@ export const SiteHeader = () => (
     <Link href="/">
       <Heading fontSize="lg">— All Play</Heading>
     </Link>
-    <Link href="/episodes">
-      <Text fontSize="lg">Episodes</Text>
+    <Link href="/podcast">
+      <Text fontSize="lg">Podcast</Text>
     </Link>
-    <Link href="/newsletters">
-      <Text fontSize="lg">Newsletters</Text>
+    <Link href="/newsletter">
+      <Text fontSize="lg">Newsletter</Text>
     </Link>
   </Flex>
 )

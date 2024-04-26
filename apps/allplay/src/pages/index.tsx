@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { TransistorClient } from 'transistor-client'
 
@@ -10,23 +11,23 @@ import { EpisodeList } from '../components/media/EpisodeList'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
-const newsletters = [
-  {
-    id: 3,
-    slug: '/002-stacking-packages',
-    title: '002 – Stacking the Packages',
-  },
-  {
-    id: 2,
-    slug: '/001-focusing-distractions',
-    title: '001 – Focusing Distractions',
-  },
-  {
-    id: 1,
-    slug: '/000-welcome',
-    title: '000 – Welcome to, All Play!',
-  },
-]
+// const newsletters = [
+//   {
+//     id: 3,
+//     slug: '/002-stacking-packages',
+//     title: '002 – Stacking the Packages',
+//   },
+//   {
+//     id: 2,
+//     slug: '/001-focusing-distractions',
+//     title: '001 – Focusing Distractions',
+//   },
+//   {
+//     id: 1,
+//     slug: '/000-welcome',
+//     title: '000 – Welcome to, All Play!',
+//   },
+// ]
 
 const IndexPage = ({
   episodes = [],
@@ -51,37 +52,40 @@ const IndexPage = ({
           Ryan Hefner
         </Link>
         , share what I am doing and the things I am getting into. You can follow
-        along by listening to the podcast{' '}
-        <Link color="white" href="/episodes">
-          episodes
+        along by listening to the{' '}
+        <Link color="white" href="/podcast">
+          podcast
         </Link>{' '}
         or reading the{' '}
-        <Link color="white" href="/newsletters">
-          newsletters
+        <Link color="white" href="/newsletter">
+          newsletter
         </Link>
         .
         <br />
         <br />
         If you like what you hear, please{' '}
-        <Link color="white" href="/subscribe">
+        <Link color="white" href="#subscribe">
           subscribe
         </Link>{' '}
         in your favorite podcatcher. And, if you’re into what I am writing,
         please{' '}
-        <Link color="white" href="signup">
+        <Link color="white" href="#signup">
           sign up
         </Link>{' '}
         for the newsletter.
       </Text>
       <EpisodeList mt={24} episodes={episodes} />
-      <Flex flexDir="column" mt={24}>
+      <Box mt={24} id="subscribe">
+        <Heading>Listen in your favorite podcatcher</Heading>
+      </Box>
+      {/* <Flex flexDir="column" mt={24}>
         <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
           Newsletters
         </Heading>
         {newsletters.map((newsletter: any) => (
           <Link
             key={newsletter.id}
-            href={`/newsletters${newsletter.slug}`}
+            href={`/newsletter${newsletter.slug}`}
             _hover={{
               textDecoration: 'none',
             }}
@@ -96,7 +100,15 @@ const IndexPage = ({
             </Flex>
           </Link>
         ))}
-      </Flex>
+      </Flex> */}
+      <Box id="signup" mt={24}>
+        <Heading as="h3">Subscribe to the newletter</Heading>
+        <Text color="gray.400">
+          Get updates when new episodes are posted, and other fun stuff that I
+          am into.
+        </Text>
+        <NewsletterForm />
+      </Box>
     </Flex>
   )
 }
@@ -111,7 +123,17 @@ export const getStaticProps = (async () => {
 
   try {
     const response = await transistorClient.episodes(SHOW_ID as string)
-    episodes = response.data
+    episodes = response.data.sort((a: any, b: any) => {
+      if (a.attributes.number > b.attributes.number) {
+        return 1
+      }
+
+      if (a.attributes.number < b.attributes.number) {
+        return -1
+      }
+
+      return 0
+    })
   } catch (err) {
     console.error(err)
   }

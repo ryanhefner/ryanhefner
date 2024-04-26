@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
 
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { TransistorClient } from 'transistor-client'
+import { NewsletterForm } from 'newsletter'
 
 import { SiteLayout } from '../../components/layouts'
 import { EpisodeList } from '../../components/media/EpisodeList'
@@ -21,6 +22,14 @@ const EpisodesIndexPage = ({
       py={{ base: 12, md: 24 }}
     >
       <EpisodeList episodes={episodes} />
+      <Box id="signup" mt={24}>
+        <Heading as="h3">Subscribe to the newletter</Heading>
+        <Text color="gray.400">
+          Get updates when new episodes are posted, and other fun stuff that I
+          am into.
+        </Text>
+        <NewsletterForm />
+      </Box>
     </Flex>
   )
 }
@@ -37,7 +46,17 @@ export const getStaticProps = (async () => {
 
   try {
     const response = await transistorClient.episodes(SHOW_ID as string)
-    episodes = response.data
+    episodes = response.data.sort((a: any, b: any) => {
+      if (a.attributes.number > b.attributes.number) {
+        return 1
+      }
+
+      if (a.attributes.number < b.attributes.number) {
+        return -1
+      }
+
+      return 0
+    })
   } catch (err) {
     console.error(err)
   }
