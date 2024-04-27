@@ -19,6 +19,7 @@ export const Waveform = ({
 
   useEffect(() => {
     const canvas = canvasRef.current
+
     if (canvas) {
       const context = canvas.getContext('2d')
 
