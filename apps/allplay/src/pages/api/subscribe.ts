@@ -5,16 +5,22 @@ const resend = new Resend(process.env.RESEND_FULL_ACCESS_API_KEY)
 const audienceId = process.env.RESEND_AUDIENCE_ID
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'POST') {
+    res.status(405).json({ success: false, error: 'Method not allowed' })
+    return
+  }
+
   if (!audienceId) {
     res.status(422).json({ success: false, error: '' })
     return
   }
 
   try {
+    const { email, firstName } = JSON.parse(req.body)
+
     resend.contacts.create({
-      email: 'steve.wozniak@gmail.com',
-      // firstName: 'Steve',
-      // lastName: 'Wozniak',
+      email,
+      firstName,
       unsubscribed: false,
       audienceId,
     })
