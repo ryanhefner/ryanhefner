@@ -23,8 +23,6 @@ const EpisodePage = ({
   episodes,
   transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.debug(episode)
-
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
   const handlePlay = useCallback(() => {
