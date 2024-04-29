@@ -1,6 +1,14 @@
 import { ReactNode } from 'react'
 
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Image,
+  Text,
+} from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { TransistorClient } from 'transistor-client'
@@ -31,6 +39,7 @@ const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const IndexPage = ({
   episodes = [],
+  show = null,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Flex
@@ -77,6 +86,76 @@ const IndexPage = ({
       <EpisodeList mt={24} episodes={episodes} />
       <Box mt={24} id="subscribe">
         <Heading>Listen in your favorite podcatcher</Heading>
+        <Grid
+          gap={6}
+          mt={6}
+          templateColumns={{
+            base: 'repeat(3, 1fr)',
+            md: 'repeat(8, 1fr)',
+            lg: 'repeat(8, 1fr)',
+          }}
+        >
+          <GridItem>
+            <Link
+              href={show.attributes.apple_podcasts ?? ''}
+              title="Listen to All Play on Apple Podcasts"
+            >
+              <Image
+                src="/assets/apple-podcasts.svg"
+                alt="Listen to All Play on Apple Podcasts"
+                w="100%"
+              />
+            </Link>
+          </GridItem>
+          <GridItem>
+            <Link
+              href={show.attributes.spotify ?? ''}
+              title="Listen to All Play on Spotify"
+            >
+              <Image
+                src="/assets/spotify.svg"
+                alt="Listen to All Play on Spotify"
+                w="100%"
+              />
+            </Link>
+          </GridItem>
+          <GridItem>
+            <Link
+              href={show.attributes.overcast ?? ''}
+              title="Listen to All Play in Overcast"
+            >
+              <Image
+                src="/assets/overcast.svg"
+                alt="Listen to All Play in Overcast"
+                w="100%"
+              />
+            </Link>
+          </GridItem>
+          <GridItem>
+            <Link
+              href={show.attributes.amazon_music ?? ''}
+              title="Listen to All Play on Amazon Music"
+            >
+              <Image
+                src="/assets/amazon-music.png"
+                alt="Listen to All Play on Amazon Music"
+                w="100%"
+              />
+            </Link>
+          </GridItem>
+          <GridItem>
+            <Link
+              href={show.attributes.pocket_casts ?? ''}
+              title="Listen to All Play in Pocket Casts"
+            >
+              <Image
+                src="/assets/pocket-casts.svg"
+                alt="Listen to All Play in Pocket Casts"
+                w="100%"
+              />
+            </Link>
+          </GridItem>
+        </Grid>
       </Box>
       {/* <Flex flexDir="column" mt={24}>
         <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
@@ -120,10 +199,15 @@ export const getStaticProps = (async () => {
     apiKey: process.env.TRANSISTOR_API_KEY,
   })
   let episodes = []
+  let show = null
 
   try {
-    const response = await transistorClient.episodes(SHOW_ID as string)
-    episodes = response.data.sort((a: any, b: any) => {
+    const [showResponse, episodesResponse] = await Promise.all([
+      transistorClient.show(SHOW_ID as string),
+      transistorClient.episodes(SHOW_ID as string),
+    ])
+    show = showResponse?.data
+    episodes = episodesResponse?.data.sort((a: any, b: any) => {
       if (a.attributes.number > b.attributes.number) {
         return 1
       }
@@ -141,8 +225,9 @@ export const getStaticProps = (async () => {
   return {
     props: {
       episodes,
+      show,
     },
   }
-}) satisfies GetStaticProps<{ episodes: any[] }>
+}) satisfies GetStaticProps<{ episodes: any[]; show: any }>
 
 export default IndexPage
