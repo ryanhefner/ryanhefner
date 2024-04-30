@@ -124,11 +124,11 @@ export const getStaticProps = async ({ params }) => {
   let title = ''
   let body = ''
 
-  if (path.startsWith('/now')) {
+  if (path.startsWith('/now/')) {
     const now = allNows.find((now) => now.slug === slug[1])
     title = 'Now'
     body = now?.title ?? ''
-  } else if (path.startsWith('/thoughts')) {
+  } else if (path.startsWith('/thoughts/')) {
     const thought = allThoughts.find((thought) => thought.slug === slug[1])
     title = 'Thoughts'
     body = thought?.title ?? ''
