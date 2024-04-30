@@ -48,7 +48,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/svg" href="/favicon.svg" />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
