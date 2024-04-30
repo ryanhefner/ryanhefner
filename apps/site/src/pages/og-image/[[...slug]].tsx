@@ -124,43 +124,43 @@ export const getStaticProps = async ({ params }) => {
   let title = ''
   let body = ''
 
-  if (path.startsWith('/now')) {
+  if (path.startsWith('/now/')) {
     const now = allNows.find((now) => now.slug === slug[1])
     title = 'Now'
     body = now?.title ?? ''
-  } else if (path.startsWith('/thoughts')) {
+  } else if (path.startsWith('/thoughts/')) {
     const thought = allThoughts.find((thought) => thought.slug === slug[1])
     title = 'Thoughts'
     body = thought?.title ?? ''
   } else {
     switch (path) {
-      case 'about':
+      case '/about':
         title = 'About'
         body =
           'I’m a software engineer and product designer living in Atlanta, GA.'
         break
 
-      case 'withoss':
+      case '/withoss':
         title = 'Made w/ OSS'
         body = 'The open-source software I use to build this site.'
         break
 
-      case 'projects':
+      case '/projects':
         title = 'Projects'
         body = 'Projects I’ve worked on over the years.'
         break
 
-      case 'projects/oss':
+      case '/projects/oss':
         title = 'Projects / Open Source Software'
         body = 'My open-source software contributions.'
         break
 
-      case 'thoughts':
+      case '/thoughts':
         title = 'Thoughts'
         body = 'A collection of thoughts, ideas, and notes.'
         break
 
-      case 'now':
+      case '/now':
         title = 'Now'
         body = 'What I’m focusing on right now.'
         break
