@@ -30,7 +30,7 @@ const TrackPageView = ({ siteId, includedDomains }: FathomProps) => {
 
 const Fathom = ({
   siteId,
-  includedDomains = ['ryanhenfer.com', 'www.ryanhefner.com'],
+  includedDomains = ['ryanhefner.com', 'www.ryanhefner.com'],
 }: FathomProps) => (
   <Suspense fallback={null}>
     <TrackPageView {...{ siteId, includedDomains }} />
