@@ -107,16 +107,21 @@ export const getStaticProps = async ({ params }: { params: any }) => {
     title = 'Newsletter'
     body = 'Subscribe and get weekly updates of what I am working on and into.'
   } else if (path.startsWith('/podcast')) {
-    const transistorClient = new TransistorClient({
-      apiKey: process.env.TRANSISTOR_API_KEY,
-    })
+    if (slug.length === 1) {
+      title = 'Podcast'
+      body = 'Subscribe and listen in your favorite podcatcher.'
+    } else {
+      const transistorClient = new TransistorClient({
+        apiKey: process.env.TRANSISTOR_API_KEY,
+      })
 
-    const episodes = await transistorClient.episodes(SHOW_ID as string)
-    const episode = episodes?.data?.find(
-      (item: any) => item.attributes.slug === slug[1],
-    )
-    title = 'Podcast'
-    body = episode?.attributes?.title ?? ''
+      const episodes = await transistorClient.episodes(SHOW_ID as string)
+      const episode = episodes?.data?.find(
+        (item: any) => item.attributes.slug === slug[1],
+      )
+      title = 'Podcast'
+      body = episode?.attributes?.title ?? ''
+    }
   } else {
     switch (path) {
       case 'withoss':
