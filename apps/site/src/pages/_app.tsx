@@ -1,14 +1,16 @@
 import { ReactElement, ReactNode } from 'react'
+
+import { ChakraProvider } from '@chakra-ui/react'
+import { LinkCard } from '@linkcards/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { ChakraProvider } from '@chakra-ui/react'
 import { MetaProvider, SiteMeta } from 'next-meta'
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
-import { LinkCard } from '@linkcards/next'
+
 import { Fathom } from '../libs/fathom'
 import { theme } from '../styles'
 

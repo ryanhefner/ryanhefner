@@ -1,9 +1,10 @@
-import { mode } from '@chakra-ui/theme-tools'
 import {
   theme as baseTheme,
   extendTheme,
   withDefaultColorScheme,
 } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
+
 import { Tag } from './theme.tag'
 
 export const theme = extendTheme(

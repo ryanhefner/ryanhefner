@@ -1,0 +1,32 @@
+{
+  "name": "contentlayer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/contentlayer/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/contentlayer",
+        "main": "libs/contentlayer/src/index.ts",
+        "tsConfig": "libs/contentlayer/tsconfig.lib.json",
+        "assets": [],
+        "project": "libs/contentlayer/package.json",
+        "compiler": "swc",
+        "format": ["cjs", "esm"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/contentlayer"
+      }
+    }
+  }
+}

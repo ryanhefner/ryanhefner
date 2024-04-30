@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+
 import {
   Box,
   Flex,
@@ -9,13 +10,14 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
-import { withOss } from '../data/oss'
-import { cleanUrl } from '../utils'
-import { theme } from '../styles'
 import { PageHeading } from '../components/typography'
+import { withOss } from '../data/oss'
+import { theme } from '../styles'
+import { cleanUrl } from '../utils'
 
 const TITLE = 'Made w/ Open-Source Software'
 const DESCRIPTION =

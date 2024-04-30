@@ -1,5 +1,6 @@
 import { Flex, HStack, Text } from '@chakra-ui/react'
 import { allThoughts, allUpdates } from 'contentlayer/generated'
+
 import { Link } from '../base'
 
 export const SiteHeader = () => (
@@ -17,13 +18,19 @@ export const SiteHeader = () => (
     pb={{ base: 6 }}
     px={{ base: 6, sm: 10, md: 16, xl: 24 }}
   >
-    <Link href="/" color="white">
-      <HStack>
+    <HStack>
+      <Link href="/" color="white">
         <Text fontSize="lg" fontWeight="medium">
-          Ryan Hefner - All Play
+          Ryan Hefner
         </Text>
-      </HStack>
-    </Link>
+      </Link>
+      <Text color="white">{` — `}</Text>
+      <Link href="https://www.allplay.fm" color="white">
+        <Text fontSize="lg" fontWeight="medium">
+          All Play
+        </Text>
+      </Link>
+    </HStack>
     <Flex
       as="nav"
       flexWrap="wrap"
