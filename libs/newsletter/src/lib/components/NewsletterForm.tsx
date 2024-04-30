@@ -76,7 +76,7 @@ export const NewsletterForm = () => {
             border={0}
             borderBottom="1px solid"
             borderRadius={0}
-            borderColor="gray.800"
+            borderColor="gray.700"
             px={0}
             {...register('firstName')}
           />
@@ -90,7 +90,7 @@ export const NewsletterForm = () => {
             border={0}
             borderBottom="1px solid"
             borderRadius={0}
-            borderColor="gray.800"
+            borderColor="gray.700"
             px={0}
             {...register('email')}
           />
