@@ -25,7 +25,7 @@ export const SiteHeader = () => (
         </Text>
       </Link>
       <Text color="white">{` — `}</Text>
-      <Link href="/allplay" color="white">
+      <Link href="https://www.allplay.fm" color="white">
         <Text fontSize="lg" fontWeight="medium">
           All Play
         </Text>
