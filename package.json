@@ -33,6 +33,7 @@
     "core-js": "^3.37.0",
     "date-fns": "^3.0.6",
     "fathom-client": "^3.5.0",
+    "feed": "^4.2.2",
     "formidable": "^3.5.1",
     "framer-motion": "^11.0.6",
     "isomorphic-fetch": "^3.0.0",
