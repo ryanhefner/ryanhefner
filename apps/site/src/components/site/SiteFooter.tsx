@@ -2,11 +2,13 @@ import {
   chakra,
   Flex,
   HStack,
+  Icon,
   Image,
   Text,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { ImRss } from 'react-icons/im'
 import { Link } from '../base'
 
 const Break = chakra('br')
@@ -32,14 +34,19 @@ export const SiteFooter = () => {
         gap={{ base: 3, md: 6 }}
         flexDir={{ base: 'column', md: 'row-reverse' }}
       >
-        <Link href="/withoss">
-          <Image
-            alt="With OSS"
-            src="/assets/oss.svg"
-            h={6}
-            filter={colorMode === 'light' ? '' : 'invert(1)'}
-          />
-        </Link>
+        <HStack alignItems="center" spacing={4}>
+          <Link href="/withoss">
+            <Image
+              alt="With OSS"
+              src="/assets/oss.svg"
+              h={6}
+              filter={colorMode === 'light' ? '' : 'invert(1)'}
+            />
+          </Link>
+          <Link href="/feeds" lineHeight={0}>
+            <Icon as={ImRss} w={5} h={5} />
+          </Link>
+        </HStack>
         <Text fontFamily="mono" fontSize="sm">
           Ryan Hefner &copy;{' '}
           <Text as="span">2004 - {`${new Date().getFullYear()}`}. </Text>
