@@ -7,6 +7,7 @@ export const Newsletter = defineDocumentType(() => ({
   filePathPattern: 'newsletters/**/*.md',
   contentType: 'mdx',
   fields: {
+    category: { type: 'string', required: true, defaultValue: 'newsletter' },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
@@ -27,6 +28,7 @@ export const Now = defineDocumentType(() => ({
   filePathPattern: 'now/**/*.md',
   contentType: 'mdx',
   fields: {
+    category: { type: 'string', required: true, defaultValue: 'now' },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
@@ -48,6 +50,7 @@ export const Thought = defineDocumentType(() => ({
   filePathPattern: 'thoughts/**/*.md',
   contentType: 'mdx',
   fields: {
+    category: { type: 'string', required: true, defaultValue: 'thought' },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
@@ -68,6 +71,7 @@ export const Update = defineDocumentType(() => ({
   filePathPattern: 'updates/**/*.md',
   contentType: 'mdx',
   fields: {
+    category: { type: 'string', required: true, defaultValue: 'update' },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
