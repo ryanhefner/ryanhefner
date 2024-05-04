@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { TransistorClient } from 'transistor-client'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { slug } = req.query
+  const { index: slug } = req.query
 
   const client = new TransistorClient({
     apiKey: process.env.TRANSISTOR_API_KEY,
