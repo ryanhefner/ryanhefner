@@ -31,6 +31,7 @@
     "axios": "^1.6.8",
     "contentlayer": "^0.3.4",
     "core-js": "^3.37.0",
+    "cors": "^2.8.5",
     "date-fns": "^3.0.6",
     "fathom-client": "^3.5.0",
     "feed": "^4.2.2",
