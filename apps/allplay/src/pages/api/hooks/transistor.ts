@@ -33,7 +33,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   // Revalidate episode passed
   try {
-    const { data: episode } = JSON.parse(req.body)
+    const { data: episode } = req.body
 
     console.debug(episode)
 
