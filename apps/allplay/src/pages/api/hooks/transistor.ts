@@ -35,11 +35,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     const { data: episode } = JSON.parse(req.body)
 
+    console.debug(episode)
+
     await res.revalidate(`/podcast/${episode.attributes.slug}`)
     await res.revalidate(`/podcast`)
     await res.revalidate(`/`)
     res.status(200).json({ revalidated: true })
   } catch (err) {
+    console.error(err)
     return res.status(500).send('Error revalidating')
   }
 }
