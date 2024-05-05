@@ -33,9 +33,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   // Revalidate episode passed
   try {
-    const episode = req.body.data
-
-    console.debug(episode)
+    const { data: episode } = JSON.parse(req.body)
 
     await res.revalidate(`/podcast/${episode.attributes.slug}`)
     await res.revalidate(`/podcast`)
