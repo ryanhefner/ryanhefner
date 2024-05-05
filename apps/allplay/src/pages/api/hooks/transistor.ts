@@ -33,11 +33,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   // Revalidate episode passed
   try {
-    const episode = req.body
+    const episode = req.body.data
 
     console.debug(episode)
 
     await res.revalidate(`/podcast/${episode.attributes.slug}`)
+    await res.revalidate(`/podcast`)
+    await res.revalidate(`/`)
     res.status(200).json({ revalidated: true })
   } catch (err) {
     return res.status(500).send('Error revalidating')
