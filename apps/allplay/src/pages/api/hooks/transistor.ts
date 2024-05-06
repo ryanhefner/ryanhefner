@@ -35,8 +35,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     const { data: episode } = req.body
 
-    console.debug(episode)
-
     await res.revalidate(`/podcast/${episode.attributes.slug}`)
     await res.revalidate(`/podcast`)
     await res.revalidate(`/`)
