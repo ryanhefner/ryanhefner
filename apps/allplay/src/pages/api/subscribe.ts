@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email, firstName } = JSON.parse(req.body)
 
-    resend.contacts.create({
+    await resend.contacts.create({
       email,
       firstName,
       unsubscribed: false,
