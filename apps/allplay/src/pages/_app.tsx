@@ -22,7 +22,7 @@ import { theme } from '../styles'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
 
 const TITLE =
-  'Documenting my thoughts and process as I, Ryan Hefner, build products and tools'
+  'Follow along as I, Ryan Hefner, share the goods—and the bads—while building products and tools'
 const DESCRIPTION =
   'Subscribe to the All Play newsletter, and listen to the All Play podcast episodes, sharing updates on the process, tools, and attempts I make as I build products and open-source tools.'
 
