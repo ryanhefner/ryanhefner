@@ -4,6 +4,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { TransistorClient } from 'transistor-client'
 import { NewsletterForm } from 'newsletter'
+import { SiteMeta } from 'next-meta'
 
 import { SiteLayout } from '../../components/layouts'
 import { EpisodeList } from '../../components/media/EpisodeList'
@@ -16,24 +17,30 @@ const EpisodesIndexPage = ({
   show = null,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Flex
-      flexDir="column"
-      flex={1}
-      h="full"
-      px={{ base: 4, md: 8 }}
-      py={{ base: 12, md: 24 }}
-    >
-      <Podcatchers show={show} />
-      <EpisodeList episodes={episodes} mt={24} />
-      <Box id="signup" mt={24}>
-        <Heading as="h3">Subscribe to the newletter</Heading>
-        <Text color="gray.400">
-          Get updates when new episodes are posted, and other fun stuff that I
-          am into.
-        </Text>
-        <NewsletterForm />
-      </Box>
-    </Flex>
+    <>
+      <SiteMeta
+        title={`Podcast`}
+        description="Documenting the ideas, process and pitfalls that go into building products and open-source software and tools."
+      />
+      <Flex
+        flexDir="column"
+        flex={1}
+        h="full"
+        px={{ base: 4, md: 8 }}
+        py={{ base: 12, md: 24 }}
+      >
+        <Podcatchers show={show} />
+        <EpisodeList episodes={episodes} mt={24} />
+        <Box id="signup" mt={24}>
+          <Heading as="h3">Subscribe to the newletter</Heading>
+          <Text color="gray.400">
+            Get updates when new episodes are posted, and other fun stuff that I
+            am into.
+          </Text>
+          <NewsletterForm />
+        </Box>
+      </Flex>
+    </>
   )
 }
 
