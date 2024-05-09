@@ -63,7 +63,7 @@ const EpisodePage = ({
             isSelected={currentEpisode?.id === episode.id}
             size={AudioPlayerSize.LARGE}
             slug={episode.attributes.slug}
-            url={episode.attributes.media_url}
+            url={`${episode.attributes.media_url}?src=allplay.fm`}
             onPlay={handlePlay}
           />
         </Box>
