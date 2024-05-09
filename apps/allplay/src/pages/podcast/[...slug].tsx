@@ -34,7 +34,13 @@ const EpisodePage = ({
     <>
       <SiteMeta
         title={`Episode: ${episode?.attributes?.title ?? 'N/A'} - Podcast`}
-        description={episode?.attributes?.description ?? ''}
+        description={
+          episode?.attributes?.description
+            ? episode?.attributes?.description.length > 300
+              ? `${episode.attributes.duration.substring(0, 297)}...`
+              : episode.attributes.duration
+            : ''
+        }
       />
       <Flex
         flexDir="column"
