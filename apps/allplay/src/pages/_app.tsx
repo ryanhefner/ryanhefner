@@ -19,7 +19,7 @@ import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
 
 import { theme } from '../styles'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
 
 const TITLE =
   'Follow along as I, Ryan Hefner, share the goods—and the bads—while building products and tools'
