@@ -40,7 +40,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
   const path = router.asPath.split('?')[0]
-  const isHome = path === '/'
+  const isHome = path === '/' || path === '/index'
   const url = isHome ? siteUrl : `${siteUrl}${path}`
   const ogImageUrl = `${url}/social-image.jpg`
   const getLayout = Component.getLayout || ((page) => page)
