@@ -87,7 +87,7 @@ export const getStaticPaths = async () => {
   const episodes = await transistorClient.episodes(SHOW_ID as string)
   const episodePaths =
     episodes.data?.map((item: any) => ({
-      params: { slug: [item.attributes.slug] },
+      params: { slug: ['podcast', item.attributes.slug] },
     })) ?? []
 
   return {
