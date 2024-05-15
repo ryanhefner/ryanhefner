@@ -79,6 +79,7 @@ export const getStaticProps = async () => {
         id: `${SITE_URL}${item.url}`,
         link: `${SITE_URL}${item.url}`,
         description: item.description,
+        content: item.body.code,
         date: new Date(item.date),
       })
     })
