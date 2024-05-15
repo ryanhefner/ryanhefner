@@ -36,12 +36,39 @@ const EpisodePage = ({
         title={`Episode: ${episode?.attributes?.title ?? 'N/A'} - Podcast`}
         description={
           episode?.attributes?.description
-            ? episode?.attributes?.description.length > 300
-              ? `${episode.attributes.duration.substring(0, 297)}...`
-              : episode.attributes.duration
+            ? episode?.attributes?.description_markdown.length > 300
+              ? `${episode.attributes.description_markdown.substring(0, 297)}...`
+              : episode.attributes.description_markdown
             : ''
         }
-      />
+        audioUrl={`${episode?.attributes?.media_url}?src=allplay.fm`}
+        audioType="audio/mpeg"
+        twitter={{
+          card: 'player',
+          player: {
+            url: episode.attributes.share_url,
+            width: '500',
+            height: '180',
+            stream: {
+              url: `${episode.attributes.media_url}?src=twitter`,
+              contentType: 'audio/mpeg',
+            },
+          },
+        }}
+      >
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="All Play w/ Ryan Hefner"
+          href="https://feeds.transistor.fm/allplay"
+        />
+        <link
+          rel="alternate"
+          type="application/json+oembed"
+          title={episode.attributes.title}
+          href={`https://share.transistor.fm/oembed?url=${encodeURIComponent(episode.attributes.share_url)}`}
+        />
+      </SiteMeta>
       <Flex
         flexDir="column"
         gap={{ base: 8, md: 12 }}
