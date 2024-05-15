@@ -21,7 +21,14 @@ const EpisodesIndexPage = ({
       <SiteMeta
         title={`Podcast`}
         description="Documenting the ideas, process and pitfalls that go into building products and open-source software and tools."
-      />
+      >
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="All Play w/ Ryan Hefner"
+          href="https://feeds.transistor.fm/allplay"
+        />
+      </SiteMeta>
       <Flex
         flexDir="column"
         flex={1}
