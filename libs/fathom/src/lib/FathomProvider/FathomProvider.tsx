@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect } from 'react'
+import { PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import * as Fathom from 'fathom-client'
 import type { EventOptions, LoadOptions, PageViewOptions } from 'fathom-client'
 import { FathomContext } from '../FathomContext'
@@ -19,6 +19,7 @@ const FathomProvider = ({
   siteId,
   trackDefaultOptions,
 }: FathomProviderProps) => {
+  const [loaded, setLoaded] = useState(false)
   // const { pathname } = useLocation()
 
   const blockTrackingForMe = useCallback(() => {
@@ -62,8 +63,9 @@ const FathomProvider = ({
   )
 
   useEffect(() => {
-    if (siteId) {
+    if (siteId && !loaded) {
       load(siteId, clientOptions)
+      setLoaded(true)
     }
   }, [clientOptions, load, siteId])
 

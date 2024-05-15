@@ -4,6 +4,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { SiteMeta } from 'next-meta'
 import Markdown from 'react-markdown'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
@@ -15,12 +16,14 @@ import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
 import { EpisodeList } from '../../components/media/EpisodeList'
+import { Podcatchers } from '../../components/podcast'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const EpisodePage = ({
   episode,
   episodes,
+  show,
   transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
@@ -30,109 +33,148 @@ const EpisodePage = ({
   }, [episode, setCurrentEpisode])
 
   return (
-    <Flex
-      flexDir="column"
-      gap={{ base: 8, md: 12 }}
-      px={{ base: 4, md: 8 }}
-      py={{ base: 6, md: 12 }}
-    >
-      <Box>
-        <Heading
-          as="h1"
-          fontSize={{ base: '3xl', md: '7xl' }}
-          letterSpacing={{ base: -1, md: -2 }}
-        >
-          {episode?.attributes?.title ?? 'No episode title'}
-        </Heading>
-      </Box>
-      <Box>
-        <AudioPlayer
-          duration={episode.attributes.duration}
-          isSelected={currentEpisode?.id === episode.id}
-          size={AudioPlayerSize.LARGE}
-          slug={episode.attributes.slug}
-          url={episode.attributes.media_url}
-          onPlay={handlePlay}
+    <>
+      <SiteMeta
+        title={`Episode: ${episode?.attributes?.title ?? 'N/A'} - Podcast`}
+        description={
+          episode?.attributes?.description
+            ? episode?.attributes?.description_markdown.length > 300
+              ? `${episode.attributes.description_markdown.substring(0, 297)}...`
+              : episode.attributes.description_markdown
+            : ''
+        }
+        audioUrl={`${episode?.attributes?.media_url}?src=allplay.fm`}
+        audioType="audio/mpeg"
+        twitter={{
+          card: 'player',
+          player: {
+            url: episode.attributes.share_url,
+            width: '500',
+            height: '180',
+            stream: {
+              url: `${episode.attributes.media_url}?src=twitter`,
+              contentType: 'audio/mpeg',
+            },
+          },
+        }}
+      >
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="All Play w/ Ryan Hefner"
+          href="https://feeds.transistor.fm/allplay"
         />
-      </Box>
-      <Flex flexDir={{ base: 'column', md: 'row' }} gap={{ base: 24, md: 32 }}>
-        <Box
-          flex="0 0 30%"
-          alignSelf="flex-start"
-          pos={{ base: 'relative', md: 'sticky' }}
-          top={{ base: 0, md: 24 }}
-        >
-          <Heading as="h2" fontSize="lg">
-            Show Notes
-          </Heading>
-          <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
-            <Markdown
-              components={mdxComponents({
-                codeBg: 'gray.800',
-                codeColor: 'white',
-              })}
-              remarkPlugins={[remarkGfm as any]}
-            >
-              {episode.attributes.description_markdown}
-            </Markdown>
-          </Flex>
-        </Box>
-        <Box flex={1}>
+        <link
+          rel="alternate"
+          type="application/json+oembed"
+          title={episode.attributes.title}
+          href={`https://share.transistor.fm/oembed?url=${encodeURIComponent(episode.attributes.share_url)}`}
+        />
+      </SiteMeta>
+      <Flex
+        flexDir="column"
+        gap={{ base: 8, md: 12 }}
+        px={{ base: 4, md: 8 }}
+        py={{ base: 6, md: 12 }}
+      >
+        <Box>
           <Heading
-            as="h2"
-            fontSize="lg"
-            pos="sticky"
-            top={{ base: 16, md: 24 }}
+            as="h1"
+            fontSize={{ base: '3xl', md: '7xl' }}
+            letterSpacing={{ base: -1, md: -2 }}
           >
-            Transcript
+            {episode?.attributes?.title ?? 'No episode title'}
           </Heading>
-          <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
-            {transcript?.segments?.map((segment: any, index: number) => (
-              <Flex key={`segment-${index}`} gap={8}>
-                <Box>
-                  {/* <Text color="gray.400">{segment.speaker}</Text> */}
-                  <Text
-                    color="gray.400"
-                    fontFamily="monospace"
-                    fontSize="sm"
-                    mt="3px"
-                    pos="sticky"
-                    top={{ base: 24, md: 32 }}
-                    whiteSpace="nowrap"
-                  >
-                    <Timecode
-                      format="mm:ss"
-                      time={parseInt(segment.startTime, 10) * 1000}
-                    />{' '}
-                    -{' '}
-                    <Timecode
-                      format="mm:ss"
-                      time={parseInt(segment.endTime, 10) * 1000}
-                    />
+        </Box>
+        <Box>
+          <AudioPlayer
+            duration={episode.attributes.duration}
+            isSelected={currentEpisode?.id === episode.id}
+            size={AudioPlayerSize.LARGE}
+            slug={episode.attributes.slug}
+            url={`${episode.attributes.media_url}?src=allplay.fm`}
+            onPlay={handlePlay}
+          />
+        </Box>
+        <Flex
+          flexDir={{ base: 'column', md: 'row' }}
+          gap={{ base: 24, md: 32 }}
+        >
+          <Box
+            flex="0 0 30%"
+            alignSelf="flex-start"
+            pos={{ base: 'relative', md: 'sticky' }}
+            top={{ base: 0, md: 24 }}
+          >
+            <Podcatchers size="sm" show={show} title="Listen on" />
+            <Heading as="h2" fontSize="lg" mt={12}>
+              Show Notes
+            </Heading>
+            <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
+              <Markdown
+                components={mdxComponents({
+                  codeBg: 'gray.800',
+                  codeColor: 'white',
+                })}
+                remarkPlugins={[remarkGfm as any]}
+              >
+                {episode.attributes.description_markdown}
+              </Markdown>
+            </Flex>
+          </Box>
+          <Box flex={1}>
+            <Heading
+              as="h2"
+              fontSize="lg"
+              pos="sticky"
+              top={{ base: 16, md: 24 }}
+            >
+              Transcript
+            </Heading>
+            <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
+              {transcript?.segments?.map((segment: any, index: number) => (
+                <Flex key={`segment-${index}`} gap={8}>
+                  <Box>
+                    {/* <Text color="gray.400">{segment.speaker}</Text> */}
+                    <Text
+                      color="gray.400"
+                      fontFamily="monospace"
+                      fontSize="sm"
+                      mt="3px"
+                      pos="sticky"
+                      top={{ base: 24, md: 32 }}
+                      whiteSpace="nowrap"
+                    >
+                      <Timecode
+                        format="mm:ss"
+                        time={parseInt(segment.startTime, 10) * 1000}
+                      />{' '}
+                      -{' '}
+                      <Timecode
+                        format="mm:ss"
+                        time={parseInt(segment.endTime, 10) * 1000}
+                      />
+                    </Text>
+                  </Box>
+                  <Text color="gray.400" fontSize="md">
+                    {segment.body}
                   </Text>
-                </Box>
-                <Text color="gray.400" fontSize="md">
-                  {segment.body}
-                </Text>
-              </Flex>
-            ))}
-          </Flex>
+                </Flex>
+              ))}
+            </Flex>
+          </Box>
+        </Flex>
+        <EpisodeList episodes={episodes} mt={24} title="More Episodes" />
+        <Box id="#signup" mt={24}>
+          <Heading as="h3">Subscribe to the newletter</Heading>
+          <Text color="gray.400">
+            Get updates when new episodes are posted, and other fun stuff that I
+            am into.
+          </Text>
+          <NewsletterForm />
         </Box>
       </Flex>
-      <EpisodeList
-        episodes={episodes.filter((item: any) => item.id !== episode.id)}
-        mt={24}
-        title="More Episodes"
-      />
-      <Box id="#signup" mt={24}>
-        <Heading as="h3">Subscribe to the newletter</Heading>
-        <Text color="gray.400">
-          Get updates when new episodes are posted, and other fun stuff that I
-          am into.
-        </Text>
-        <NewsletterForm />
-      </Box>
-    </Flex>
+    </>
   )
 }
 
@@ -164,23 +206,27 @@ export const getStaticProps = (async ({ params }) => {
 
   let episode = null
   let episodes = []
+  let show = null
   let transcript = null
 
   if (SHOW_ID) {
-    episodes = await transistorClient.episodes(SHOW_ID).then((response) =>
-      response.data.sort((a: any, b: any) => {
-        if (a.attributes.number > b.attributes.number) {
-          return 1
-        }
+    const [showResponse, episodesResponse] = await Promise.all([
+      transistorClient.show(SHOW_ID),
+      transistorClient.episodes(SHOW_ID),
+    ])
+    episodes = episodesResponse.data.sort((a: any, b: any) => {
+      if (a.attributes.number > b.attributes.number) {
+        return 1
+      }
 
-        if (a.attributes.number < b.attributes.number) {
-          return -1
-        }
+      if (a.attributes.number < b.attributes.number) {
+        return -1
+      }
 
-        return 0
-      }),
-    )
+      return 0
+    })
     episode = episodes.find((item: any) => item.attributes.slug === slug?.[0])
+    show = showResponse?.data
 
     if (episode) {
       const turndownService = new TurndownService()
@@ -208,6 +254,7 @@ export const getStaticProps = (async ({ params }) => {
     props: {
       episode,
       episodes,
+      show,
       transcript,
     },
   }

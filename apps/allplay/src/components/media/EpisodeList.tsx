@@ -38,7 +38,7 @@ export const EpisodeList = ({
           isSelected={currentEpisode?.id === episode.id}
           slug={episode.attributes.slug}
           title={episode.attributes.title}
-          url={episode.attributes.media_url}
+          url={`${episode.attributes.media_url}?src=allplay.fm`}
           onPlay={() => handlePlay(episode.id)}
         />
       ))}

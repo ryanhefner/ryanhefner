@@ -16,7 +16,7 @@ const OssPage = () => {
   return (
     <>
       <SiteMeta description={DESCRIPTION} title={TITLE} />
-      <Box flex="1" py={{ base: 6 }} px={{ base: 6, sm: 10, md: 16, xl: 24 }}>
+      <Box flex="1" px={{ base: 4, md: 8 }} py={{ base: 12, md: 24 }}>
         <Flex
           align={{ base: 'flex-start', xl: 'center' }}
           flexDir={{ base: 'column', xl: 'row' }}

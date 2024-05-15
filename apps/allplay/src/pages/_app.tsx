@@ -19,10 +19,10 @@ import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
 
 import { theme } from '../styles'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
 
 const TITLE =
-  'Documenting my thoughts and process as I, Ryan Hefner, build products and tools'
+  'Follow along as I, Ryan Hefner, share my journey building products and tools'
 const DESCRIPTION =
   'Subscribe to the All Play newsletter, and listen to the All Play podcast episodes, sharing updates on the process, tools, and attempts I make as I build products and open-source tools.'
 
@@ -55,9 +55,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         title={TITLE}
         description={DESCRIPTION}
         siteName="All Play"
-        twitterCreator="@ryanhefner"
-        twitterSite="@allplayfm"
-        twitterCard="summary_large_image"
+        twitter={{
+          card: 'summary_large_image',
+          creator: '@ryanhefner',
+          site: '@allplayfm',
+        }}
         url={path}
       >
         <LinkCard

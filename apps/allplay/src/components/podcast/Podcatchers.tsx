@@ -1,7 +1,6 @@
 import {
   Box,
   ChakraProps,
-  Container,
   Grid,
   GridItem,
   Heading,
@@ -10,14 +9,21 @@ import {
 import { Link } from '../base'
 
 interface PodcatchersProps extends ChakraProps {
+  size?: 'sm' | 'md' | 'lg'
   show: any
+  title?: string
 }
 
-export const Podcatchers = ({ show, ...rest }: PodcatchersProps) => (
+export const Podcatchers = ({
+  size,
+  show,
+  title = 'Listen in your favorite podcatcher',
+  ...rest
+}: PodcatchersProps) => (
   <Box id="subscribe" {...rest}>
-    <Heading>Listen in your favorite podcatcher</Heading>
+    <Heading fontSize={size === 'sm' ? 'lg' : undefined}>{title}</Heading>
     <Grid
-      gap={12}
+      gap={size === 'sm' ? 6 : 12}
       maxW="container.md"
       mt={6}
       templateColumns={{
