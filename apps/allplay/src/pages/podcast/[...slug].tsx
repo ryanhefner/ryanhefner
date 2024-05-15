@@ -4,6 +4,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { SiteMeta } from 'next-meta'
 import Markdown from 'react-markdown'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
@@ -15,7 +16,6 @@ import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
 import { EpisodeList } from '../../components/media/EpisodeList'
-import { SiteMeta } from 'next-meta'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -161,11 +161,7 @@ const EpisodePage = ({
             </Flex>
           </Box>
         </Flex>
-        <EpisodeList
-          episodes={episodes.filter((item: any) => item.id !== episode.id)}
-          mt={24}
-          title="More Episodes"
-        />
+        <EpisodeList episodes={episodes} mt={24} title="More Episodes" />
         <Box id="#signup" mt={24}>
           <Heading as="h3">Subscribe to the newletter</Heading>
           <Text color="gray.400">
