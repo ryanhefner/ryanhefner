@@ -55,9 +55,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         title={TITLE}
         description={DESCRIPTION}
         siteName="All Play"
-        twitterCreator="@ryanhefner"
-        twitterSite="@allplayfm"
-        twitterCard="summary_large_image"
+        twitter={{
+          card: 'summary_large_image',
+          creator: '@ryanhefner',
+          site: '@allplayfm',
+        }}
         url={path}
       >
         <LinkCard
