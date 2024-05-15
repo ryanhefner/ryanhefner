@@ -60,6 +60,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           creator: '@ryanhefner',
           site: '@allplayfm',
         }}
+        type="website"
         url={path}
       >
         <LinkCard

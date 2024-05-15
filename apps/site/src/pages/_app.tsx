@@ -52,6 +52,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         twitterCreator="@ryanhefner"
         twitterSite="@ryanhefner"
         twitterCard="summary_large_image"
+        type="website"
         url={path}
       >
         <SiteMeta imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
