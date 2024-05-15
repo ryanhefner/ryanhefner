@@ -16,12 +16,14 @@ import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
 import { EpisodeList } from '../../components/media/EpisodeList'
+import { Podcatchers } from '../../components/podcast'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const EpisodePage = ({
   episode,
   episodes,
+  show,
   transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
@@ -104,7 +106,8 @@ const EpisodePage = ({
             pos={{ base: 'relative', md: 'sticky' }}
             top={{ base: 0, md: 24 }}
           >
-            <Heading as="h2" fontSize="lg">
+            <Podcatchers size="sm" show={show} title="Listen on" />
+            <Heading as="h2" fontSize="lg" mt={12}>
               Show Notes
             </Heading>
             <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
@@ -203,23 +206,27 @@ export const getStaticProps = (async ({ params }) => {
 
   let episode = null
   let episodes = []
+  let show = null
   let transcript = null
 
   if (SHOW_ID) {
-    episodes = await transistorClient.episodes(SHOW_ID).then((response) =>
-      response.data.sort((a: any, b: any) => {
-        if (a.attributes.number > b.attributes.number) {
-          return 1
-        }
+    const [showResponse, episodesResponse] = await Promise.all([
+      transistorClient.show(SHOW_ID),
+      transistorClient.episodes(SHOW_ID),
+    ])
+    episodes = episodesResponse.data.sort((a: any, b: any) => {
+      if (a.attributes.number > b.attributes.number) {
+        return 1
+      }
 
-        if (a.attributes.number < b.attributes.number) {
-          return -1
-        }
+      if (a.attributes.number < b.attributes.number) {
+        return -1
+      }
 
-        return 0
-      }),
-    )
+      return 0
+    })
     episode = episodes.find((item: any) => item.attributes.slug === slug?.[0])
+    show = showResponse?.data
 
     if (episode) {
       const turndownService = new TurndownService()
@@ -247,6 +254,7 @@ export const getStaticProps = (async ({ params }) => {
     props: {
       episode,
       episodes,
+      show,
       transcript,
     },
   }
