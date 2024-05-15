@@ -21,7 +21,7 @@ export const Podcatchers = ({
   ...rest
 }: PodcatchersProps) => (
   <Box id="subscribe" {...rest}>
-    <Heading fontSize={size === 'sm' ? 'xl' : undefined}>{title}</Heading>
+    <Heading fontSize={size === 'sm' ? 'lg' : undefined}>{title}</Heading>
     <Grid
       gap={size === 'sm' ? 6 : 12}
       maxW="container.md"
