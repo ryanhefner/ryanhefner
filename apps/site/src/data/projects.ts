@@ -5,6 +5,13 @@ export const projects = [
     url: '/projects/oss',
   },
   {
+    name: 'Transmits',
+    description:
+      'Quickly record, reflect, refine and share your audio thoughts.',
+    url: 'https://www.transmits.io',
+    imageUrl: '/assets/projects/transmits.png',
+  },
+  {
     name: 'Productapes',
     description: 'Document and share your project updates.',
     url: 'https://www.productapes.com',
