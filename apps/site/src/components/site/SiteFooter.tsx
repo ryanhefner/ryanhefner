@@ -48,8 +48,9 @@ export const SiteFooter = () => {
           </Link>
         </HStack>
         <Text fontFamily="mono" fontSize="sm">
-          Ryan Hefner &copy;{' '}
-          <Text as="span">2004 - {`${new Date().getFullYear()}`}. </Text>
+          <Text as="span">
+            &copy;2004—{`${new Date().getFullYear()}`} — Ryan Hefner.{' '}
+          </Text>
           <Break display={{ base: 'block', md: 'none' }} />
           May all your days be rad 🤙.
         </Text>
