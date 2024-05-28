@@ -1,0 +1,3 @@
+Sitemap: https://www.ryanhefner.com/sitemap.xml
+User-agent: *
+Disallow:
