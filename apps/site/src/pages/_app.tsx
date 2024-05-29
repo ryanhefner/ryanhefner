@@ -2,6 +2,7 @@ import { ReactElement, ReactNode } from 'react'
 
 import { ChakraProvider } from '@chakra-ui/react'
 import { LinkCard } from '@linkcards/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -69,6 +70,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           {getLayout(<Component {...pageProps} />)}
         </ChakraProvider>
       </MetaProvider>
+      <SpeedInsights />
     </>
   )
 }
