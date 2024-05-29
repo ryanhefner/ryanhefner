@@ -33,7 +33,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
   const path = router.asPath.split('?')[0]
-  const isHome = path === '/'
+  const isHome = path === '/' || path === '/index'
   const url = isHome ? siteUrl : `${siteUrl}${path}`
   const ogImageUrl = `${url}/social-image.jpg`
 
@@ -46,6 +46,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
+        canonical={url}
         title={TITLE}
         description={DESCRIPTION}
         siteName="Ryan Hefner - All Play"

@@ -52,6 +52,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
+        canonical={url}
         title={TITLE}
         description={DESCRIPTION}
         siteName="All Play"
