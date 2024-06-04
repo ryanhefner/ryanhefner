@@ -17,6 +17,7 @@ import { PodcastPlayerContext } from '../../contexts'
 import { mdxComponents } from '../../mdx-components'
 import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
+import { sleep } from '../../utils'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -47,14 +48,13 @@ const EpisodePage = ({
         audioType="audio/mpeg"
         twitter={{
           card: 'player',
+          // image: {
+          //   url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play-cover.png`,
+          // },
           player: {
             url: episode.attributes.share_url,
             width: '500',
             height: '180',
-            stream: {
-              url: `${episode.attributes.media_url}?src=twitter`,
-              contentType: 'audio/mpeg',
-            },
           },
         }}
       >
@@ -68,7 +68,13 @@ const EpisodePage = ({
           rel="alternate"
           type="application/json+oembed"
           title={episode.attributes.title}
-          href={`https://share.transistor.fm/oembed?url=${encodeURIComponent(episode.attributes.share_url)}`}
+          href={`https://share.transistor.fm/oembed?format=json&url=${encodeURIComponent(episode.attributes.share_url)}`}
+        />
+        <link
+          rel="alternate"
+          type="text/xml+oembed"
+          title={episode.attributes.title}
+          href={`https://share.transistor.fm/oembed?format=xml&url=${encodeURIComponent(episode.attributes.share_url)}`}
         />
       </SiteMeta>
       <Flex
@@ -214,6 +220,10 @@ export const getStaticProps = (async ({ params }) => {
       transistorClient.show(SHOW_ID),
       transistorClient.episodes(SHOW_ID),
     ])
+
+    // Throttle pages, since Transistor introduced a new rate-limit
+    await sleep(10000)
+
     episodes = episodesResponse.data.sort((a: any, b: any) => {
       if (a.attributes.number > b.attributes.number) {
         return 1

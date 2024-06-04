@@ -3,6 +3,7 @@ import { Flex, Heading, Text } from '@chakra-ui/react'
 import { TransistorClient } from 'transistor-client'
 
 import { theme } from '../../styles'
+import { sleep } from '../../utils'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -112,6 +113,10 @@ export const getStaticProps = async ({ params }: { params: any }) => {
     })
 
     const episodes = await transistorClient.episodes(SHOW_ID as string)
+
+    // Throttle pages, since Transistor introduced a new rate-limit
+    await sleep(10000)
+
     const episode = episodes?.data?.find(
       (item: any) => item.attributes.slug === slug[1],
     )

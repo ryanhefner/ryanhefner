@@ -9,6 +9,7 @@ import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts/SiteLayout'
 import { EpisodeList } from '../components/media/EpisodeList'
 import { Podcatchers } from '../components/podcast/Podcatchers'
+import { sleep } from '../utils'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
@@ -127,6 +128,10 @@ export const getStaticProps = (async () => {
       transistorClient.show(SHOW_ID as string),
       transistorClient.episodes(SHOW_ID as string),
     ])
+
+    // Throttle pages, since Transistor introduced a new rate-limit
+    await sleep(10000)
+
     show = showResponse?.data
     episodes = episodesResponse?.data.sort((a: any, b: any) => {
       if (a.attributes.number > b.attributes.number) {
