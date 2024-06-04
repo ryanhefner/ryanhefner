@@ -26,7 +26,7 @@ export const projects = [
   {
     name: 'PlayStack',
     description:
-      'JavaScript meta-monorepo &amp; framework utilities for web artisans.',
+      'JavaScript meta-monorepo & framework utilities for web artisans.',
     url: 'https://github.com/playstack',
     imageUrl: '/assets/projects/playstack.png',
   },
