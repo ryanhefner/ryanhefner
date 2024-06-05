@@ -40,6 +40,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
         py={3}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        w="full"
       >
         <Marquee pause={pauseMarquee} speed={1.3}>
           <Text color="white" fontSize="3xl" whiteSpace="nowrap">
