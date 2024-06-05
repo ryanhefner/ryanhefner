@@ -28,6 +28,7 @@ export const SiteFooter = () => {
       justifyContent="space-between"
       py={{ base: 6 }}
       px={{ base: 6, sm: 10, md: 16, xl: 24 }}
+      w="full"
     >
       <Flex
         alignItems={{ base: 'flex-start', md: 'center' }}

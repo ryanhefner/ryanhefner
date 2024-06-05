@@ -10,6 +10,7 @@ export const SiteFooter = () => (
     gap={12}
     px={{ base: 4, md: 8 }}
     py={{ base: 6, md: 12 }}
+    w="full"
   >
     <Box>
       <Heading>Help yourself, while supporting the show</Heading>
