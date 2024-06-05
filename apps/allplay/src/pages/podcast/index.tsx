@@ -36,6 +36,7 @@ const EpisodesIndexPage = ({
         h="full"
         px={{ base: 4, md: 8 }}
         py={{ base: 12, md: 24 }}
+        w="full"
       >
         <Podcatchers show={show} />
         <EpisodeList episodes={episodes} mt={24} />

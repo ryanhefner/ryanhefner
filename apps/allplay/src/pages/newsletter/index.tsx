@@ -13,6 +13,7 @@ const NewslettersIndexPage = () => {
       h="full"
       px={{ base: 4, md: 8 }}
       py={{ base: 12, md: 24 }}
+      w="full"
     >
       <Box id="signup">
         <Heading as="h3">Subscribe to the newletter</Heading>

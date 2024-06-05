@@ -82,6 +82,7 @@ const EpisodePage = ({
         gap={{ base: 8, md: 12 }}
         px={{ base: 4, md: 8 }}
         py={{ base: 6, md: 12 }}
+        w="full"
       >
         <Box>
           <Heading

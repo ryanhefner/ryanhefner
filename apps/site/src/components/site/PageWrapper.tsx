@@ -5,6 +5,7 @@ export const PageWrapper = ({ children, ...rest }) => (
     flex="1"
     py={{ base: 6 }}
     px={{ base: 6, sm: 10, md: 16, xl: 24 }}
+    w="full"
     {...rest}
   >
     {children}
