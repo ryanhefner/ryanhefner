@@ -89,7 +89,16 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
             >
               Instagram
             </Link>{' '}
-            /{` `}
+            |{` `}
+            <Link
+              href="https://www.threads.net/@ryanhefner"
+              target="_blank"
+              title="@ryanhefner on Threads"
+              rel="noopener noreferrer"
+            >
+              Threads
+            </Link>
+            {` `}/{` `}
             <Link
               href="https://www.dribbble.com/ryanhefner"
               target="_blank"
