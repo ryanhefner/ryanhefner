@@ -104,7 +104,7 @@ const AboutPage = () => (
           >
             Threads
           </Link>
-          /{` `}
+          {` `}/{` `}
           <Link
             href="https://www.dribbble.com/ryanhefner"
             target="_blank"
