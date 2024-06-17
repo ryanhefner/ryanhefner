@@ -26,9 +26,9 @@ type AppPropsWithLayout = AppProps & {
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
 
 const TITLE =
-  'The online home of Ryan Hefner, Software Engineer & Eternal Tinkerer'
+  'The online home of Ryan Hefner, Software Developer & Eternal Tinkerer'
 const DESCRIPTION =
-  'The online archive and playspace for Ryan Hefner, software engineer and product designer, currently based in Atlanta, GA.'
+  'The online archive and playspace for Ryan Hefner, software developer and product designer, currently based in Atlanta, GA.'
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()

@@ -29,7 +29,7 @@ const IndexPage = () => {
       >
         Ryan Hefner
         <br />
-        <Text color="gray.600">Software Engineer + Eternal Tinkerer</Text>
+        <Text color="gray.600">Software Developer + Eternal Tinkerer</Text>
       </Heading>
       <Flex
         flexDir={{ base: 'column', md: 'row' }}

@@ -13,7 +13,7 @@ import { PageHeading, SectionHeading } from '../components/typography'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =
-  'I’m a software engineer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
+  'I’m a software developer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
 
 const AboutPage = () => (
   <>
@@ -23,7 +23,7 @@ const AboutPage = () => (
       <Box mt={16}>
         <Box fontSize="xl" maxW="container.md">
           <Text>
-            I’m a software engineer (by necessity) and product designer (by
+            I’m a software developer (by necessity) and product designer (by
             heart) based out of Atlanta, GA—by way of Brooklyn, NY—originally
             hailing from the Toledo, OH area. Constantly in pursuit of exploring
             new, but not always exciting, ideas
