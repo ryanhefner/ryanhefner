@@ -137,7 +137,7 @@ export const getStaticProps = async ({ params }) => {
       case '/about':
         title = 'About'
         body =
-          'I’m a software engineer and product designer living in Atlanta, GA.'
+          'I’m a software developer and product designer living in Atlanta, GA.'
         break
 
       case '/withoss':
@@ -167,7 +167,7 @@ export const getStaticProps = async ({ params }) => {
 
       default:
         title = ''
-        body = 'Software Engineer + Eternal Tinkerer'
+        body = 'Software Developer + Eternal Tinkerer'
         break
     }
   }
