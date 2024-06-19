@@ -35,7 +35,14 @@ export const ProjectLink = ({
         {name}
       </Heading>
       {description && (
-        <Text color="gray.500" fontSize="xl" maxW="full" wordBreak="break-word">
+        <Text
+          color="gray.500"
+          fontSize="xl"
+          lineHeight="1.2"
+          maxW="full"
+          mt={0.5}
+          wordBreak="break-word"
+        >
           <CopyRight
             copy={description}
             optimalLength={100}
