@@ -136,10 +136,11 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
       fontSize={
         children === 'Footnotes'
           ? { base: 'xl', md: '2xl' }
-          : { base: '5xl', md: '7xl' }
+          : { base: '3xl', md: '4xl' }
       }
       fontWeight="medium"
-      letterSpacing={children === 'Footnotes' ? 0 : -2}
+      letterSpacing={children === 'Footnotes' ? 0 : -1}
+      lineHeight="1.1"
       maxW="container.md"
       mt={{ base: 8, md: 16 }}
       mb={4}
@@ -152,9 +153,10 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
   h3: ({ children }) => (
     <Heading
       as="h3"
-      fontSize={{ base: '3xl', md: '5xl' }}
+      fontSize={{ base: '2xl', md: '3xl' }}
       fontWeight="medium"
       letterSpacing={-1}
+      lineHeight="1.1"
       maxW="container.md"
       mt={{ base: 8, md: 12 }}
       mb={4}
@@ -168,9 +170,9 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     <Heading
       as="h4"
       color="gray.500"
-      fontSize={{ base: '2xl', md: '4xl' }}
+      fontSize={{ base: 'xl', md: '2xl' }}
       fontWeight="medium"
-      letterSpacing={-1}
+      letterSpacing={-0.5}
       maxW="container.md"
       mt={{ base: 8, md: 12 }}
       mb={4}
@@ -184,9 +186,9 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     <Heading
       as="h5"
       color="gray.500"
-      fontSize={{ base: 'xl', md: '3xl' }}
+      fontSize={{ base: 'lg', md: 'xl' }}
       fontWeight="medium"
-      letterSpacing={-1}
+      letterSpacing={-0.5}
       maxW="container.md"
       mt={{ base: 6, md: 10 }}
       mb={4}
