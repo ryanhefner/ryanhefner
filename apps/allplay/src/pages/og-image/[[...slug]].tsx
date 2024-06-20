@@ -1,5 +1,4 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-
 import { TransistorClient } from 'transistor-client'
 
 import { theme } from '../../styles'

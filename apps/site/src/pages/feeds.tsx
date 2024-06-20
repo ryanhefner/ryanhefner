@@ -1,17 +1,18 @@
-import { Box, Flex, HStack, Text } from '@chakra-ui/react'
-import { Feed } from 'feed'
 import fs from 'fs'
+
+import { Box, Flex, HStack, Text } from '@chakra-ui/react'
+import { allNows, allThoughts } from 'contentlayer/generated'
+import { Feed } from 'feed'
 import rehypeStringify from 'rehype-stringify'
+import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
-import { allNows, allThoughts } from 'contentlayer/generated'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { PageHeading, SectionHeading } from '../components/typography'
-import remarkGfm from 'remark-gfm'
 
 const FeedsPage = () => {
   return (

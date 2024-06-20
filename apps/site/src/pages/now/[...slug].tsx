@@ -1,6 +1,7 @@
-import { format } from 'date-fns'
 import { UTCDateMini } from '@date-fns/utc'
-import { allNows, Now } from 'contentlayer/generated'
+import { Now, allNows } from 'contentlayer/generated'
+import { format } from 'date-fns'
+
 import { NowLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 

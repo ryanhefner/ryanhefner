@@ -1,11 +1,13 @@
-import { Box, Heading, HStack, Text, useColorModeValue } from '@chakra-ui/react'
-import { usePathname } from 'next/navigation'
-import { format } from 'date-fns'
+import { Box, HStack, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
 import { allNows } from 'contentlayer/generated'
+import { format } from 'date-fns'
+import { usePathname } from 'next/navigation'
+
+import { theme } from '../../styles'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
-import { theme } from '../../styles'
+
 import { SiteLayout } from './SiteLayout'
 
 export const NowLayout = ({ children }) => {

@@ -1,9 +1,10 @@
 import { Box, Text, useColorModeValue } from '@chakra-ui/react'
-import { SiteMeta } from 'next-meta'
-import { format } from 'date-fns'
 import { UTCDateMini } from '@date-fns/utc'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 import { Now } from 'contentlayer/generated'
+import { format } from 'date-fns'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { SiteMeta } from 'next-meta'
+
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { mdxComponents } from '../../mdx-components'

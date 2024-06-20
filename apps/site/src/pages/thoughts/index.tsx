@@ -1,10 +1,11 @@
 import { Box, HStack, Text, useColorModeValue } from '@chakra-ui/react'
-import { format } from 'date-fns'
 import { UTCDateMini } from '@date-fns/utc'
 import { allThoughts } from 'contentlayer/generated'
+import { format } from 'date-fns'
+
 import { Link } from '../../components/base'
-import { PageWrapper } from '../../components/site/PageWrapper'
 import { SiteLayout } from '../../components/layouts'
+import { PageWrapper } from '../../components/site/PageWrapper'
 import { PageHeading } from '../../components/typography'
 import { theme } from '../../styles'
 

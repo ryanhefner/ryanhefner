@@ -1,4 +1,5 @@
 import { Box, Heading, Image, Text } from '@chakra-ui/react'
+
 import { Link } from '../base'
 import { CopyRight } from '../typography'
 

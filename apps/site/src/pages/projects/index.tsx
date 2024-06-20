@@ -1,4 +1,5 @@
 import { SiteMeta } from 'next-meta'
+
 import { SiteLayout } from '../../components/layouts'
 import {
   ProjectGrid,
@@ -6,8 +7,8 @@ import {
   ProjectLink,
 } from '../../components/projects'
 import { PageWrapper } from '../../components/site'
-import { projects } from '../../data/projects'
 import { PageHeading } from '../../components/typography'
+import { projects } from '../../data/projects'
 
 const TITLE = 'Projects | Ryan Hefner - All Play'
 const DESCRIPTION =

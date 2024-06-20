@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/react'
-import { PageWrapper } from '../../components/site/PageWrapper'
+
 import { SiteLayout } from '../../components/layouts'
+import { PageWrapper } from '../../components/site/PageWrapper'
 import { PageHeading } from '../../components/typography'
 
 const UpdatesIndexPage = () => (

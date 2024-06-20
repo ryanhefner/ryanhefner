@@ -36,10 +36,10 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
       {
         eslint: Object.assign(
           { ignoreDuringBuilds: true },
-          (_a = validNextConfig.eslint) !== null && _a !== void 0 ? _a : {}
+          (_a = validNextConfig.eslint) !== null && _a !== void 0 ? _a : {},
         ),
       },
-      validNextConfig
+      validNextConfig,
     ),
     {
       webpack: (config, options) => {
@@ -58,7 +58,7 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
           require('path').join(context.workspaceRoot, context.libsDir),
         ]
         const nextCssLoaders = config.module.rules.find(
-          (rule) => typeof rule.oneOf === 'object'
+          (rule) => typeof rule.oneOf === 'object',
         )
         // webpack config is not as expected
         if (!nextCssLoaders) return config
@@ -68,7 +68,7 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
         const nextCssLoader = nextCssLoaders.oneOf.find(
           (rule) =>
             rule.sideEffects === false &&
-            regexEqual(rule.test, /\.module\.css$/)
+            regexEqual(rule.test, /\.module\.css$/),
         )
         // Might not be found if Next.js webpack config changes in the future
         if (nextCssLoader && nextCssLoader.issuer) {
@@ -83,7 +83,7 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
         const nextSassLoader = nextCssLoaders.oneOf.find(
           (rule) =>
             rule.sideEffects === false &&
-            regexEqual(rule.test, /\.module\.(scss|sass)$/)
+            regexEqual(rule.test, /\.module\.(scss|sass)$/),
         )
         // Might not be found if Next.js webpack config changes in the future
         if (nextSassLoader && nextSassLoader.issuer) {
@@ -104,7 +104,7 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
               'CSS Modules \u001b[1mcannot\u001b[22m be imported from within \u001b[1mnode_modules\u001b[22m.\n' +
                 'Read more: https://err.sh/next.js/css-modules-npm' ||
               rule.use.options.reason ===
-                'CSS Modules cannot be imported from within node_modules.\nRead more: https://err.sh/next.js/css-modules-npm')
+                'CSS Modules cannot be imported from within node_modules.\nRead more: https://err.sh/next.js/css-modules-npm'),
         )
         // Might not be found if Next.js webpack config changes in the future
         if (nextErrorCssModuleLoader) {
@@ -174,7 +174,7 @@ function withNx(nextConfig = {}, context = getWithNxContext()) {
         }
         return userWebpack(config, options)
       },
-    }
+    },
   )
 }
 exports.withNx = withNx

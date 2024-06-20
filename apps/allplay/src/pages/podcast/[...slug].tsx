@@ -13,10 +13,10 @@ import TurndownService from 'turndown'
 
 import { SiteLayout } from '../../components/layouts'
 import { AudioPlayer, AudioPlayerSize } from '../../components/media'
-import { PodcastPlayerContext } from '../../contexts'
-import { mdxComponents } from '../../mdx-components'
 import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
+import { PodcastPlayerContext } from '../../contexts'
+import { mdxComponents } from '../../mdx-components'
 import { sleep } from '../../utils'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID

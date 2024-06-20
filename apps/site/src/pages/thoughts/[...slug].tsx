@@ -1,4 +1,5 @@
 import { allThoughts } from 'contentlayer/generated'
+
 import { PostLayout } from '../../components/layouts'
 
 const ThoughtPage = ({ thought }) => {

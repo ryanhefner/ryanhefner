@@ -6,8 +6,9 @@ import {
   useState,
 } from 'react'
 
-import { PodcastPlayerContext } from './PodcastPlayerContext'
 import { useWebAudioContext } from 'react-web-audio'
+
+import { PodcastPlayerContext } from './PodcastPlayerContext'
 
 type PodcastPlayerProviderProps = PropsWithChildren
 
@@ -35,7 +36,7 @@ export const PodcastPlayerProvider = ({
 
   const { play: playContext } = useWebAudioContext()
 
-  const play = useCallback((url: string, startOffset: number = 0) => {
+  const play = useCallback((url: string, startOffset = 0) => {
     const asyncPlay = async () => {
       const playResponse = await playContext(url, {
         onEnded: () => {

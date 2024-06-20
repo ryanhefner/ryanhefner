@@ -1,6 +1,8 @@
 import { PropsWithChildren, useCallback, useEffect, useState } from 'react'
+
 import * as Fathom from 'fathom-client'
 import type { EventOptions, LoadOptions, PageViewOptions } from 'fathom-client'
+
 import { FathomContext } from '../FathomContext'
 
 export interface FathomProviderProps extends PropsWithChildren {

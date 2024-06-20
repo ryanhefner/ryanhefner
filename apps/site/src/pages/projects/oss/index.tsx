@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+
 import { Link } from '../../../components/base'
 import { SiteLayout } from '../../../components/layouts'
 import {
@@ -8,8 +9,8 @@ import {
   ProjectLink,
 } from '../../../components/projects'
 import { PageWrapper } from '../../../components/site'
-import { oss as projects } from '../../../data/projects'
 import { PageHeading } from '../../../components/typography'
+import { oss as projects } from '../../../data/projects'
 
 const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
 const DESCRIPTION =

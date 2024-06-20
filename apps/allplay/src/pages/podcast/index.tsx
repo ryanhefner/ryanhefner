@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { TransistorClient } from 'transistor-client'
 import { NewsletterForm } from 'newsletter'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SiteMeta } from 'next-meta'
+import { TransistorClient } from 'transistor-client'
 
 import { SiteLayout } from '../../components/layouts'
 import { EpisodeList } from '../../components/media/EpisodeList'

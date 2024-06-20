@@ -1,6 +1,6 @@
-import { getServerSideSitemapLegacy } from 'next-sitemap'
-import { GetServerSideProps } from 'next'
 import { allNows, allThoughts } from 'contentlayer/generated'
+import { GetServerSideProps } from 'next'
+import { getServerSideSitemapLegacy } from 'next-sitemap'
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'

@@ -2,8 +2,9 @@ import { useCallback, useContext } from 'react'
 
 import { ChakraProps, Flex, Heading } from '@chakra-ui/react'
 
-import { AudioPlayer } from './AudioPlayer'
 import { PodcastPlayerContext } from '../../contexts'
+
+import { AudioPlayer } from './AudioPlayer'
 
 interface EpisodeListProps extends ChakraProps {
   episodes: any[]

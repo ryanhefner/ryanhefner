@@ -1,4 +1,5 @@
-import type { MDXComponents } from 'mdx/types'
+import { ReactNode } from 'react'
+
 import {
   Box,
   Code,
@@ -11,8 +12,8 @@ import {
   chakra,
   useColorModeValue,
 } from '@chakra-ui/react'
+import type { MDXComponents } from 'mdx/types'
 import { Highlight, themes } from 'prism-react-renderer'
-import { ReactNode } from 'react'
 
 export const mdxComponents = ({
   codeBg,

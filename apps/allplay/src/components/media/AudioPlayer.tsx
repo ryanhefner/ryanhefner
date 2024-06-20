@@ -12,9 +12,9 @@ import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import { Waveform } from '@waveforms/react'
 import Timecode from 'react-timecode'
 
+import { PodcastPlayerContext } from '../../contexts'
 import { Link } from '../base'
 import { PlayButton, PlayButtonSize } from '../buttons'
-import { PodcastPlayerContext } from '../../contexts'
 
 export enum AudioPlayerSize {
   SMALL = 'SMALL',

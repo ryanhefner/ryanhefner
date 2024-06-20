@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import remarkGfm from 'remark-gfm'
 import { format } from 'date-fns'
+import remarkGfm from 'remark-gfm'
 
 export const Newsletter = defineDocumentType(() => ({
   name: 'Newsletter',

@@ -1,5 +1,6 @@
-import Router from 'next/router'
 import { trackPageview } from 'fathom-client'
+import Router from 'next/router'
+
 import { FathomProvider, FathomProviderProps } from '../FathomProvider'
 
 type NextPagesFathomProviderProps = FathomProviderProps

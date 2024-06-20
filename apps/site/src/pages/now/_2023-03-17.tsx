@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {
   Box,
   Heading,
@@ -7,6 +6,8 @@ import {
   Text,
   UnorderedList,
 } from '@chakra-ui/react'
+import Head from 'next/head'
+
 import { FootnoteLink, Link } from '../../components/base'
 import { NowLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'

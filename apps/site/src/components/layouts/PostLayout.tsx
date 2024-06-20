@@ -1,22 +1,24 @@
 import {
   Box,
   Flex,
-  Heading,
   HStack,
+  Heading,
   Tag,
   Text,
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { SiteMeta } from 'next-meta'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import { format } from 'date-fns'
 import { UTCDateMini } from '@date-fns/utc'
-import slugify from 'slugify'
 import { Thought, allThoughts } from 'contentlayer/generated'
+import { format } from 'date-fns'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { SiteMeta } from 'next-meta'
+import slugify from 'slugify'
+
 import { mdxComponents } from '../../mdx-components'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
+
 import { SiteLayout } from './SiteLayout'
 
 interface PostLayoutProps {

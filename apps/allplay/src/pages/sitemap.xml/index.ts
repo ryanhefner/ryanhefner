@@ -1,5 +1,5 @@
-import { getServerSideSitemapLegacy } from 'next-sitemap'
 import { GetServerSideProps } from 'next'
+import { getServerSideSitemapLegacy } from 'next-sitemap'
 import { TransistorClient } from 'transistor-client'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'

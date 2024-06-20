@@ -1,5 +1,6 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+
 // import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
 // import * as reactSpring from '@react-spring/three'
 // import * as drei from '@react-three/drei'
@@ -8,8 +9,8 @@ import { Link } from '../components/base'
 import { ClientGrid, ClientGridItem } from '../components/clients'
 import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
-import { clients } from '../data/clients'
 import { PageHeading, SectionHeading } from '../components/typography'
+import { clients } from '../data/clients'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =

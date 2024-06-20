@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { GridItem } from '@chakra-ui/react'
 
 export const ProjectGridItem = ({ children, showImages = false }) => (

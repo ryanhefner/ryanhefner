@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, HStack, Icon, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Heading, Icon, Image, Text } from '@chakra-ui/react'
 import { ImGithub, ImTwitter } from 'react-icons/im'
 
 import { Link } from '../base'

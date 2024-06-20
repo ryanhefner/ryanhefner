@@ -1,14 +1,15 @@
 import {
-  chakra,
   Flex,
   HStack,
   Icon,
   Image,
   Text,
+  chakra,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { ImRss } from 'react-icons/im'
+
 import { Link } from '../base'
 
 const Break = chakra('br')

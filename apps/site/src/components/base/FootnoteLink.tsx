@@ -1,4 +1,5 @@
 import { chakra } from '@chakra-ui/react'
+
 import { Link } from '.'
 
 const Sup = chakra('sup', {

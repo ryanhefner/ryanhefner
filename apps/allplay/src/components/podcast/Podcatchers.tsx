@@ -6,6 +6,7 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react'
+
 import { Link } from '../base'
 
 interface PodcatchersProps extends ChakraProps {

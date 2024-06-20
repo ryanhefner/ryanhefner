@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import Cors from 'cors'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 const cors = Cors({
   origin: '*',
