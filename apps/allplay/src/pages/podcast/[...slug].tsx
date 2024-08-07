@@ -7,7 +7,6 @@ import { SiteMeta } from 'next-meta'
 import Markdown from 'react-markdown'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
-import { TransistorClient } from 'transistor-client'
 import { usePodcast } from 'use-podcast'
 
 import { SiteLayout } from '../../components/layouts'
@@ -17,8 +16,6 @@ import { Podcatchers } from '../../components/podcast'
 import { PodcastPlayerContext } from '../../contexts'
 import { feeds } from '../../data/feeds'
 import { mdxComponents } from '../../mdx-components'
-
-const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const EpisodePage = ({
   feed,
@@ -187,14 +184,16 @@ const EpisodePage = ({
 EpisodePage.getLayout = (page: ReactNode) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticPaths = async () => {
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  // eslint-disable-next-line
+  const { getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  const episodes = await transistorClient.episodes(SHOW_ID as string)
+  const feed = await getFeed()
+
   const paths =
-    episodes.data?.map((item: any) => ({
-      params: { slug: [item.attributes.slug] },
+    feed.items.map((item: any) => ({
+      params: { slug: [item.link.split('/').pop()] },
     })) ?? []
 
   return {
