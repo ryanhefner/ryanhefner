@@ -11,14 +11,13 @@ export const FeedType = {
 
 export const Feed = {
   [FeedType.APPLE_PODCASTS]:
-    'https://podcasts.apple.com/us/podcast/transmits/id1760156588',
+    'https://podcasts.apple.com/us/podcast/all-play-w-ryan-hefner/id1744906646?uo=4',
   [FeedType.AMAZON_MUSIC]:
-    'https://music.amazon.com/podcasts/c0b5b0ba-cd76-406d-ac2b-c625fbee9b9d/transmits',
-  [FeedType.OVERCAST]: 'https://overcast.fm/itunes1760156588/transmits',
-  [FeedType.POCKET_CASTS]: 'https://pca.st/2i9fiwhr',
-  [FeedType.RSS]: 'https://feeds.transistor.fm/transmits',
-  [FeedType.SPOTIFY]:
-    'https://open.spotify.com/show/0TolVzxtRLh7nYWxvNkZBa?si=n3GvwOAcQSOeC8-thPteXg',
+    'https://music.amazon.com/podcasts/9cc10c94-b61c-45c9-9dc3-47da6ec088f2/all-play-w-ryan-hefner',
+  [FeedType.OVERCAST]: 'https://overcast.fm/itunes1744906646',
+  [FeedType.POCKET_CASTS]: 'https://pca.st/9rgrbhmc',
+  [FeedType.RSS]: 'https://feeds.transistor.fm/allplay',
+  [FeedType.SPOTIFY]: 'https://open.spotify.com/show/0HpMRKrH0HOCHrIebJhmci',
 }
 
 export const feeds = [
