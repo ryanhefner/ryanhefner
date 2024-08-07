@@ -112,13 +112,16 @@ export const AudioPlayer = ({
     const handleMouseMove = (evt: PointerEvent | Event) => {
       const percent = getDragPercent(evt as PointerEvent, dragRef)
       setDragPercent(percent)
-      seek(url, duration * 1000 * percent)
+      // seek(url, duration * 1000 * percent)
     }
 
     const handleMouseUp = (evt: PointerEvent | Event) => {
       setIsDragging(false)
       window.removeEventListener('pointermove', handleMouseMove)
       window.removeEventListener('pointerup', handleMouseUp)
+      const percent = getDragPercent(evt as PointerEvent, dragRef)
+      setDragPercent(percent)
+      seek(url, duration * 1000 * percent)
     }
 
     if (isDragging) {
@@ -128,7 +131,7 @@ export const AudioPlayer = ({
       window.removeEventListener('pointermove', handleMouseMove)
       window.removeEventListener('pointerup', handleMouseUp)
     }
-  }, [isDragging])
+  }, [duration, isDragging, seek, url])
 
   const scrubberOffset = useMemo(
     () =>
@@ -137,7 +140,7 @@ export const AudioPlayer = ({
         : isEnded
           ? 'calc(100% - 3px)'
           : `calc(${Math.min(1, Math.max(0, currentTime / (duration * 1000))) * 100}% - 3px)`,
-    [currentTime, dragPercent, duration, isDragging],
+    [currentTime, dragPercent, duration, isDragging, isEnded],
   )
 
   return (
