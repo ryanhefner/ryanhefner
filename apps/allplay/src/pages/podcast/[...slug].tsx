@@ -1,7 +1,6 @@
 import { ReactNode, useCallback, useContext } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import axios from 'axios'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SiteMeta } from 'next-meta'
@@ -9,23 +8,21 @@ import Markdown from 'react-markdown'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
 import { TransistorClient } from 'transistor-client'
-import TurndownService from 'turndown'
+import { usePodcast } from 'use-podcast'
 
 import { SiteLayout } from '../../components/layouts'
 import { AudioPlayer, AudioPlayerSize } from '../../components/media'
 import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
 import { PodcastPlayerContext } from '../../contexts'
+import { feeds } from '../../data/feeds'
 import { mdxComponents } from '../../mdx-components'
-import { sleep } from '../../utils'
 
 const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 const EpisodePage = ({
+  feed,
   episode,
-  episodes,
-  show,
-  transcript,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
@@ -39,12 +36,12 @@ const EpisodePage = ({
         title={`Episode: ${episode?.attributes?.title ?? 'N/A'} - Podcast`}
         description={
           episode?.attributes?.description
-            ? episode?.attributes?.description_markdown.length > 300
-              ? `${episode.attributes.description_markdown.substring(0, 297)}...`
-              : episode.attributes.description_markdown
+            ? episode?.descriptionMarkdown.length > 300
+              ? `${episode.descriptionMarkdown.substring(0, 297)}...`
+              : episode.descriptionMarkdown
             : ''
         }
-        audioUrl={`${episode?.attributes?.media_url}?src=allplay.fm`}
+        audioUrl={`${episode?.enclosure.url}?src=allplay.fm`}
         audioType="audio/mpeg"
         twitter={{
           card: 'player',
@@ -52,7 +49,7 @@ const EpisodePage = ({
           //   url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play-cover.png`,
           // },
           player: {
-            url: episode.attributes.share_url,
+            url: episode.link,
             width: '500',
             height: '180',
           },
@@ -67,14 +64,14 @@ const EpisodePage = ({
         <link
           rel="alternate"
           type="application/json+oembed"
-          title={episode.attributes.title}
-          href={`https://share.transistor.fm/oembed?format=json&url=${encodeURIComponent(episode.attributes.share_url)}`}
+          title={episode.title}
+          href={`https://share.transistor.fm/oembed?format=json&url=${encodeURIComponent(episode.link)}`}
         />
         <link
           rel="alternate"
           type="text/xml+oembed"
-          title={episode.attributes.title}
-          href={`https://share.transistor.fm/oembed?format=xml&url=${encodeURIComponent(episode.attributes.share_url)}`}
+          title={episode.title}
+          href={`https://share.transistor.fm/oembed?format=xml&url=${encodeURIComponent(episode.link)}`}
         />
       </SiteMeta>
       <Flex
@@ -90,16 +87,16 @@ const EpisodePage = ({
             fontSize={{ base: '3xl', md: '7xl' }}
             letterSpacing={{ base: -1, md: -2 }}
           >
-            {episode?.attributes?.title ?? 'No episode title'}
+            {episode?.title ?? 'No episode title'}
           </Heading>
         </Box>
         <Box>
           <AudioPlayer
-            duration={episode.attributes.duration}
-            isSelected={currentEpisode?.id === episode.id}
+            duration={parseInt(episode.itunes.duration ?? 0, 10)}
+            isSelected={currentEpisode?.guid === episode.guid}
             size={AudioPlayerSize.LARGE}
-            slug={episode.attributes.slug}
-            url={`${episode.attributes.media_url}?src=allplay.fm`}
+            slug={episode.link.split('/').pop()}
+            url={`${episode.enclosure.url}?src=allplay.fm`}
             onPlay={handlePlay}
           />
         </Box>
@@ -113,7 +110,7 @@ const EpisodePage = ({
             pos={{ base: 'relative', md: 'sticky' }}
             top={{ base: 0, md: 24 }}
           >
-            <Podcatchers size="sm" show={show} title="Listen on" />
+            <Podcatchers size="sm" feeds={feeds} title="Listen on" />
             <Heading as="h2" fontSize="lg" mt={12}>
               Show Notes
             </Heading>
@@ -125,7 +122,7 @@ const EpisodePage = ({
                 })}
                 remarkPlugins={[remarkGfm as any]}
               >
-                {episode.attributes.description_markdown}
+                {episode.descriptionMarkdown}
               </Markdown>
             </Flex>
           </Box>
@@ -139,39 +136,41 @@ const EpisodePage = ({
               Transcript
             </Heading>
             <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
-              {transcript?.segments?.map((segment: any, index: number) => (
-                <Flex key={`segment-${index}`} gap={8}>
-                  <Box>
-                    {/* <Text color="gray.400">{segment.speaker}</Text> */}
-                    <Text
-                      color="gray.400"
-                      fontFamily="monospace"
-                      fontSize="sm"
-                      mt="3px"
-                      pos="sticky"
-                      top={{ base: 24, md: 32 }}
-                      whiteSpace="nowrap"
-                    >
-                      <Timecode
-                        format="mm:ss"
-                        time={parseInt(segment.startTime, 10) * 1000}
-                      />{' '}
-                      -{' '}
-                      <Timecode
-                        format="mm:ss"
-                        time={parseInt(segment.endTime, 10) * 1000}
-                      />
+              {episode.transcript?.segments?.map(
+                (segment: any, index: number) => (
+                  <Flex key={`segment-${index}`} gap={8}>
+                    <Box>
+                      {/* <Text color="gray.400">{segment.speaker}</Text> */}
+                      <Text
+                        color="gray.400"
+                        fontFamily="monospace"
+                        fontSize="sm"
+                        mt="3px"
+                        pos="sticky"
+                        top={{ base: 24, md: 32 }}
+                        whiteSpace="nowrap"
+                      >
+                        <Timecode
+                          format="mm:ss"
+                          time={parseInt(segment.startTime, 10) * 1000}
+                        />{' '}
+                        -{' '}
+                        <Timecode
+                          format="mm:ss"
+                          time={parseInt(segment.endTime, 10) * 1000}
+                        />
+                      </Text>
+                    </Box>
+                    <Text color="gray.400" fontSize="md">
+                      {segment.body}
                     </Text>
-                  </Box>
-                  <Text color="gray.400" fontSize="md">
-                    {segment.body}
-                  </Text>
-                </Flex>
-              ))}
+                  </Flex>
+                ),
+              )}
             </Flex>
           </Box>
         </Flex>
-        <EpisodeList episodes={episodes} mt={24} title="More Episodes" />
+        <EpisodeList episodes={feed.items} mt={24} title="More Episodes" />
         <Box id="#signup" mt={24}>
           <Heading as="h3">Subscribe to the newletter</Heading>
           <Text color="gray.400">
@@ -207,68 +206,29 @@ export const getStaticPaths = async () => {
 export const getStaticProps = (async ({ params }) => {
   const { slug } = params || {}
 
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  const { getEpisode, getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  let episode = null
-  let episodes = []
-  let show = null
-  let transcript = null
+  const feed = await getFeed()
+  let episode
 
-  if (SHOW_ID) {
-    const [showResponse, episodesResponse] = await Promise.all([
-      transistorClient.show(SHOW_ID),
-      transistorClient.episodes(SHOW_ID),
-    ])
-
-    // Throttle pages, since Transistor introduced a new rate-limit
-    await sleep(10000)
-
-    episodes = episodesResponse.data.sort((a: any, b: any) => {
-      if (a.attributes.number > b.attributes.number) {
-        return 1
-      }
-
-      if (a.attributes.number < b.attributes.number) {
-        return -1
-      }
-
-      return 0
+  if (slug?.[0]) {
+    episode = await getEpisode({
+      slug: slug?.[0],
+      convertDescriptionToMarkdown: true,
+      transcript: {
+        mimeType: 'application/json',
+      },
     })
-    episode = episodes.find((item: any) => item.attributes.slug === slug?.[0])
-    show = showResponse?.data
-
-    if (episode) {
-      const turndownService = new TurndownService()
-      episode.attributes.description_markdown = turndownService.turndown(
-        episode.attributes.description,
-      )
-    }
-
-    const transcriptRef = episode?.attributes.transcripts.find(
-      (item: any) => item.format === 'json',
-    )
-
-    if (transcriptRef?.url) {
-      transcript = await axios
-        .get(transcriptRef.url, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => response.data)
-    }
   }
 
   return {
     props: {
+      feed,
       episode,
-      episodes,
-      show,
-      transcript,
     },
   }
-}) satisfies GetStaticProps<{ episode: any; episodes: any[]; transcript: any }>
+}) satisfies GetStaticProps<{ episode: any; feed: any }>
 
 export default EpisodePage
