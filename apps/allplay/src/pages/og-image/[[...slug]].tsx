@@ -1,10 +1,7 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { TransistorClient } from 'transistor-client'
+import { usePodcast } from 'use-podcast'
 
 import { theme } from '../../styles'
-import { sleep } from '../../utils'
-
-const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 type SharePageProps = {
   body: string
@@ -80,14 +77,14 @@ export const getStaticPaths = async () => {
   ]
 
   // Podcast episode paths
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  // eslint-disable-next-line
+  const { getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
-
-  const episodes = await transistorClient.episodes(SHOW_ID as string)
+  const feed = await getFeed()
   const episodePaths =
-    episodes.data?.map((item: any) => ({
-      params: { slug: ['podcast', item.attributes.slug] },
+    feed.items?.map((item: any) => ({
+      params: { slug: ['podcast', item.link.split('/').pop()] },
     })) ?? []
 
   return {
@@ -98,7 +95,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: { params: any }) => {
   const { slug } = params
-  const path = `/${Array.isArray(slug) ? slug.join('/') : slug ?? ''}`
+  const path = `/${Array.isArray(slug) ? slug.join('/') : (slug ?? '')}`
 
   let title = ''
   let body = ''
@@ -107,20 +104,17 @@ export const getStaticProps = async ({ params }: { params: any }) => {
     title = 'Newsletter'
     body = 'Subscribe and get weekly updates of what I am working on and into.'
   } else if (path.startsWith('/podcast/')) {
-    const transistorClient = new TransistorClient({
-      apiKey: process.env.TRANSISTOR_API_KEY,
+    // eslint-disable-next-line
+    const { getFeed } = usePodcast({
+      url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
+    const feed = await getFeed()
 
-    const episodes = await transistorClient.episodes(SHOW_ID as string)
-
-    // Throttle pages, since Transistor introduced a new rate-limit
-    await sleep(10000)
-
-    const episode = episodes?.data?.find(
-      (item: any) => item.attributes.slug === slug[1],
+    const episode = feed?.items?.find(
+      (item: any) => item.link.split('/').pop() === slug[1],
     )
     title = 'Podcast'
-    body = episode?.attributes?.title ?? ''
+    body = episode?.title ?? ''
   } else {
     switch (path) {
       case '/newsletter':

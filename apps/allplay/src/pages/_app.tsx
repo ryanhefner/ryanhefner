@@ -8,9 +8,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
 import { NextPagesFathomProvider } from 'react-fathom'
-import { TransistorProvider } from 'react-transistor-fm'
 import { WebAudioProvider } from 'react-web-audio'
-import { TransistorClient } from 'transistor-client'
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
@@ -32,8 +30,6 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
-
-const transistorClient = new TransistorClient({ apiUrl: '/api/transistor' })
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
@@ -77,13 +73,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? ''}
         >
           <ChakraProvider theme={theme}>
-            <TransistorProvider client={transistorClient}>
-              <WebAudioProvider>
-                <PodcastPlayerProvider>
-                  {getLayout(<Component {...pageProps} />)}
-                </PodcastPlayerProvider>
-              </WebAudioProvider>
-            </TransistorProvider>
+            <WebAudioProvider>
+              <PodcastPlayerProvider>
+                {getLayout(<Component {...pageProps} />)}
+              </PodcastPlayerProvider>
+            </WebAudioProvider>
           </ChakraProvider>
         </NextPagesFathomProvider>
       </MetaProvider>

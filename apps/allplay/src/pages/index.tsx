@@ -3,15 +3,13 @@ import { ReactNode } from 'react'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { TransistorClient } from 'transistor-client'
+import { usePodcast } from 'use-podcast'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts/SiteLayout'
 import { EpisodeList } from '../components/media/EpisodeList'
 import { Podcatchers } from '../components/podcast/Podcatchers'
-import { sleep } from '../utils'
-
-const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
+import { feeds } from '../data/feeds'
 
 // const newsletters = [
 //   {
@@ -32,8 +30,7 @@ const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 // ]
 
 const IndexPage = ({
-  episodes = [],
-  show = null,
+  feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Flex
@@ -78,8 +75,8 @@ const IndexPage = ({
         </Link>{' '}
         for the newsletter.
       </Text>
-      <EpisodeList mt={24} episodes={episodes} />
-      <Podcatchers show={show} mt={24} />
+      <EpisodeList mt={24} episodes={feed.items} />
+      <Podcatchers feeds={feeds} mt={24} />
       {/* <Flex flexDir="column" mt={24}>
         <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
           Newsletters
@@ -118,43 +115,17 @@ const IndexPage = ({
 IndexPage.getLayout = (page: ReactNode) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticProps = (async () => {
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  const { getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
-  let episodes = []
-  let show = null
 
-  try {
-    const [showResponse, episodesResponse] = await Promise.all([
-      transistorClient.show(SHOW_ID as string),
-      transistorClient.episodes(SHOW_ID as string),
-    ])
-
-    // Throttle pages, since Transistor introduced a new rate-limit
-    await sleep(10000)
-
-    show = showResponse?.data
-    episodes = episodesResponse?.data.sort((a: any, b: any) => {
-      if (a.attributes.number > b.attributes.number) {
-        return 1
-      }
-
-      if (a.attributes.number < b.attributes.number) {
-        return -1
-      }
-
-      return 0
-    })
-  } catch (err) {
-    console.error(err)
-  }
+  const feed = await getFeed()
 
   return {
     props: {
-      episodes,
-      show,
+      feed,
     },
   }
-}) satisfies GetStaticProps<{ episodes: any[]; show: any }>
+}) satisfies GetStaticProps<{ feed: any }>
 
 export default IndexPage

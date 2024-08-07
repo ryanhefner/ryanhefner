@@ -4,18 +4,15 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SiteMeta } from 'next-meta'
-import { TransistorClient } from 'transistor-client'
+import { usePodcast } from 'use-podcast'
 
 import { SiteLayout } from '../../components/layouts'
 import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
-import { sleep } from '../../utils'
-
-const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
+import { feeds } from '../../data/feeds'
 
 const EpisodesIndexPage = ({
-  episodes = [],
-  show = null,
+  feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
@@ -38,8 +35,8 @@ const EpisodesIndexPage = ({
         py={{ base: 12, md: 24 }}
         w="full"
       >
-        <Podcatchers show={show} />
-        <EpisodeList episodes={episodes} mt={24} />
+        <Podcatchers feeds={feeds} />
+        <EpisodeList episodes={feed.items} mt={24} />
         <Box id="signup" mt={24}>
           <Heading as="h3">Subscribe to the newletter</Heading>
           <Text color="gray.400">
@@ -58,43 +55,17 @@ EpisodesIndexPage.getLayout = (page: ReactNode) => (
 )
 
 export const getStaticProps = (async () => {
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  const { getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
-  let episodes = []
-  let show = null
 
-  try {
-    const [showResponse, episodesResponse] = await Promise.all([
-      transistorClient.show(SHOW_ID as string),
-      transistorClient.episodes(SHOW_ID as string),
-    ])
-
-    // Throttle pages, since Transistor introduced a new rate-limit
-    await sleep(10000)
-
-    show = showResponse?.data
-    episodes = episodesResponse?.data.sort((a: any, b: any) => {
-      if (a.attributes.number > b.attributes.number) {
-        return 1
-      }
-
-      if (a.attributes.number < b.attributes.number) {
-        return -1
-      }
-
-      return 0
-    })
-  } catch (err) {
-    console.error(err)
-  }
+  const feed = await getFeed()
 
   return {
     props: {
-      episodes,
-      show,
+      feed,
     },
   }
-}) satisfies GetStaticProps<{ episodes: any[] }>
+}) satisfies GetStaticProps<{ feed: any }>
 
 export default EpisodesIndexPage

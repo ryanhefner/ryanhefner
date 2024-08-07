@@ -20,7 +20,7 @@ export const EpisodeList = ({
 
   const handlePlay = useCallback(
     (episodeId: number) => {
-      const episode = episodes.find((i) => i.id === episodeId)
+      const episode = episodes.find((i) => i.guid === episodeId)
 
       setCurrentEpisode(episode)
     },
@@ -32,15 +32,15 @@ export const EpisodeList = ({
       <Heading as="h2" color="gray.400" fontSize="lg" mb={2}>
         {title ?? 'Episodes'}
       </Heading>
-      {episodes.map((episode: any, index: number) => (
+      {episodes.map((item: any, index: number) => (
         <AudioPlayer
-          key={episode.id}
-          duration={episode.attributes.duration}
-          isSelected={currentEpisode?.id === episode.id}
-          slug={episode.attributes.slug}
-          title={episode.attributes.title}
-          url={`${episode.attributes.media_url}?src=allplay.fm`}
-          onPlay={() => handlePlay(episode.id)}
+          key={item.guid}
+          duration={parseInt(item.itunes.duration ?? 0, 10)}
+          isSelected={currentEpisode?.guid === item.guid}
+          slug={item.link.split('/').pop()}
+          title={item.title}
+          url={`${item.enclosure.url}?src=allplay.fm`}
+          onPlay={() => handlePlay(item.guid)}
         />
       ))}
     </Flex>

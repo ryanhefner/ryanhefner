@@ -1,9 +1,8 @@
 import { GetServerSideProps } from 'next'
 import { getServerSideSitemapLegacy } from 'next-sitemap'
-import { TransistorClient } from 'transistor-client'
+import { usePodcast } from 'use-podcast'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
-const SHOW_ID = process.env.NEXT_PUBLIC_TRANSISTOR_SHOW_ID
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const fields = [
@@ -26,14 +25,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   ]
 
   // Episodes
-  const transistorClient = new TransistorClient({
-    apiKey: process.env.TRANSISTOR_API_KEY,
+  // eslint-disable-next-line
+  const { getFeed } = usePodcast({
+    url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
-
-  const episodes = await transistorClient.episodes(SHOW_ID as string)
-  const episodeFields = episodes?.data.map((item: any) => ({
-    loc: `${BASE_URL}/podcast/${item.attributes.slug}`,
-    lastmod: item.attributes.published_at,
+  const feed = await getFeed()
+  const episodeFields = feed.items.map((item: any) => ({
+    loc: `${BASE_URL}/podcast/${item.link.split('/').pop()}`,
+    lastmod: item.isoDate,
   }))
 
   if (episodeFields.length) {

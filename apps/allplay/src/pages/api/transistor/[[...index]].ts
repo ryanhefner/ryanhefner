@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   try {
-    const path = `/${Array.isArray(slug) ? slug.join('/') : slug ?? ''}`
+    const path = `/${Array.isArray(slug) ? slug.join('/') : (slug ?? '')}`
     const response = await client._request(path)
 
     res.json(response)

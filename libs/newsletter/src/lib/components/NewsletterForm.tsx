@@ -39,7 +39,7 @@ export const NewsletterForm = () => {
   const handleSubmit = useCallback((data: any) => {
     console.debug(data)
 
-    fetch('/api/subscribe', {
+    fetch('/api/newsletter/subscribe', {
       method: 'POST',
       body: JSON.stringify(data),
     }).then((response) => {
