@@ -1,0 +1,38 @@
+{
+  "name": "use-podcast",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/use-podcast/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "main": "libs/use-podcast/src/index.ts",
+        "outputPath": "dist/libs/use-podcast",
+        "tsConfig": "libs/use-podcast/tsconfig.lib.json",
+        "compiler": "swc",
+        "project": "libs/use-podcast/package.json",
+        "format": ["cjs", "esm"],
+        "assets": [
+          {
+            "glob": "libs/use-podcast/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/libs/use-podcast"
+      }
+    }
+  }
+}

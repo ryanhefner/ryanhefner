@@ -28,7 +28,8 @@
       "react-fathom": ["libs/fathom/src/index.ts"],
       "react-transistor-fm": ["libs/transistor/react/src/index.ts"],
       "react-web-audio": ["libs/audio/src/index.ts"],
-      "transistor-client": ["libs/transistor/client/src/index.ts"]
+      "transistor-client": ["libs/transistor/client/src/index.ts"],
+      "use-podcast": ["libs/use-podcast/src/index.ts"]
     }
   },
   "include": ["./.contentlayer/generated"],
