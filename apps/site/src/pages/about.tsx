@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 
 // import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
@@ -40,6 +40,43 @@ const AboutPage = () => (
             next random skate spot.
           </Text>
         </Box>
+      </Box>
+      <Box mt={{ base: 16, md: 24 }} mb={16}>
+        <SectionHeading>Podcasts</SectionHeading>
+        <Text color="gray.500" fontSize="xl" maxW="container.md">
+          In order to share a bit more about what I am working on, I have
+          started a few podcasts. You can listen to them on your favorite
+          podcatcher.
+        </Text>
+        <Grid
+          gap={{ base: 5, lg: 10 }}
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+            lg: 'repeat(4, 1fr)',
+            xl: 'repeat(5, 1fr)',
+          }}
+          mt={8}
+        >
+          <GridItem>
+            <Link href="https://www.allplay.fm" target="_blank">
+              <Image
+                src="/assets/podcasts/all-play.png"
+                alt="All Play w/ Ryan Hefner"
+                w="full"
+              />
+            </Link>
+          </GridItem>
+          <GridItem>
+            <Link href="https://www.transmits.io/podcast" target="_blank">
+              <Image
+                src="/assets/podcasts/transmits.png"
+                alt="Tranmists — The Podcast"
+                w="full"
+              />
+            </Link>
+          </GridItem>
+        </Grid>
       </Box>
       <Box mt={{ base: 16, md: 24 }} mb={16}>
         <SectionHeading>Clients</SectionHeading>
