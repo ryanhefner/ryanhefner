@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const feed = await getFeed()
   const episodeFields = feed.items.map((item: any) => ({
     loc: `${BASE_URL}/podcast/${item.link.split('/').pop()}`,
-    lastmod: item.attributes.published_at,
+    lastmod: item.isoDate,
   }))
 
   if (episodeFields.length) {
