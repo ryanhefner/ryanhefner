@@ -1,5 +1,6 @@
 import Cors from 'cors'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { usePodcast } from 'use-podcast'
 
 const cors = Cors({
   origin: '*',
@@ -22,7 +23,7 @@ function runMiddleware(
   })
 }
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+const handler = async function (req: NextApiRequest, res: NextApiResponse) {
   // Run the middleware
   await runMiddleware(req, res, cors)
 
@@ -33,9 +34,20 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   // Revalidate episode passed
   try {
-    const { data: episode } = req.body
+    // eslint-disable-next-line
+    const { getFeed } = usePodcast({
+      url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
+    })
 
-    await res.revalidate(`/podcast/${episode.attributes.slug}`)
+    const feed = await getFeed()
+
+    if (feed?.items) {
+      for (const item of feed.items) {
+        await res.revalidate(`/podcast/${item.link.split('/').pop()}`)
+        await res.revalidate(`/og-image/podcast/${item.link.split('/').pop()}`)
+      }
+    }
+
     await res.revalidate(`/podcast`)
     await res.revalidate(`/`)
     res.status(200).json({ revalidated: true })
@@ -44,3 +56,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(500).send('Error revalidating')
   }
 }
+
+export default handler
