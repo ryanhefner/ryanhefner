@@ -30,9 +30,9 @@ const EpisodePage = ({
   return (
     <>
       <SiteMeta
-        title={`Episode: ${episode?.attributes?.title ?? 'N/A'} - Podcast`}
+        title={`Episode: ${episode?.title ?? 'N/A'} - Podcast`}
         description={
-          episode?.attributes?.description
+          episode?.descriptionMarkdown
             ? episode?.descriptionMarkdown.length > 300
               ? `${episode.descriptionMarkdown.substring(0, 297)}...`
               : episode.descriptionMarkdown
