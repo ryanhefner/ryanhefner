@@ -64,7 +64,7 @@ export const PodcastPlayerProvider = ({
 
   useEffect(() => {
     if (currentEpisode) {
-      play(currentEpisode.attributes.media_url)
+      play(currentEpisode.enclosure.url)
     }
   }, [currentEpisode, play])
 
@@ -76,7 +76,7 @@ export const PodcastPlayerProvider = ({
         const nextTime = Date.now() - startTime
         setCurrentTime(nextTime)
 
-        if (nextTime >= currentEpisode.attributes.duration * 1000) {
+        if (nextTime >= parseInt(currentEpisode.itunes.duration, 10) * 1000) {
           clearInterval(intervalRef.current)
           setIsEnded(true)
           setIsPlaying(false)
@@ -113,7 +113,7 @@ export const PodcastPlayerProvider = ({
           audioBufferSourceNodeRef.current?.stop()
         } else if (currentEpisode) {
           setIsEnded(false)
-          play(currentEpisode.attributes.media_url, currentTime)
+          play(currentEpisode.enclosure.url, currentTime)
         }
       }
     },
