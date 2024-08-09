@@ -43,13 +43,23 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
 
     if (feed?.items) {
       for (const item of feed.items) {
+        console.debug(
+          `Revalidate episode page: /podcast/${item.link.split('/').pop()}`,
+        )
         await res.revalidate(`/podcast/${item.link.split('/').pop()}`)
+        console.debug(
+          `Revalidate og-image: /podcast/${item.link.split('/').pop()}`,
+        )
         await res.revalidate(`/og-image/podcast/${item.link.split('/').pop()}`)
       }
     }
 
+    console.debug(`Revalidate podcast page: /podcast`)
     await res.revalidate(`/podcast`)
+
+    console.debug(`Revalidate home page: /`)
     await res.revalidate(`/`)
+
     res.status(200).json({ revalidated: true })
   } catch (err) {
     console.error(err)
