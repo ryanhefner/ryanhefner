@@ -76,7 +76,7 @@ export class TransistorClient {
 
   public episodes(showId: string): Promise<any> {
     return this._request('/episodes', {
-      showId,
+      show_id: showId,
     })
   }
 
