@@ -119,7 +119,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params
-  const path = `/${Array.isArray(slug) ? slug.join('/') : slug ?? ''}`
+  const path = `/${Array.isArray(slug) ? slug.join('/') : (slug ?? '')}`
 
   let title = ''
   let body = ''
@@ -138,6 +138,11 @@ export const getStaticProps = async ({ params }) => {
         title = 'About'
         body =
           'I’m a software developer and product designer living in Atlanta, GA.'
+        break
+
+      case '/feeds':
+        title = 'Feeds'
+        body = 'RSS feeds you can subscribe to from the site.'
         break
 
       case '/withoss':
