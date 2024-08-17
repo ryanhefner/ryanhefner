@@ -3,8 +3,8 @@ import fs from 'fs'
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import { allNows, allThoughts } from 'contentlayer/generated'
 import { Feed } from 'feed'
+import { SiteMeta } from 'next-meta'
 import rehypeStringify from 'rehype-stringify'
-import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
@@ -16,29 +16,35 @@ import { PageHeading, SectionHeading } from '../components/typography'
 
 const FeedsPage = () => {
   return (
-    <PageWrapper>
-      <PageHeading>Feeds</PageHeading>
-      <Flex
-        flexDir={{ base: 'column', md: 'row' }}
-        w="full"
-        mt={{ base: 16, md: 24 }}
-      >
-        <Box flexBasis={{ base: 'full' }}>
-          <SectionHeading>All</SectionHeading>
-          <HStack color="gray.500" spacing={4}>
-            <Link href="/feeds/all/rss.xml">
-              <Text>XML</Text>
-            </Link>
-            <Link href="/feeds/all/rss.json">
-              <Text>JSON</Text>
-            </Link>
-            <Link href="/feeds/all/atom.xml">
-              <Text>ATOM</Text>
-            </Link>
-          </HStack>
-        </Box>
-      </Flex>
-    </PageWrapper>
+    <>
+      <SiteMeta
+        title="Feeds to subscribe to"
+        description="RSS feeds you can subscribe to from the site."
+      />
+      <PageWrapper>
+        <PageHeading>Feeds</PageHeading>
+        <Flex
+          flexDir={{ base: 'column', md: 'row' }}
+          w="full"
+          mt={{ base: 16, md: 24 }}
+        >
+          <Box flexBasis={{ base: 'full' }}>
+            <SectionHeading>All</SectionHeading>
+            <HStack color="gray.500" spacing={4}>
+              <Link href="/feeds/all/rss.xml">
+                <Text>XML</Text>
+              </Link>
+              <Link href="/feeds/all/rss.json">
+                <Text>JSON</Text>
+              </Link>
+              <Link href="/feeds/all/atom.xml">
+                <Text>ATOM</Text>
+              </Link>
+            </HStack>
+          </Box>
+        </Flex>
+      </PageWrapper>
+    </>
   )
 }
 
