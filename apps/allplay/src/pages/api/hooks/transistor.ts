@@ -7,6 +7,10 @@ const cors = Cors({
   methods: ['POST'],
 })
 
+export const config = {
+  maxDuration: 60,
+}
+
 function runMiddleware(
   req: NextApiRequest,
   res: NextApiResponse,
