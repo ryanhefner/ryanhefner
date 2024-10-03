@@ -68,6 +68,11 @@ export const getStaticPaths = async () => {
     },
     {
       params: {
+        slug: ['feeds'],
+      },
+    },
+    {
+      params: {
         slug: ['now'],
       },
     },

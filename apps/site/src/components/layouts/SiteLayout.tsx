@@ -2,9 +2,10 @@ import { PropsWithChildren, useCallback, useMemo, useState } from 'react'
 
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { isSafari } from 'react-device-detect'
-import Marquee from 'react-marquease'
 
+// import Marquee from 'react-marquease'
 import { Link } from '../base'
+import Marquee from '../Marquee'
 import { SiteFooter, SiteHeader } from '../site'
 
 type SiteLayoutProps = PropsWithChildren
@@ -42,7 +43,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
         onMouseLeave={handleMouseLeave}
         w="full"
       >
-        <Marquee pause={pauseMarquee} speed={1.3}>
+        <Marquee pause={pauseMarquee} speed={0.5}>
           <Text color="white" fontSize="3xl" whiteSpace="nowrap">
             |{` `}
             <Link
