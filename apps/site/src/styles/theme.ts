@@ -22,7 +22,7 @@ export const theme = extendTheme(
     },
     colors: {
       blue: {
-        [500]: 'oklch(50% 0.2731 262.59)',
+        [500]: 'oklch(53.12% 0.2731 262.59)',
       },
       gray: {
         [500]: '#888',
