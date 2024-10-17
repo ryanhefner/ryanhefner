@@ -1,7 +1,6 @@
-import { PropsWithChildren, useCallback, useMemo, useState } from 'react'
+import { PropsWithChildren, useCallback, useState } from 'react'
 
 import { Box, Flex, Text } from '@chakra-ui/react'
-import { isSafari } from 'react-device-detect'
 import Marquee from 'react-marquease'
 
 import { Link } from '../base'
@@ -20,17 +19,9 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
     setPauseMarquee(false)
   }, [])
 
-  const minH = useMemo(() => {
-    if (isSafari) {
-      return '-webkit-fill-available'
-    }
-
-    return '100vh'
-  }, [])
-
   return (
     <>
-      <Flex as="main" flexDir="column" minH={minH} w="full">
+      <Flex as="main" flexDir="column" minH="100dvh" w="full">
         <SiteHeader />
         {children}
         <SiteFooter />
@@ -42,7 +33,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
         onMouseLeave={handleMouseLeave}
         w="full"
       >
-        <Marquee pause={pauseMarquee} speed={1.3}>
+        <Marquee pause={pauseMarquee} speed={0.5}>
           <Text color="white" fontSize="3xl" whiteSpace="nowrap">
             |{` `}
             <Link
