@@ -15349,6 +15349,11 @@ react-markdown@^9.0.1:
     unist-util-visit "^5.0.0"
     vfile "^6.0.0"
 
+react-marquease@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-marquease/-/react-marquease-0.2.0.tgz#1384865045d05f863deb364abb1ff03ceb9fa29f"
+  integrity sha512-pkxF2jY++cWudYftPwzlz540FxNL3ewZpryzqN1pyyy9PeEOWS0dW3pj8piFlN3Nc2Sr3sCHMsKXNZpQHFvBlw==
+
 react-promise-suspense@0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/react-promise-suspense/-/react-promise-suspense-0.3.4.tgz#05d19a75703d71374674840056cfef2fcd38809d"
