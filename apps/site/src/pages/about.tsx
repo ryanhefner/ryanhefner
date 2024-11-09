@@ -76,6 +76,15 @@ const AboutPage = () => (
               />
             </Link>
           </GridItem>
+          <GridItem>
+            <Link href="https://www.jamsessions.fm" target="_blank">
+              <Image
+                src="/assets/podcasts/jam-sessions.png"
+                alt="Jam Sessions"
+                w="full"
+              />
+            </Link>
+          </GridItem>
         </Grid>
       </Box>
       <Box mt={{ base: 16, md: 24 }} mb={16}>
