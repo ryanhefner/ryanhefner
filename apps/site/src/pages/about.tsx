@@ -99,6 +99,17 @@ const AboutPage = () => (
           </Link>{' '}
           /{` `}
           <Link
+            href="https://bsky.app/profile/ryanhefner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="@ryanhefner.com on Bluesky"
+          >
+            <Text as="span" fontFamily="mono" fontSize="sm">
+              Bluesky
+            </Text>
+          </Link>{' '}
+          /{` `}
+          <Link
             href="https://www.twitter.com/ryanhefner"
             target="_blank"
             title="@ryanhefner on Twitter"
@@ -159,6 +170,24 @@ const AboutPage = () => (
             rel="noopener noreferrer"
           >
             Spotify
+          </Link>{' '}
+          /{` `}
+          <Link
+            href="https://www.twitch.tv/ryanhefner"
+            target="_blank"
+            title="@ryanhefner on Twitch"
+            rel="noopener noreferrer"
+          >
+            Twitch
+          </Link>{' '}
+          /{` `}
+          <Link
+            href="https://www.youtube.com/@ryan_hefner"
+            target="_blank"
+            title="@ryan_hefner on YouTube"
+            rel="noopener noreferrer"
+          >
+            YouTube
           </Link>{' '}
           /{` `}
           <Link
