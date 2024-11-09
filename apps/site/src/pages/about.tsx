@@ -86,14 +86,6 @@ const AboutPage = () => (
           </GridItem>
         </Grid>
       </Box>
-      <Box mt={{ base: 16, md: 24 }} mb={16}>
-        <SectionHeading>Clients</SectionHeading>
-        <ClientGrid>
-          {clients.map((client) => (
-            <ClientGridItem key={client.imageUrl} {...client} />
-          ))}
-        </ClientGrid>
-      </Box>
       <Box my={16}>
         <SectionHeading>Elsewhere</SectionHeading>
         <Text fontSize="2xl" mt={8}>
@@ -218,6 +210,17 @@ const AboutPage = () => (
           </Heading>
         </Box>
       </Flex> */}
+      <Box mt={{ base: 16, md: 24 }} mb={16}>
+        <SectionHeading>Clients</SectionHeading>
+        <Text fontSize="xl" maxW="container.md">
+          Some of the companies I’ve been fortunate to work with over the years.
+        </Text>
+        <ClientGrid>
+          {clients.map((client) => (
+            <ClientGridItem key={client.imageUrl} {...client} />
+          ))}
+        </ClientGrid>
+      </Box>
     </PageWrapper>
   </>
 )
