@@ -43,7 +43,7 @@ const AboutPage = () => (
       </Box>
       <Box mt={{ base: 16, md: 24 }} mb={16}>
         <SectionHeading>Podcasts</SectionHeading>
-        <Text color="gray.500" fontSize="xl" maxW="container.md">
+        <Text fontSize="xl" maxW="container.md">
           In order to share a bit more about what I am working on, I have
           started a few podcasts. You can listen to them on your favorite
           podcatcher.
@@ -53,8 +53,7 @@ const AboutPage = () => (
           templateColumns={{
             base: 'repeat(2, 1fr)',
             md: 'repeat(3, 1fr)',
-            lg: 'repeat(4, 1fr)',
-            xl: 'repeat(5, 1fr)',
+            lg: 'repeat(5, 1fr)',
           }}
           mt={8}
         >
@@ -76,15 +75,16 @@ const AboutPage = () => (
               />
             </Link>
           </GridItem>
+          <GridItem>
+            <Link href="https://www.jamsessions.fm" target="_blank">
+              <Image
+                src="/assets/podcasts/jam-sessions.png"
+                alt="Jam Sessions"
+                w="full"
+              />
+            </Link>
+          </GridItem>
         </Grid>
-      </Box>
-      <Box mt={{ base: 16, md: 24 }} mb={16}>
-        <SectionHeading>Clients</SectionHeading>
-        <ClientGrid>
-          {clients.map((client) => (
-            <ClientGridItem key={client.imageUrl} {...client} />
-          ))}
-        </ClientGrid>
       </Box>
       <Box my={16}>
         <SectionHeading>Elsewhere</SectionHeading>
@@ -96,6 +96,15 @@ const AboutPage = () => (
             rel="noopener noreferrer"
           >
             GitHub
+          </Link>{' '}
+          /{` `}
+          <Link
+            href="https://bsky.app/profile/ryanhefner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="@ryanhefner.com on Bluesky"
+          >
+            Bluesky
           </Link>{' '}
           /{` `}
           <Link
@@ -162,6 +171,24 @@ const AboutPage = () => (
           </Link>{' '}
           /{` `}
           <Link
+            href="https://www.twitch.tv/ryanhefner"
+            target="_blank"
+            title="@ryanhefner on Twitch"
+            rel="noopener noreferrer"
+          >
+            Twitch
+          </Link>{' '}
+          /{` `}
+          <Link
+            href="https://www.youtube.com/@ryan_hefner"
+            target="_blank"
+            title="@ryan_hefner on YouTube"
+            rel="noopener noreferrer"
+          >
+            YouTube
+          </Link>{' '}
+          /{` `}
+          <Link
             href="https://www.vimeo.com/ryanhefner"
             target="_blank"
             title="@ryanhefner on Vimeo"
@@ -183,6 +210,17 @@ const AboutPage = () => (
           </Heading>
         </Box>
       </Flex> */}
+      <Box mt={{ base: 16, md: 24 }} mb={16}>
+        <SectionHeading>Clients</SectionHeading>
+        <Text fontSize="xl" maxW="container.md">
+          Some of the companies I’ve been fortunate to work with over the years.
+        </Text>
+        <ClientGrid mt={8}>
+          {clients.map((client) => (
+            <ClientGridItem key={client.imageUrl} {...client} />
+          ))}
+        </ClientGrid>
+      </Box>
     </PageWrapper>
   </>
 )

@@ -46,6 +46,15 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
             </Link>{' '}
             /{` `}
             <Link
+              href="https://bsky.app/profile/ryanhefner.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="@ryanhefner.com on Bluesky"
+            >
+              Bluesky
+            </Link>{' '}
+            /{` `}
+            <Link
               href="https://www.twitter.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Twitter"
@@ -106,6 +115,24 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               rel="noopener noreferrer nofollow"
             >
               Spotify
+            </Link>{' '}
+            /{` `}
+            <Link
+              href="https://www.twitch.tv/ryanhefner"
+              target="_blank"
+              title="@ryanhefner on Twitch"
+              rel="noopener noreferrer"
+            >
+              Twitch
+            </Link>{' '}
+            /{` `}
+            <Link
+              href="https://www.youtube.com/@ryan_hefner"
+              target="_blank"
+              title="@ryan_hefner on YouTube"
+              rel="noopener noreferrer"
+            >
+              YouTube
             </Link>{' '}
             /{` `}
             <Link

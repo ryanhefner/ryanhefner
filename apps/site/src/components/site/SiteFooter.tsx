@@ -69,13 +69,13 @@ export const SiteFooter = () => {
           </Text>
         </Link>
         <Link
-          href="https://www.twitter.com/ryanhefner"
+          href="https://bsky.app/profile/ryanhefner.com"
           target="_blank"
           rel="noopener noreferrer"
-          title="@ryanhefner on Twitter"
+          title="@ryanhefner.com on Bluesky"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">
-            Twitter
+            Bluesky
           </Text>
         </Link>
       </HStack>
