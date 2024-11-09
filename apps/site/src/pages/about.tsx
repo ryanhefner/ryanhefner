@@ -215,7 +215,7 @@ const AboutPage = () => (
         <Text fontSize="xl" maxW="container.md">
           Some of the companies I’ve been fortunate to work with over the years.
         </Text>
-        <ClientGrid>
+        <ClientGrid mt={8}>
           {clients.map((client) => (
             <ClientGridItem key={client.imageUrl} {...client} />
           ))}
