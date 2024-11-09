@@ -113,9 +113,7 @@ const AboutPage = () => (
             rel="noopener noreferrer"
             title="@ryanhefner.com on Bluesky"
           >
-            <Text as="span" fontFamily="mono" fontSize="sm">
-              Bluesky
-            </Text>
+            Bluesky
           </Link>{' '}
           /{` `}
           <Link
