@@ -43,7 +43,7 @@ const AboutPage = () => (
       </Box>
       <Box mt={{ base: 16, md: 24 }} mb={16}>
         <SectionHeading>Podcasts</SectionHeading>
-        <Text color="gray.500" fontSize="xl" maxW="container.md">
+        <Text fontSize="xl" maxW="container.md">
           In order to share a bit more about what I am working on, I have
           started a few podcasts. You can listen to them on your favorite
           podcatcher.
