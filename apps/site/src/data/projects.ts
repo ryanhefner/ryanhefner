@@ -5,6 +5,13 @@ export const projects = [
     url: '/projects/oss',
   },
   {
+    name: 'Starter Packs',
+    description:
+      'Discover and grow your community through Starter Packs from Bluesky.',
+    url: 'https://www.starterpacks.net',
+    imageUrl: '/assets/projects/starterpacks.png',
+  },
+  {
     name: 'Transmits',
     description:
       'Quickly record, reflect, refine and share your audio thoughts.',

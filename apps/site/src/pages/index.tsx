@@ -13,6 +13,7 @@ import { getProjectsByUrls } from '../data/projects'
 
 const IndexPage = () => {
   const activeProjects = getProjectsByUrls([
+    'https://www.starterpacks.net',
     'https://www.transmits.io',
     'https://github.com/accesscache',
     'https://github.com/playstack',
