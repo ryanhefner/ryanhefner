@@ -1,7 +1,5 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { allNows } from 'contentlayer/generated'
-import { allThoughts } from 'contentlayer/generated'
-import { allUpdates } from 'contentlayer/generated'
+import { allNows, allThoughts, allUpdates } from 'contentlayer/generated'
 
 import { theme } from '../../styles'
 

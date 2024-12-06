@@ -1,1 +1,1 @@
-export default 'contentLayer'
+export default 'contentLayer2'
