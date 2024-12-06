@@ -32,7 +32,7 @@ export const PodcastPlayerProvider = ({
 
   const audioBufferRef = useRef<AudioBuffer | null>(null)
   const audioBufferSourceNodeRef = useRef<AudioBufferSourceNode | null>(null)
-  const intervalRef = useRef<NodeJS.Timeout | undefined>()
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   const { play: playContext } = useWebAudioContext()
 

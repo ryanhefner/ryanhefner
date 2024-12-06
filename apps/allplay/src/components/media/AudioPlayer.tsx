@@ -34,7 +34,7 @@ type AudioPlayerProps = {
 
 const getDragPercent = (
   event: PointerEvent | React.PointerEvent<HTMLDivElement>,
-  ref: RefObject<HTMLDivElement>,
+  ref: RefObject<HTMLDivElement | null>,
 ) => {
   let percent = 0
 
@@ -71,7 +71,7 @@ export const AudioPlayer = ({
   const [isDragging, setIsDragging] = useState(false)
   const [dragPercent, setDragPercent] = useState(0)
 
-  const dragRef = useRef<HTMLDivElement>(null)
+  const dragRef = useRef<HTMLDivElement | null>(null)
 
   const { seek } = useContext(PodcastPlayerContext)
 
