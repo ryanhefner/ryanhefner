@@ -21,7 +21,7 @@
       "@linkcards/next": ["libs/linkcards/src/index.ts"],
       "@waveforms/react": ["libs/waveforms/src/index.ts"],
       "contentlayer": ["libs/contentlayer/src/index.ts"],
-      "contentlayer/generated": ["./.contentlayer2/generated"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "emails": ["libs/emails/src/index.ts"],
       "newsletter": ["libs/newsletter/src/index.ts"],
       "props": ["libs/props/src/index.ts"],
