@@ -11,7 +11,7 @@ import {
 import { UTCDateMini } from '@date-fns/utc'
 import { Thought, allThoughts } from 'contentlayer/generated'
 import { format } from 'date-fns'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { SiteMeta } from 'next-meta'
 import slugify from 'slugify'
 
