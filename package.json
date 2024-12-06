@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "contentlayer": "contentlayer build -c ./libs/contentlayer/contentlayer.config.ts",
+    "contentlayer": "contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
