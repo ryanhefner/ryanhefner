@@ -53,18 +53,21 @@ const EpisodePage = ({
         }}
       >
         <link
+          key="rss-xml"
           rel="alternate"
           type="application/rss+xml"
           title="All Play w/ Ryan Hefner"
           href="https://feeds.transistor.fm/allplay"
         />
         <link
+          key="json-oembed"
           rel="alternate"
           type="application/json+oembed"
           title={episode.title}
           href={`https://share.transistor.fm/oembed?format=json&url=${encodeURIComponent(episode.link)}`}
         />
         <link
+          key="xml-oembed"
           rel="alternate"
           type="text/xml+oembed"
           title={episode.title}
