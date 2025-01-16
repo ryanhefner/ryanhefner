@@ -3624,10 +3624,10 @@
   resolved "https://registry.yarnpkg.com/@react-email/column/-/column-0.0.13.tgz#0aaa5d6abae1b590a0262bfbfd241344a2c60ad3"
   integrity sha512-Lqq17l7ShzJG/d3b1w/+lVO+gp2FM05ZUo/nW0rjxB8xBICXOVv6PqjDnn3FXKssvhO5qAV20lHM6S+spRhEwQ==
 
-"@react-email/components@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@react-email/components/-/components-0.0.31.tgz#9d938091e1862717ba597371f347fe791316520c"
-  integrity sha512-rQsTY9ajobncix9raexhBjC7O6cXUMc87eNez2gnB1FwtkUO8DqWZcktbtwOJi7GKmuAPTx0o/IOFtiBNXziKA==
+"@react-email/components@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@react-email/components/-/components-0.0.32.tgz#670377e7bcc69c20e6765820c1fc0c6d309c8895"
+  integrity sha512-+1Wv7PyVgWfLoj5W0+CvBsJMIfMI6ibcFcIPXNkb2lhKQQASgxSoAedRL1rH0CCaBo6+63tg8y4baHzJonfZbw==
   dependencies:
     "@react-email/body" "0.0.11"
     "@react-email/button" "0.0.19"
@@ -3644,7 +3644,7 @@
     "@react-email/link" "0.0.12"
     "@react-email/markdown" "0.0.14"
     "@react-email/preview" "0.0.12"
-    "@react-email/render" "1.0.3"
+    "@react-email/render" "1.0.4"
     "@react-email/row" "0.0.12"
     "@react-email/section" "0.0.16"
     "@react-email/tailwind" "1.0.4"
@@ -3711,13 +3711,13 @@
     js-beautify "^1.14.11"
     react-promise-suspense "0.3.4"
 
-"@react-email/render@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@react-email/render/-/render-1.0.3.tgz#f50d8340881ebb69182b13cfe7a615848f35cf1a"
-  integrity sha512-VQ8g4SuIq/jWdfBTdTjb7B8Np0jj+OoD7VebfdHhLTZzVQKesR2aigpYqE/ZXmwj4juVxDm8T2b6WIIu48rPCg==
+"@react-email/render@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@react-email/render/-/render-1.0.4.tgz#4bdd349ef8652055c3eae3f2dffc02a6b3b723c9"
+  integrity sha512-8ZXi89d8igBDE6W3zlHBa3GEDWKEUFDAa7i8MvVxnRViQuvsRbibK3ltuPgixxRI5+HgGNCSreBHQKZCkhUdyw==
   dependencies:
     html-to-text "9.0.5"
-    prettier "3.3.3"
+    prettier "3.4.2"
     react-promise-suspense "0.3.4"
 
 "@react-email/row@0.0.12":
@@ -13941,12 +13941,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
-  integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
-
-prettier@^3.0.3:
+prettier@3.4.2, prettier@^3.0.3:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.2.tgz#a5ce1fb522a588bf2b78ca44c6e6fe5aa5a2b13f"
   integrity sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==
