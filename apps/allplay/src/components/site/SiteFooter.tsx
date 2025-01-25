@@ -1,5 +1,6 @@
 import { Box, Flex, HStack, Heading, Icon, Image, Text } from '@chakra-ui/react'
-import { ImGithub, ImTwitter } from 'react-icons/im'
+import { FaBluesky } from 'react-icons/fa6'
+import { ImGithub } from 'react-icons/im'
 
 import { Link } from '../base'
 
@@ -54,11 +55,11 @@ publishing platform"
       </HStack>
       <HStack spacing={4} alignItems="center">
         <Link
-          href="https://twitter.com/ryanhefner"
+          href="https://bsky.app/profile/ryanhefner.com"
           lineHeight={0.8}
-          title="Follow @ryanhefner on Twitter"
+          title="Follow @ryanhefner.com on Bluesky"
         >
-          <Icon as={ImTwitter} w={5} h={5} />
+          <Icon as={FaBluesky} w={5} h={5} />
         </Link>
         <Link
           href="https://github.com/ryanhefner"
