@@ -9,47 +9,48 @@ import {
   FormLabel,
   Heading,
   Input,
+  Text,
   chakra,
 } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
-const Form = chakra('form')
-
 const schema = yup
   .object({
     email: yup.string().email().required(),
-    firstName: yup.string().required(),
+    firstName: yup.string().optional(),
   })
   .required()
 
 export const NewsletterForm = () => {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
     register,
     handleSubmit: handleSubmitForm,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  })
+  } = useForm({ resolver: yupResolver(schema) })
 
   const handleSubmit = useCallback((data: any) => {
-    console.debug(data)
-
+    setIsSubmitting(true)
     fetch('/api/newsletter/subscribe', {
       method: 'POST',
       body: JSON.stringify(data),
-    }).then((response) => {
-      if (!response.ok) {
-        console.error(response)
-        return
-      }
-
-      setSuccess(true)
     })
+      .then((response) => {
+        if (!response.ok) {
+          console.error(response)
+          return
+        }
+
+        setSuccess(true)
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+      })
   }, [])
 
   if (success) {
@@ -61,7 +62,7 @@ export const NewsletterForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmitForm(handleSubmit)}>
+    <form onSubmit={handleSubmitForm(handleSubmit)}>
       <Flex
         flexDir={{ base: 'column', md: 'row' }}
         alignItems="flex-start"
@@ -84,7 +85,10 @@ export const NewsletterForm = () => {
         </FormControl>
         <FormControl isInvalid={!!errors.email?.message}>
           <FormLabel htmlFor="email" color="gray.400" fontSize="sm">
-            Email
+            Email{` `}
+            <Text as="sup" color="red.500" fontSize="sm">
+              *
+            </Text>
           </FormLabel>
           <Input
             border={0}
@@ -103,11 +107,14 @@ export const NewsletterForm = () => {
             color="white"
             flex="0 0 auto"
             borderRadius="sm"
+            isLoading={isSubmitting}
+            isDisabled={isSubmitting}
+            loadingText="Subscribing..."
           >
             Subscribe
           </Button>
         </Box>
       </Flex>
-    </Form>
+    </form>
   )
 }
