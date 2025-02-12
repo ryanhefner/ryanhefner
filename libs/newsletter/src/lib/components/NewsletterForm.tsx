@@ -110,6 +110,7 @@ export const NewsletterForm = ({
               </Text>
             </FormLabel>
             <Input
+              type="email"
               border={0}
               borderBottom="1px solid"
               borderRadius={0}
