@@ -33,82 +33,89 @@ const IndexPage = ({
   feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Flex
-      flexDir="column"
-      flex={1}
-      h="full"
-      px={{ base: 4, md: 8 }}
-      py={{ base: 12, md: 24 }}
-      w="full"
-    >
-      <Text
-        color="gray.400"
-        fontSize={{ base: '3xl', md: '5xl' }}
-        fontWeight="normal"
-        letterSpacing={-1.2}
-        lineHeight={1.2}
+    <>
+      <Flex
+        flexDir="column"
+        flex={1}
+        h="full"
+        px={{ base: 4, md: 8 }}
+        py={{ base: 12, md: 24 }}
+        w="full"
       >
-        Welcome to All Play! This is where I,{' '}
-        <Link color="white" href="https://www.ryanhefner.com">
-          Ryan Hefner
-        </Link>
-        , share what I am doing and the things I am getting into. You can follow
-        along by listening to the{' '}
-        <Link color="white" href="/podcast">
-          podcast
-        </Link>{' '}
-        or reading the{' '}
-        <Link color="white" href="/newsletter">
-          newsletter
-        </Link>
-        .
-        <br />
-        <br />
-        If you like what you hear, please{' '}
-        <Link color="white" href="#subscribe">
-          subscribe
-        </Link>{' '}
-        in your favorite podcatcher. And, if you’re into what I am writing,
-        please{' '}
-        <Link color="white" href="#signup">
-          sign up
-        </Link>{' '}
-        for the newsletter.
-      </Text>
-      <EpisodeList mt={24} episodes={feed.items} />
-      <Podcatchers feeds={feeds} mt={24} />
-      {/* <Flex flexDir="column" mt={24}>
-        <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
-          Newsletters
-        </Heading>
-        {newsletters.map((newsletter: any) => (
-          <Link
-            key={newsletter.id}
-            href={`/newsletter${newsletter.slug}`}
-            _hover={{
-              textDecoration: 'none',
-            }}
-          >
-            <Flex
-              borderBottom="1px solid"
-              borderColor="gray.800"
-              justifyContent="space-between"
-              py={4}
-            >
-              <Text fontSize="md">{newsletter.title}</Text>
-            </Flex>
+        <Text
+          color="gray.400"
+          fontSize={{ base: '3xl', md: '5xl' }}
+          fontWeight="normal"
+          letterSpacing={-1.2}
+          lineHeight={1.2}
+        >
+          Welcome to All Play! This is where I,{' '}
+          <Link color="white" href="https://www.ryanhefner.com">
+            Ryan Hefner
           </Link>
-        ))}
-      </Flex> */}
-      <Box id="signup" mt={24}>
-        <Heading as="h3">Subscribe to the newletter</Heading>
+          , share what I am doing and the things I am getting into. You can
+          follow along by listening to the{' '}
+          <Link color="white" href="/podcast">
+            podcast
+          </Link>{' '}
+          or reading the{' '}
+          <Link color="white" href="/newsletter">
+            newsletter
+          </Link>
+          .
+          <br />
+          <br />
+          If you like what you hear, please{' '}
+          <Link color="white" href="#subscribe">
+            subscribe
+          </Link>{' '}
+          in your favorite podcatcher. And, if you’re into what I am writing,
+          please{' '}
+          <Link color="white" href="#signup">
+            sign up
+          </Link>{' '}
+          for the newsletter.
+        </Text>
+        <EpisodeList mt={24} episodes={feed.items} />
+        <Podcatchers feeds={feeds} mt={24} />
+        {/* <Flex flexDir="column" mt={24}>
+          <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
+            Newsletters
+          </Heading>
+          {newsletters.map((newsletter: any) => (
+            <Link
+              key={newsletter.id}
+              href={`/newsletter${newsletter.slug}`}
+              _hover={{
+                textDecoration: 'none',
+              }}
+            >
+              <Flex
+                borderBottom="1px solid"
+                borderColor="gray.800"
+                justifyContent="space-between"
+                py={4}
+              >
+                <Text fontSize="md">{newsletter.title}</Text>
+              </Flex>
+            </Link>
+          ))}
+        </Flex> */}
+      </Flex>
+      <Box
+        id="signup"
+        pos="relative"
+        px={{ base: 4, md: 8 }}
+        py={{ base: 12, md: 16 }}
+      >
+        <Heading as="h3">Subscribe to the newsletter</Heading>
         <Text color="gray.400">
           Get updates when new episodes are posted, and other fun stuff that I
           am into.
         </Text>
         <NewsletterForm />
       </Box>
-    </Flex>
+    </>
   )
 }
 
@@ -121,11 +128,7 @@ export const getStaticProps = (async () => {
 
   const feed = await getFeed()
 
-  return {
-    props: {
-      feed,
-    },
-  }
+  return { props: { feed } }
 }) satisfies GetStaticProps<{ feed: any }>
 
 export default IndexPage

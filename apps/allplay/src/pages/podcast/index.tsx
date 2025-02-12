@@ -37,15 +37,20 @@ const EpisodesIndexPage = ({
       >
         <Podcatchers feeds={feeds} />
         <EpisodeList episodes={feed.items} mt={24} />
-        <Box id="signup" mt={24}>
-          <Heading as="h3">Subscribe to the newletter</Heading>
-          <Text color="gray.400">
-            Get updates when new episodes are posted, and other fun stuff that I
-            am into.
-          </Text>
-          <NewsletterForm />
-        </Box>
       </Flex>
+      <Box
+        id="signup"
+        pos="relative"
+        px={{ base: 4, md: 8 }}
+        py={{ base: 12, md: 16 }}
+      >
+        <Heading as="h3">Subscribe to the newsletter</Heading>
+        <Text color="gray.400">
+          Get updates when new episodes are posted, and other fun stuff that I
+          am into.
+        </Text>
+        <NewsletterForm />
+      </Box>
     </>
   )
 }
@@ -61,11 +66,7 @@ export const getStaticProps = (async () => {
 
   const feed = await getFeed()
 
-  return {
-    props: {
-      feed,
-    },
-  }
+  return { props: { feed } }
 }) satisfies GetStaticProps<{ feed: any }>
 
 export default EpisodesIndexPage
