@@ -129,6 +129,7 @@ export const NewsletterForm = ({
               isLoading={isSubmitting}
               isDisabled={isSubmitting}
               loadingText="Subscribing..."
+              _hover={{ bg: 'red.400' }}
               w={{ base: 'full', md: 'auto' }}
             >
               Subscribe
