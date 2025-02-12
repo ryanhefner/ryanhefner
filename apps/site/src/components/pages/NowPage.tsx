@@ -27,30 +27,28 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
         title={title ?? now.title}
         description={description ?? now.description}
       />
-      <PageWrapper>
-        <PageHeading>Now</PageHeading>
-        <Box my={16}>
-          <Text fontFamily="mono">
-            <Text
-              as="span"
-              fontSize="xs"
-              fontWeight="medium"
-              textTransform="uppercase"
-            >
-              Updated
-            </Text>
-            <br />
-            {format(new UTCDateMini(now.date), 'MMMM do, yyyy')}
-            <br />
-            <Text as="span" color="gray.600">
-              {`via ${now.location ?? 'Atlanta, GA'}`}
-            </Text>
+      <PageHeading>Now</PageHeading>
+      <Box my={16}>
+        <Text fontFamily="mono">
+          <Text
+            as="span"
+            fontSize="xs"
+            fontWeight="medium"
+            textTransform="uppercase"
+          >
+            Updated
           </Text>
-        </Box>
-        <Box fontSize={{ base: 'lg', md: 'xl' }} my={16} maxW="container.md">
-          <MDXContent components={mdxComponents({ codeBg, codeColor })} />
-        </Box>
-      </PageWrapper>
+          <br />
+          {format(new UTCDateMini(now.date), 'MMMM do, yyyy')}
+          <br />
+          <Text as="span" color="gray.600">
+            {`via ${now.location ?? 'Atlanta, GA'}`}
+          </Text>
+        </Text>
+      </Box>
+      <Box fontSize={{ base: 'lg', md: 'xl' }} my={16} maxW="container.md">
+        <MDXContent components={mdxComponents({ codeBg, codeColor })} />
+      </Box>
     </>
   )
 }

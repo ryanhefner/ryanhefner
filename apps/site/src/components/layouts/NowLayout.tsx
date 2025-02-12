@@ -1,4 +1,11 @@
-import { Box, HStack, Heading, Text, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  HStack,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
 import { allNows } from 'contentlayer/generated'
 import { format } from 'date-fns'
@@ -17,8 +24,8 @@ export const NowLayout = ({ children }) => {
 
   return (
     <SiteLayout>
-      {children}
       <PageWrapper>
+        {children}
         <Box>
           <Box borderBottom={`2px solid ${borderColor}`}>
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
