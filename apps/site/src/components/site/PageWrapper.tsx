@@ -1,5 +1,7 @@
-import { Box, Heading, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Heading, Text, useColorModeValue, chakra } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
+
+const Br = chakra('br')
 
 export const PageWrapper = ({ children, ...rest }) => {
   const bgColor = useColorModeValue('gray.100', 'gray.900')
@@ -25,7 +27,15 @@ export const PageWrapper = ({ children, ...rest }) => {
         w="full"
         pos="relative"
       >
-        <Heading as="h3">Subscribe to the —All Play newsletter</Heading>
+        <Heading
+          as="h3"
+          fontWeight="semibold"
+          letterSpacing="-0.5px"
+          lineHeight={1.1}
+        >
+          Subscribe to the
+          <Br display={{ base: 'block', md: 'none' }} /> —All Play newsletter
+        </Heading>
         <Text color={textColor}>
           Get updates when I publish new episodes, and post about other fun
           stuff that I’m into.
