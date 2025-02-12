@@ -29,16 +29,16 @@ export const theme = extendTheme(
         [900]: '#111',
       },
       green: { [500]: '#13D93A' },
-      red: { [500]: '#F82327' },
+      red: { [400]: '#FE3B3F', [500]: '#F82327' },
       yellow: { [300]: '#F5FA1F' },
     },
     components: { Heading, Tag },
     styles: {
       global: (props: any) => ({
-        html: { bg: mode('black', 'white')(props) },
+        html: { bg: mode('black', 'black')(props) },
         body: {
-          color: mode('white', 'black')(props),
-          bg: mode('black', 'white')(props),
+          color: mode('white', 'white')(props),
+          bg: mode('black', 'black')(props),
         },
         '::selection': { bg: 'yellow.300', color: 'black' },
       }),
