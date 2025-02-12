@@ -16,15 +16,9 @@ export const theme = extendTheme(
       mono: `Suisse Intl Mono, monospace`,
       serif: `Suisse Works, serif`,
     },
-    fontSizes: {
-      '10xl': '10rem',
-      '11xl': '11rem',
-      '12xl': '12rem',
-    },
+    fontSizes: { '10xl': '10rem', '11xl': '11rem', '12xl': '12rem' },
     colors: {
-      blue: {
-        [500]: '#235EF8',
-      },
+      blue: { [500]: '#235EF8' },
       gray: {
         [300]: '#aaa',
         [400]: '#999',
@@ -34,36 +28,26 @@ export const theme = extendTheme(
         [800]: '#222',
         [900]: '#111',
       },
-      green: {
-        [500]: '#1AD216',
-      },
-      yellow: {
-        [300]: '#F5FA1F',
-      },
+      green: { [500]: '#13D93A' },
+      red: { [500]: '#F82327' },
+      yellow: { [300]: '#F5FA1F' },
     },
-    components: {
-      Heading,
-      Tag,
-    },
+    components: { Heading, Tag },
     styles: {
       global: (props: any) => ({
-        html: {
-          bg: mode('black', 'white')(props),
-        },
+        html: { bg: mode('black', 'white')(props) },
         body: {
           color: mode('white', 'black')(props),
           bg: mode('black', 'white')(props),
         },
-        '::selection': {
-          bg: 'yellow.300',
-          color: 'black',
-        },
+        '::selection': { bg: 'yellow.300', color: 'black' },
       }),
     },
     config: {
       ...baseTheme.config,
       cssVarPrefix: 'system',
       useSystemColorMode: false,
+      initialColorMode: 'dark',
     },
   },
   withDefaultColorScheme({ colorScheme: 'whiteAlpha' }),
