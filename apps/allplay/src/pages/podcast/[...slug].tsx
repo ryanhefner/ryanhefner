@@ -45,11 +45,7 @@ const EpisodePage = ({
           // image: {
           //   url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play-cover.png`,
           // },
-          player: {
-            url: episode.link,
-            width: '500',
-            height: '180',
-          },
+          player: { url: episode.link, width: '500', height: '180' },
         }}
       >
         <link
@@ -171,15 +167,20 @@ const EpisodePage = ({
           </Box>
         </Flex>
         <EpisodeList episodes={feed.items} mt={24} title="More Episodes" />
-        <Box id="#signup" mt={24}>
-          <Heading as="h3">Subscribe to the newletter</Heading>
-          <Text color="gray.400">
-            Get updates when new episodes are posted, and other fun stuff that I
-            am into.
-          </Text>
-          <NewsletterForm />
-        </Box>
       </Flex>
+      <Box
+        id="signup"
+        pos="relative"
+        px={{ base: 4, md: 8 }}
+        py={{ base: 12, md: 16 }}
+      >
+        <Heading as="h3">Subscribe to the newsletter</Heading>
+        <Text color="gray.400">
+          Get updates when new episodes are posted, and other fun stuff that I
+          am into.
+        </Text>
+        <NewsletterForm />
+      </Box>
     </>
   )
 }
@@ -199,10 +200,7 @@ export const getStaticPaths = async () => {
       params: { slug: [item.link.split('/').pop()] },
     })) ?? []
 
-  return {
-    paths,
-    fallback: 'blocking',
-  }
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps = (async ({ params }) => {
@@ -219,18 +217,11 @@ export const getStaticProps = (async ({ params }) => {
     episode = await getEpisode({
       slug: slug?.[0],
       convertDescriptionToMarkdown: true,
-      transcript: {
-        mimeType: 'application/json',
-      },
+      transcript: { mimeType: 'application/json' },
     })
   }
 
-  return {
-    props: {
-      feed,
-      episode,
-    },
-  }
+  return { props: { feed, episode } }
 }) satisfies GetStaticProps<{ episode: any; feed: any }>
 
 export default EpisodePage

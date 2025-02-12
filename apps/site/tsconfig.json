@@ -17,9 +17,17 @@
       "@fontbase/suisse-intl": ["libs/suisse-intl/src/index.css"],
       "@fontbase/suisse-mono": ["libs/suisse-mono/src/index.css"],
       "@fontbase/suisse-works": ["libs/suisse-works/src/index.css"],
-      "@linkcards/next": ["libs/linkcards/src/index.ts"]
+      "@linkcards/next": ["libs/linkcards/src/index.ts"],
+      "newsletter": ["libs/newsletter/src/index.ts"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts", "../../.contentlayer/generated"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "next-env.d.ts",
+    "../../.contentlayer/generated"
+  ],
   "exclude": ["node_modules", "jest.config.ts"]
 }
