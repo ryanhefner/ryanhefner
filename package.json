@@ -96,7 +96,7 @@
     "@swc-node/register": "^1.10.3",
     "@swc/cli": "^0.6.0",
     "@swc/core": "^1.6.1",
-    "@swc/plugin-emotion": "^8.0.1",
+    "@swc/plugin-emotion": "^9.0.0",
     "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.13",
     "@types/mdx": "^2.0.10",
