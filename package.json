@@ -35,7 +35,7 @@
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "fathom-client": "^3.5.0",
-    "feed": "^4.2.2",
+    "feed": "^5.1.0",
     "formidable": "^3.5.1",
     "framer-motion": "^12.0.5",
     "isomorphic-fetch": "^3.0.0",
