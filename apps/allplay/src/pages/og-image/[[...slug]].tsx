@@ -32,7 +32,7 @@ const SharePage = ({ body, path, title }: SharePageProps) => {
         <Heading as="h3" fontSize="7xl" fontWeight={500} lineHeight="1.15">
           {body}
         </Heading>
-        {path.startsWith('/podcast') ? (
+        {path?.startsWith('/podcast') ? (
           <Image
             src="/assets/all-play.png"
             alt="All Play w/ Ryan Hefner (Cover Image)"
