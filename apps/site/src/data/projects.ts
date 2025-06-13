@@ -18,6 +18,12 @@ export const projects = [
     imageUrl: '/assets/projects/skylounge.png',
   },
   {
+    name: 'Commune',
+    description: 'A product studio, crafting products for the community.',
+    url: 'https://www.commune.software',
+    imageUrl: '/assets/projects/commune-software.png',
+  },
+  {
     name: 'Starter Packs',
     description:
       'Discover and grow your community through Starter Packs from Bluesky.',
