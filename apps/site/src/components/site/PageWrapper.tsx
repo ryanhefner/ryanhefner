@@ -4,9 +4,10 @@ import { NewsletterForm } from 'newsletter'
 const Br = chakra('br')
 
 export const PageWrapper = ({ children, ...rest }) => {
-  const bgColor = useColorModeValue('gray.100', 'gray.900')
-  const formVariant = useColorModeValue('light', 'dark')
-  const textColor = useColorModeValue('gray.500', 'gray.400')
+  const bgColor = useColorModeValue('gray.900', 'gray.900')
+  const formVariant = useColorModeValue('dark', 'dark')
+  const headingColor = useColorModeValue('white', 'white')
+  const textColor = useColorModeValue('gray.400', 'gray.400')
 
   return (
     <>
@@ -29,6 +30,7 @@ export const PageWrapper = ({ children, ...rest }) => {
       >
         <Heading
           as="h3"
+          color={headingColor}
           fontWeight="semibold"
           letterSpacing="-0.5px"
           lineHeight={1.1}
