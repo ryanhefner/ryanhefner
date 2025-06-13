@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { usePodcast } from 'use-podcast'
 
 import { theme } from '../../styles'
@@ -28,10 +28,17 @@ const SharePage = ({ body, path, title }: SharePageProps) => {
           {title}
         </Heading>
       </Flex>
-      <Flex flex={1} align="center">
+      <Flex flex={1} align="center" gap={12}>
         <Heading as="h3" fontSize="7xl" fontWeight={500} lineHeight="1.15">
           {body}
         </Heading>
+        {path.startsWith('/podcast') ? (
+          <Image
+            src="/assets/all-play.png"
+            alt="All Play w/ Ryan Hefner (Cover Image)"
+            width="35dvw"
+          />
+        ) : null}
       </Flex>
       <Flex
         fontFamily="mono"
