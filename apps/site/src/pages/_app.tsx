@@ -61,7 +61,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}
-          // url={url}
+          url={url}
           imageWidth={1200}
           imageHeight={630}
         />
