@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 
 import { ChakraProvider } from '@chakra-ui/react'
-// import { LinkCard } from '@linkcards/next'
+import { LinkCard } from '@linkcards/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -37,7 +37,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const path = router.asPath.split('?')[0]
   const isHome = path === '/' || path === '/index'
   const url = isHome ? siteUrl : `${siteUrl}${path}`
-  // const ogImageUrl = `${url}/social-image.jpg`
+  const ogImageUrl = `${url}/social-image.png`
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
@@ -61,13 +61,13 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         type="website"
         url={path}
       >
-        {/* <LinkCard
+        <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}
-          url={url}
+          // url={url}
           imageWidth={1200}
           imageHeight={630}
-        /> */}
+        />
         <NextPagesFathomProvider
           clientOptions={{
             includedDomains: ['allplay.fm', 'www.allplay.fm'],

@@ -36,7 +36,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const path = router.asPath.split('?')[0]
   const isHome = path === '/' || path === '/index'
   const url = isHome ? siteUrl : `${siteUrl}${path}`
-  const ogImageUrl = `${url}/social-image.jpg`
+  const ogImageUrl = `${url}/social-image.png`
 
   const getLayout = Component.getLayout || ((page) => page)
 
@@ -61,7 +61,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}
-          url={url}
+          // url={url}
           imageWidth={1200}
           imageHeight={630}
         />
