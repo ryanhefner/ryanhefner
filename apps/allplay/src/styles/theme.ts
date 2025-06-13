@@ -18,8 +18,9 @@ export const theme = extendTheme(
     },
     fontSizes: { '10xl': '10rem', '11xl': '11rem', '12xl': '12rem' },
     colors: {
-      blue: { [500]: '#235EF8' },
+      blue: { [500]: 'oklch(53.12% 0.2731 262.59)' },
       gray: {
+        [200]: '#ccc',
         [300]: '#aaa',
         [400]: '#999',
         [500]: '#888',
