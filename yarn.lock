@@ -13350,10 +13350,10 @@ next-contentlayer2@^0.5.3:
     "@contentlayer2/core" "0.5.8"
     "@contentlayer2/utils" "0.5.8"
 
-next-meta@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/next-meta/-/next-meta-0.2.0.tgz#d1d286f637648c9ef79f838c2e2d84de51fecc4a"
-  integrity sha512-VzoqbILCVqG6++PafxeGbNvGaf+NjRmeGOQMS9cFTDDyDVlxvVN6crx7N5TLKP6Rehj8Qy3mqf89BN2jfxXcLw==
+next-meta@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/next-meta/-/next-meta-0.3.0.tgz#fa711162ed448c81bb7f09d6381ceeedfe67f3e0"
+  integrity sha512-40WCbKGWC+V26Race+wFwetfe1d4bJtiAxYEhW7UiWRDmfE9th+N91Xznd1qdvt4TASW56jbFwcEEZGMipfZjA==
   dependencies:
     lodash "^4.17.21"
 
