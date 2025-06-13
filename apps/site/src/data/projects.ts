@@ -5,6 +5,19 @@ export const projects = [
     url: '/projects/oss',
   },
   {
+    name: 'OpenGraphs',
+    description: 'Dynamic open graph image generation and optimization.',
+    url: 'https://www.opengraphs.com',
+    imageUrl: '/assets/projects/opengraphs.png',
+  },
+  {
+    name: 'Skylounge',
+    description:
+      'A space to converse and connect. X/Twitter Spaces alternative for Bluesky.',
+    url: 'https://www.skylounge.social',
+    imageUrl: '/assets/projects/skylounge.png',
+  },
+  {
     name: 'Starter Packs',
     description:
       'Discover and grow your community through Starter Packs from Bluesky.',
@@ -115,9 +128,14 @@ export const projects = [
 
 export const oss = [
   {
+    name: 'use-bluesky',
+    description: 'React hooks to interact with the Bluesky API.',
+    url: 'https://www.pkgstats.com/pkg:use-bluesky',
+  },
+  {
     name: 'next-meta',
     description:
-      'Easily compose and manage meta and open graph tags in your Next.js app/site.',
+      'A composable React component for managing meta tags, Open Graph, and Twitter cards in Next.js applications.',
     url: 'https://www.pkgstats.com/pkg:next-meta',
   },
   {
