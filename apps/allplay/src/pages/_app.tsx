@@ -50,16 +50,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         canonical={url}
         title={TITLE}
         description={DESCRIPTION}
-        imageWidth={2048}
-        imageHeight={2048}
         siteName="All Play"
         twitter={{
           creator: '@ryanhefner',
-          image: {
-            url: `${siteUrl}/assets/all-play.png`,
-            width: 1200,
-            height: 1200,
-          },
           site: '@allplayfm',
         }}
         type="website"
