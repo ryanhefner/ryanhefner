@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 export type PlayOptions = {
-  onEnded?: () => void
+  onEnded?: (event?: Event) => void
   onError?: (error: Error | unknown) => void
   startOffset?: number
 }
@@ -12,12 +12,12 @@ type WebAudioContextValues = {
   getBuffer: (url: string) => AudioBuffer | undefined
   init: () => AudioContext | null
   load: (url: string) => Promise<AudioBuffer | null>
+  pause: () => void
   play: (
     url: string,
     options?: PlayOptions | undefined,
   ) => Promise<{
-    audioBuffer: AudioBuffer
-    audioBufferSourceNode: AudioBufferSourceNode
+    audioRef: HTMLAudioElement | null
   } | null>
 }
 
@@ -27,5 +27,6 @@ export const WebAudioContext = createContext<WebAudioContextValues>({
   getBuffer: (url: string) => undefined,
   init: () => null,
   load: (url: string) => Promise.resolve(null),
+  pause: () => {},
   play: (url: string) => Promise.resolve(null),
 })
