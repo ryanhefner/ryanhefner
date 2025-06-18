@@ -15,6 +15,7 @@ export const WebAudioProvider = ({
   onError,
   onStateChange,
 }: WebAudioProviderProps) => {
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
   const audioBufferMapRef = useRef<Map<string, AudioBuffer>>(new Map())
 
@@ -86,40 +87,80 @@ export const WebAudioProvider = ({
       const { onEnded, onError: onErrorLocal, startOffset = 0 } = options || {}
 
       const playAsync = async () => {
-        try {
-          const localAudioContext = audioContextRef.current ?? init()
+        // try {
+        //   const localAudioContext = audioContextRef.current ?? init()
 
-          if (localAudioContext.state === 'suspended') {
-            await localAudioContext.resume()
+        //   if (localAudioContext.state === 'suspended') {
+        //     await localAudioContext.resume()
+        //   }
+
+        //   const audioBuffer =
+        //     audioBufferMapRef.current.get(url) ?? (await load(url))
+
+        //   if (!audioBuffer) {
+        //     return null
+        //   }
+
+        //   const source = localAudioContext.createBufferSource()
+        //   source.buffer = audioBuffer
+        //   source.connect(localAudioContext.destination)
+        //   if (onEnded) {
+        //     source.addEventListener('ended', onEnded)
+        //   }
+        //   source.start(0, startOffset)
+
+        //   return { audioBuffer, audioBufferSourceNode: source }
+        // } catch (err) {
+        //   onError?.(err)
+        //   onErrorLocal?.(err)
+        //   return null
+        // }
+
+        if (audioRef.current) {
+          if (audioRef.current.src === url) {
+            if (startOffset) {
+              audioRef.current.currentTime = startOffset
+            }
+
+            if (audioRef.current.paused) {
+              await audioRef.current.play()
+            }
+
+            return { audioRef: audioRef.current }
           }
 
-          const audioBuffer =
-            audioBufferMapRef.current.get(url) ?? (await load(url))
+          audioRef.current.src = url
 
-          if (!audioBuffer) {
-            return null
-          }
-
-          const source = localAudioContext.createBufferSource()
-          source.buffer = audioBuffer
-          source.connect(localAudioContext.destination)
           if (onEnded) {
-            source.addEventListener('ended', onEnded)
+            audioRef.current.addEventListener('ended', onEnded)
           }
-          source.start(0, startOffset)
 
-          return { audioBuffer, audioBufferSourceNode: source }
-        } catch (err) {
-          onError?.(err)
-          onErrorLocal?.(err)
-          return null
+          if (onErrorLocal) {
+            audioRef.current.addEventListener('error', onErrorLocal)
+          }
+
+          await audioRef.current.play().catch((err) => {
+            onError?.(err)
+            onErrorLocal?.(err)
+            return null
+          })
+
+          return { audioRef: audioRef.current }
         }
+
+        return null
       }
 
       return playAsync()
     },
     [init, load, onError],
   )
+
+  const pause = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+    }
+  }, [])
 
   useEffect(() => {
     if (preloadAudio) {
@@ -133,9 +174,10 @@ export const WebAudioProvider = ({
 
   return (
     <WebAudioContext.Provider
-      value={{ getAudioContext, flush, getBuffer, init, load, play }}
+      value={{ getAudioContext, flush, getBuffer, init, load, pause, play }}
     >
       {children}
+      <audio ref={audioRef} />
     </WebAudioContext.Provider>
   )
 }

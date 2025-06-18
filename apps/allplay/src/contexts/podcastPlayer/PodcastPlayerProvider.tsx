@@ -32,17 +32,16 @@ export const PodcastPlayerProvider = ({
 
   const audioBufferRef = useRef<AudioBuffer | null>(null)
   const audioBufferSourceNodeRef = useRef<AudioBufferSourceNode | null>(null)
-  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
-  const { play: playContext } = useWebAudioContext()
+  const { play: playContext, pause: pauseContext } = useWebAudioContext()
 
   const play = useCallback((url: string, startOffset = 0) => {
     const asyncPlay = async () => {
       const playResponse = await playContext(url, {
         onEnded: () => {
-          // console.debug('onEnded')
-          // setIsEnded(true)
-          // setIsPlaying(false)
+          setIsEnded(true)
+          setIsPlaying(false)
+          setCurrentTime(0)
         },
         startOffset: startOffset / 1000,
       })
@@ -50,9 +49,17 @@ export const PodcastPlayerProvider = ({
       if (playResponse) {
         setIsPlaying(true)
         setStartTime(Date.now() - startOffset)
-        const { audioBuffer, audioBufferSourceNode } = playResponse
-        audioBufferRef.current = audioBuffer
-        audioBufferSourceNodeRef.current = audioBufferSourceNode
+        setCurrentTime(startOffset)
+
+        const { audioRef } = playResponse
+
+        if (audioRef) {
+          audioRef.addEventListener('timeupdate', () => {
+            setCurrentTime(
+              audioRef.currentTime ? audioRef.currentTime * 1000 : 0,
+            )
+          })
+        }
         return
       }
 
@@ -68,38 +75,17 @@ export const PodcastPlayerProvider = ({
     }
   }, [currentEpisode, play])
 
-  useEffect(() => {
-    clearTimeout(intervalRef.current)
-
-    if (!isEnded && isPlaying && startTime) {
-      intervalRef.current = setInterval(() => {
-        const nextTime = Date.now() - startTime
-        setCurrentTime(nextTime)
-
-        if (nextTime >= parseInt(currentEpisode.itunes.duration, 10) * 1000) {
-          clearInterval(intervalRef.current)
-          setIsEnded(true)
-          setIsPlaying(false)
-          setCurrentTime(0)
-        }
-      }, 250)
-    }
-
-    return () => {
-      clearInterval(intervalRef.current)
-    }
-  }, [currentEpisode, isEnded, isPlaying, startTime])
-
   const setCurrentEpisode = useCallback(
     (value: any) => {
       let newEpisode = false
       _setCurrentEpisode((prevState: any) => {
-        if (!prevState || prevState.id !== value.id) {
+        if (!prevState || prevState.guid !== value.guid) {
+          pauseContext()
           setLastEpisode(value)
           setCurrentTime(0)
           setIsPlaying(false)
           setIsEnded(false)
-          audioBufferSourceNodeRef.current?.stop()
+          // audioBufferSourceNodeRef.current?.stop()
           newEpisode = true
           return value
         }
@@ -110,7 +96,8 @@ export const PodcastPlayerProvider = ({
       if (!newEpisode) {
         if (isPlaying) {
           setIsPlaying(false)
-          audioBufferSourceNodeRef.current?.stop()
+          // audioBufferSourceNodeRef.current?.stop()
+          pauseContext()
         } else if (currentEpisode) {
           setIsEnded(false)
           play(currentEpisode.enclosure.url, currentTime)
@@ -127,7 +114,7 @@ export const PodcastPlayerProvider = ({
   )
   const seek = useCallback(
     (url: string, offset: number) => {
-      audioBufferSourceNodeRef.current?.stop()
+      pauseContext()
       setIsEnded(false)
       play(url, offset)
     },
