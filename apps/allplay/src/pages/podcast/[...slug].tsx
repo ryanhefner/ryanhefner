@@ -42,9 +42,11 @@ const EpisodePage = ({
         audioType="audio/mpeg"
         twitter={{
           card: 'player',
-          // image: {
-          //   url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play-cover.png`,
-          // },
+          image: {
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play.png`,
+            width: 1024,
+            height: 1024,
+          },
           player: { url: episode.link, width: '500', height: '180' },
         }}
       >
