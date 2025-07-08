@@ -51,9 +51,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         title={TITLE}
         description={DESCRIPTION}
         siteName="Ryan Hefner - All Play"
-        twitterCreator="@ryanhefner"
-        twitterSite="@ryanhefner"
-        twitterCard="summary_large_image"
+        twitter={{
+          card: 'summary_large_image',
+          creator: '@ryanhefner',
+          site: '@ryanhefner',
+        }}
         type="website"
         url={path}
       >
