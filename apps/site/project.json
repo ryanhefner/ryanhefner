@@ -3,12 +3,11 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/site",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/site"
@@ -46,9 +45,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/site"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/site"],
       "options": {
         "jestConfig": "apps/site/jest.config.ts",
         "passWithNoTests": true
@@ -56,15 +53,10 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/site/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["apps/site/**/*.{ts,tsx,js,jsx}"]
       }
     }
-  },
-  "tags": []
+  }
 }
