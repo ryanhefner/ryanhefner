@@ -8,6 +8,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider, SiteMeta } from 'next-meta'
+
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
@@ -43,7 +44,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
@@ -59,7 +60,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         type="website"
         url={path}
       >
-        <SiteMeta imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
         <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}
