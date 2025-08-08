@@ -27,6 +27,14 @@ const EpisodePage = ({
     setCurrentEpisode(episode)
   }, [episode, setCurrentEpisode])
 
+  const shareUrl = episode.transcripts?.[0]?.$.url.replace(
+    /\/transcript\d+/,
+    '',
+  )
+  const oembedUrl =
+    shareUrl &&
+    `https://share.transistor.fm/oembed?url=${encodeURIComponent(shareUrl)}`
+
   return (
     <>
       <SiteMeta
@@ -57,20 +65,24 @@ const EpisodePage = ({
           title="All Play w/ Ryan Hefner"
           href="https://feeds.transistor.fm/allplay"
         />
-        <link
-          key="json-oembed"
-          rel="alternate"
-          type="application/json+oembed"
-          title={episode.title}
-          href={`https://share.transistor.fm/oembed?format=json&url=${encodeURIComponent(episode.link)}`}
-        />
-        <link
-          key="xml-oembed"
-          rel="alternate"
-          type="text/xml+oembed"
-          title={episode.title}
-          href={`https://share.transistor.fm/oembed?format=xml&url=${encodeURIComponent(episode.link)}`}
-        />
+        {oembedUrl && (
+          <>
+            <link
+              key="json-oembed"
+              rel="alternate"
+              type="application/json+oembed"
+              title={episode.title}
+              href={oembedUrl}
+            />
+            <link
+              key="xml-oembed"
+              rel="alternate"
+              type="text/xml+oembed"
+              title={episode.title}
+              href={oembedUrl}
+            />
+          </>
+        )}
       </SiteMeta>
       <Flex
         flexDir="column"
