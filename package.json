@@ -124,6 +124,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "jest": "30.0.5",
     "jest-environment-jsdom": "30.0.5",
+    "jest-util": "30.0.5",
     "jiti": "2.4.2",
     "jsdom": "^26.0.0",
     "nx": "21.3.11",
@@ -135,8 +136,7 @@
     "verdaccio": "^6.1.1",
     "vite": "^7.0.0",
     "vitest": "^3.0.0",
-    "webpack": "^5.74.0",
-    "jest-util": "30.0.5"
+    "webpack": "^5.74.0"
   },
   "nx": {
     "includedScripts": []
