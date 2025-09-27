@@ -48,11 +48,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link
           rel="webmention"
-          href="https://webmention.io/www.allplay.fm/webmention"
+          href="https://webmention.io/www.ryanhefner.com/webmention"
         />
         <link
           rel="pingback"
-          href="https://webmention.io/www.allplay.fm/xmlrpc"
+          href="https://webmention.io/www.ryanhefner.com/xmlrpc"
         />
       </Head>
       <MetaProvider
