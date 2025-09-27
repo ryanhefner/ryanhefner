@@ -61,7 +61,7 @@ export const SiteFooter = () => {
         <Link
           href="https://www.github.com/ryanhefner"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="me noopener noreferrer"
           title="@ryanhefner on GitHub"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">

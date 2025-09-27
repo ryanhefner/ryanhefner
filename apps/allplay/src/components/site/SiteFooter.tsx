@@ -64,6 +64,7 @@ publishing platform"
         <Link
           href="https://github.com/ryanhefner"
           lineHeight={0.8}
+          rel="me noopener noreferrer"
           title="Follow @ryanhefner on GitHub"
         >
           <Icon as={ImGithub} w={5} h={5} />

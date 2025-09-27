@@ -8,6 +8,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider, SiteMeta } from 'next-meta'
+
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
@@ -43,7 +44,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="webmention"
+          href="https://webmention.io/ryanhefner.com/webmention"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
@@ -51,13 +56,14 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         title={TITLE}
         description={DESCRIPTION}
         siteName="Ryan Hefner - All Play"
-        twitterCreator="@ryanhefner"
-        twitterSite="@ryanhefner"
-        twitterCard="summary_large_image"
+        twitter={{
+          card: 'summary_large_image',
+          creator: '@ryanhefner',
+          site: '@ryanhefner',
+        }}
         type="website"
         url={path}
       >
-        <SiteMeta imageUrl="https://www.ryanhefner.com/assets/ryan-hefner-social.jpg" />
         <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}

@@ -37,12 +37,12 @@ export const projects = [
     url: 'https://www.transmits.io',
     imageUrl: '/assets/projects/transmits.png',
   },
-  {
-    name: 'Productapes',
-    description: 'Document and share your project updates.',
-    url: 'https://www.productapes.com',
-    imageUrl: '/assets/projects/productapes.png',
-  },
+  // {
+  //   name: 'Productapes',
+  //   description: 'Document and share your project updates.',
+  //   url: 'https://www.productapes.com',
+  //   imageUrl: '/assets/projects/productapes.png',
+  // },
   {
     name: 'Access Cache',
     description: 'The—anything—API.',

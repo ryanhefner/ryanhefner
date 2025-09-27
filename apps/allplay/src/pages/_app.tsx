@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
 import { NextPagesFathomProvider } from 'react-fathom'
 import { WebAudioProvider } from 'react-web-audio'
+
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
@@ -39,32 +40,43 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const url = isHome ? siteUrl : `${siteUrl}${path}`
   const ogImageUrl = `${url}/social-image.png`
   const getLayout = Component.getLayout || ((page) => page)
+  const isPodcast = path.startsWith('/podcast')
 
   return (
     <>
       <Head>
-        <link rel="shortcut icon" type="image/svg" href="/favicon.svg" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="webmention"
+          href="https://webmention.io/allplay.fm/webmention"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
         canonical={url}
         title={TITLE}
         description={DESCRIPTION}
+        image={{
+          url: `${process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}/${encodeURIComponent(url)}/social-image.png?url=${encodeURIComponent(url)}`,
+          width: 1200,
+          height: 630,
+        }}
         siteName="All Play"
         twitter={{
+          card: 'summary_large_image',
           creator: '@ryanhefner',
           site: '@allplayfm',
         }}
         type="website"
         url={path}
       >
-        <LinkCard
+        {/* <LinkCard
           accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
           templateUrl={ogImageUrl}
           url={url}
           imageWidth={1200}
           imageHeight={630}
-        />
+        // /> */}
         <NextPagesFathomProvider
           clientOptions={{
             includedDomains: ['allplay.fm', 'www.allplay.fm'],
