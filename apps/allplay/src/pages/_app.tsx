@@ -46,6 +46,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Head>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="webmention"
+          href="https://webmention.io/allplay.fm/webmention"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
@@ -72,7 +76,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           url={url}
           imageWidth={1200}
           imageHeight={630}
-        /> */}
+        // /> */}
         <NextPagesFathomProvider
           clientOptions={{
             includedDomains: ['allplay.fm', 'www.allplay.fm'],
