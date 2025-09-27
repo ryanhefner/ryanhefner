@@ -45,6 +45,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="webmention"
+          href="https://webmention.io/ryanhefner.com/webmention"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
