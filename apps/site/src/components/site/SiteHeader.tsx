@@ -24,8 +24,9 @@ export const SiteHeader = () => (
           href={
             process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
           }
-          className="h-card url fn"
+          className="h-card url fn p-author"
           color="white"
+          rel="author"
         >
           <Text fontSize="lg" fontWeight="medium">
             Ryan Hefner
@@ -33,7 +34,7 @@ export const SiteHeader = () => (
         </Link>
         <Image
           src="/assets/ryan-hefner-peace.jpg"
-          className="photo"
+          className="photo author-icon"
           display="none"
           alt="photo of Ryan Hefner"
         />
@@ -42,6 +43,36 @@ export const SiteHeader = () => (
         </Box>
         <Link href="mailto:hi@ryanhefner.com" className="email" display="none">
           hi@ryanhefner.com
+        </Link>
+        <Link
+          href="https://www.github.com/ryanhefner"
+          rel="me"
+          title="@ryanhefner on GitHub"
+          display="none"
+        >
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            GitHub
+          </Text>
+        </Link>
+        <Link
+          href="https://bsky.app/profile/ryanhefner.com"
+          rel="me"
+          title="@ryanhefner.com on Bluesky"
+          display="none"
+        >
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            Bluesky
+          </Text>
+        </Link>
+        <Link
+          href="https://mastodon.social/@ryanhefner"
+          rel="me"
+          title="@ryanhefner on Mastodon"
+          display="none"
+        >
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            Mastodon
+          </Text>
         </Link>
       </div>
       <Text color="white">{` — `}</Text>
