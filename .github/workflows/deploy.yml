@@ -1,0 +1,44 @@
+name: Deploy
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install step
+        run: "yarn install"
+
+      - name: Build step
+        run: "npx contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts && npx nx build site --prod && npx nx run site:postbuild"
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "ryanhefner-site"
+          entrypoint: "jsr:@deno/nextjs-start/v15"
+          root: "."
+          include: dist/apps/site/.next, dist/apps/site/public
+          
