@@ -61,7 +61,7 @@ export const SiteFooter = () => {
         <Link
           href="https://www.github.com/ryanhefner"
           target="_blank"
-          rel="me noopener noreferrer"
+          rel="me authn noopener noreferrer"
           title="@ryanhefner on GitHub"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">
@@ -71,11 +71,21 @@ export const SiteFooter = () => {
         <Link
           href="https://bsky.app/profile/ryanhefner.com"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="me noopener noreferrer"
           title="@ryanhefner.com on Bluesky"
         >
           <Text as="span" fontFamily="mono" fontSize="sm">
             Bluesky
+          </Text>
+        </Link>
+        <Link
+          href="https://mastodon.social/@ryanhefner"
+          target="_blank"
+          rel="me noopener noreferrer"
+          title="@ryanhefner on Mastodon"
+        >
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            Mastodon
           </Text>
         </Link>
       </HStack>
