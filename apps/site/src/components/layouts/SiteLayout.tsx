@@ -40,7 +40,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.github.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on GitHub"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               GitHub
             </Link>{' '}
@@ -48,7 +48,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
             <Link
               href="https://bsky.app/profile/ryanhefner.com"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               title="@ryanhefner.com on Bluesky"
             >
               Bluesky
@@ -58,7 +58,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.twitter.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Twitter"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Twitter
             </Link>{' '}
@@ -67,7 +67,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://posts.cv/ryanhefner"
               target="_blank"
               title="@ryanhefner on posts.cv"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Posts.cv
             </Link>{' '}
@@ -76,7 +76,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://read.cv/ryanhefner"
               target="_blank"
               title="@ryanhefner on read.cv"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Read.cv
             </Link>{' '}
@@ -85,7 +85,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.instagram.com/instagram"
               target="_blank"
               title="@ryanhefner on Instagram"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Instagram
             </Link>{' '}
@@ -94,7 +94,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.threads.net/@ryanhefner"
               target="_blank"
               title="@ryanhefner on Threads"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
             >
               Threads
             </Link>
@@ -103,7 +103,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.dribbble.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Dribbble"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Dribbble
             </Link>{' '}
@@ -112,7 +112,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://open.spotify.com/user/ryanhefner"
               target="_blank"
               title="@ryanhefner on Spotify"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Spotify
             </Link>{' '}
@@ -121,7 +121,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.twitch.tv/ryanhefner"
               target="_blank"
               title="@ryanhefner on Twitch"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
             >
               Twitch
             </Link>{' '}
@@ -130,7 +130,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.youtube.com/@ryan_hefner"
               target="_blank"
               title="@ryan_hefner on YouTube"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
             >
               YouTube
             </Link>{' '}
@@ -139,7 +139,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
               href="https://www.vimeo.com/ryanhefner"
               target="_blank"
               title="@ryanhefner on Vimeo"
-              rel="noopener noreferrer nofollow"
+              rel="me noopener noreferrer nofollow"
             >
               Vimeo
             </Link>
