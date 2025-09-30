@@ -1,4 +1,4 @@
-import { Flex, HStack, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Text } from '@chakra-ui/react'
 import { allThoughts, allUpdates } from 'contentlayer/generated'
 
 import { Link } from '../base'
@@ -19,11 +19,31 @@ export const SiteHeader = () => (
     px={{ base: 6, sm: 10, md: 16, xl: 24 }}
   >
     <HStack>
-      <Link href="/" color="white">
-        <Text fontSize="lg" fontWeight="medium">
-          Ryan Hefner
-        </Text>
-      </Link>
+      <div id="hcard-Ryan-Hefner" className="vcard">
+        <Link
+          href={
+            process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+          }
+          className="h-card url fn"
+          color="white"
+        >
+          <Text fontSize="lg" fontWeight="medium">
+            Ryan Hefner
+          </Text>
+        </Link>
+        <Image
+          src="/assets/ryan-hefner-peace.jpg"
+          className="photo"
+          display="none"
+          alt="photo of Ryan Hefner"
+        />
+        <Box className="org" display="none">
+          Commune Software
+        </Box>
+        <Link href="mailto:hi@ryanhefner.com" className="email" display="none">
+          hi@ryanhefner.com
+        </Link>
+      </div>
       <Text color="white">{` — `}</Text>
       <Link href="https://www.allplay.fm" color="white">
         <Text fontSize="lg" fontWeight="medium">
