@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Heading, Icon, Image, Text } from '@chakra-ui/react'
-import { FaBluesky } from 'react-icons/fa6'
+import { FaBluesky, FaMastodon } from 'react-icons/fa6'
 import { ImGithub } from 'react-icons/im'
 
 import { Link } from '../base'
@@ -45,7 +45,11 @@ publishing platform"
       <HStack spacing={4} alignItems="center">
         <Text color="gray.400">
           {`© ${new Date().getFullYear()} — `}All Play FM +{' '}
-          <Link color="white" href="https://www.ryanhefner.com">
+          <Link
+            color="white"
+            href="https://www.ryanhefner.com"
+            rel="me noopener noreferrer"
+          >
             Ryan Hefner
           </Link>
         </Text>
@@ -57,14 +61,23 @@ publishing platform"
         <Link
           href="https://bsky.app/profile/ryanhefner.com"
           lineHeight={0.8}
+          rel="me noopener noreferrer"
           title="Follow @ryanhefner.com on Bluesky"
         >
           <Icon as={FaBluesky} w={5} h={5} />
         </Link>
         <Link
-          href="https://github.com/ryanhefner"
+          href="https://mastodon.social/@allplay"
           lineHeight={0.8}
           rel="me noopener noreferrer"
+          title="Follow @allplay on Mastodon"
+        >
+          <Icon as={FaMastodon} w={5} h={5} />
+        </Link>
+        <Link
+          href="https://github.com/ryanhefner"
+          lineHeight={0.8}
+          rel="me authn noopener noreferrer"
           title="Follow @ryanhefner on GitHub"
         >
           <Icon as={ImGithub} w={5} h={5} />
