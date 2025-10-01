@@ -7,7 +7,7 @@ import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { MetaProvider, SiteMeta } from 'next-meta'
+import { MetaProvider } from 'next-meta'
 
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
@@ -45,6 +45,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
     <>
       <Head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="author self" href="https://www.ryanhefner.com/" />
         <link
           rel="webmention"
           href="https://webmention.io/www.ryanhefner.com/webmention"
@@ -53,6 +54,14 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           rel="pingback"
           href="https://webmention.io/www.ryanhefner.com/xmlrpc"
         />
+        <meta name="fediverse:creator" content="@ryanhefner@mastodon.social" />
+        <meta
+          name="fediverse:url"
+          content="https://mastodon.social/@ryanhefner"
+        />
+        <meta name="fediverse:username" content="ryanhefner" />
+        <meta name="fediverse:domain" content="mastodon.social" />
+        <meta name="fediverse:instance" content="Mastodon" />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
