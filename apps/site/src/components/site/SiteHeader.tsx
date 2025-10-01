@@ -24,7 +24,7 @@ export const SiteHeader = () => (
           href={
             process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
           }
-          className="h-card url fn p-author"
+          className="h-card url fn p-author u-url u-uid"
           color="white"
           rel="author"
         >
@@ -38,6 +38,9 @@ export const SiteHeader = () => (
           display="none"
           alt="photo of Ryan Hefner"
         />
+        <Text className="p-note" display="none">
+          Software Developer and Eternal Tinkerer
+        </Text>
         <Box className="org" display="none">
           Commune Software
         </Box>
