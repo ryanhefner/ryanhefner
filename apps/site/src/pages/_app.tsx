@@ -54,6 +54,14 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           rel="pingback"
           href="https://webmention.io/www.ryanhefner.com/xmlrpc"
         />
+        <meta name="fediverse:creator" content="@ryanhefner@mastodon.social" />
+        <meta
+          name="fediverse:url"
+          content="https://mastodon.social/@ryanhefner"
+        />
+        <meta name="fediverse:username" content="ryanhefner" />
+        <meta name="fediverse:domain" content="mastodon.social" />
+        <meta name="fediverse:instance" content="Mastodon" />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
