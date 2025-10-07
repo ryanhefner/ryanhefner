@@ -6714,10 +6714,10 @@ babel-plugin-polyfill-regenerator@^0.6.5:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.6.5"
 
-babel-plugin-react-compiler@^19.1.0-rc.3:
-  version "19.1.0-rc.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-19.1.0-rc.3.tgz#45e5a282a2460b3701971e5eb8310a90a7919022"
-  integrity sha512-mjRn69WuTz4adL0bXGx8Rsyk1086zFJeKmes6aK0xPuK3aaXmDJdLHqwKKMrpm6KAI1MCoUK72d2VeqQbu8YIA==
+babel-plugin-react-compiler@0.0.0-experimental-493c169-20251007:
+  version "0.0.0-experimental-493c169-20251007"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-0.0.0-experimental-493c169-20251007.tgz#09dd5dd32af463db2243936e8739c6b374915ee3"
+  integrity sha512-BnaiCugXjsqAMqrGMKFjuWFO7pWW0hEybylCeuS8Ps0+2+hLUtme6AyXPOSnO40mLxRyiBeCoI/as/DcV8Oa8A==
   dependencies:
     "@babel/types" "^7.26.0"
 
@@ -14755,12 +14755,12 @@ react-device-detect@^2.2.3:
   dependencies:
     ua-parser-js "^1.0.33"
 
-react-dom@^19.0.0:
-  version "19.2.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.0.tgz#00ed1e959c365e9a9d48f8918377465466ec3af8"
-  integrity sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==
+react-dom@canary:
+  version "19.3.0-canary-3025aa39-20251007"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-3025aa39-20251007.tgz#cac73ed636edbce0b7cf37f948efc847190af461"
+  integrity sha512-solKuaStEkRnBo6gT4pvSvsprJABwNnQwqGcQrxezMB+d9tNTrQfBhh8XrRc+VVYRSaEV7nPdD2p4Rk8wLQ33g==
   dependencies:
-    scheduler "^0.27.0"
+    scheduler "0.28.0-canary-3025aa39-20251007"
 
 react-email@^4.0.2:
   version "4.3.0"
@@ -14901,10 +14901,10 @@ react-use-measure@^2.1.7:
   resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.1.7.tgz#36b8a2e7fd2fa58109ab851b3addcb0aad66ad1d"
   integrity sha512-KrvcAo13I/60HpwGO5jpW7E9DfusKyLPLvuHlUyP5zqnmAPhNc6qTRjUQrdTADl0lpPpDVU2/Gg51UlOGHXbdg==
 
-react@^19.0.0:
-  version "19.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.2.0.tgz#d33dd1721698f4376ae57a54098cb47fc75d93a5"
-  integrity sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==
+react@canary:
+  version "19.3.0-canary-3025aa39-20251007"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-3025aa39-20251007.tgz#5727754eae03ece52c570ad6b78c4f1270a0e716"
+  integrity sha512-sLEA84aXhsrXCbMZpHdIP+fENTAwaGC/R050jjb8JCFrXi5AF+43MERVkrmJFJ4p5QXZGtD0c9HgtN5GMuY+rA==
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -15636,15 +15636,15 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
+scheduler@0.28.0-canary-3025aa39-20251007:
+  version "0.28.0-canary-3025aa39-20251007"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-3025aa39-20251007.tgz#2bc9e9845252e78032ec14d504de0485f8eaab2c"
+  integrity sha512-3HPPbOllocOSyOArJnzSws2TQMFSTOo5kBZQpYZk4Zip8y0YjCAzJOzw4WLzaI5uGptmY2gjWyO8qkuBAGTVzw==
+
 scheduler@^0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.25.0.tgz#336cd9768e8cceebf52d3c80e3dcf5de23e7e015"
   integrity sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==
-
-scheduler@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.27.0.tgz#0c4ef82d67d1e5c1e359e8fc76d3a87f045fe5bd"
-  integrity sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==
 
 schema-utils@^3.0.0, schema-utils@^3.1.1:
   version "3.3.0"
