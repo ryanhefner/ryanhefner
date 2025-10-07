@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, ViewTransition } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
@@ -15,7 +15,7 @@ const EpisodesIndexPage = ({
   feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <>
+    <ViewTransition>
       <SiteMeta
         title={`Podcast`}
         description="Documenting the ideas, process and pitfalls that go into building products and open-source software and tools."
@@ -51,7 +51,7 @@ const EpisodesIndexPage = ({
         </Text>
         <NewsletterForm />
       </Box>
-    </>
+    </ViewTransition>
   )
 }
 

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, ViewTransition } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
@@ -33,7 +33,7 @@ const IndexPage = ({
   feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <>
+    <ViewTransition>
       <Flex
         flexDir="column"
         flex={1}
@@ -115,7 +115,7 @@ const IndexPage = ({
         </Text>
         <NewsletterForm />
       </Box>
-    </>
+    </ViewTransition>
   )
 }
 

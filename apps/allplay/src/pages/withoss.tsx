@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from 'react'
+import React, { Fragment, ReactElement, ViewTransition } from 'react'
 
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
@@ -14,7 +14,7 @@ const DESCRIPTION =
 
 const OssPage = () => {
   return (
-    <>
+    <ViewTransition>
       <SiteMeta description={DESCRIPTION} title={TITLE} />
       <Box flex="1" px={{ base: 4, md: 8 }} py={{ base: 12, md: 24 }} w="full">
         <Flex
@@ -85,7 +85,7 @@ const OssPage = () => {
           ))}
         </Flex>
       </Box>
-    </>
+    </ViewTransition>
   )
 }
 
