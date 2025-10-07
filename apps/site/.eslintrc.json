@@ -5,12 +5,14 @@
     "next/core-web-vitals",
     "../../.eslintrc.json"
   ],
+  "plugins": ["react-compiler"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "apps/site/src/pages"]
+        "@next/next/no-html-link-for-pages": ["error", "apps/site/src/pages"],
+        "react-compiler/react-compiler": "error"
       }
     },
     {
