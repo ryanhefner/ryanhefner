@@ -1,9 +1,14 @@
+import { ViewTransition } from 'react'
 import { allThoughts } from 'contentlayer/generated'
 
 import { PostLayout } from '../../components/layouts'
 
 const ThoughtPage = ({ thought }) => {
-  return <PostLayout thought={thought} />
+  return (
+    <ViewTransition>
+      <PostLayout thought={thought} />
+    </ViewTransition>
+  )
 }
 
 export const getStaticPaths = async () => {

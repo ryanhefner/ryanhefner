@@ -1,3 +1,4 @@
+import { ViewTransition } from 'react'
 import { UTCDateMini } from '@date-fns/utc'
 import { Now, allNows } from 'contentlayer/generated'
 import { format } from 'date-fns'
@@ -5,9 +6,11 @@ import { format } from 'date-fns'
 import { NowLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 
-const NowPageIndex = ({ now }: { now: Now }) => {
-  return <NowPage now={now} />
-}
+const NowPageIndex = ({ now }: { now: Now }) => (
+  <ViewTransition>
+    <NowPage now={now} />
+  </ViewTransition>
+)
 
 NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
 

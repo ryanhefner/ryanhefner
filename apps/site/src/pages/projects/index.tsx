@@ -1,3 +1,4 @@
+import { ViewTransition } from 'react'
 import { SiteMeta } from 'next-meta'
 
 import { SiteLayout } from '../../components/layouts'
@@ -15,7 +16,7 @@ const DESCRIPTION =
   'Some of the projects I’ve had the pleasure to build/contribute to.'
 
 const ProjectsPage = () => (
-  <>
+  <ViewTransition>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
       <PageHeading>Projects</PageHeading>
@@ -35,7 +36,7 @@ const ProjectsPage = () => (
         </Text>
       </Box> */}
     </PageWrapper>
-  </>
+  </ViewTransition>
 )
 
 ProjectsPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>

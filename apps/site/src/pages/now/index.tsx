@@ -1,16 +1,4 @@
-// import {
-//   Box,
-//   Heading,
-//   ListItem,
-//   OrderedList,
-//   Text,
-//   UnorderedList,
-// } from '@chakra-ui/react'
-// import { SiteMeta } from 'next-meta'
-// import { FootnoteLink, Link } from '../../components/base'
-// import { PageWrapper } from '../../components/site'
-// import { PageHeading } from '../../components/typography'
-// import { ProjectLink } from '../../constants'
+import { ViewTransition } from 'react'
 import { allNows } from 'contentlayer/generated'
 
 import { NowLayout } from '../../components/layouts'
@@ -21,7 +9,9 @@ const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
 const NowPageIndex = ({ now }) => (
-  <NowPage description={DESCRIPTION} now={now} title={TITLE} />
+  <ViewTransition>
+    <NowPage description={DESCRIPTION} now={now} title={TITLE} />
+  </ViewTransition>
 )
 
 NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
