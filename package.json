@@ -30,6 +30,7 @@
     "@swc/helpers": "^0.5.12",
     "@vercel/speed-insights": "^1.0.11",
     "axios": "^1.6.8",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "contentlayer2": "^0.5.3",
     "core-js": "^3.37.0",
     "cors": "^2.8.5",
