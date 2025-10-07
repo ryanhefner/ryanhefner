@@ -62,7 +62,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.28.4.tgz#96fdf1af1b8859c8474ab39c295312bfb7c24b04"
   integrity sha512-YsmSKC29MJwf0gF8Rjjrg5LQCmyh+j/nD8/eP7f+BeoQTKYqs9RoWbjGOdy0+1Ekr68RJZMUOPVQaQisnIo4Rw==
 
-"@babel/core@^7.18.10", "@babel/core@^7.21.3", "@babel/core@^7.23.2", "@babel/core@^7.23.9", "@babel/core@^7.27.4", "@babel/core@^7.28.4":
+"@babel/core@^7.18.10", "@babel/core@^7.21.3", "@babel/core@^7.23.2", "@babel/core@^7.23.9", "@babel/core@^7.24.4", "@babel/core@^7.27.4", "@babel/core@^7.28.4":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.28.4.tgz#12a550b8794452df4c8b084f95003bce1742d496"
   integrity sha512-2BCOP7TN8M+gVDj7/ht3hsaO/B/n5oDbiAyyvnRlNOs+u1o+JWNYTQrmpuNp1/Wq2gcFrI01JAW+paEKDMx/CA==
@@ -112,7 +112,7 @@
     lru-cache "^5.1.1"
     semver "^6.3.1"
 
-"@babel/helper-create-class-features-plugin@^7.27.1", "@babel/helper-create-class-features-plugin@^7.28.3":
+"@babel/helper-create-class-features-plugin@^7.18.6", "@babel/helper-create-class-features-plugin@^7.27.1", "@babel/helper-create-class-features-plugin@^7.28.3":
   version "7.28.3"
   resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.28.3.tgz#3e747434ea007910c320c4d39a6b46f20f371d46"
   integrity sha512-V9f6ZFIYSLNEbuGA/92uOvYsGCJNsuA8ESZ4ldc09bWk/j8H8TKiPw8Mk1eG6olpnO0ALHJmYfZvF4MEE4gajg==
@@ -245,7 +245,7 @@
     "@babel/template" "^7.27.2"
     "@babel/types" "^7.28.4"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.9", "@babel/parser@^7.25.4", "@babel/parser@^7.27.0", "@babel/parser@^7.27.2", "@babel/parser@^7.28.3", "@babel/parser@^7.28.4":
+"@babel/parser@^7.1.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.9", "@babel/parser@^7.24.4", "@babel/parser@^7.25.4", "@babel/parser@^7.27.0", "@babel/parser@^7.27.2", "@babel/parser@^7.28.3", "@babel/parser@^7.28.4":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.28.4.tgz#da25d4643532890932cc03f7705fe19637e03fa8"
   integrity sha512-yZbBqeM6TkpP9du/I2pUZnJsRMGGvOuIrhjzC1AwHwW+6he4mni6Bp/m8ijn0iOuZuPI2BfkCoSRunpyjnrQKg==
@@ -299,6 +299,14 @@
     "@babel/helper-create-class-features-plugin" "^7.27.1"
     "@babel/helper-plugin-utils" "^7.27.1"
     "@babel/plugin-syntax-decorators" "^7.27.1"
+
+"@babel/plugin-proposal-private-methods@^7.18.6":
+  version "7.18.6"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-methods/-/plugin-proposal-private-methods-7.18.6.tgz#5209de7d213457548a98436fa2882f52f4be6bea"
+  integrity sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.18.6"
+    "@babel/helper-plugin-utils" "^7.18.6"
 
 "@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2":
   version "7.21.0-placeholder-for-preset-env.2"
@@ -8839,6 +8847,18 @@ eslint-plugin-prettier@^5.0.0:
     prettier-linter-helpers "^1.0.0"
     synckit "^0.11.7"
 
+eslint-plugin-react-compiler@^19.1.0-rc.2:
+  version "19.1.0-rc.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-compiler/-/eslint-plugin-react-compiler-19.1.0-rc.2.tgz#83343e7422e00fa61e729af8e8468f0ddec37925"
+  integrity sha512-oKalwDGcD+RX9mf3NEO4zOoUMeLvjSvcbbEOpquzmzqEEM2MQdp7/FY/Hx9NzmUwFzH1W9SKTz5fihfMldpEYw==
+  dependencies:
+    "@babel/core" "^7.24.4"
+    "@babel/parser" "^7.24.4"
+    "@babel/plugin-proposal-private-methods" "^7.18.6"
+    hermes-parser "^0.25.1"
+    zod "^3.22.4"
+    zod-validation-error "^3.0.3"
+
 eslint-plugin-react-hooks@^5.0.0, eslint-plugin-react-hooks@^5.1.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.2.0.tgz#1be0080901e6ac31ce7971beed3d3ec0a423d9e3"
@@ -10160,6 +10180,18 @@ he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
+hermes-estree@0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.25.1.tgz#6aeec17d1983b4eabf69721f3aa3eb705b17f480"
+  integrity sha512-0wUoCcLp+5Ev5pDW2OriHC2MJCbwLwuRx+gAqMTOkGKJJiBCLjtrvy4PWUGn6MIVefecRpzoOZ/UV6iGdOr+Cw==
+
+hermes-parser@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.25.1.tgz#5be0e487b2090886c62bd8a11724cd766d5f54d1"
+  integrity sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==
+  dependencies:
+    hermes-estree "0.25.1"
 
 hls.js@^1.5.17:
   version "1.6.13"
@@ -18059,6 +18091,11 @@ yup@^1.4.0:
     tiny-case "^1.0.3"
     toposort "^2.0.2"
     type-fest "^2.19.0"
+
+zod-validation-error@^3.0.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-3.5.3.tgz#85ba33290200d8db9f043621e284f40dddefb7e5"
+  integrity sha512-OT5Y8lbUadqVZCsnyFaTQ4/O2mys4tj7PqhdbBCp7McPwvIEKfPtdA6QfPeFQK2/Rz5LgwmAXRJTugBNBi0btw==
 
 zod@^3.22.4:
   version "3.25.76"
