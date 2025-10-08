@@ -1,4 +1,4 @@
-import { PropsWithChildren, useMemo } from 'react'
+import { PropsWithChildren, ViewTransition, useMemo } from 'react'
 
 import { Flex } from '@chakra-ui/react'
 import { isSafari } from 'react-device-detect'
@@ -21,7 +21,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
     <Flex as="main" flexDir="column" minH={minH} w="full">
       <SiteHeader />
       <Flex flexDir="column" flex={1}>
-        {children}
+        <ViewTransition>{children}</ViewTransition>
       </Flex>
       <SiteFooter />
     </Flex>

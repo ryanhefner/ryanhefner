@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 
 import { ChakraProvider } from '@chakra-ui/react'
-import { LinkCard } from '@linkcards/next'
+// import { LinkCard } from '@linkcards/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -38,9 +38,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const path = router.asPath.split('?')[0]
   const isHome = path === '/' || path === '/index'
   const url = isHome ? siteUrl : `${siteUrl}${path}`
-  const ogImageUrl = `${url}/social-image.png`
+  // const ogImageUrl = `${url}/social-image.png`
   const getLayout = Component.getLayout || ((page) => page)
-  const isPodcast = path.startsWith('/podcast')
+  // const isPodcast = path.startsWith('/podcast')
 
   return (
     <>
