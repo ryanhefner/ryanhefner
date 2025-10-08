@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useState } from 'react'
+import { PropsWithChildren, ViewTransition, useCallback, useState } from 'react'
 
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Marquee from 'react-marquease'
@@ -23,7 +23,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
     <>
       <Flex as="main" flexDir="column" minH="100dvh" w="full">
         <SiteHeader />
-        {children}
+        <ViewTransition>{children}</ViewTransition>
         <SiteFooter />
       </Flex>
       <Box
