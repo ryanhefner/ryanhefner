@@ -1,4 +1,4 @@
-import React, { Fragment, ViewTransition } from 'react'
+import React, { Fragment } from 'react'
 
 import {
   Box,
@@ -28,7 +28,7 @@ const OssPage = () => {
   const borderColor = useColorModeValue('black', theme.colors.gray[700])
 
   return (
-    <ViewTransition>
+    <>
       <SiteMeta description={DESCRIPTION} title={TITLE} />
       <PageWrapper>
         <Flex
@@ -95,7 +95,7 @@ const OssPage = () => {
           ))}
         </Flex>
       </PageWrapper>
-    </ViewTransition>
+    </>
   )
 }
 

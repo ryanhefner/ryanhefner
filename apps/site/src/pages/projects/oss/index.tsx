@@ -1,4 +1,3 @@
-import { ViewTransition } from 'react'
 import { Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 
@@ -18,7 +17,7 @@ const DESCRIPTION =
   'It has been fun writing and maintaing open source software. Here are some of my contributions to the developer community.'
 
 const OSSIndexPage = () => (
-  <ViewTransition>
+  <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
       <PageHeading>
@@ -35,7 +34,7 @@ const OSSIndexPage = () => (
         ))}
       </ProjectGrid>
     </PageWrapper>
-  </ViewTransition>
+  </>
 )
 
 OSSIndexPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>

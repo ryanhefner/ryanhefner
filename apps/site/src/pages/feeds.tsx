@@ -1,4 +1,3 @@
-import { ViewTransition } from 'react'
 import fs from 'fs'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
@@ -17,7 +16,7 @@ import { PageHeading, SectionHeading } from '../components/typography'
 
 const FeedsPage = () => {
   return (
-    <ViewTransition>
+    <>
       <SiteMeta
         title="Feeds to subscribe to"
         description="RSS feeds you can subscribe to from the site."
@@ -45,7 +44,7 @@ const FeedsPage = () => {
           </Box>
         </Flex>
       </PageWrapper>
-    </ViewTransition>
+    </>
   )
 }
 

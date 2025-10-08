@@ -1,4 +1,3 @@
-import { ViewTransition } from 'react'
 import { Box, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
 
@@ -18,7 +17,7 @@ const DESCRIPTION =
   'I’m a software developer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
 
 const AboutPage = () => (
-  <ViewTransition>
+  <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
       <PageHeading>About</PageHeading>
@@ -223,7 +222,7 @@ const AboutPage = () => (
         </ClientGrid>
       </Box>
     </PageWrapper>
-  </ViewTransition>
+  </>
 )
 
 AboutPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
