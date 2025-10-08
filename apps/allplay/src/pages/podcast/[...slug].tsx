@@ -1,4 +1,4 @@
-import { ReactNode, ViewTransition, useCallback, useContext } from 'react'
+import { ReactNode, useCallback, useContext } from 'react'
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
@@ -36,7 +36,7 @@ const EpisodePage = ({
     `https://share.transistor.fm/oembed?url=${encodeURIComponent(shareUrl)}`
 
   return (
-    <ViewTransition>
+    <>
       <SiteMeta
         title={`Episode: ${episode?.title ?? 'N/A'} - Podcast`}
         description={
@@ -195,7 +195,7 @@ const EpisodePage = ({
         </Text>
         <NewsletterForm />
       </Box>
-    </ViewTransition>
+    </>
   )
 }
 
