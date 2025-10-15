@@ -9,5 +9,6 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "nxConsole.generateAiAgentRules": true
 }
