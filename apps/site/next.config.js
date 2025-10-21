@@ -10,6 +10,7 @@ const withContentlayer = createContentlayerPlugin({
 const nextConfig = {
   experimental: {
     reactCompiler: true,
+    viewTransitions: true,
   },
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
