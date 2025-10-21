@@ -14768,12 +14768,12 @@ react-clientside-effect@^1.2.7:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-dom@19.3.0-canary-3025aa39-20251007:
-  version "19.3.0-canary-3025aa39-20251007"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-3025aa39-20251007.tgz#cac73ed636edbce0b7cf37f948efc847190af461"
-  integrity sha512-solKuaStEkRnBo6gT4pvSvsprJABwNnQwqGcQrxezMB+d9tNTrQfBhh8XrRc+VVYRSaEV7nPdD2p4Rk8wLQ33g==
+react-dom@19.3.0-canary-71b3a03c-20251021:
+  version "19.3.0-canary-71b3a03c-20251021"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-71b3a03c-20251021.tgz#06fa653e16d800f60904208d6fffd9492774cb3c"
+  integrity sha512-gdAU7a2VwdAX9dyQ8KH9EKJADhkMFhDlz7itIrP1pUtZCbJwxlQgUkc1+BY0ra2I1LenCUK7+Re2TGZ6reV59Q==
   dependencies:
-    scheduler "0.28.0-canary-3025aa39-20251007"
+    scheduler "0.28.0-canary-71b3a03c-20251021"
 
 react-email@^4.0.2:
   version "4.3.1"
@@ -14914,10 +14914,10 @@ react-use-measure@^2.1.7:
   resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.1.7.tgz#36b8a2e7fd2fa58109ab851b3addcb0aad66ad1d"
   integrity sha512-KrvcAo13I/60HpwGO5jpW7E9DfusKyLPLvuHlUyP5zqnmAPhNc6qTRjUQrdTADl0lpPpDVU2/Gg51UlOGHXbdg==
 
-react@19.3.0-canary-3025aa39-20251007:
-  version "19.3.0-canary-3025aa39-20251007"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-3025aa39-20251007.tgz#5727754eae03ece52c570ad6b78c4f1270a0e716"
-  integrity sha512-sLEA84aXhsrXCbMZpHdIP+fENTAwaGC/R050jjb8JCFrXi5AF+43MERVkrmJFJ4p5QXZGtD0c9HgtN5GMuY+rA==
+react@19.3.0-canary-71b3a03c-20251021:
+  version "19.3.0-canary-71b3a03c-20251021"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-71b3a03c-20251021.tgz#94a0f3fa5c41d0c994de7b7ca06e6b886df18e0b"
+  integrity sha512-WBHkpvUcIPk4pAv7FeeWjRNI14byoiq+onjNo7lGG2aBG6tUJ5DHJnZxQ0JPGasph7l7D+B7oAe4wMdod0gKDA==
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -15199,9 +15199,9 @@ requires-port@^1.0.0:
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
 resend@^6.0.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/resend/-/resend-6.2.1.tgz#5cfce76ee0f125fb3dc83741c167b03884738b86"
-  integrity sha512-tcyzU0MwDSc1r9VhUt1uCLYw6MKf7/0yUvulY+VOKZ43DfIQTJNCCg2I9ogp4cR8fBGQ1/s6zGHazCbAWXnqBQ==
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/resend/-/resend-6.2.2.tgz#8046791412e0472662f74dc331a09057a64dd363"
+  integrity sha512-EF/wUj0y/CHBDqLV9iKrNHxGV/wdJfzfEzhPbd3tXD4wtMssabgVwys7N3dv+s1EsqnXjC0uN6ylpfvWTzF4Aw==
   dependencies:
     svix "1.76.1"
 
@@ -15651,10 +15651,10 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@0.28.0-canary-3025aa39-20251007:
-  version "0.28.0-canary-3025aa39-20251007"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-3025aa39-20251007.tgz#2bc9e9845252e78032ec14d504de0485f8eaab2c"
-  integrity sha512-3HPPbOllocOSyOArJnzSws2TQMFSTOo5kBZQpYZk4Zip8y0YjCAzJOzw4WLzaI5uGptmY2gjWyO8qkuBAGTVzw==
+scheduler@0.28.0-canary-71b3a03c-20251021:
+  version "0.28.0-canary-71b3a03c-20251021"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-71b3a03c-20251021.tgz#a5394431729aab0f14a519f22c6cbeaffe1ad415"
+  integrity sha512-567VDOombRygn1WowO/Of/H/Au0mHkMeDAiJOkaIGQEzOim3awl7uFAmgU0OAd7oOb+KxM4hNAtdgXs9JSRZog==
 
 scheduler@^0.25.0:
   version "0.25.0"
