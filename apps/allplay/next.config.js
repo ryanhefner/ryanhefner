@@ -9,6 +9,7 @@ const { composePlugins, withNx } = require('@nx/next')
 const nextConfig = {
   experimental: {
     reactCompiler: true,
+    viewTransitions: true,
   },
   nx: {
     // Set this to true if you would like to to use SVGR
