@@ -1,3 +1,5 @@
+//@ts-check
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
@@ -8,13 +10,10 @@ const withContentlayer = createContentlayerPlugin({
 })
 
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-    viewTransitions: true,
-  },
   nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
+  reactCompiler: true,
   transpilePackages: ['@linkcards/next'],
   async rewrites() {
     return [
@@ -24,6 +23,7 @@ const nextConfig = {
       },
     ]
   },
+  viewTransitions: true,
 }
 
 const plugins = [withNx, withContentlayer, withMdx]

@@ -1,14 +1,14 @@
+//@ts-check
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
 
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-    viewTransitions: true,
-  },
   nx: {},
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
+  reactCompiler: true,
   async rewrites() {
     return [
       {
@@ -17,6 +17,7 @@ const nextConfig = {
       },
     ]
   },
+  viewTransitions: true,
 }
 
 const plugins = [
