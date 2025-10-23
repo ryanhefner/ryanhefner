@@ -1,5 +1,3 @@
-//@ts-check
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
@@ -10,11 +8,7 @@ const nextConfig = {
     viewTransitions: true,
   },
   nx: {},
-
-  compiler: {
-    // For other options, see https://nextjs.org/docs/architecture/nextjs-compiler#emotion
-    emotion: true,
-  },
+  poweredByHeader: false,
   async rewrites() {
     return [
       {

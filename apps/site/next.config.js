@@ -12,9 +12,9 @@ const nextConfig = {
     reactCompiler: true,
     viewTransitions: true,
   },
+  nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
-  nx: {},
   transpilePackages: ['@linkcards/next'],
   async rewrites() {
     return [
