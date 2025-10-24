@@ -4,30 +4,17 @@
   "sourceRoot": "libs/suisse-mono/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/suisse-mono",
-        "main": "libs/suisse-mono/src/index.ts",
-        "tsConfig": "libs/suisse-mono/tsconfig.lib.json",
-        "assets": [],
-        "project": "libs/suisse-mono/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
-      }
-    },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs suisse-mono {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/suisse-mono"
