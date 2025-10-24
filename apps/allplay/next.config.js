@@ -5,20 +5,10 @@ const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
 
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-    viewTransitions: true,
-  },
-  nx: {
-    // Set this to true if you would like to to use SVGR
-    // See: https://github.com/gregberge/svgr
-    svgr: false,
-  },
-
-  compiler: {
-    // For other options, see https://nextjs.org/docs/architecture/nextjs-compiler#emotion
-    emotion: true,
-  },
+  nx: {},
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
+  poweredByHeader: false,
+  reactCompiler: true,
   async rewrites() {
     return [
       {
@@ -27,6 +17,7 @@ const nextConfig = {
       },
     ]
   },
+  viewTransitions: true,
 }
 
 const plugins = [

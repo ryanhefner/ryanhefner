@@ -4,30 +4,17 @@
   "sourceRoot": "libs/suisse-intl/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/suisse-intl",
-        "main": "libs/suisse-intl/src/index.ts",
-        "tsConfig": "libs/suisse-intl/tsconfig.lib.json",
-        "assets": ["libs/suisse-intl/src/files"],
-        "project": "libs/suisse-intl/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
-      }
-    },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs suisse-intl {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/suisse-intl"

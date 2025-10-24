@@ -1,3 +1,5 @@
+//@ts-check
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
@@ -8,17 +10,10 @@ const withContentlayer = createContentlayerPlugin({
 })
 
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-    viewTransitions: true,
-  },
+  nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
-  nx: {
-    // Set this to true if you would like to to use SVGR
-    // See: https://github.com/gregberge/svgr
-    svgr: false,
-  },
+  reactCompiler: true,
   transpilePackages: ['@linkcards/next'],
   async rewrites() {
     return [
@@ -28,6 +23,7 @@ const nextConfig = {
       },
     ]
   },
+  viewTransitions: true,
 }
 
 const plugins = [withNx, withContentlayer, withMdx]
