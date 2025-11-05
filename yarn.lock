@@ -4965,10 +4965,10 @@
   dependencies:
     tslib "^2.8.0"
 
-"@swc/plugin-emotion@^11.0.2":
-  version "11.5.0"
-  resolved "https://registry.yarnpkg.com/@swc/plugin-emotion/-/plugin-emotion-11.5.0.tgz#5f83d68470959fd5967d58db49d90125733da2f1"
-  integrity sha512-XtLaQv2HIouAaFs0xNJdS4ckmdN8EUEbTvXu0Wi6UuTDiQ+WPpwjYMiqRdMw8n5/WFKX1coLm4R8y5T+c9j2og==
+"@swc/plugin-emotion@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-emotion/-/plugin-emotion-13.0.0.tgz#01ce503270386744628174abd7c8f6291226bad4"
+  integrity sha512-F1DLOy5UPJFAYQEnwjzaU1fIFksemJEsgq8klzK+IBQjTHu1bvzjIZLuRtyD+d3j235zKedsqkLw93M+SDtHlA==
   dependencies:
     "@swc/counter" "^0.1.3"
 
