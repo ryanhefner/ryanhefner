@@ -10,11 +10,14 @@ const withContentlayer = createContentlayerPlugin({
 })
 
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['@chakra-ui/react'],
+  },
   nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
   reactCompiler: true,
-  transpilePackages: ['@linkcards/next'],
+  reactStrictMode: true,
   async rewrites() {
     return [
       {
@@ -23,7 +26,7 @@ const nextConfig = {
       },
     ]
   },
-  viewTransitions: true,
+  transpilePackages: ['@linkcards/next'],
 }
 
 const plugins = [withNx, withContentlayer, withMdx]

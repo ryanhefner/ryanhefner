@@ -5,10 +5,14 @@ const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
 
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['@chakra-ui/react'],
+  },
   nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
   reactCompiler: true,
+  reactStrictMode: true,
   async rewrites() {
     return [
       {
@@ -17,7 +21,6 @@ const nextConfig = {
       },
     ]
   },
-  viewTransitions: true,
 }
 
 const plugins = [
