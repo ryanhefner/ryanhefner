@@ -17,8 +17,12 @@ function regexEqual(x, y) {
  * To this function that hard-codes the libsDir.
  */
 function getWithNxContext() {
+  const path = require('path')
+  // Dynamically determine workspace root by going up from this file's location
+  // with-nx.js is in apps/site/, so workspace root is 2 levels up
+  const workspaceRoot = path.resolve(__dirname, '../..')
   return {
-    workspaceRoot: '/Users/ryanhefner/Code/org-ryanhefner/ryanhefner',
+    workspaceRoot,
     libsDir: 'libs',
   }
 }

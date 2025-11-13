@@ -8,29 +8,11 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/transistor/react",
-        "tsConfig": "libs/transistor/react/tsconfig.lib.json",
-        "project": "libs/transistor/react/package.json",
-        "entryFile": "libs/transistor/react/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
-          {
-            "glob": "libs/transistor/react/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
-    },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
         "reportsDirectory": "../../../coverage/libs/transistor/react"
       }

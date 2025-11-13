@@ -6,19 +6,13 @@ const withMdx = require('@next/mdx')()
 
 const nextConfig = {
   experimental: {
-    reactCompiler: true,
-    viewTransitions: true,
+    optimizePackageImports: ['@chakra-ui/react'],
   },
-  nx: {
-    // Set this to true if you would like to to use SVGR
-    // See: https://github.com/gregberge/svgr
-    svgr: false,
-  },
-
-  compiler: {
-    // For other options, see https://nextjs.org/docs/architecture/nextjs-compiler#emotion
-    emotion: true,
-  },
+  nx: {},
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
+  poweredByHeader: false,
+  reactCompiler: true,
+  reactStrictMode: true,
   async rewrites() {
     return [
       {
