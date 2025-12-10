@@ -17,7 +17,8 @@ export const SiteHeader = () => (
     >
       <Link
         href="https://youtube.com/playlist?list=PLuFdIOfmEGP0xvjt2yng9FErsMTVTk1Of&si=H0RpnIlvOhwg5Q2j"
-        isExternal
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Text>Watch the latest episodes on YouTube</Text>
       </Link>
@@ -33,7 +34,7 @@ export const SiteHeader = () => (
       w="100%"
       zIndex={1}
     >
-      <Flex alignItems="center" gap={8}>
+      <Flex as="nav" alignItems="center" gap={8} aria-label="Main navigation">
         <Link href="/">
           <Heading fontSize="lg">— All Play</Heading>
         </Link>

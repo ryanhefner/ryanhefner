@@ -1,4 +1,4 @@
-import { allNows, allThoughts } from 'contentlayer/generated'
+import { allNows } from 'contentlayer/generated'
 import { GetServerSideProps } from 'next'
 import { getServerSideSitemapLegacy } from 'next-sitemap'
 
@@ -45,21 +45,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     )
   }
 
-  // Thoughts
-  const thoughtFields = allThoughts.map((thought) => ({
-    loc: `${BASE_URL}/thoughts/${thought.slug}`,
-    lastmod: thought.date,
-  }))
+  // Thoughts - hidden per user request, not yet ready for public access
+  // const thoughtFields = allThoughts.map((thought) => ({
+  //   loc: `${BASE_URL}/thoughts/${thought.slug}`,
+  //   lastmod: thought.date,
+  // }))
 
-  if (thoughtFields.length) {
-    fields.push(
-      {
-        loc: `${BASE_URL}/thoughts`,
-        lastmod: new Date().toISOString(),
-      },
-      ...thoughtFields,
-    )
-  }
+  // if (thoughtFields.length) {
+  //   fields.push(
+  //     {
+  //       loc: `${BASE_URL}/thoughts`,
+  //       lastmod: new Date().toISOString(),
+  //     },
+  //     ...thoughtFields,
+  //   )
+  // }
 
   return getServerSideSitemapLegacy(ctx, fields)
 }

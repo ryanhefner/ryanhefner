@@ -1,13 +1,25 @@
-import { ComponentStyleConfig } from '@chakra-ui/react'
+import { defineSlotRecipe } from '@chakra-ui/react'
 
-export const Tag: ComponentStyleConfig = {
+export const tagRecipe = defineSlotRecipe({
+  slots: ['container'],
+  base: {
+    container: {},
+  },
   variants: {
-    outline: {
-      borderColor: 'black',
-      color: 'black',
+    variant: {
+      outline: {
+        container: {
+          borderColor: '#000',
+          color: '#000',
+          _dark: {
+            borderColor: '#fff',
+            color: '#fff',
+          },
+        },
+      },
     },
   },
-  defaultProps: {
+  defaultVariants: {
     variant: 'outline',
   },
-}
+})

@@ -12,29 +12,11 @@
   },
   "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/transistor/client",
-        "main": "libs/transistor/client/src/index.ts",
-        "tsConfig": "libs/transistor/client/tsconfig.lib.json",
-        "assets": [],
-        "project": "libs/transistor/client/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
-      }
-    },
-    "nx-release-publish": {
-      "options": {
-        "packageRoot": "dist/{projectRoot}"
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../../coverage/libs/transistor/client"

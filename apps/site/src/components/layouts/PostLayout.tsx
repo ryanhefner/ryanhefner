@@ -1,13 +1,5 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Heading,
-  Tag,
-  Text,
-  VStack,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Flex, HStack, Heading, Tag, Text, VStack } from '@chakra-ui/react'
+import { useColorModeValue } from 'chakra-color'
 import { UTCDateMini } from '@date-fns/utc'
 import { Thought, allThoughts } from 'contentlayer/generated'
 import { format } from 'date-fns'
@@ -72,7 +64,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
             py={6}
             gap={{ base: 6, md: 4 }}
           >
-            <VStack alignItems="flex-start" fontFamily="mono" spacing={0}>
+            <VStack alignItems="flex-start" fontFamily="mono" gap={0}>
               <Text color="gray.500" fontSize="xs" textTransform="uppercase">
                 Posted
               </Text>
@@ -127,11 +119,15 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                 More Thoughts
               </Heading>
               {moreThoughts.map((item, index) => (
-                <Link key={item.date} href={`/thoughts/${item.slug}`}>
+                <Link
+                  key={item.date}
+                  href={`/thoughts/${item.slug}`}
+                  display="block"
+                >
                   <HStack
                     borderBottom={`1px solid ${borderColor}`}
                     py={2}
-                    spacing={{ base: 3, md: 4 }}
+                    gap={{ base: 3, md: 4 }}
                   >
                     <Text as="span" fontFamily="mono" fontSize="sm">
                       {format(new UTCDateMini(item.date), 'yyyy-MM-dd')}

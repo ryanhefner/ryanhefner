@@ -1,4 +1,4 @@
-import { Box, HStack, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, HStack, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
 import { allThoughts } from 'contentlayer/generated'
 import { format } from 'date-fns'
@@ -7,15 +7,17 @@ import { Link } from '../../components/base'
 import { SiteLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site/PageWrapper'
 import { PageHeading } from '../../components/typography'
-import { theme } from '../../styles'
 
 const ThoughtsIndexPage = () => {
-  const borderColor = useColorModeValue('black', theme.colors.gray[700])
-
   return (
     <PageWrapper>
       <PageHeading ml={0}>Thoughts</PageHeading>
-      <Box mt={16} borderTop={`2px solid ${borderColor}`}>
+      <Box
+        mt={16}
+        borderTop="2px solid"
+        borderColor="black"
+        _dark={{ borderColor: 'gray.700' }}
+      >
         {allThoughts
           .sort((a, b) => {
             if (a.date > b.date) return -1
@@ -23,13 +25,19 @@ const ThoughtsIndexPage = () => {
             return 0
           })
           .map((item, index) => (
-            <Link key={item.date} href={`/thoughts/${item.slug}`}>
+            <Link
+              key={item.date}
+              href={`/thoughts/${item.slug}`}
+              display="block"
+            >
               <HStack
-                borderBottom={`1px solid ${borderColor}`}
+                borderBottom="1px solid"
+                borderColor="black"
+                _dark={{ borderColor: 'gray.700' }}
                 align={{ base: 'flex-start', md: 'center' }}
                 fontSize={{ base: 'lg', md: 'xl' }}
                 py={2.5}
-                spacing={{ base: 3, md: 4 }}
+                gap={{ base: 3, md: 4 }}
               >
                 <Text
                   as="span"

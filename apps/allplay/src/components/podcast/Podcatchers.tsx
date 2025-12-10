@@ -1,6 +1,6 @@
 import {
   Box,
-  ChakraProps,
+  HTMLChakraProps,
   Grid,
   GridItem,
   Heading,
@@ -10,7 +10,7 @@ import {
 
 import { Link } from '../base'
 
-interface PodcatchersProps extends ChakraProps {
+interface PodcatchersProps extends HTMLChakraProps<'div'> {
   size?: 'sm' | 'md' | 'lg'
   feeds: any[]
   title?: string
@@ -35,9 +35,13 @@ export const Podcatchers = ({
     >
       {feeds.map((feed) => (
         <GridItem key={feed.title}>
-          <Link href={feed.url} title={`Listen to All Play on ${feed.title}`}>
+          <Link
+            href={feed.url}
+            title={`Listen to All Play on ${feed.title}`}
+            w="full"
+          >
             {feed.icon && typeof feed.icon !== 'string' ? (
-              <Icon as={feed.icon} w="full" h="full" />
+              <Icon as={feed.icon} boxSize="100%" />
             ) : (
               <Image
                 src={feed.icon}

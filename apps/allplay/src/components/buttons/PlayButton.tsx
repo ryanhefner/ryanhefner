@@ -6,7 +6,7 @@ export enum PlayButtonSize {
   SMALL = 'SMALL',
   LARGE = 'LARGE',
 }
-interface PlayButtonProps extends ButtonProps {
+interface PlayButtonProps extends Omit<ButtonProps, 'size'> {
   isActive?: boolean
   isPlaying?: boolean
   size?: PlayButtonSize
@@ -20,6 +20,7 @@ export const PlayButton = ({
 }: PlayButtonProps) => {
   return (
     <Button
+      aria-label={isPlaying ? 'Pause episode' : 'Play episode'}
       border="1px solid"
       borderColor={isActive ? 'black' : 'gray.500'}
       borderRadius="full"

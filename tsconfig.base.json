@@ -29,7 +29,9 @@
       "react-transistor-fm": ["libs/transistor/react/src/index.ts"],
       "react-web-audio": ["libs/audio/src/index.ts"],
       "transistor-client": ["libs/transistor/client/src/index.ts"],
-      "use-podcast": ["libs/use-podcast/src/index.ts"]
+      "use-podcast": ["libs/use-podcast/src/index.ts"],
+      "chakra-color": ["libs/chakra-color/src/index.ts"],
+      "chakra-color/dark-only": ["libs/chakra-color/src/dark-only.ts"]
     }
   },
   "include": ["./.contentlayer/generated"],

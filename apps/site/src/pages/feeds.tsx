@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
-import { allNows, allThoughts } from 'contentlayer/generated'
+import { allNows } from 'contentlayer/generated'
 import { Feed } from 'feed'
 import { SiteMeta } from 'next-meta'
 import rehypeStringify from 'rehype-stringify'
@@ -30,7 +30,7 @@ const FeedsPage = () => {
         >
           <Box flexBasis={{ base: 'full' }}>
             <SectionHeading>All</SectionHeading>
-            <HStack color="gray.500" spacing={4}>
+            <HStack color="gray.500" gap={4}>
               <Link href="/feeds/all/rss.xml">
                 <Text>XML</Text>
               </Link>
@@ -71,7 +71,8 @@ export const getStaticProps = async () => {
 
   const feed = new Feed(feedOptions)
 
-  const items = [...allNows, ...allThoughts]
+  // Thoughts excluded per user request - not yet ready for public access
+  const items = [...allNows]
 
   await Promise.all(
     items

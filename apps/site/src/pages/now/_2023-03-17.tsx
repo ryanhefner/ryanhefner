@@ -1,11 +1,4 @@
-import {
-  Box,
-  Heading,
-  ListItem,
-  OrderedList,
-  Text,
-  UnorderedList,
-} from '@chakra-ui/react'
+import { Box, Heading, List, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 
 import { FootnoteLink, Link } from '../../components/base'
@@ -109,14 +102,14 @@ const NowPage = () => (
           conscience people coming together to help each other, and potentially
           collaborate on projects, or consulting opportunities, would look like.
         </Text>
-        <UnorderedList fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
-          <ListItem>How would it operate?</ListItem>
-          <ListItem>
+        <List.Root fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
+          <List.Item>How would it operate?</List.Item>
+          <List.Item>
             What system or tools could be setup to help facilitate collaboration
             and efficiency?
-          </ListItem>
-          <ListItem>How would the community grow and self-regulate?</ListItem>
-        </UnorderedList>
+          </List.Item>
+          <List.Item>How would the community grow and self-regulate?</List.Item>
+        </List.Root>
         <Text fontSize={{ base: 'xl', md: '2xl' }} maxW="container.md" mt={8}>
           These are just a few of the questions we have been trying to put
           answers to. And, in the meantime we threw up a quick site where we can
@@ -135,8 +128,8 @@ const NowPage = () => (
           With that said, here are a few of the updates I’ve made over the last
           week:
         </Text>
-        <UnorderedList fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
-          <ListItem>
+        <List.Root fontSize={{ base: 'xl', md: '2xl' }} mt={8}>
+          <List.Item>
             Add{' '}
             <Link
               color="blue.500"
@@ -157,21 +150,21 @@ const NowPage = () => (
               projects
             </Link>{' '}
             pages.
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             Add new{' '}
             <Link href="/withoss" color="blue.500">
               w/ OSS
             </Link>{' '}
             (with open-source software) page.
             <FootnoteLink href="#footnote-2">2</FootnoteLink>
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             Obviously, this is new <code>/now</code> page, and with that I have
             created an archive of previous <code>/now</code> pages. You can find
             a link to the previous below.
-          </ListItem>
-          <ListItem>
+          </List.Item>
+          <List.Item>
             I have been really happy with using{' '}
             <Link
               color="blue.500"
@@ -194,8 +187,8 @@ const NowPage = () => (
             </Link>
             , I realized they have a new documentation on how to set it up. So,
             that was updated, which is nice.
-          </ListItem>
-        </UnorderedList>
+          </List.Item>
+        </List.Root>
         <Heading as="h3" fontWeight="medium" mt={16}>
           Personal goals
         </Heading>
@@ -206,23 +199,23 @@ const NowPage = () => (
           maxW="container.md"
           mt={8}
         >
-          <UnorderedList>
-            <ListItem>Save weekends for kids: ✅</ListItem>
-            <ListItem>
+          <List.Root>
+            <List.Item>Save weekends for kids: ✅</List.Item>
+            <List.Item>
               Get final home renovations projects done, so we can move in: ✅
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               <s>Daily trail run (weekdays)</s>
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               <s>Daily rowing session (weekdays)</s>
-            </ListItem>
-            <ListItem>
+            </List.Item>
+            <List.Item>
               Daily Peloton session
               <FootnoteLink href="#footnote-3">3</FootnoteLink> (at least
               weekdays, ideally all days)
-            </ListItem>
-          </UnorderedList>
+            </List.Item>
+          </List.Root>
         </Text>
         <Heading as="h4" fontSize="2xl" fontWeight="medium" mt={24}>
           Footnotes
@@ -235,25 +228,25 @@ const NowPage = () => (
           mt={4}
           ml={4}
         >
-          <OrderedList spacing={3}>
-            <ListItem id="footnote-1">
+          <List.Root as="ol" gap={3}>
+            <List.Item id="footnote-1">
               Casters – This is a new project I am working on. I think it’s
               going to be really cool, and useful, but not ready to get into all
               of that here/now. Expect more updates on this over the coming
               weeks/months.
-            </ListItem>
-            <ListItem id="footnote-2">
+            </List.Item>
+            <List.Item id="footnote-2">
               w/ OSS page – This is a concept that I like and will probably be
               expanding on more. Don’t be surprised if some more projects spin
               out of this idea.
-            </ListItem>
-            <ListItem id="footnote-3">
+            </List.Item>
+            <List.Item id="footnote-3">
               Daily Peloton session – Unfortunately, once we moved into our
               house, I had to relocate the rowing machine to a space that makes
               it inconvenient to use. So, luckily we also picked up a Peloton
               bike, and that is now my goto for exercise.
-            </ListItem>
-          </OrderedList>
+            </List.Item>
+          </List.Root>
         </Text>
       </Box>
     </PageWrapper>

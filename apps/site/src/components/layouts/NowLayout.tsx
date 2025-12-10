@@ -1,17 +1,10 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Heading,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Flex, HStack, Heading, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
 import { allNows } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { usePathname } from 'next/navigation'
 
-import { theme } from '../../styles'
+import { useColorModeValue } from 'chakra-color'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 
@@ -20,14 +13,17 @@ import { SiteLayout } from './SiteLayout'
 export const NowLayout = ({ children }) => {
   const pathname = usePathname()
   const selectedBgColor = useColorModeValue('black', 'white')
-  const borderColor = useColorModeValue('black', theme.colors.gray[700])
 
   return (
     <SiteLayout>
       <PageWrapper>
         {children}
         <Box>
-          <Box borderBottom={`2px solid ${borderColor}`}>
+          <Box
+            borderBottom="2px solid"
+            borderColor="black"
+            _dark={{ borderColor: 'gray.700' }}
+          >
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
               Now Archive
             </Heading>
@@ -44,12 +40,20 @@ export const NowLayout = ({ children }) => {
                 <Link
                   key={now.date}
                   href={`/now/${format(date, 'yyyy-MM-dd')}`}
+                  display="block"
                 >
-                  <HStack borderBottom={`1px solid ${borderColor}`} py={2}>
+                  <HStack
+                    borderBottom="1px solid"
+                    borderColor="black"
+                    _dark={{ borderColor: 'gray.700' }}
+                    py={2}
+                  >
                     <Box
                       borderRadius="full"
                       boxSize={2}
-                      border={`1px solid ${borderColor}`}
+                      border="1px solid"
+                      borderColor="black"
+                      _dark={{ borderColor: 'gray.700' }}
                       bgColor={
                         (index === 0 && pathname === '/now') ||
                         pathname.split('/').pop() === format(date, 'yyyy-MM-dd')
@@ -79,6 +83,7 @@ export const NowLayout = ({ children }) => {
               href="https://sive.rs"
               rel="nofollow noopener noreferrer"
               target="_blank"
+              display="inline"
             >
               Derek Sivers
             </Link>
@@ -87,6 +92,7 @@ export const NowLayout = ({ children }) => {
               href="https://nownownow.com"
               rel="nofollow noreferrer noopener"
               target="_blank"
+              display="inline"
             >
               nownownow.com &rarr;
             </Link>

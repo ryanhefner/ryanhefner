@@ -3,35 +3,18 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/suisse-works/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/suisse-works",
-        "main": "libs/suisse-works/src/index.ts",
-        "tsConfig": "libs/suisse-works/tsconfig.lib.json",
-        "assets": [],
-        "project": "libs/suisse-works/package.json",
-        "compiler": "swc",
-        "format": ["cjs", "esm"]
-      }
-    },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs suisse-works {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../coverage/libs/suisse-works"
       }
     }
-  },
-  "tags": []
+  }
 }

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 
-import { ChakraProps } from '@chakra-ui/react'
+import { HTMLChakraProps } from '@chakra-ui/react'
 
-interface WaveformProps extends ChakraProps {
+interface WaveformProps extends HTMLChakraProps<'canvas'> {
   audioBuffer: AudioBuffer
   color: string
   width: number
