@@ -52,8 +52,8 @@ export const system = createSystem(
           },
         },
       },
-      recipes: {
-        Tag: tagRecipe,
+      slotRecipes: {
+        tag: tagRecipe,
       },
     },
     globalCss: {

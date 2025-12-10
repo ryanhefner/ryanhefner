@@ -47,7 +47,7 @@ export const system = createSystem(
         heading: headingRecipe,
       },
       slotRecipes: {
-        Tag: tagRecipe,
+        tag: tagRecipe,
       },
     },
     globalCss: {
