@@ -37,6 +37,7 @@ export const NowLayout = ({ children }) => {
                 <Link
                   key={now.date}
                   href={`/now/${format(date, 'yyyy-MM-dd')}`}
+                  display="block"
                 >
                   <HStack borderBottom={`1px solid ${borderColor}`} py={2}>
                     <Box

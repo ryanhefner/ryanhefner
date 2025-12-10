@@ -119,7 +119,11 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
                 More Thoughts
               </Heading>
               {moreThoughts.map((item, index) => (
-                <Link key={item.date} href={`/thoughts/${item.slug}`}>
+                <Link
+                  key={item.date}
+                  href={`/thoughts/${item.slug}`}
+                  display="block"
+                >
                   <HStack
                     borderBottom={`1px solid ${borderColor}`}
                     py={2}
