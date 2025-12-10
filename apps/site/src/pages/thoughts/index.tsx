@@ -23,7 +23,11 @@ const ThoughtsIndexPage = () => {
             return 0
           })
           .map((item, index) => (
-            <Link key={item.date} href={`/thoughts/${item.slug}`}>
+            <Link
+              key={item.date}
+              href={`/thoughts/${item.slug}`}
+              display="block"
+            >
               <HStack
                 borderBottom={`1px solid ${borderColor}`}
                 align={{ base: 'flex-start', md: 'center' }}
