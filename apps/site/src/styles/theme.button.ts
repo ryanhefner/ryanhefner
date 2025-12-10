@@ -9,9 +9,9 @@ import { defineRecipe } from '@chakra-ui/react'
  */
 export const buttonRecipe = defineRecipe({
   base: {
+    borderRadius: 'xs',
     textStyle: 'md',
     fontSize: 'md', // Match v2 default
     fontWeight: 'semibold', // Match v2 default (v3 might default to 'medium')
-    borderRadius: 'md', // Match v2 default
   },
 })
