@@ -35,7 +35,11 @@ export const Podcatchers = ({
     >
       {feeds.map((feed) => (
         <GridItem key={feed.title}>
-          <Link href={feed.url} title={`Listen to All Play on ${feed.title}`}>
+          <Link
+            href={feed.url}
+            title={`Listen to All Play on ${feed.title}`}
+            w="full"
+          >
             {feed.icon && typeof feed.icon !== 'string' ? (
               <Icon as={feed.icon} boxSize="100%" />
             ) : (
