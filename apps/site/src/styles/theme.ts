@@ -14,9 +14,7 @@ export const system = createSystem(
           serif: { value: `Suisse Works, serif` },
         },
         fontSizes: {
-          '10xl': { value: '10rem' },
-          '11xl': { value: '11rem' },
-          '12xl': { value: '12rem' },
+          '10xl': { value: '10.5rem' }, // Maintains 1.333x ratio from 8xl→9xl pattern
         },
         colors: {
           blue: {
