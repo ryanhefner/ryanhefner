@@ -44,7 +44,7 @@ export const system = createSystem(
         },
       },
       recipes: {
-        Heading: headingRecipe,
+        heading: headingRecipe,
       },
       slotRecipes: {
         Tag: tagRecipe,
