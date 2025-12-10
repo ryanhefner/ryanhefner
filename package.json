@@ -9,6 +9,9 @@
     "test": "nx test"
   },
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "dependencies": {
     "@chakra-ui/react": "^3.30.0",
     "@date-fns/utc": "^2.1.0",
