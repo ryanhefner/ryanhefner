@@ -55,6 +55,7 @@ export const system = createSystem(
     globalCss: {
       html: {
         bg: '{colors.black}',
+        colorPalette: 'whiteAlpha',
       },
       body: {
         color: '{colors.white}',
