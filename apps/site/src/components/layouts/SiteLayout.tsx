@@ -77,9 +77,9 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
           Skip to main content
         </Link>
         <SiteHeader />
-        <Box id="main-content" tabIndex={-1}>
+        <Flex id="main-content" flexDir="column" flex={1} tabIndex={-1}>
           <ViewTransition>{children}</ViewTransition>
-        </Box>
+        </Flex>
         <SiteFooter />
       </Flex>
       <Box
