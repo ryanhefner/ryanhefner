@@ -1,5 +1,6 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
+import { buttonRecipe } from './theme.button'
 import { headingRecipe } from './theme.heading'
 import { tagRecipe } from './theme.tag'
 
@@ -68,6 +69,7 @@ export const system = createSystem(
         },
       },
       recipes: {
+        button: buttonRecipe,
         heading: headingRecipe,
       },
       slotRecipes: {
