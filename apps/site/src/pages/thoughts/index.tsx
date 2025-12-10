@@ -7,15 +7,17 @@ import { Link } from '../../components/base'
 import { SiteLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site/PageWrapper'
 import { PageHeading } from '../../components/typography'
-import { useColorModeValue } from 'chakra-color'
 
 const ThoughtsIndexPage = () => {
-  const borderColor = useColorModeValue('black', 'gray.700')
-
   return (
     <PageWrapper>
       <PageHeading ml={0}>Thoughts</PageHeading>
-      <Box mt={16} borderTop={`2px solid ${borderColor}`}>
+      <Box
+        mt={16}
+        borderTop="2px solid"
+        borderColor="black"
+        _dark={{ borderColor: 'gray.700' }}
+      >
         {allThoughts
           .sort((a, b) => {
             if (a.date > b.date) return -1
@@ -29,7 +31,9 @@ const ThoughtsIndexPage = () => {
               display="block"
             >
               <HStack
-                borderBottom={`1px solid ${borderColor}`}
+                borderBottom="1px solid"
+                borderColor="black"
+                _dark={{ borderColor: 'gray.700' }}
                 align={{ base: 'flex-start', md: 'center' }}
                 fontSize={{ base: 'lg', md: 'xl' }}
                 py={2.5}

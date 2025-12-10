@@ -13,14 +13,17 @@ import { SiteLayout } from './SiteLayout'
 export const NowLayout = ({ children }) => {
   const pathname = usePathname()
   const selectedBgColor = useColorModeValue('black', 'white')
-  const borderColor = useColorModeValue('black', 'gray.700')
 
   return (
     <SiteLayout>
       <PageWrapper>
         {children}
         <Box>
-          <Box borderBottom="2px solid" borderColor={borderColor}>
+          <Box
+            borderBottom="2px solid"
+            borderColor="black"
+            _dark={{ borderColor: 'gray.700' }}
+          >
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
               Now Archive
             </Heading>
@@ -41,14 +44,16 @@ export const NowLayout = ({ children }) => {
                 >
                   <HStack
                     borderBottom="1px solid"
-                    borderColor={borderColor}
+                    borderColor="black"
+                    _dark={{ borderColor: 'gray.700' }}
                     py={2}
                   >
                     <Box
                       borderRadius="full"
                       boxSize={2}
                       border="1px solid"
-                      borderColor={borderColor}
+                      borderColor="black"
+                      _dark={{ borderColor: 'gray.700' }}
                       bgColor={
                         (index === 0 && pathname === '/now') ||
                         pathname.split('/').pop() === format(date, 'yyyy-MM-dd')

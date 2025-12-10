@@ -8,7 +8,7 @@ import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { PageHeading } from '../components/typography'
 import { withOss } from '../data/oss'
-import { useColorMode, useColorModeValue } from 'chakra-color'
+import { useColorMode } from 'chakra-color'
 import { cleanUrl } from '../utils'
 
 const TITLE = 'Made w/ Open-Source Software'
@@ -17,7 +17,6 @@ const DESCRIPTION =
 
 const OssPage = () => {
   const { colorMode } = useColorMode()
-  const borderColor = useColorModeValue('black', 'gray.700')
 
   return (
     <>
@@ -50,7 +49,11 @@ const OssPage = () => {
           </Text>
         </Flex>
         <Flex flexDir="column" my={24}>
-          <Box borderBottom={`2px solid ${borderColor}`}>
+          <Box
+            borderBottom="2px solid"
+            borderColor="black"
+            _dark={{ borderColor: 'gray.700' }}
+          >
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
               Open-source Software
             </Heading>
@@ -59,7 +62,9 @@ const OssPage = () => {
             <Flex
               key={project.name}
               flexDir={{ base: 'column', md: 'row' }}
-              borderBottom={`1px solid ${borderColor}`}
+              borderBottom="1px solid"
+              borderColor="black"
+              _dark={{ borderColor: 'gray.700' }}
               py={{ base: 6, md: 2 }}
             >
               <Text flexBasis={{ base: 'auto', md: '200' }} fontWeight="medium">
