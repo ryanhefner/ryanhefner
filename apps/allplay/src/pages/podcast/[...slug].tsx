@@ -86,9 +86,9 @@ const EpisodePage = ({
       </SiteMeta>
       <Flex
         flexDir="column"
-        gap={{ base: 10, md: 16 }}
+        gap={{ base: 10, md: 18 }}
         px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 16 }}
+        py={{ base: 8, md: 18 }}
         w="full"
       >
         <Box>
