@@ -1,18 +1,8 @@
-import {
-  Box,
-  Code,
-  Heading,
-  Image,
-  ListItem,
-  OrderedList,
-  Text,
-  UnorderedList,
-  chakra,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Code, Heading, Image, List, Text, chakra } from '@chakra-ui/react'
 import type { MDXComponents } from 'mdx/types'
 import { Highlight, themes } from 'prism-react-renderer'
 
+import { useColorModeValue } from 'chakra-color'
 import { PageHeading } from './components/typography'
 
 export const mdxComponents = ({ codeBg, codeColor }) => ({
@@ -218,7 +208,7 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     />
   ),
   li: (props) => (
-    <ListItem
+    <List.Item
       fontSize={
         props?.id?.startsWith('user-content-fn')
           ? { base: 'sm', md: 'md' }
@@ -228,13 +218,15 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     />
   ),
   ol: (props) => (
-    <OrderedList
+    <List.Root
+      as="ol"
       fontSize={{ base: 'xl', md: '2xl' }}
       maxW="container.md"
       my={6}
       mx="auto"
       pl={12}
       w="full"
+      gap={3}
       {...props}
     />
   ),
@@ -269,13 +261,14 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
     />
   ),
   ul: (props) => (
-    <UnorderedList
+    <List.Root
       fontSize={{ base: 'xl', md: '2xl' }}
       maxW="container.md"
       my={6}
       mx="auto"
       pl={12}
       w="full"
+      gap={3}
       {...props}
     />
   ),

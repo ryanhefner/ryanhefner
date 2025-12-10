@@ -1,17 +1,10 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  Heading,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Flex, HStack, Heading, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
 import { allNows } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { usePathname } from 'next/navigation'
 
-import { theme } from '../../styles'
+import { useColorModeValue } from 'chakra-color'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 
@@ -20,7 +13,7 @@ import { SiteLayout } from './SiteLayout'
 export const NowLayout = ({ children }) => {
   const pathname = usePathname()
   const selectedBgColor = useColorModeValue('black', 'white')
-  const borderColor = useColorModeValue('black', theme.colors.gray[700])
+  const borderColor = useColorModeValue('black', 'gray.700')
 
   return (
     <SiteLayout>

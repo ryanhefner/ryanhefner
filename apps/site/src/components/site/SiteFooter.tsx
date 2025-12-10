@@ -1,13 +1,5 @@
-import {
-  Flex,
-  HStack,
-  Icon,
-  Image,
-  Text,
-  chakra,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Flex, HStack, Icon, Image, Text, chakra } from '@chakra-ui/react'
+import { useColorMode, useColorModeValue } from 'chakra-color'
 import { ImRss } from 'react-icons/im'
 
 import { Link } from '../base'
@@ -36,7 +28,7 @@ export const SiteFooter = () => {
         gap={{ base: 3, md: 6 }}
         flexDir={{ base: 'column', md: 'row-reverse' }}
       >
-        <HStack alignItems="center" spacing={4}>
+        <HStack alignItems="center" gap={4}>
           <Link href="/withoss">
             <Image
               alt="With OSS"
@@ -57,7 +49,7 @@ export const SiteFooter = () => {
           May all your days be rad 🤙.
         </Text>
       </Flex>
-      <HStack spacing={{ base: 3, md: 6 }} mb={{ base: 5, md: 0 }}>
+      <HStack gap={{ base: 3, md: 6 }} mb={{ base: 5, md: 0 }}>
         <Link
           href="https://www.github.com/ryanhefner"
           target="_blank"

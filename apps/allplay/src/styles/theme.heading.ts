@@ -1,7 +1,7 @@
-import { ComponentStyleConfig } from '@chakra-ui/react'
+import { defineRecipe } from '@chakra-ui/react'
 
-export const Heading: ComponentStyleConfig = {
-  baseStyle: {
+export const headingRecipe = defineRecipe({
+  base: {
     fontWeight: 'medium',
   },
-}
+})

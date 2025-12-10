@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
 
-import { ChakraProvider } from '@chakra-ui/react'
 // import { LinkCard } from '@linkcards/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
@@ -15,7 +14,7 @@ import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
 import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
-import { theme } from '../styles'
+import { ThemeProvider } from '../providers/ThemeProvider'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
 
@@ -87,13 +86,13 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           }}
           siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? ''}
         >
-          <ChakraProvider theme={theme}>
+          <ThemeProvider>
             <WebAudioProvider>
               <PodcastPlayerProvider>
                 {getLayout(<Component {...pageProps} />)}
               </PodcastPlayerProvider>
             </WebAudioProvider>
-          </ChakraProvider>
+          </ThemeProvider>
         </NextPagesFathomProvider>
       </MetaProvider>
     </>

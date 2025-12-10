@@ -1,56 +1,69 @@
-import {
-  theme as baseTheme,
-  extendTheme,
-  withDefaultColorScheme,
-} from '@chakra-ui/react'
-import { mode } from '@chakra-ui/theme-tools'
+import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
 
-import { Heading } from './theme.heading'
-import { Tag } from './theme.tag'
+import { headingRecipe } from './theme.heading'
+import { tagRecipe } from './theme.tag'
 
-export const theme = extendTheme(
-  {
-    fonts: {
-      body: `Suisse Intl, sans-serif`,
-      heading: `Suisse Intl, sans-serif`,
-      mono: `Suisse Intl Mono, monospace`,
-      serif: `Suisse Works, serif`,
-    },
-    fontSizes: { '10xl': '10rem', '11xl': '11rem', '12xl': '12rem' },
-    colors: {
-      blue: { [500]: 'oklch(53.12% 0.2731 262.59)' },
-      gray: {
-        [200]: '#ccc',
-        [300]: '#aaa',
-        [400]: '#999',
-        [500]: '#888',
-        [600]: '#666',
-        [700]: '#333',
-        [800]: '#222',
-        [900]: '#111',
-      },
-      green: { [500]: '#13D93A' },
-      red: { [400]: '#FE3B3F', [500]: '#F82327' },
-      yellow: { [300]: '#F5FA1F' },
-    },
-    components: { Heading, Tag },
-    styles: {
-      global: (props: any) => ({
-        html: { bg: mode('black', 'black')(props) },
-        body: {
-          color: mode('white', 'white')(props),
-          bg: mode('black', 'black')(props),
+export const system = createSystem(
+  defaultConfig,
+  defineConfig({
+    theme: {
+      tokens: {
+        fonts: {
+          body: { value: `Suisse Intl, sans-serif` },
+          heading: { value: `Suisse Intl, sans-serif` },
+          mono: { value: `Suisse Intl Mono, monospace` },
+          serif: { value: `Suisse Works, serif` },
         },
-        '::selection': { bg: 'yellow.300', color: 'black' },
-      }),
+        fontSizes: {
+          '10xl': { value: '10rem' },
+          '11xl': { value: '11rem' },
+          '12xl': { value: '12rem' },
+        },
+        colors: {
+          blue: {
+            500: { value: 'oklch(53.12% 0.2731 262.59)' },
+          },
+          gray: {
+            200: { value: '#ccc' },
+            300: { value: '#aaa' },
+            400: { value: '#999' },
+            500: { value: '#888' },
+            600: { value: '#666' },
+            700: { value: '#333' },
+            800: { value: '#222' },
+            900: { value: '#111' },
+          },
+          green: {
+            500: { value: '#13D93A' },
+          },
+          red: {
+            400: { value: '#FE3B3F' },
+            500: { value: '#F82327' },
+          },
+          yellow: {
+            300: { value: '#F5FA1F' },
+          },
+        },
+      },
+      recipes: {
+        Heading: headingRecipe,
+      },
+      slotRecipes: {
+        Tag: tagRecipe,
+      },
     },
-    config: {
-      ...baseTheme.config,
-      cssVarPrefix: 'system',
-      useSystemColorMode: false,
-      initialColorMode: 'dark',
+    globalCss: {
+      html: {
+        bg: '{colors.black}',
+      },
+      body: {
+        color: '{colors.white}',
+        bg: '{colors.black}',
+      },
+      '::selection': {
+        bg: '{colors.yellow.300}',
+        color: '{colors.black}',
+      },
     },
-  },
-  withDefaultColorScheme({ colorScheme: 'whiteAlpha' }),
-  baseTheme,
+  }),
 )

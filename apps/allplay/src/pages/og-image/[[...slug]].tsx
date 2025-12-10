@@ -1,8 +1,6 @@
 import { Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { usePodcast } from 'use-podcast'
 
-import { theme } from '../../styles'
-
 type SharePageProps = {
   body: string
   path: string
@@ -10,7 +8,7 @@ type SharePageProps = {
 }
 
 const SharePage = ({ body, path, title }: SharePageProps) => {
-  const borderColor = theme.colors.gray[600]
+  const borderColor = 'gray.600'
   return (
     <Flex
       flexDir="column"

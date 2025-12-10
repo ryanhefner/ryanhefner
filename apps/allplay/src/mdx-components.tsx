@@ -1,17 +1,7 @@
 import { ReactNode } from 'react'
 
-import {
-  Box,
-  Code,
-  Heading,
-  Image,
-  ListItem,
-  OrderedList,
-  Text,
-  UnorderedList,
-  chakra,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Code, Heading, Image, List, Text, chakra } from '@chakra-ui/react'
+import { useColorModeValue } from 'chakra-color/dark-only'
 import type { MDXComponents } from 'mdx/types'
 import { Highlight, themes } from 'prism-react-renderer'
 
@@ -221,7 +211,7 @@ export const mdxComponents = ({
     />
   ),
   li: (props: any) => (
-    <ListItem
+    <List.Item
       fontSize={
         props?.id?.startsWith('user-content-fn')
           ? { base: 'sm', md: 'md' }
@@ -231,13 +221,15 @@ export const mdxComponents = ({
     />
   ),
   ol: (props: any) => (
-    <OrderedList
+    <List.Root
+      as="ol"
       fontSize={{ base: 'xl', md: '2xl' }}
       maxW="container.md"
       my={6}
       mx="auto"
       pl={12}
       w="full"
+      gap={3}
       {...props}
     />
   ),
@@ -272,13 +264,14 @@ export const mdxComponents = ({
     />
   ),
   ul: (props: any) => (
-    <UnorderedList
+    <List.Root
       fontSize={{ base: 'xl', md: '2xl' }}
       maxW="container.md"
       my={6}
       mx="auto"
       pl={12}
       w="full"
+      gap={3}
       {...props}
     />
   ),

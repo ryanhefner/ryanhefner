@@ -6,7 +6,7 @@ export enum PlayButtonSize {
   SMALL = 'SMALL',
   LARGE = 'LARGE',
 }
-interface PlayButtonProps extends ButtonProps {
+interface PlayButtonProps extends Omit<ButtonProps, 'size'> {
   isActive?: boolean
   isPlaying?: boolean
   size?: PlayButtonSize

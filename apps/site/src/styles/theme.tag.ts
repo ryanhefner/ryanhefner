@@ -1,13 +1,20 @@
-import { ComponentStyleConfig } from '@chakra-ui/react'
+import { defineRecipe } from '@chakra-ui/react'
 
-export const Tag: ComponentStyleConfig = {
+export const tagRecipe = defineRecipe({
+  base: {},
   variants: {
-    outline: {
-      borderColor: 'black',
-      color: 'black',
+    variant: {
+      outline: {
+        borderColor: '#000',
+        color: '#000',
+        _dark: {
+          borderColor: '#fff',
+          color: '#fff',
+        },
+      },
     },
   },
-  defaultProps: {
+  defaultVariants: {
     variant: 'outline',
   },
-}
+})

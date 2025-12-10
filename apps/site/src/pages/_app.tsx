@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
 
-import { ChakraProvider } from '@chakra-ui/react'
 import { LinkCard } from '@linkcards/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { NextPage } from 'next'
@@ -14,7 +13,7 @@ import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
 import { Fathom } from '../libs/fathom'
-import { theme } from '../styles'
+import { ThemeProvider } from '../providers/ThemeProvider'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -84,10 +83,10 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           imageWidth={1200}
           imageHeight={630}
         />
-        <ChakraProvider theme={theme}>
+        <ThemeProvider>
           <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
           {getLayout(<Component {...pageProps} />)}
-        </ChakraProvider>
+        </ThemeProvider>
       </MetaProvider>
       <SpeedInsights />
     </>

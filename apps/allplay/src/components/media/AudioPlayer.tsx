@@ -209,7 +209,7 @@ export const AudioPlayer = ({
             >
               {title ?? ''}
             </Text>
-            <HStack spacing={1} mr={5}>
+            <HStack gap={1} mr={5}>
               {isSelected ? (
                 <>
                   <Text

@@ -30,7 +30,7 @@ const FeedsPage = () => {
         >
           <Box flexBasis={{ base: 'full' }}>
             <SectionHeading>All</SectionHeading>
-            <HStack color="gray.500" spacing={4}>
+            <HStack color="gray.500" gap={4}>
               <Link href="/feeds/all/rss.xml">
                 <Text>XML</Text>
               </Link>

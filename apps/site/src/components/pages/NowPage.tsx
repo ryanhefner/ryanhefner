@@ -1,4 +1,5 @@
-import { Box, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
+import { useColorModeValue } from 'chakra-color'
 import { UTCDateMini } from '@date-fns/utc'
 import { Now } from 'contentlayer/generated'
 import { format } from 'date-fns'

@@ -1,15 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
 
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-  Text,
-} from '@chakra-ui/react'
+import { Box, Button, Field, Flex, Input, Text, chakra } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import Marquee from 'react-marquease'
@@ -88,11 +79,12 @@ export const NewsletterForm = ({
           gap={{ base: 6, md: 4 }}
           mt={6}
         >
-          <FormControl isInvalid={!!errors.firstName?.message}>
-            <FormLabel htmlFor="firstName" color={labelColor} fontSize="sm">
+          <Field.Root invalid={!!errors.firstName?.message}>
+            <chakra.label htmlFor="firstName" color={labelColor} fontSize="sm">
               First Name
-            </FormLabel>
+            </chakra.label>
             <Input
+              id="firstName"
               border={0}
               borderBottom="1px solid"
               borderRadius={0}
@@ -100,16 +92,21 @@ export const NewsletterForm = ({
               px={0}
               {...register('firstName')}
             />
-            <FormErrorMessage>First Name is required</FormErrorMessage>
-          </FormControl>
-          <FormControl isInvalid={!!errors.email?.message}>
-            <FormLabel htmlFor="email" color={labelColor} fontSize="sm">
+            {errors.firstName?.message && (
+              <chakra.div color="red.500" fontSize="sm" mt={1}>
+                First Name is required
+              </chakra.div>
+            )}
+          </Field.Root>
+          <Field.Root invalid={!!errors.email?.message}>
+            <chakra.label htmlFor="email" color={labelColor} fontSize="sm">
               Email{` `}
               <Text as="sup" color="red.500" fontSize="sm">
                 *
               </Text>
-            </FormLabel>
+            </chakra.label>
             <Input
+              id="email"
               type="email"
               border={0}
               borderBottom="1px solid"
@@ -118,8 +115,12 @@ export const NewsletterForm = ({
               px={0}
               {...register('email')}
             />
-            <FormErrorMessage>Email is required</FormErrorMessage>
-          </FormControl>
+            {errors.email?.message && (
+              <chakra.div color="red.500" fontSize="sm" mt={1}>
+                Email is required
+              </chakra.div>
+            )}
+          </Field.Root>
           <Box mt={{ base: 0, md: 7 }} w={{ base: 'full', md: 'auto' }}>
             <Button
               type="submit"
@@ -127,13 +128,12 @@ export const NewsletterForm = ({
               color="white"
               flex="0 0 auto"
               borderRadius="sm"
-              isLoading={isSubmitting}
-              isDisabled={isSubmitting}
-              loadingText="Subscribing..."
+              loading={isSubmitting}
+              disabled={isSubmitting}
               _hover={{ bg: 'red.400' }}
               w={{ base: 'full', md: 'auto' }}
             >
-              Subscribe
+              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
             </Button>
           </Box>
         </Flex>

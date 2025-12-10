@@ -1,4 +1,5 @@
-import { Box, Heading, Text, useColorModeValue, chakra } from '@chakra-ui/react'
+import { Box, Heading, Text, chakra } from '@chakra-ui/react'
+import { useColorModeValue } from 'chakra-color'
 import { NewsletterForm } from 'newsletter'
 
 const Br = chakra('br')

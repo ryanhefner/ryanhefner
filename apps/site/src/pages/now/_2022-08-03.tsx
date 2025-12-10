@@ -1,11 +1,4 @@
-import {
-  Box,
-  Heading,
-  Link,
-  ListItem,
-  Text,
-  UnorderedList,
-} from '@chakra-ui/react'
+import { Box, Heading, Link, List, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 
 import { NowLayout } from '../../components/layouts'
@@ -101,14 +94,14 @@ const NowPage = () => (
           maxW="container.md"
           mt={8}
         >
-          <UnorderedList>
-            <ListItem>Save weekends for kids</ListItem>
-            <ListItem>
+          <List.Root>
+            <List.Item>Save weekends for kids</List.Item>
+            <List.Item>
               Get final home renovations projects done, so we can move in
-            </ListItem>
-            <ListItem>Daily trail run (weekdays)</ListItem>
-            <ListItem>Daily rowing session (weekdays)</ListItem>
-          </UnorderedList>
+            </List.Item>
+            <List.Item>Daily trail run (weekdays)</List.Item>
+            <List.Item>Daily rowing session (weekdays)</List.Item>
+          </List.Root>
         </Text>
       </Box>
     </PageWrapper>

@@ -17,7 +17,8 @@ export const SiteHeader = () => (
     >
       <Link
         href="https://youtube.com/playlist?list=PLuFdIOfmEGP0xvjt2yng9FErsMTVTk1Of&si=H0RpnIlvOhwg5Q2j"
-        isExternal
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Text>Watch the latest episodes on YouTube</Text>
       </Link>

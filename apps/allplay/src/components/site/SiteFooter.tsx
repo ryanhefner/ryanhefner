@@ -18,7 +18,7 @@ export const SiteFooter = () => (
       <Text color="gray.400">
         Here are a few services that I use, and highly recommend.
       </Text>
-      <HStack mt={4} spacing={10}>
+      <HStack mt={4} gap={10}>
         <Link href="https://transistor.fm/?via=allplay">
           <Image
             src="/assets/transistor-horizontal.svg"
@@ -42,7 +42,7 @@ publishing platform"
       gap={6}
       justifyContent="space-between"
     >
-      <HStack spacing={4} alignItems="center">
+      <HStack gap={4} alignItems="center">
         <Text color="gray.400">
           {`© ${new Date().getFullYear()} — `}All Play FM +{' '}
           <Link
@@ -57,7 +57,7 @@ publishing platform"
           <Image src="/assets/oss.svg" alt="With OSS" h={5} />
         </Link>
       </HStack>
-      <HStack spacing={4} alignItems="center">
+      <HStack gap={4} alignItems="center">
         <Link
           href="https://bsky.app/profile/ryanhefner.com"
           lineHeight={0.8}

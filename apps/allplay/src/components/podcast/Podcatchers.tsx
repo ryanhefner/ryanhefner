@@ -1,6 +1,6 @@
 import {
   Box,
-  ChakraProps,
+  HTMLChakraProps,
   Grid,
   GridItem,
   Heading,
@@ -10,7 +10,7 @@ import {
 
 import { Link } from '../base'
 
-interface PodcatchersProps extends ChakraProps {
+interface PodcatchersProps extends HTMLChakraProps<'div'> {
   size?: 'sm' | 'md' | 'lg'
   feeds: any[]
   title?: string
