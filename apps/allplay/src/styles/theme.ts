@@ -18,6 +18,12 @@ export const system = createSystem(
           '10xl': { value: '10.5rem' }, // Maintains 1.333x ratio from 8xl→9xl pattern
         },
         colors: {
+          black: {
+            value: '#000',
+          },
+          white: {
+            value: '#fff',
+          },
           blue: {
             500: { value: 'oklch(53.12% 0.2731 262.59)' },
           },
