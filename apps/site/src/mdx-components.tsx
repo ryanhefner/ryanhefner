@@ -1,13 +1,14 @@
-import { Box, Code, Heading, Image, List, Text, chakra } from '@chakra-ui/react'
+import { Box, Code, Heading, Image, List, Text } from '@chakra-ui/react'
 import type { MDXComponents } from 'mdx/types'
 import { Highlight, themes } from 'prism-react-renderer'
 
 import { useColorModeValue } from 'chakra-color'
+import { Link } from './components/base'
 import { PageHeading } from './components/typography'
 
 export const mdxComponents = ({ codeBg, codeColor }) => ({
   a: (props) => (
-    <chakra.a
+    <Link
       color="blue.500"
       _hover={{ textDecoration: 'underline' }}
       {...props}
@@ -69,26 +70,28 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
                 .map((line, i) => {
                   const lineProps = getLineProps({ line, key: i })
                   return (
-                    <chakra.div key={i} px="3" {...lineProps}>
-                      <chakra.span
+                    <Box key={i} px="3" {...lineProps}>
+                      <Text
+                        as="span"
                         fontFamily="mono"
                         fontSize="xs"
                         opacity={0.3}
                         mr="4"
                       >
                         {i + 1}
-                      </chakra.span>
+                      </Text>
                       {/* {showLines && (
                   )} */}
                       {line.map((token, key) => (
-                        <chakra.span
+                        <Text
+                          as="span"
                           key={key}
                           fontFamily="mono"
                           fontSize="sm"
                           {...getTokenProps({ token, key })}
                         />
                       ))}
-                    </chakra.div>
+                    </Box>
                   )
                 })}
             </Box>

@@ -22,8 +22,29 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
   return (
     <>
       <Flex as="main" flexDir="column" minH="100dvh" w="full">
+        <Link
+          href="#main-content"
+          position="absolute"
+          top={-10}
+          left={0}
+          bg="blue.500"
+          color="white"
+          px={4}
+          py={2}
+          zIndex={1000}
+          _focus={{ top: 0 }}
+          _focusVisible={{
+            outline: '2px solid',
+            outlineColor: 'white',
+            outlineOffset: '2px',
+          }}
+        >
+          Skip to main content
+        </Link>
         <SiteHeader />
-        <ViewTransition>{children}</ViewTransition>
+        <Box id="main-content" tabIndex={-1}>
+          <ViewTransition>{children}</ViewTransition>
+        </Box>
         <SiteFooter />
       </Flex>
       <Box

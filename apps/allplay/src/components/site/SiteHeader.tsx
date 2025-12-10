@@ -34,7 +34,7 @@ export const SiteHeader = () => (
       w="100%"
       zIndex={1}
     >
-      <Flex alignItems="center" gap={8}>
+      <Flex as="nav" alignItems="center" gap={8} aria-label="Main navigation">
         <Link href="/">
           <Heading fontSize="lg">— All Play</Heading>
         </Link>

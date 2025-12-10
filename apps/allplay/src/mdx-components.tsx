@@ -1,9 +1,11 @@
 import { ReactNode } from 'react'
 
-import { Box, Code, Heading, Image, List, Text, chakra } from '@chakra-ui/react'
+import { Box, Code, Heading, Image, List, Text } from '@chakra-ui/react'
 import { useColorModeValue } from 'chakra-color/dark-only'
 import type { MDXComponents } from 'mdx/types'
 import { Highlight, themes } from 'prism-react-renderer'
+
+import { Link } from './components/base'
 
 export const mdxComponents = ({
   codeBg,
@@ -13,7 +15,7 @@ export const mdxComponents = ({
   codeColor: string
 }) => ({
   a: (props: any) => (
-    <chakra.a color="white" textDecoration="underline" {...props} />
+    <Link color="white" textDecoration="underline" {...props} />
   ),
   blockquote: ({ children }: { children?: ReactNode }) => (
     <Box
@@ -71,26 +73,28 @@ export const mdxComponents = ({
                 .map((line, i) => {
                   const lineProps = getLineProps({ line, key: i })
                   return (
-                    <chakra.div key={i} px="3" {...lineProps}>
-                      <chakra.span
+                    <Box key={i} px="3" {...lineProps}>
+                      <Text
+                        as="span"
                         fontFamily="mono"
                         fontSize="xs"
                         opacity={0.3}
                         mr="4"
                       >
                         {i + 1}
-                      </chakra.span>
+                      </Text>
                       {/* {showLines && (
                   )} */}
                       {line.map((token, key) => (
-                        <chakra.span
+                        <Text
+                          as="span"
                           key={key}
                           fontFamily="mono"
                           fontSize="sm"
                           {...getTokenProps({ token, key })}
                         />
                       ))}
-                    </chakra.div>
+                    </Box>
                   )
                 })}
             </Box>

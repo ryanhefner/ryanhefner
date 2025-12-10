@@ -1,6 +1,7 @@
-import { Box, Heading, Link, List, Text } from '@chakra-ui/react'
+import { Box, Heading, List, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 
+import { Link } from '../../components/base'
 import { NowLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'

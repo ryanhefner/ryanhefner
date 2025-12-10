@@ -20,6 +20,7 @@ export const PlayButton = ({
 }: PlayButtonProps) => {
   return (
     <Button
+      aria-label={isPlaying ? 'Pause episode' : 'Play episode'}
       border="1px solid"
       borderColor={isActive ? 'black' : 'gray.500'}
       borderRadius="full"

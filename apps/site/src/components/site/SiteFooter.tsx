@@ -1,4 +1,4 @@
-import { Flex, HStack, Icon, Image, Text, chakra } from '@chakra-ui/react'
+import { Box, Flex, HStack, Icon, Image, Text, chakra } from '@chakra-ui/react'
 import { useColorMode, useColorModeValue } from 'chakra-color'
 import { ImRss } from 'react-icons/im'
 
