@@ -105,7 +105,38 @@ export const AudioPlayer = ({
       setDragPercent(percent)
       seek(url, duration * 1000 * percent)
     },
-    [],
+    [seek, url],
+  )
+
+  const handleKeyDown = useCallback(
+    (evt: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!isSelected) return
+
+      const step = 0.05 // 5% per keypress
+      let newPercent = Math.min(1, Math.max(0, currentTime / (duration * 1000)))
+
+      switch (evt.key) {
+        case 'ArrowLeft':
+          evt.preventDefault()
+          newPercent = Math.max(0, newPercent - step)
+          seek(url, duration * 1000 * newPercent)
+          break
+        case 'ArrowRight':
+          evt.preventDefault()
+          newPercent = Math.min(1, newPercent + step)
+          seek(url, duration * 1000 * newPercent)
+          break
+        case 'Home':
+          evt.preventDefault()
+          seek(url, 0)
+          break
+        case 'End':
+          evt.preventDefault()
+          seek(url, duration * 1000)
+          break
+      }
+    },
+    [currentTime, duration, isSelected, seek, url],
   )
 
   useEffect(() => {
@@ -169,7 +200,22 @@ export const AudioPlayer = ({
             : PlayButtonSize.SMALL
         }
       />
-      <Flex ref={dragRef} flex={1} pos="relative" ml={2}>
+      <Flex
+        ref={dragRef}
+        flex={1}
+        pos="relative"
+        ml={2}
+        role="slider"
+        aria-label="Audio playback position"
+        aria-valuemin={0}
+        aria-valuemax={duration * 1000}
+        aria-valuenow={currentTime}
+        aria-valuetext={`${Math.floor(currentTime / 60)}:${String(Math.floor(currentTime % 60)).padStart(2, '0')} of ${Math.floor(duration / 60)}:${String(Math.floor(duration % 60)).padStart(2, '0')}`}
+        tabIndex={isSelected ? 0 : -1}
+        onKeyDown={handleKeyDown}
+        onPointerDown={handleMouseDown}
+        cursor={isSelected ? 'pointer' : 'default'}
+      >
         <Link
           href={`/podcast/${slug}`}
           flex={1}
@@ -209,7 +255,7 @@ export const AudioPlayer = ({
             >
               {title ?? ''}
             </Text>
-            <HStack spacing={1} mr={5}>
+            <HStack gap={1} mr={5}>
               {isSelected ? (
                 <>
                   <Text

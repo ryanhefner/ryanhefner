@@ -1,4 +1,5 @@
-import { GridItem, Image, useColorMode } from '@chakra-ui/react'
+import { GridItem, Image } from '@chakra-ui/react'
+import { useColorMode } from 'chakra-color'
 
 export const ClientGridItem = ({ name, imageUrl }) => {
   const { colorMode } = useColorMode()

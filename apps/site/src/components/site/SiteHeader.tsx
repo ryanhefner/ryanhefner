@@ -92,31 +92,31 @@ export const SiteHeader = () => (
       rowGap={0}
       color="white"
     >
-      <Link href="/projects">
+      <Link href="/projects" display="inline">
         <Text as="span" fontSize="lg">
           Projects
         </Text>
       </Link>
       {allThoughts.length ? (
-        <Link href="/thoughts">
+        <Link href="/thoughts" display="inline">
           <Text as="span" fontSize="lg">
             Thoughts
           </Text>
         </Link>
       ) : null}
       {allUpdates.length ? (
-        <Link href="/updates">
+        <Link href="/updates" display="inline">
           <Text as="span" fontSize="lg">
             Updates
           </Text>
         </Link>
       ) : null}
-      <Link href="/about">
+      <Link href="/about" display="inline">
         <Text as="span" fontSize="lg">
           About
         </Text>
       </Link>
-      <Link href="/now">
+      <Link href="/now" display="inline">
         <Text as="span" fontSize="lg">
           Now
         </Text>
