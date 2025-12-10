@@ -17,6 +17,14 @@ export const system = createSystem(
         fontSizes: {
           '10xl': { value: '10.5rem' }, // Maintains 1.333x ratio from 8xl→9xl pattern
         },
+        sizes: {
+          container: {
+            sm: { value: '640px' },
+            md: { value: '768px' },
+            lg: { value: '1024px' },
+            xl: { value: '1280px' },
+          },
+        },
         colors: {
           black: {
             value: '#000',
