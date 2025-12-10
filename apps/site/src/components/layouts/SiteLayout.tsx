@@ -1,4 +1,11 @@
-import { PropsWithChildren, ViewTransition, useCallback, useState } from 'react'
+import {
+  PropsWithChildren,
+  ViewTransition,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Marquee from 'react-marquease'
@@ -10,6 +17,8 @@ type SiteLayoutProps = PropsWithChildren
 
 export const SiteLayout = ({ children }: SiteLayoutProps) => {
   const [pauseMarquee, setPauseMarquee] = useState(false)
+  const [isInViewport, setIsInViewport] = useState(true)
+  const marqueeContainerRef = useRef<HTMLDivElement>(null)
 
   const handleMouseEnter = useCallback(() => {
     setPauseMarquee(true)
@@ -17,6 +26,32 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
 
   const handleMouseLeave = useCallback(() => {
     setPauseMarquee(false)
+  }, [])
+
+  // Intersection Observer to detect when Marquee is outside viewport
+  useEffect(() => {
+    const container = marqueeContainerRef.current
+    if (!container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInViewport(entry.isIntersecting)
+        })
+      },
+      {
+        // Trigger when element is completely outside viewport
+        threshold: 0,
+        // Add a small root margin to account for partial visibility
+        rootMargin: '0px',
+      },
+    )
+
+    observer.observe(container)
+
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -48,13 +83,14 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
         <SiteFooter />
       </Flex>
       <Box
+        ref={marqueeContainerRef}
         bgColor="blue.500"
         py={3}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         w="full"
       >
-        <Marquee pause={pauseMarquee} speed={0.5}>
+        <Marquee pause={pauseMarquee || !isInViewport} speed={0.5}>
           <Text color="white" fontSize="3xl" whiteSpace="nowrap">
             |{` `}
             <Link
