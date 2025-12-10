@@ -2,13 +2,30 @@ import { MouseEvent, PropsWithChildren, useCallback } from 'react'
 
 import { Link as ChakraLink } from '@chakra-ui/react'
 import type { LinkProps as ChakraLinkProps } from '@chakra-ui/react'
-import NextLink from 'next/link'
+import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 
-type LinkProps = PropsWithChildren & ChakraLinkProps
+type LinkProps = PropsWithChildren & ChakraLinkProps & NextLinkProps
 
-export const Link = ({ children, href, ...rest }: LinkProps) => {
+export const Link = ({
+  children,
+  href,
+  // Next.js Link props
+  prefetch,
+  replace,
+  scroll,
+  shallow,
+  locale,
+  // HTML anchor props
+  rel,
+  target,
+  title,
+  onClick,
+  // Chakra UI styling props go to ...rest
+  ...rest
+}: LinkProps) => {
   const handleClick = useCallback(
-    (evt: MouseEvent) => {
+    (evt: MouseEvent<HTMLAnchorElement>) => {
+      // Handle hash links with smooth scroll
       if (href?.startsWith('#')) {
         evt.preventDefault()
 
@@ -19,13 +36,28 @@ export const Link = ({ children, href, ...rest }: LinkProps) => {
           behavior: 'smooth',
         })
       }
+      // Call user-provided onClick handler if present
+      onClick?.(evt)
     },
-    [href],
+    [href, onClick],
   )
 
   return (
-    <ChakraLink as={NextLink} href={href} onClick={handleClick} {...rest}>
-      {children}
+    <ChakraLink asChild {...rest}>
+      <NextLink
+        href={href}
+        prefetch={prefetch}
+        replace={replace}
+        scroll={scroll}
+        shallow={shallow}
+        locale={locale}
+        rel={rel}
+        target={target}
+        title={title}
+        onClick={handleClick}
+      >
+        {children}
+      </NextLink>
     </ChakraLink>
   )
 }
