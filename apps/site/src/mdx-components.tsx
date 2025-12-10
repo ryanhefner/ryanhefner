@@ -100,10 +100,10 @@ export const mdxComponents = ({ codeBg, codeColor }) => ({
       </Highlight>
     ) : (
       <Code
-        bgColor={codeBg}
+        bg={codeBg}
         borderRadius={4}
         color={codeColor}
-        colorScheme="whiteAlpha"
+        colorPalette="whiteAlpha"
         px={1}
         py={1}
         {...props}
