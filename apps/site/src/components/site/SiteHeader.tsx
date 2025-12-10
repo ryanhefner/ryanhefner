@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Image, Text } from '@chakra-ui/react'
-import { allThoughts, allUpdates } from 'contentlayer/generated'
+import { allUpdates } from 'contentlayer/generated'
 
 import { Link } from '../base'
 
@@ -97,13 +97,14 @@ export const SiteHeader = () => (
           Projects
         </Text>
       </Link>
-      {allThoughts.length ? (
+      {/* Thoughts hidden per user request - not yet ready for public access */}
+      {/* {allThoughts.length ? (
         <Link href="/thoughts" display="inline">
           <Text as="span" fontSize="lg">
             Thoughts
           </Text>
         </Link>
-      ) : null}
+      ) : null} */}
       {allUpdates.length ? (
         <Link href="/updates" display="inline">
           <Text as="span" fontSize="lg">
