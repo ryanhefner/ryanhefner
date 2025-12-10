@@ -19,10 +19,10 @@ const SharePage = ({ body, path, title }: SharePageProps) => {
       p={12}
     >
       <Flex justify="space-between">
-        <Heading as="h1" fontSize="2xl" fontWeight={500} lineHeight="none">
+        <Heading as="h1" fontSize="2xl" fontWeight={500} lineHeight="1">
           Ryan Hefner – All Play
         </Heading>
-        <Heading as="h2" fontSize="2xl" fontWeight={500} lineHeight="none">
+        <Heading as="h2" fontSize="2xl" fontWeight={500} lineHeight="1">
           {title}
         </Heading>
       </Flex>

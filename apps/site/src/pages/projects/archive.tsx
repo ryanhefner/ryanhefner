@@ -14,7 +14,7 @@ const ProjectsArchivePage = () => (
         as="h1"
         fontSize={{ base: '6xl', md: '9xl' }}
         fontWeight="medium"
-        lineHeight="none"
+        lineHeight="1"
       >
         <Text as="span" color="gray.600">
           <Link href="/projects">Projects</Link>
