@@ -20,7 +20,7 @@ export const NowLayout = ({ children }) => {
       <PageWrapper>
         {children}
         <Box>
-          <Box borderBottom={`2px solid ${borderColor}`}>
+          <Box borderBottom="2px solid" borderColor={borderColor}>
             <Heading as="h3" fontSize="xl" fontWeight="semibold" mb={3}>
               Now Archive
             </Heading>
@@ -39,11 +39,16 @@ export const NowLayout = ({ children }) => {
                   href={`/now/${format(date, 'yyyy-MM-dd')}`}
                   display="block"
                 >
-                  <HStack borderBottom={`1px solid ${borderColor}`} py={2}>
+                  <HStack
+                    borderBottom="1px solid"
+                    borderColor={borderColor}
+                    py={2}
+                  >
                     <Box
                       borderRadius="full"
                       boxSize={2}
-                      border={`1px solid ${borderColor}`}
+                      border="1px solid"
+                      borderColor={borderColor}
                       bgColor={
                         (index === 0 && pathname === '/now') ||
                         pathname.split('/').pop() === format(date, 'yyyy-MM-dd')
@@ -73,6 +78,7 @@ export const NowLayout = ({ children }) => {
               href="https://sive.rs"
               rel="nofollow noopener noreferrer"
               target="_blank"
+              display="inline"
             >
               Derek Sivers
             </Link>
@@ -81,6 +87,7 @@ export const NowLayout = ({ children }) => {
               href="https://nownownow.com"
               rel="nofollow noreferrer noopener"
               target="_blank"
+              display="inline"
             >
               nownownow.com &rarr;
             </Link>
