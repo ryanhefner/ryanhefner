@@ -53,6 +53,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           rel="pingback"
           href="https://webmention.io/www.ryanhefner.com/xmlrpc"
         />
+        <meta name="apple-itunes-app" content="app-id=1744906646" />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
