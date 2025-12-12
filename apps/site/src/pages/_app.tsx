@@ -28,7 +28,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
 const TITLE =
   'The online home of Ryan Hefner, Software Developer & Eternal Tinkerer'
 const DESCRIPTION =
-  'The online archive and playspace for Ryan Hefner, software developer and product designer, currently based in Atlanta, GA.'
+  'The online archive and play space for Ryan Hefner, software developer and product designer, currently based in Atlanta, GA.'
 
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
@@ -61,6 +61,12 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="fediverse:username" content="ryanhefner" />
         <meta name="fediverse:domain" content="mastodon.social" />
         <meta name="fediverse:instance" content="Mastodon" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href={`${siteUrl}/feeds/all/rss.xml`}
+          title="Ryan Hefner — All: Feed"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}

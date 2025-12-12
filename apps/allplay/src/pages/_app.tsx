@@ -53,6 +53,13 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           rel="pingback"
           href="https://webmention.io/www.ryanhefner.com/xmlrpc"
         />
+        <meta name="apple-itunes-app" content="app-id=1744906646" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href={process.env.NEXT_PUBLIC_PODCAST_FEED_URL}
+          title="All Play w/ Ryan Hefner — Podcast Feed"
+        />
       </Head>
       <MetaProvider
         baseUrl={siteUrl}
