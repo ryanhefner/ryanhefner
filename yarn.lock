@@ -14932,12 +14932,12 @@ react-canvas-wrapper@^0.5.2:
     clean-react-props "^0.4.0"
     nanoid "^3.1.18"
 
-react-dom@19.3.0-canary-52684925-20251110:
-  version "19.3.0-canary-52684925-20251110"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-52684925-20251110.tgz#44818d802c862ae3334461de45b00a23bce12d6d"
-  integrity sha512-WWWx5j2q0NEj0c8Ow3yoWoVzxwT/qGVSRLaaNbZ4Pbe/Ew8a9gGpYuZReF5SC7ugxKTT8CdyFnfRs8xZ5OghPg==
+react-dom@19.3.0-canary-65eec428-20251218:
+  version "19.3.0-canary-65eec428-20251218"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-65eec428-20251218.tgz#57a24e7c5a3774b7ade25a7ae0d6182d5bcda499"
+  integrity sha512-ipd0VQrwUN+LeUVD/vcQyEz2g1diog1/f0UcccS6bNzhL2H/MoYDY6ojzgzbOHLilu2rDlHE21KBpV6FqJ51uw==
   dependencies:
-    scheduler "0.28.0-canary-52684925-20251110"
+    scheduler "0.28.0-canary-65eec428-20251218"
 
 react-email@^5.0.0:
   version "5.1.0"
@@ -15021,10 +15021,10 @@ react-timecode@^1.3.0:
   dependencies:
     clean-react-props "^0.4.0"
 
-react@19.3.0-canary-52684925-20251110:
-  version "19.3.0-canary-52684925-20251110"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-52684925-20251110.tgz#f1863cf2fb67575e1b264ed6b33e3b63f5933938"
-  integrity sha512-wKVc0L0yjRdfXqnF2RiY2hTlRPIC97lePexT0CvZsJNCQW6AotBBUmeodbpKRN4d2U7ggGZfY9OnlUNkfOmqdQ==
+react@19.3.0-canary-65eec428-20251218:
+  version "19.3.0-canary-65eec428-20251218"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-65eec428-20251218.tgz#b0592626bc5ce34a29d34a9a58a1f31dce61e230"
+  integrity sha512-14H0NuO8YvzFub5VVYEpbvgrjMzGJ6fz2rxYLWTpS5QpF5y/62AURjy9Welihvvx8uthhhx9LbZYfepUX6Ws6w==
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -15742,10 +15742,10 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@0.28.0-canary-52684925-20251110:
-  version "0.28.0-canary-52684925-20251110"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-52684925-20251110.tgz#a522c772c333c9b1f30c964f1c38a8a5e783a94b"
-  integrity sha512-r9W4PcF5teDT9U2R4kNV72rwFOinkNOQrBH5eBBHeShdrXWOGM7dJ1jx0FW5L/VKVIxCxuPHfvSo/G0S8wT6Jg==
+scheduler@0.28.0-canary-65eec428-20251218:
+  version "0.28.0-canary-65eec428-20251218"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-65eec428-20251218.tgz#91a45e793f4f372d8ee93adf642cd9188c87b64f"
+  integrity sha512-vmWiNSe2l1jzT66MQ9VyyuPkm1PYmaoxAcHTXj04WO7/27krmqQ6uzCwlS0z1SVEd8BMoM/LkQ/C5x3rkv0WSA==
 
 schema-utils@^3.0.0, schema-utils@^3.1.1:
   version "3.3.0"
