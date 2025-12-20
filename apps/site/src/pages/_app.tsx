@@ -7,6 +7,8 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
+import { FathomProvider } from 'react-fathom'
+import { NextFathomTrackViewPages } from 'react-fathom/next'
 
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
@@ -89,10 +91,17 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           imageWidth={1200}
           imageHeight={630}
         />
-        <ThemeProvider>
-          <Fathom siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID} />
-          {getLayout(<Component {...pageProps} />)}
-        </ThemeProvider>
+        <FathomProvider
+          clientOptions={{
+            includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],
+          }}
+          siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID}
+        >
+          <NextFathomTrackViewPages />
+          <ThemeProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </ThemeProvider>
+        </FathomProvider>
       </MetaProvider>
       <SpeedInsights />
     </>

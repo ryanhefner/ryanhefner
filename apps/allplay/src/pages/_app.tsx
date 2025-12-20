@@ -6,7 +6,8 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
-import { NextPagesFathomProvider } from 'react-fathom'
+import { FathomProvider } from 'react-fathom'
+import { NextFathomTrackViewPages } from 'react-fathom/next'
 import { WebAudioProvider } from 'react-web-audio'
 
 import '@fontbase/suisse-intl'
@@ -87,12 +88,13 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           imageWidth={1200}
           imageHeight={630}
         // /> */}
-        <NextPagesFathomProvider
+        <FathomProvider
           clientOptions={{
             includedDomains: ['allplay.fm', 'www.allplay.fm'],
           }}
           siteId={process.env.NEXT_PUBLIC_FATHOM_SITE_ID ?? ''}
         >
+          <NextFathomTrackViewPages />
           <ThemeProvider>
             <WebAudioProvider>
               <PodcastPlayerProvider>
@@ -100,7 +102,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
               </PodcastPlayerProvider>
             </WebAudioProvider>
           </ThemeProvider>
-        </NextPagesFathomProvider>
+        </FathomProvider>
       </MetaProvider>
     </>
   )
