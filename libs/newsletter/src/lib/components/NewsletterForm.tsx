@@ -88,6 +88,8 @@ export const NewsletterForm = ({
               borderBottom="1px solid"
               borderRadius={0}
               borderColor={borderColor}
+              color="white"
+              textStyle="2xl"
               px={0}
               {...register('firstName')}
             />
@@ -112,6 +114,8 @@ export const NewsletterForm = ({
               borderBottom="1px solid"
               borderRadius={0}
               borderColor={borderColor}
+              color="white"
+              textStyle="2xl"
               px={0}
               {...register('email')}
             />
