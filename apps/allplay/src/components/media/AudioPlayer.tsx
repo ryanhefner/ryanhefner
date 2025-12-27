@@ -212,8 +212,8 @@ export const AudioPlayer = ({
         aria-valuenow={currentTime}
         aria-valuetext={`${Math.floor(currentTime / 60)}:${String(Math.floor(currentTime % 60)).padStart(2, '0')} of ${Math.floor(duration / 60)}:${String(Math.floor(duration % 60)).padStart(2, '0')}`}
         tabIndex={isSelected ? 0 : -1}
-        onKeyDown={handleKeyDown}
-        onPointerDown={handleMouseDown}
+        onKeyDown={isSelected ? handleKeyDown : undefined}
+        onPointerDown={isSelected ? handleMouseDown : undefined}
         cursor={isSelected ? 'pointer' : 'default'}
       >
         <Link
