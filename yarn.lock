@@ -15137,9 +15137,9 @@ react-email@^5.0.0:
     tsconfig-paths "4.2.0"
 
 react-fathom@^0.1.4:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/react-fathom/-/react-fathom-0.1.8.tgz#673307bb2dce84837173958b38c5e6d3605ba155"
-  integrity sha512-JmIsGSxmXp/FdGx11PBVIo0WJ1VNIdEyUDpYrfRWjIgwxp8GE4OA/UebtU7XS+PPHbsnsL/gCh7jzxq6X8arLw==
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/react-fathom/-/react-fathom-0.1.10.tgz#fff4e4d34c6826ecebb119d86b91e52505ec9b8f"
+  integrity sha512-8M42BwMTvhWkxWTnbIEfWEEzcL2e0CPiPLDqN+KR0sSP57I8gc2cZklBZ8SqQKmQJmOW1bBKR4+aMU9+Ia/vVg==
 
 react-hook-form@^7.51.3:
   version "7.69.0"
