@@ -14,7 +14,6 @@ import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
-import { Fathom } from '../libs/fathom'
 import { ThemeProvider } from '../providers/ThemeProvider'
 
 export type NextPageWithLayout = NextPage & {
