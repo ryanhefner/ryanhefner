@@ -10,9 +10,11 @@
     },
     "test": {
       "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
-        "reportsDirectory": "../../coverage/libs/contentlayer"
+        "reportsDirectory": "{projectRoot}/../../coverage/libs/contentlayer"
       }
     }
   }

@@ -7,14 +7,18 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/libs/suisse-intl"
+        "reportsDirectory": "{projectRoot}/../../coverage/libs/suisse-intl"
       }
     }
   }
