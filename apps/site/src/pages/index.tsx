@@ -29,7 +29,7 @@ const IndexPage = () => {
       >
         Ryan Hefner
         <br />
-        <Text as="span" color="gray.600">
+        <Text as="span" color="gray.500">
           Software Developer + Eternal Tinkerer
         </Text>
       </Heading>
