@@ -45,7 +45,7 @@
     "react": "19.3.0-canary-65eec428-20251218",
     "react-canvas-wrapper": "^0.5.2",
     "react-dom": "19.3.0-canary-65eec428-20251218",
-    "react-email": "^5.0.0",
+    "react-email": "^6.0.5",
     "react-fathom": "^0.2.0",
     "react-hook-form": "^7.51.3",
     "react-icons": "^5.0.1",
