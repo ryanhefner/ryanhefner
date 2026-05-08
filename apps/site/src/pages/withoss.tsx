@@ -76,7 +76,10 @@ const OssPage = () => {
               py={{ base: 6, md: 2 }}
               gap={4}
             >
-              <Text flexBasis={{ base: 'auto', md: '200px' }} fontWeight="medium">
+              <Text
+                flexBasis={{ base: 'auto', md: '200px' }}
+                fontWeight="medium"
+              >
                 {project.name}
               </Text>
               <Text flex={1}>{project.description}</Text>

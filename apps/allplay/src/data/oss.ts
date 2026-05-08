@@ -1,21 +1,21 @@
 export const withOss = [
   {
-    name: 'React',
+    name: 'react',
     description: 'The JavaScript library used to build the site UI.',
     urls: ['https://react.dev/'],
   },
   {
-    name: 'Nx',
+    name: 'nx',
     description: 'Extensible developer tools used to manage this monorepo.',
     urls: ['https://nx.dev/'],
   },
   {
-    name: 'Next.js',
+    name: 'next',
     description: 'The React framework powering routing, rendering, and builds.',
     urls: ['https://nextjs.org/'],
   },
   {
-    name: 'Chakra UI',
+    name: '@chakra-ui/react',
     description:
       'The component and styling system used throughout the interface.',
     urls: ['https://chakra-ui.com/'],
@@ -26,7 +26,7 @@ export const withOss = [
     urls: ['https://github.com/pacocoursey/next-themes'],
   },
   {
-    name: 'Emotion',
+    name: '@emotion/react',
     description: 'CSS-in-JS runtime used by the styling layer.',
     urls: ['https://emotion.sh/'],
   },
@@ -42,17 +42,17 @@ export const withOss = [
     urls: ['https://github.com/remarkjs/remark-gfm'],
   },
   {
-    name: 'Prism React Renderer',
+    name: 'prism-react-renderer',
     description: 'Code highlighting for Markdown content.',
     urls: ['https://github.com/FormidableLabs/prism-react-renderer'],
   },
   {
-    name: 'RSS Parser',
+    name: 'rss-parser',
     description: 'Podcast feed parsing for episode pages and sitemaps.',
     urls: ['https://github.com/rbren/rss-parser'],
   },
   {
-    name: 'Turndown',
+    name: 'turndown',
     description: 'HTML-to-Markdown conversion for podcast descriptions.',
     urls: ['https://github.com/mixmark-io/turndown'],
   },
@@ -62,17 +62,17 @@ export const withOss = [
     urls: ['https://github.com/ryanhefner/react-timecode'],
   },
   {
-    name: 'Resend',
+    name: 'resend',
     description: 'Newsletter subscription API client.',
     urls: ['https://github.com/resend/resend-node', 'https://resend.com/'],
   },
   {
-    name: 'React Hook Form',
+    name: 'react-hook-form',
     description: 'Newsletter signup form state and submission handling.',
     urls: ['https://react-hook-form.com/'],
   },
   {
-    name: 'Yup',
+    name: 'yup',
     description: 'Newsletter signup form validation.',
     urls: ['https://github.com/jquense/yup'],
   },
@@ -98,7 +98,7 @@ export const withOss = [
     urls: ['https://github.com/ryanhefner/react-fathom'],
   },
   {
-    name: 'Fathom Client',
+    name: 'fathom-client',
     description: 'A lightweight client for privacy-focused analytics.',
     urls: [
       'https://github.com/derrickreimer/fathom-client',
@@ -106,7 +106,7 @@ export const withOss = [
     ],
   },
   {
-    name: 'React Icons',
+    name: 'react-icons',
     description: 'Icon components used in podcast and social links.',
     urls: ['https://react-icons.github.io/react-icons/'],
   },
