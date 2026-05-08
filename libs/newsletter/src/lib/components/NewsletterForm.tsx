@@ -134,6 +134,7 @@ export const NewsletterForm = ({
               color="black"
               flex="0 0 auto"
               borderRadius="full"
+              fontSize="2xl"
               loading={isSubmitting}
               disabled={isSubmitting}
               aria-busy={isSubmitting}
