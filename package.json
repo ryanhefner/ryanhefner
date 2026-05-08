@@ -51,6 +51,7 @@
     "react-icons": "^5.0.1",
     "react-markdown": "^10.0.1",
     "react-marquease": "^0.2.0",
+    "react-structured": "^0.1.0",
     "react-timecode": "^1.3.0",
     "regenerator-runtime": "^0.14.0",
     "rehype-stringify": "^10.0.0",

@@ -5,10 +5,12 @@ import { Now } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { SiteMeta } from 'next-meta'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { mdxComponents } from '../../mdx-components'
+import { getBreadcrumbData, getNowPageData } from '../../utils/structured-data'
 
 interface NowPageProps {
   description?: string
@@ -27,6 +29,19 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
       <SiteMeta
         title={title ?? now.title}
         description={description ?? now.description}
+      />
+      <Schema
+        id="now-page-jsonld"
+        type="WebPage"
+        data={getNowPageData(now, title, description)}
+      />
+      <BreadcrumbJsonLd
+        id="now-breadcrumb-jsonld"
+        data={getBreadcrumbData([
+          { name: 'Home', url: '/' },
+          { name: 'Now', url: '/now' },
+          { name: format(new UTCDateMini(now.date), 'MMMM do, yyyy') },
+        ])}
       />
       <PageHeading>Now</PageHeading>
       <Box my={16}>

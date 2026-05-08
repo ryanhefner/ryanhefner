@@ -1,4 +1,5 @@
 import { SiteMeta } from 'next-meta'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { SiteLayout } from '../../components/layouts'
 import {
@@ -9,6 +10,10 @@ import {
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { projects } from '../../data/projects'
+import {
+  getBreadcrumbData,
+  getCollectionPageData,
+} from '../../utils/structured-data'
 
 const TITLE = 'Projects | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -17,6 +22,23 @@ const DESCRIPTION =
 const ProjectsPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <Schema
+      id="projects-collection-jsonld"
+      type="CollectionPage"
+      data={getCollectionPageData({
+        title: TITLE,
+        description: DESCRIPTION,
+        url: '/projects',
+        items: projects,
+      })}
+    />
+    <BreadcrumbJsonLd
+      id="projects-breadcrumb-jsonld"
+      data={getBreadcrumbData([
+        { name: 'Home', url: '/' },
+        { name: 'Projects' },
+      ])}
+    />
     <PageWrapper>
       <PageHeading>Projects</PageHeading>
       <ProjectGrid>

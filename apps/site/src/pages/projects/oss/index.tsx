@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { Link } from '../../../components/base'
 import { SiteLayout } from '../../../components/layouts'
@@ -11,6 +12,10 @@ import {
 import { PageWrapper } from '../../../components/site'
 import { PageHeading } from '../../../components/typography'
 import { oss as projects } from '../../../data/projects'
+import {
+  getBreadcrumbData,
+  getCollectionPageData,
+} from '../../../utils/structured-data'
 
 const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
 const DESCRIPTION =
@@ -19,6 +24,24 @@ const DESCRIPTION =
 const OSSIndexPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <Schema
+      id="oss-collection-jsonld"
+      type="CollectionPage"
+      data={getCollectionPageData({
+        title: TITLE,
+        description: DESCRIPTION,
+        url: '/projects/oss',
+        items: projects,
+      })}
+    />
+    <BreadcrumbJsonLd
+      id="oss-breadcrumb-jsonld"
+      data={getBreadcrumbData([
+        { name: 'Home', url: '/' },
+        { name: 'Projects', url: '/projects' },
+        { name: 'Open Source Software' },
+      ])}
+    />
     <PageWrapper>
       <PageHeading>
         <Text as="span" color="gray.600">
