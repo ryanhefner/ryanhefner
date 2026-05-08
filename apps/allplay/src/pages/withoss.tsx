@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from 'react'
+import { Fragment, type ReactElement } from 'react'
 
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
@@ -10,7 +10,7 @@ import { cleanUrl } from '../utils'
 
 const TITLE = 'Made w/ Open-Source Software'
 const DESCRIPTION =
-  'A listing of the open-source software I use to build this site.'
+  'A listing of key open-source packages used to build this site.'
 
 const OssPage = () => {
   return (
@@ -42,8 +42,8 @@ const OssPage = () => {
           </Heading>
           <Text as="p" fontSize={{ base: 'lg', md: '2xl' }} maxW="container.sm">
             In an attempt for transparency, and paying respect for the hard work
-            of the open-source community, here is a list of the open-source
-            software I use to build this site.
+            of the open-source community, here are key open-source packages used
+            to build this site.
           </Text>
         </Flex>
         <Flex flexDir="column" my={24}>
