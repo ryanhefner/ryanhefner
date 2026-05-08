@@ -25,10 +25,12 @@ const OssPage = () => {
         <Flex
           align={{ base: 'flex-start', xl: 'center' }}
           flexDir={{ base: 'column', xl: 'row' }}
-          gap={12}
-          justify={{ base: 'flex-start', xl: 'space-between' }}
+          columnGap={{ base: 8, xl: 20 }}
+          flexWrap="wrap"
+          justify="space-between"
+          rowGap={{ base: 8, xl: 12 }}
         >
-          <PageHeading ml={0}>
+          <PageHeading flex="0 0 auto" ml={0} whiteSpace="nowrap">
             w
             <Text as="span" display="inline-block">
               /
@@ -42,7 +44,13 @@ const OssPage = () => {
               ml={3}
             />
           </PageHeading>
-          <Text as="p" fontSize={{ base: 'lg', md: '2xl' }} maxW="container.sm">
+          <Text
+            as="p"
+            flex={{ base: '1 1 auto', xl: '1 1 32rem' }}
+            fontSize={{ base: 'lg', md: '2xl' }}
+            maxW="container.sm"
+            minW={0}
+          >
             In an attempt for transparency, and paying respect for the hard work
             of the open-source community, here are key open-source packages used
             to build this site.
@@ -66,8 +74,9 @@ const OssPage = () => {
               borderColor="black"
               _dark={{ borderColor: 'gray.700' }}
               py={{ base: 6, md: 2 }}
+              gap={4}
             >
-              <Text flexBasis={{ base: 'auto', md: '200' }} fontWeight="medium">
+              <Text flexBasis={{ base: 'auto', md: '200px' }} fontWeight="medium">
                 {project.name}
               </Text>
               <Text flex={1}>{project.description}</Text>
