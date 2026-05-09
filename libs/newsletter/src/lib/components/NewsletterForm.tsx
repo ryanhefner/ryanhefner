@@ -139,7 +139,7 @@ export const NewsletterForm = ({
               disabled={isSubmitting}
               aria-busy={isSubmitting}
               _hover={{ bg: 'red.400' }}
-              minW="120px"
+              minW="160px"
               w={{ base: 'full', md: 'auto' }}
             >
               &rarr;
