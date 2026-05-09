@@ -9,8 +9,6 @@ const profileUrls = [
   'https://bsky.app/profile/ryanhefner.com',
   'https://mastodon.social/@ryanhefner',
   'https://twitter.com/ryanhefner',
-  'https://posts.cv/ryanhefner',
-  'https://read.cv/ryanhefner',
   'https://www.threads.net/@ryanhefner',
   'https://www.dribbble.com/ryanhefner',
   'https://open.spotify.com/user/ryanhefner',

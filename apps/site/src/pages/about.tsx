@@ -128,24 +128,6 @@ const AboutPage = () => (
           </Link>{' '}
           /{` `}
           <Link
-            href="https://posts.cv/ryanhefner"
-            target="_blank"
-            title="@ryanhefner on posts.cv"
-            rel="noopener noreferrer"
-          >
-            Posts.cv
-          </Link>{' '}
-          |{` `}
-          <Link
-            href="https://read.cv/ryanhefner"
-            target="_blank"
-            title="@ryanhefner on read.cv"
-            rel="noopener noreferrer"
-          >
-            Read.cv
-          </Link>{' '}
-          /{` `}
-          <Link
             href="https://www.instagram.com/instagram"
             target="_blank"
             title="@ryanhefner on Instagram"
