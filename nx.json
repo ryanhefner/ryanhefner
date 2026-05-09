@@ -10,6 +10,7 @@
       "cache": true,
       "inputs": [
         "default",
+        "^default",
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/tools/eslint-rules/**/*"
       ]
@@ -71,5 +72,6 @@
     "version": {
       "preVersionCommand": "yarn nx run-many -t build"
     }
-  }
+  },
+  "analytics": false
 }

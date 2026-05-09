@@ -55,6 +55,7 @@ export const system = createSystem(
           },
           yellow: {
             300: { value: '#F5FA1F' },
+            500: { value: '#FFE600' },
           },
         },
       },

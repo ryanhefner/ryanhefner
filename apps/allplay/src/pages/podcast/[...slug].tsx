@@ -5,6 +5,7 @@ import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SiteMeta } from 'next-meta'
 import Markdown from 'react-markdown'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import Timecode from 'react-timecode'
 import remarkGfm from 'remark-gfm'
 import { usePodcast } from 'use-podcast'
@@ -16,6 +17,12 @@ import { Podcatchers } from '../../components/podcast'
 import { PodcastPlayerContext } from '../../contexts'
 import { feeds } from '../../data/feeds'
 import { mdxComponents } from '../../mdx-components'
+import {
+  getBreadcrumbData,
+  getEpisodeAudioUrl,
+  getEpisodeDescription,
+  getPodcastEpisodeData,
+} from '../../utils/structured-data'
 
 const EpisodePage = ({
   feed,
@@ -34,19 +41,15 @@ const EpisodePage = ({
   const oembedUrl =
     shareUrl &&
     `https://share.transistor.fm/oembed?url=${encodeURIComponent(shareUrl)}`
+  const description = getEpisodeDescription(episode)
+  const audioUrl = getEpisodeAudioUrl(episode)
 
   return (
     <>
       <SiteMeta
         title={`Episode: ${episode?.title ?? 'N/A'} - Podcast`}
-        description={
-          episode?.descriptionMarkdown
-            ? episode?.descriptionMarkdown.length > 300
-              ? `${episode.descriptionMarkdown.substring(0, 297)}...`
-              : episode.descriptionMarkdown
-            : ''
-        }
-        audioUrl={`${episode?.enclosure.url}?src=allplay.fm`}
+        description={description}
+        audioUrl={audioUrl}
         audioType="audio/mpeg"
         twitter={{
           card: 'player',
@@ -84,6 +87,19 @@ const EpisodePage = ({
           </>
         )}
       </SiteMeta>
+      <Schema
+        id="podcast-episode-jsonld"
+        type="PodcastEpisode"
+        data={getPodcastEpisodeData(episode)}
+      />
+      <BreadcrumbJsonLd
+        id="podcast-episode-breadcrumb-jsonld"
+        data={getBreadcrumbData([
+          { name: 'Home', url: '/' },
+          { name: 'Podcast', url: '/podcast' },
+          { name: episode.title },
+        ])}
+      />
       <Flex
         flexDir="column"
         gap={{ base: 10, md: 16 }}

@@ -1,5 +1,6 @@
 import { Box, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react'
 import { SiteMeta } from 'next-meta'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 // import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
 // import * as reactSpring from '@react-spring/three'
@@ -11,6 +12,7 @@ import { SiteLayout } from '../components/layouts'
 import { PageWrapper } from '../components/site'
 import { PageHeading, SectionHeading } from '../components/typography'
 import { clients } from '../data/clients'
+import { getBreadcrumbData, getProfilePageData } from '../utils/structured-data'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =
@@ -19,6 +21,15 @@ const DESCRIPTION =
 const AboutPage = () => (
   <>
     <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <Schema
+      id="about-profile-jsonld"
+      type="ProfilePage"
+      data={getProfilePageData(TITLE, DESCRIPTION)}
+    />
+    <BreadcrumbJsonLd
+      id="about-breadcrumb-jsonld"
+      data={getBreadcrumbData([{ name: 'Home', url: '/' }, { name: 'About' }])}
+    />
     <PageWrapper>
       <PageHeading>About</PageHeading>
       <Box mt={16}>
@@ -114,24 +125,6 @@ const AboutPage = () => (
             rel="noopener noreferrer"
           >
             Twitter
-          </Link>{' '}
-          /{` `}
-          <Link
-            href="https://posts.cv/ryanhefner"
-            target="_blank"
-            title="@ryanhefner on posts.cv"
-            rel="noopener noreferrer"
-          >
-            Posts.cv
-          </Link>{' '}
-          |{` `}
-          <Link
-            href="https://read.cv/ryanhefner"
-            target="_blank"
-            title="@ryanhefner on read.cv"
-            rel="noopener noreferrer"
-          >
-            Read.cv
           </Link>{' '}
           /{` `}
           <Link

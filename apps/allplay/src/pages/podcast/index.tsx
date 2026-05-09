@@ -4,22 +4,25 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SiteMeta } from 'next-meta'
+import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import { usePodcast } from 'use-podcast'
 
 import { SiteLayout } from '../../components/layouts'
 import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
 import { feeds } from '../../data/feeds'
+import {
+  ALLPLAY_PODCAST_DESCRIPTION,
+  getBreadcrumbData,
+  getPodcastPageData,
+} from '../../utils/structured-data'
 
 const EpisodesIndexPage = ({
   feed,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <SiteMeta
-        title={`Podcast`}
-        description="Documenting the ideas, process and pitfalls that go into building products and open-source software and tools."
-      >
+      <SiteMeta title={`Podcast`} description={ALLPLAY_PODCAST_DESCRIPTION}>
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -27,6 +30,18 @@ const EpisodesIndexPage = ({
           href="https://feeds.transistor.fm/allplay"
         />
       </SiteMeta>
+      <Schema
+        id="podcast-page-jsonld"
+        type="CollectionPage"
+        data={getPodcastPageData()}
+      />
+      <BreadcrumbJsonLd
+        id="podcast-breadcrumb-jsonld"
+        data={getBreadcrumbData([
+          { name: 'Home', url: '/' },
+          { name: 'Podcast' },
+        ])}
+      />
       <Flex
         flexDir="column"
         flex={1}

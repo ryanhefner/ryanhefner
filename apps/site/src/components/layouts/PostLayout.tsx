@@ -5,9 +5,11 @@ import { Thought, allThoughts } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { SiteMeta } from 'next-meta'
+import { ArticleJsonLd, BreadcrumbJsonLd } from 'react-structured'
 import slugify from 'slugify'
 
 import { mdxComponents } from '../../mdx-components'
+import { getBreadcrumbData, getThoughtData } from '../../utils/structured-data'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 
@@ -37,6 +39,19 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
   return (
     <>
       <SiteMeta title={thought.title} description={thought.description} />
+      <ArticleJsonLd
+        id="thought-jsonld"
+        type="BlogPosting"
+        data={getThoughtData(thought)}
+      />
+      <BreadcrumbJsonLd
+        id="thought-breadcrumb-jsonld"
+        data={getBreadcrumbData([
+          { name: 'Home', url: '/' },
+          { name: 'Thoughts', url: '/thoughts' },
+          { name: thought.title },
+        ])}
+      />
       <SiteLayout>
         <PageWrapper fontSize={{ base: 'lg', md: 'xl' }} pb={24}>
           <Flex

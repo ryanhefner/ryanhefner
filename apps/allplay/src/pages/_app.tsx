@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
 import { FathomProvider } from 'react-fathom'
 import { NextFathomTrackViewPages } from 'react-fathom/next'
+import { Graph } from 'react-structured'
 import { WebAudioProvider } from 'react-web-audio'
 
 import '@fontbase/suisse-intl'
@@ -16,6 +17,7 @@ import '@fontbase/suisse-works'
 
 import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
 import { ThemeProvider } from '../providers/ThemeProvider'
+import { getAllPlaySiteGraphData } from '../utils/structured-data'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
 
@@ -62,6 +64,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           title="All Play w/ Ryan Hefner — Podcast Feed"
         />
       </Head>
+      <Graph id="all-play-site-jsonld" data={getAllPlaySiteGraphData()} />
       <MetaProvider
         baseUrl={siteUrl}
         canonical={url}

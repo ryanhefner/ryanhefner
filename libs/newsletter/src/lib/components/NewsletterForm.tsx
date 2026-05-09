@@ -130,17 +130,19 @@ export const NewsletterForm = ({
           <Box mt={{ base: 0, md: 7 }} w={{ base: 'full', md: 'auto' }}>
             <Button
               type="submit"
-              bg="red.500"
-              color="white"
+              bg="white"
+              color="black"
               flex="0 0 auto"
-              borderRadius="sm"
+              borderRadius="full"
+              fontSize="2xl"
               loading={isSubmitting}
               disabled={isSubmitting}
               aria-busy={isSubmitting}
               _hover={{ bg: 'red.400' }}
+              minW="160px"
               w={{ base: 'full', md: 'auto' }}
             >
-              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+              &rarr;
             </Button>
           </Box>
         </Flex>

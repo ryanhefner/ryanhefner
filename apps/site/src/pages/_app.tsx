@@ -9,13 +9,14 @@ import { useRouter } from 'next/router'
 import { MetaProvider } from 'next-meta'
 import { FathomProvider } from 'react-fathom'
 import { NextFathomTrackViewPages } from 'react-fathom/next'
+import { Graph } from 'react-structured'
 
 import '@fontbase/suisse-intl'
 import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
-import { Fathom } from '../libs/fathom'
 import { ThemeProvider } from '../providers/ThemeProvider'
+import { getRyanHefnerSiteGraphData } from '../utils/structured-data'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -70,6 +71,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           title="Ryan Hefner — All: Feed"
         />
       </Head>
+      <Graph id="ryan-hefner-site-jsonld" data={getRyanHefnerSiteGraphData()} />
       <MetaProvider
         baseUrl={siteUrl}
         canonical={url}
