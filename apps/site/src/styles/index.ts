@@ -1,2 +1,2 @@
-export * from './postkit-theme.reference'
+export * from './postkit-theme'
 export * from './theme'
