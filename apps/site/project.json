@@ -10,7 +10,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/site"
+        "outputPath": "dist/apps/site",
+        "webpack": true
       },
       "configurations": {
         "development": {

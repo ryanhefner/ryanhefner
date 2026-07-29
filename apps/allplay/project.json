@@ -12,7 +12,8 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/allplay"
+        "outputPath": "dist/apps/allplay",
+        "webpack": true
       },
       "configurations": {
         "development": {

@@ -4,6 +4,7 @@
 const { composePlugins, withNx } = require('@nx/next')
 const withMdx = require('@next/mdx')()
 const { createContentlayerPlugin } = require('next-contentlayer2')
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
 const withContentlayer = createContentlayerPlugin({
   configPath: 'apps/site/contentlayer.config.ts',
@@ -27,6 +28,25 @@ const nextConfig = {
     ]
   },
   transpilePackages: ['@linkcards/next'],
+  /** @param {import('webpack').Configuration} config */
+  webpack(config) {
+    config.resolve ??= {}
+    config.resolve.plugins ??= []
+    config.resolve.plugins.push(
+      new TsconfigPathsPlugin({
+        configFile: 'tsconfig.json',
+        extensions: [
+          '.ts',
+          '.tsx',
+          '.mjs',
+          '.js',
+          '.jsx',
+          ...(config.resolve.extensions ?? []),
+        ],
+      }),
+    )
+    return config
+  },
 }
 
 const plugins = [withNx, withContentlayer, withMdx]
