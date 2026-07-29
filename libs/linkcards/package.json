@@ -10,6 +10,6 @@
     }
   },
   "peerDependencies": {
-    "next-meta": "^0.0.1"
+    "next-meta": "^0.3.0"
   }
 }

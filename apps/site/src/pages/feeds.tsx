@@ -51,7 +51,15 @@ const FeedsPage = () => {
 FeedsPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticProps = async () => {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  const SITE_URL = (() => {
+    try {
+      return new URL(
+        process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:4200',
+      ).origin
+    } catch {
+      return 'http://localhost:4200'
+    }
+  })()
 
   const feedOptions = {
     title: 'Ryan Hefner | All | RSS Feed',
