@@ -52,6 +52,7 @@
     "react-fathom": "^0.2.0",
     "react-hook-form": "^7.83.0",
     "react-icons": "^5.7.0",
+    "react-markdown": "^10.1.0",
     "react-marquease": "^0.2.0",
     "react-structured": "^0.1.0",
     "react-timecode": "^1.3.0",

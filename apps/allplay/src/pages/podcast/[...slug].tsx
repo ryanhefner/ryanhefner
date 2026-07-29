@@ -7,7 +7,6 @@ import { SiteMeta } from 'next-meta'
 import Markdown from 'react-markdown'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import Timecode from 'react-timecode'
-import remarkGfm from 'remark-gfm'
 import { usePodcast } from 'use-podcast'
 
 import { SiteLayout } from '../../components/layouts'
@@ -16,7 +15,7 @@ import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
 import { PodcastPlayerContext } from '../../contexts'
 import { feeds } from '../../data/feeds'
-import { mdxComponents } from '../../mdx-components'
+import { markdownComponents, markdownRemarkPlugins } from '../../mdx-components'
 import {
   getBreadcrumbData,
   getEpisodeAudioUrl,
@@ -142,11 +141,8 @@ const EpisodePage = ({
             </Heading>
             <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
               <Markdown
-                components={mdxComponents({
-                  codeBg: 'gray.800',
-                  codeColor: 'white',
-                })}
-                remarkPlugins={[remarkGfm as any]}
+                components={markdownComponents}
+                remarkPlugins={markdownRemarkPlugins}
               >
                 {episode.descriptionMarkdown}
               </Markdown>

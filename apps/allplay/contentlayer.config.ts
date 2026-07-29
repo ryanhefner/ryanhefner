@@ -1,5 +1,5 @@
+import { createPostkitRemarkPlugins } from '@postkit/react'
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
-import remarkGfm from 'remark-gfm'
 // import { TransistorClient } from 'transistor-client'
 
 // const client = new TransistorClient({ apiKey: process.env.TRANSISTOR_API_KEY })
@@ -33,6 +33,6 @@ export default makeSource({
   disableImportAliasWarning: true,
   documentTypes: [Newsletter],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: createPostkitRemarkPlugins(),
   },
 })
