@@ -37,9 +37,10 @@ export const withOss = [
     urls: ['https://contentlayer.dev/'],
   },
   {
-    name: '@mdx-js/react',
-    description: 'Markdown and JSX content rendering.',
-    urls: ['https://mdxjs.com/'],
+    name: '@postkit/react + @postkit/next',
+    description:
+      'Article components, Markdown processing, and Next.js MDX rendering.',
+    urls: ['https://github.com/org-postkit/postkit-js'],
   },
   {
     name: 'unified',
@@ -50,11 +51,6 @@ export const withOss = [
     name: 'feed',
     description: 'RSS, JSON Feed, and Atom feed generation.',
     urls: ['https://github.com/jpmonette/feed'],
-  },
-  {
-    name: 'prism-react-renderer',
-    description: 'Code highlighting for MDX content.',
-    urls: ['https://github.com/FormidableLabs/prism-react-renderer'],
   },
   {
     name: 'resend',

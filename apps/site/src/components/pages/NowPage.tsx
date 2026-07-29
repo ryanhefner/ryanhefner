@@ -1,5 +1,4 @@
 import { Box, Text } from '@chakra-ui/react'
-import { useColorModeValue } from 'chakra-color'
 import { UTCDateMini } from '@date-fns/utc'
 import { Now } from 'contentlayer/generated'
 import { format } from 'date-fns'
@@ -19,9 +18,6 @@ interface NowPageProps {
 }
 
 const NowPage = ({ description, now, title }: NowPageProps) => {
-  const codeBg = useColorModeValue('gray.100', 'gray.800')
-  const codeColor = useColorModeValue('black', 'white')
-
   const MDXContent = useMDXComponent(now.body.code)
 
   return (
@@ -63,7 +59,7 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
         </Text>
       </Box>
       <Box fontSize={{ base: 'lg', md: 'xl' }} my={16} maxW="container.md">
-        <MDXContent components={mdxComponents({ codeBg, codeColor })} />
+        <MDXContent components={mdxComponents} />
       </Box>
     </>
   )

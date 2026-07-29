@@ -1,0 +1,57 @@
+{
+  "name": "@postkit/react",
+  "version": "0.1.0",
+  "description": "Chakra-based React components and Markdown tooling for articles",
+  "license": "MIT",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/org-postkit/postkit-js.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/org-postkit/postkit-js#readme",
+  "bugs": {
+    "url": "https://github.com/org-postkit/postkit-js/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@postkit/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "@postkit/unfurl": "0.1.0",
+    "remark-directive": "^4.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "tslib": "^2.3.0",
+    "unified": "^11.0.5"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "^3.36.0",
+    "react": "^19.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "nx": {
+    "tags": [
+      "npm:public",
+      "scope:postkit",
+      "layer:react"
+    ]
+  },
+  "yalcSig": "d1464803b5bfea7756f16f9c6fdfdf6d"
+}

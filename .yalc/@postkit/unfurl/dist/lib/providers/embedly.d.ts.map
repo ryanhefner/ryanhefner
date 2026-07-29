@@ -1,0 +1,1 @@
+{"version":3,"file":"embedly.d.ts","sourceRoot":"","sources":["../../../src/lib/providers/embedly.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,YAAY,EAAE,uBAAuB,EAAE,MAAM,aAAa,CAAC;AAEzE,MAAM,WAAW,sBAAuB,SAAQ,uBAAuB;IACrE,QAAQ,CAAC,MAAM,EAAE,MAAM,CAAC;CACzB;AAED,wBAAgB,qBAAqB,CACnC,OAAO,EAAE,sBAAsB,GAC9B,YAAY,CAiCd"}

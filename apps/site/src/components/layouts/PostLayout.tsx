@@ -21,8 +21,6 @@ interface PostLayoutProps {
 
 export const PostLayout = ({ thought }: PostLayoutProps) => {
   const borderColor = useColorModeValue('black', 'white')
-  const codeBg = useColorModeValue('gray.100', 'gray.800')
-  const codeColor = useColorModeValue('black', 'white')
   const tagColor = useColorModeValue('black', 'white')
   const tagOutlineColor = useColorModeValue('black', 'white')
 
@@ -66,7 +64,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
           >
             <Link href="/thoughts">Thoughts /</Link>
           </Flex>
-          <MDXContent components={mdxComponents({ codeBg, codeColor })} />
+          <MDXContent components={mdxComponents} />
           <Flex
             flexDir={{ base: 'column', md: 'row' }}
             justifyContent="space-between"

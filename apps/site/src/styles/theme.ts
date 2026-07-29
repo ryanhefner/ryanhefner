@@ -61,6 +61,20 @@ export const system = createSystem(
       },
       semanticTokens: {
         colors: {
+          blue: {
+            fg: {
+              value: {
+                _light: '{colors.blue.500}',
+                _dark: '{colors.blue.400}',
+              },
+            },
+            muted: {
+              value: {
+                _light: '{colors.blue.200}',
+                _dark: '{colors.blue.800}',
+              },
+            },
+          },
           'bg.body': {
             value: { base: '{colors.white}', _dark: '{colors.black}' },
           },

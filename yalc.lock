@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "packages": {
+    "@postkit/unfurl": {
+      "signature": "94deb25ebe7930f2ec2bb3f658e9d8e4",
+      "file": true
+    },
+    "@postkit/react": {
+      "signature": "d1464803b5bfea7756f16f9c6fdfdf6d",
+      "file": true
+    },
+    "@postkit/next": {
+      "signature": "1e7f00cbb0d68703e1ba72910484d7dd",
+      "file": true
+    }
+  }
+}

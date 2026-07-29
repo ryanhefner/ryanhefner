@@ -1,6 +1,7 @@
 import fs from 'fs'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
+import { createPostkitRemarkPlugins } from '@postkit/react'
 import { allNows } from 'contentlayer/generated'
 import { Feed } from 'feed'
 import { SiteMeta } from 'next-meta'
@@ -98,6 +99,11 @@ export const getStaticProps = async () => {
       .map(async (item) => {
         const content = await unified()
           .use(remarkParse)
+          .use({
+            plugins: createPostkitRemarkPlugins({
+              postkit: { output: 'hast' },
+            }),
+          })
           .use(remarkRehype)
           .use(rehypeStringify)
           .process(item.body.raw)

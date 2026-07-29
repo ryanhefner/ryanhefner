@@ -1,6 +1,6 @@
+import { createPostkitRemarkPlugins } from '@postkit/react'
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import { format } from 'date-fns'
-import remarkGfm from 'remark-gfm'
 
 export const Newsletter = defineDocumentType(() => ({
   name: 'Newsletter',
@@ -92,6 +92,6 @@ export default makeSource({
   disableImportAliasWarning: true,
   documentTypes: [Newsletter, Now, Thought, Update],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: createPostkitRemarkPlugins(),
   },
 })
