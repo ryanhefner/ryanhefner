@@ -3856,14 +3856,18 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.29.tgz#5a40109a1ab5f84d6fd8fc928b19f367cbe7e7b1"
   integrity sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==
 
-"@postkit/next@file:.yalc/@postkit/next":
+"@postkit/next@^0.1.0":
   version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@postkit/next/-/next-0.1.0.tgz#7c1a99f209045bd93e4d176ab4b0fca52f3d9cf6"
+  integrity sha512-k50qDYx2gQ5FBLTxkyhFooLf3PmMjpirIRoXC2IHDbPfY2IksIzH9T9mhAHI01aorLG+zgr0Xo42QbjoioZS9A==
   dependencies:
     "@types/mdx" "^2.0.14"
     tslib "^2.3.0"
 
-"@postkit/react@file:.yalc/@postkit/react":
+"@postkit/react@^0.1.0":
   version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@postkit/react/-/react-0.1.0.tgz#e2f74ea21329e001d79465e60359612ac06614d3"
+  integrity sha512-dtyqQNeAoqj5XNzYtRv99PRo1xolclLdgy43yGrZeKZfAqy2nimCYGsKT5aRx4hPBMSn4H/Y37AOPwYDK1iQkQ==
   dependencies:
     "@postkit/unfurl" "0.1.0"
     remark-directive "^4.0.0"
@@ -3872,8 +3876,10 @@
     tslib "^2.3.0"
     unified "^11.0.5"
 
-"@postkit/unfurl@0.1.0", "@postkit/unfurl@file:.yalc/@postkit/unfurl":
+"@postkit/unfurl@0.1.0", "@postkit/unfurl@^0.1.0":
   version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@postkit/unfurl/-/unfurl-0.1.0.tgz#a2147298a849a6f1ff54652171d1a4b1346c65ec"
+  integrity sha512-resFpK+7CUjpGotJZb51lSDTfSFKvZmJWrTHKi7ZNg7zhtzv9H9iq0U2gwJ9DnHVCTqSQDcASmSJ1nLYYS7YSA==
   dependencies:
     tslib "^2.3.0"
 

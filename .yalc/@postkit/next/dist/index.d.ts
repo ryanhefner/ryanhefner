@@ -1,2 +1,0 @@
-export { createPostkitNextComponents, type PostkitNextComponentsOptions, type PostkitNextLinkOptions, type PostkitNextLinkProps, } from './lib/create-postkit-next-components.js';
-//# sourceMappingURL=index.d.ts.map
