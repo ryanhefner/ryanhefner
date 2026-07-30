@@ -1,0 +1,8 @@
+{
+  "name": "postkit-theme",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/postkit-theme/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

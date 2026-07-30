@@ -1,4 +1,4 @@
-import { createPostkitTheme } from '@postkit/react'
+import { createEditorialPostkitTheme } from '@ryanhefner/postkit-theme'
 
 /**
  * Postkit theme matching Allplay's pre-Postkit Markdown component map.
@@ -7,7 +7,7 @@ import { createPostkitTheme } from '@postkit/react'
  * numbers. Those are syntax-rendering behaviors rather than recipe styles, so
  * this theme preserves the code container treatment without tokenization.
  */
-export const allplayPostkitTheme = createPostkitTheme({
+export const allplayPostkitTheme = createEditorialPostkitTheme({
   prose: {
     base: {
       root: {
@@ -16,7 +16,6 @@ export const allplayPostkitTheme = createPostkitTheme({
       },
       a: {
         color: 'white',
-        fontWeight: 'inherit',
         textDecoration: 'underline',
         textDecorationColor: 'currentColor',
         _hover: {
@@ -24,164 +23,35 @@ export const allplayPostkitTheme = createPostkitTheme({
         },
       },
       blockquote: {
-        borderInlineStartWidth: 0,
-        color: 'inherit',
-        fontFamily: 'serif',
-        fontSize: { base: '4xl', md: '6xl' },
-        fontStyle: 'normal',
-        letterSpacing: { base: -1, md: -2 },
-        lineHeight: 1.2,
-        marginBlock: 0,
-        maxW: 'container.md',
-        mx: 'auto',
-        paddingBlock: { base: 4, md: 8 },
-        paddingInlineStart: { base: 8, md: 12 },
-        pos: 'relative',
-        w: 'full',
         _before: {
-          content: '" "',
           bgColor: 'blue.500',
-          bottom: 0,
-          left: 0,
-          pos: 'absolute',
-          top: 0,
-          w: 2,
         },
       },
       code: {
-        alignItems: 'center',
         bg: 'gray.800',
-        borderRadius: 4,
         color: 'white',
-        colorPalette: 'whiteAlpha',
-        display: 'inline-flex',
-        fontSize: 'xs',
-        px: 1,
-        py: 1,
-      },
-      del: {
-        color: 'inherit',
       },
       h1: {
-        fontSize: { base: '6xl', md: '10xl' },
-        fontWeight: 'medium',
         letterSpacing: 'normal',
-        marginBlockEnd: { base: 16, md: 24 },
-        marginBlockStart: { base: 12, md: 16 },
-        mx: 'auto',
-        w: 'full',
       },
       h2: {
         fontSize: { base: '5xl', md: '7xl' },
-        fontWeight: 'medium',
         letterSpacing: -2,
-        marginBlockEnd: 4,
-        marginBlockStart: { base: 8, md: 16 },
-        maxW: 'container.md',
-        mx: 'auto',
-        w: 'full',
-        '&[id="footnote-label"]': {
-          fontSize: { base: 'xl', md: '2xl' },
-          letterSpacing: 0,
-        },
       },
       h3: {
         fontSize: { base: '3xl', md: '5xl' },
-        fontWeight: 'medium',
-        letterSpacing: -1,
-        marginBlockEnd: 4,
-        marginBlockStart: { base: 8, md: 12 },
-        maxW: 'container.md',
-        mx: 'auto',
-        w: 'full',
       },
       h4: {
-        color: 'gray.500',
         fontSize: { base: '2xl', md: '4xl' },
-        fontWeight: 'medium',
         letterSpacing: -1,
-        marginBlockEnd: 4,
-        marginBlockStart: { base: 8, md: 12 },
-        maxW: 'container.md',
-        mx: 'auto',
-        w: 'full',
       },
       h5: {
-        color: 'gray.500',
         fontSize: { base: 'xl', md: '3xl' },
-        fontWeight: 'medium',
         letterSpacing: -1,
-        marginBlockEnd: 4,
-        marginBlockStart: { base: 6, md: 10 },
-        maxW: 'container.md',
-        mx: 'auto',
-        w: 'full',
-      },
-      img: {
-        borderRadius: 0,
-        marginBlock: 0,
-        maxW: {
-          base: 'calc(100% + 48px)',
-          md: 'calc(100% + 160px)',
-          lg: 'calc(100% + 192px)',
-        },
-        mx: { base: -6, md: -20, lg: -24 },
-        pos: 'relative',
-        w: {
-          base: 'calc(100% + 48px)',
-          md: 'calc(100% + 160px)',
-          lg: 'calc(100% + 192px)',
-        },
-      },
-      li: {
-        marginBlock: 0,
-        paddingInlineStart: 0,
-        '&[id^="user-content-fn"]': {
-          fontSize: { base: 'sm', md: 'md' },
-        },
-      },
-      ol: {
-        display: 'flex',
-        flexDirection: 'column',
-        fontSize: { base: 'xl', md: '2xl' },
-        gap: 3,
-        marginBlock: 6,
-        maxW: 'container.md',
-        mx: 'auto',
-        paddingInlineStart: 12,
-        w: 'full',
       },
       p: {
         color: 'gray.400',
         marginBlock: 0,
-        maxW: 'container.md',
-        mx: 'auto',
-        w: 'full',
-      },
-      pre: {
-        bgColor: 'black',
-        borderRadius: 4,
-        color: 'white',
-        marginBlock: 4,
-        maxW: 'container.lg',
-        mx: 'auto',
-        paddingBlock: 3,
-        paddingInline: 3,
-        w: '100%',
-      },
-      section: {
-        marginBlock: 0,
-      },
-      ul: {
-        display: 'flex',
-        flexDirection: 'column',
-        fontSize: { base: 'xl', md: '2xl' },
-        gap: 3,
-        marginBlock: 6,
-        maxW: 'container.md',
-        mx: 'auto',
-        paddingInlineStart: 12,
-        w: 'full',
       },
     },
   },
