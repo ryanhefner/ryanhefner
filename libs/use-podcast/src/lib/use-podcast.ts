@@ -1,109 +1,150 @@
 import Parser from 'rss-parser'
 import TurndownService from 'turndown'
 
-const parser = new Parser({
+export type PodcastTranscriptReference = {
+  $: {
+    type?: string
+    url: string
+  }
+}
+
+export type PodcastTranscriptSegment = {
+  body: string
+  endTime: string
+  speaker?: string
+  startTime: string
+}
+
+export type PodcastTranscript = {
+  segments?: PodcastTranscriptSegment[]
+}
+
+type PodcastEpisodeFields = {
+  description?: string
+  descriptionMarkdown?: string
+  itunes?: {
+    duration?: number | string
+    episode?: number | string
+  }
+  transcript?: PodcastTranscript
+  transcripts?: PodcastTranscriptReference[]
+}
+
+export type PodcastEpisode = Parser.Item & PodcastEpisodeFields
+export type PodcastFeed = Parser.Output<PodcastEpisodeFields>
+
+const parser = new Parser<Record<string, never>, PodcastEpisodeFields>({
   customFields: {
     item: [['podcast:transcript', 'transcripts', { keepArray: true }]],
   },
 })
 
-let feed: any
+const feedCache = new Map<string, PodcastFeed>()
 
 type UsePodcastOptions = {
   url?: string
 }
 
 type GetFeedOptions = {
-  orderEpisodes: 'ASC' | 'DESC'
+  orderEpisodes?: 'ASC' | 'DESC'
 }
 
 type GetEpisodeOptions = {
-  convertDescriptionToMarkdown: boolean
+  convertDescriptionToMarkdown?: boolean
   slug: string
   transcript?: {
     mimeType: string
   }
 }
 
-export const usePodcast = ({ url }: UsePodcastOptions) => {
+export const usePodcast = ({ url }: UsePodcastOptions = {}) => {
   const loadFeed = async () => {
     if (!url) {
       console.warn('No podcast feed URL provided.')
-      return Promise.resolve(null)
+      return null
     }
 
-    if (feed) {
-      return feed
+    const cachedFeed = feedCache.get(url)
+
+    if (cachedFeed) {
+      return cachedFeed
     }
 
-    return await parser.parseURL(url)
+    const feed = await parser.parseURL(url)
+    feedCache.set(url, feed)
+
+    return feed
   }
 
-  const loadTranscript = async (url: string, mimeType = 'application/json') => {
+  const loadTranscript = async (
+    url: string,
+  ): Promise<PodcastTranscript | null> => {
     const response = await fetch(url)
 
-    if (!response) {
+    if (!response.ok) {
       console.warn('No transcript data found.')
       return null
     }
 
-    const data = await response.json()
-
-    return data
+    return (await response.json()) as PodcastTranscript
   }
 
-  const getFeed = async (options?: GetFeedOptions): Promise<any> => {
-    const { orderEpisodes } = { ...{ orderEpisodes: 'ASC' }, ...options }
+  const getFeed = async (
+    options?: GetFeedOptions,
+  ): Promise<PodcastFeed | null> => {
+    const { orderEpisodes = 'ASC' } = options ?? {}
     const feed = await loadFeed()
 
     if (!feed) {
       return null
     }
 
-    const tempFeed = { ...feed }
-
-    if (orderEpisodes === 'ASC') {
-      tempFeed.items = tempFeed.items.reverse()
+    return {
+      ...feed,
+      items:
+        orderEpisodes === 'ASC' ? [...feed.items].reverse() : [...feed.items],
     }
-
-    return tempFeed
   }
 
   const getEpisode = async ({
     convertDescriptionToMarkdown,
     slug,
     transcript,
-  }: GetEpisodeOptions) => {
+  }: GetEpisodeOptions): Promise<PodcastEpisode | null> => {
     const feed = await loadFeed()
 
     if (!feed) {
       return null
     }
 
-    const episode = feed.items.find(
-      (item: any) => item.link.split('/').pop() === slug,
+    const feedEpisode = feed.items.find(
+      (item) => item.link?.split('/').pop() === slug,
     )
 
-    if (!episode) {
+    if (!feedEpisode) {
       return null
     }
 
+    const episode = { ...feedEpisode }
+
     if (convertDescriptionToMarkdown) {
       const turndownService = new TurndownService()
-      episode.descriptionMarkdown = turndownService.turndown(episode.content)
+      episode.descriptionMarkdown = turndownService.turndown(
+        episode.content ?? '',
+      )
     }
 
     if (transcript?.mimeType && episode.transcripts) {
       const transcriptItem = episode.transcripts.find(
-        (item: any) => item.$.type === transcript.mimeType,
+        (item) => item.$.type === transcript.mimeType,
       )
 
       if (transcriptItem) {
-        const transcriptData = await loadTranscript(
-          transcriptItem.$.url,
-          transcript.mimeType,
-        )
-        episode.transcript = transcriptData
+        const transcriptData = await loadTranscript(transcriptItem.$.url)
+
+        if (transcriptData) {
+          episode.transcript = transcriptData
+        }
       }
     }
 

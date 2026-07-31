@@ -17,6 +17,12 @@ import { PodcastPlayerContext } from '../../contexts'
 import { feeds } from '../../data/feeds'
 import { markdownComponents, markdownRemarkPlugins } from '../../mdx-components'
 import {
+  type PlayablePodcastEpisode,
+  type PodcastListEpisode,
+  getPodcastListEpisodes,
+  isPlayablePodcastEpisode,
+} from '../../utils/podcast'
+import {
   getBreadcrumbData,
   getEpisodeAudioUrl,
   getEpisodeDescription,
@@ -26,8 +32,8 @@ import {
 } from '../../utils/structured-data'
 
 const EpisodePage = ({
-  feed,
   episode,
+  episodes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { currentEpisode, setCurrentEpisode } = useContext(PodcastPlayerContext)
 
@@ -132,10 +138,10 @@ const EpisodePage = ({
         </Box>
         <Box>
           <AudioPlayer
-            duration={parseInt(episode.itunes.duration ?? 0, 10)}
+            duration={parseInt(String(episode.itunes.duration ?? 0), 10)}
             isSelected={currentEpisode?.guid === episode.guid}
             size={AudioPlayerSize.LARGE}
-            slug={episode.link.split('/').pop()}
+            slug={episode.link.split('/').pop() ?? episode.guid}
             url={`${episode.enclosure.url}?src=allplay.fm`}
             onPlay={handlePlay}
           />
@@ -173,41 +179,39 @@ const EpisodePage = ({
               Transcript
             </Heading>
             <Flex flexDir="column" mt={{ base: 3, md: 4 }} gap={6}>
-              {episode.transcript?.segments?.map(
-                (segment: any, index: number) => (
-                  <Flex key={`segment-${index}`} gap={8}>
-                    <Box>
-                      {/* <Text color="gray.400">{segment.speaker}</Text> */}
-                      <Text
-                        color="gray.400"
-                        fontFamily="monospace"
-                        fontSize="sm"
-                        mt="3px"
-                        pos="sticky"
-                        top={{ base: 24, md: 32 }}
-                        whiteSpace="nowrap"
-                      >
-                        <Timecode
-                          format="mm:ss"
-                          time={parseInt(segment.startTime, 10) * 1000}
-                        />{' '}
-                        -{' '}
-                        <Timecode
-                          format="mm:ss"
-                          time={parseInt(segment.endTime, 10) * 1000}
-                        />
-                      </Text>
-                    </Box>
-                    <Text color="gray.400" fontSize="md">
-                      {segment.body}
+              {episode.transcript?.segments?.map((segment, index) => (
+                <Flex key={`segment-${index}`} gap={8}>
+                  <Box>
+                    {/* <Text color="gray.400">{segment.speaker}</Text> */}
+                    <Text
+                      color="gray.400"
+                      fontFamily="monospace"
+                      fontSize="sm"
+                      mt="3px"
+                      pos="sticky"
+                      top={{ base: 24, md: 32 }}
+                      whiteSpace="nowrap"
+                    >
+                      <Timecode
+                        format="mm:ss"
+                        time={parseInt(segment.startTime, 10) * 1000}
+                      />{' '}
+                      -{' '}
+                      <Timecode
+                        format="mm:ss"
+                        time={parseInt(segment.endTime, 10) * 1000}
+                      />
                     </Text>
-                  </Flex>
-                ),
-              )}
+                  </Box>
+                  <Text color="gray.400" fontSize="md">
+                    {segment.body}
+                  </Text>
+                </Flex>
+              ))}
             </Flex>
           </Box>
         </Flex>
-        <EpisodeList episodes={feed.items} mt={24} title="More Episodes" />
+        <EpisodeList episodes={episodes} mt={24} title="More Episodes" />
       </Flex>
       <Box
         id="signup"
@@ -229,7 +233,6 @@ const EpisodePage = ({
 EpisodePage.getLayout = (page: ReactNode) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticPaths = async () => {
-  // eslint-disable-next-line
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
@@ -237,9 +240,11 @@ export const getStaticPaths = async () => {
   const feed = await getFeed()
 
   const paths =
-    feed.items.map((item: any) => ({
-      params: { slug: [item.link.split('/').pop()] },
-    })) ?? []
+    feed?.items.flatMap((item) => {
+      const slug = item.link?.split('/').pop()
+
+      return slug ? [{ params: { slug: [slug] } }] : []
+    }) ?? []
 
   return { paths, fallback: 'blocking' }
 }
@@ -252,17 +257,29 @@ export const getStaticProps = (async ({ params }) => {
   })
 
   const feed = await getFeed()
-  let episode
-
-  if (slug?.[0]) {
-    episode = await getEpisode({
-      slug: slug?.[0],
-      convertDescriptionToMarkdown: true,
-      transcript: { mimeType: 'application/json' },
-    })
+  if (!slug?.[0]) {
+    return { notFound: true }
   }
 
-  return { props: { feed, episode } }
-}) satisfies GetStaticProps<{ episode: any; feed: any }>
+  const episode = await getEpisode({
+    slug: slug[0],
+    convertDescriptionToMarkdown: true,
+    transcript: { mimeType: 'application/json' },
+  })
+
+  if (!isPlayablePodcastEpisode(episode)) {
+    return { notFound: true }
+  }
+
+  return {
+    props: {
+      episode,
+      episodes: getPodcastListEpisodes(feed),
+    },
+  }
+}) satisfies GetStaticProps<{
+  episode: PlayablePodcastEpisode
+  episodes: PodcastListEpisode[]
+}>
 
 export default EpisodePage

@@ -11,18 +11,24 @@ export const config = {
   maxDuration: 60,
 }
 
+type Middleware = (
+  req: NextApiRequest,
+  res: NextApiResponse,
+  next: (result?: unknown) => void,
+) => void
+
 function runMiddleware(
   req: NextApiRequest,
   res: NextApiResponse,
-  fn: Function,
+  fn: Middleware,
 ) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
+  return new Promise<void>((resolve, reject) => {
+    fn(req, res, (result) => {
       if (result instanceof Error) {
         return reject(result)
       }
 
-      return resolve(result)
+      return resolve()
     })
   })
 }
@@ -38,7 +44,6 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
 
   // Revalidate episode passed
   try {
-    // eslint-disable-next-line
     const { getFeed } = usePodcast({
       url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
@@ -47,14 +52,14 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
 
     if (feed?.items) {
       for (const item of feed.items) {
-        console.debug(
-          `Revalidate episode page: /podcast/${item.link.split('/').pop()}`,
-        )
-        await res.revalidate(`/podcast/${item.link.split('/').pop()}`)
-        console.debug(
-          `Revalidate og-image: /podcast/${item.link.split('/').pop()}`,
-        )
-        await res.revalidate(`/og-image/podcast/${item.link.split('/').pop()}`)
+        const slug = item.link?.split('/').pop()
+
+        if (slug) {
+          console.debug(`Revalidate episode page: /podcast/${slug}`)
+          await res.revalidate(`/podcast/${slug}`)
+          console.debug(`Revalidate og-image: /podcast/${slug}`)
+          await res.revalidate(`/og-image/podcast/${slug}`)
+        }
       }
     }
 

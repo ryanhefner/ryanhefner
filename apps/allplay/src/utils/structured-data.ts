@@ -1,6 +1,7 @@
 import { createLinkCardImage } from '@linkcards/next'
 import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
+import type { PodcastEpisode } from 'use-podcast'
 
 const DEFAULT_ALLPLAY_SITE_URL = 'https://www.allplay.fm'
 
@@ -90,15 +91,15 @@ const toIsoDate = (value?: string) => {
   return Number.isNaN(date.getTime()) ? value : date.toISOString()
 }
 
-export const getEpisodeSlug = (episode: any) =>
+export const getEpisodeSlug = (episode: PodcastEpisode) =>
   episode?.link?.split('/').filter(Boolean).pop()
 
-export const getEpisodeUrl = (episode: any) =>
+export const getEpisodeUrl = (episode: PodcastEpisode) =>
   absoluteUrl(`/podcast/${getEpisodeSlug(episode)}`)
 
-const getTransistorShareId = (episode: any) => {
+const getTransistorShareId = (episode: PodcastEpisode) => {
   const transcriptUrl = episode?.transcripts?.find(
-    (transcript: any) => transcript?.$?.url,
+    (transcript) => transcript?.$?.url,
   )?.$.url
 
   if (!transcriptUrl) {
@@ -117,24 +118,24 @@ const getTransistorShareId = (episode: any) => {
   }
 }
 
-export const getEpisodeShareUrl = (episode: any) => {
+export const getEpisodeShareUrl = (episode: PodcastEpisode) => {
   const shareId = getTransistorShareId(episode)
 
   return shareId ? `https://share.transistor.fm/s/${shareId}` : undefined
 }
 
-export const getEpisodeEmbedUrl = (episode: any) => {
+export const getEpisodeEmbedUrl = (episode: PodcastEpisode) => {
   const shareId = getTransistorShareId(episode)
 
   return shareId ? `https://share.transistor.fm/e/${shareId}` : undefined
 }
 
-export const getEpisodeAudioUrl = (episode: any) =>
+export const getEpisodeAudioUrl = (episode: PodcastEpisode) =>
   episode?.enclosure?.url
     ? `${episode.enclosure.url}?src=allplay.fm`
     : undefined
 
-export const getEpisodeDescription = (episode: any) => {
+export const getEpisodeDescription = (episode: PodcastEpisode) => {
   const description =
     episode?.contentSnippet ??
     episode?.descriptionMarkdown ??
@@ -249,7 +250,7 @@ export const getPodcastPageData = (): SchemaData<'CollectionPage'> => {
 }
 
 export const getPodcastEpisodeData = (
-  episode: any,
+  episode: PodcastEpisode,
 ): SchemaData<'PodcastEpisode'> => {
   const siteUrl = normalizeSiteUrl()
   const url = getEpisodeUrl(episode)

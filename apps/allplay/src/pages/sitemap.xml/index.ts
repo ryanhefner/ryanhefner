@@ -25,15 +25,24 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   ]
 
   // Episodes
-  // eslint-disable-next-line
+
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
   const feed = await getFeed()
-  const episodeFields = feed.items.map((item: any) => ({
-    loc: `${BASE_URL}/podcast/${item.link.split('/').pop()}`,
-    lastmod: item.isoDate,
-  }))
+  const episodeFields =
+    feed?.items.flatMap((item) => {
+      const slug = item.link?.split('/').pop()
+
+      return slug
+        ? [
+            {
+              loc: `${BASE_URL}/podcast/${slug}`,
+              lastmod: item.isoDate ?? item.pubDate ?? new Date().toISOString(),
+            },
+          ]
+        : []
+    }) ?? []
 
   if (episodeFields.length) {
     fields.push(...episodeFields)

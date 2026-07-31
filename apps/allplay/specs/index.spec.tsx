@@ -6,7 +6,7 @@ import Index from '../src/pages/index'
 
 describe('Index', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />)
+    const { baseElement } = render(<Index episodes={[]} />)
     expect(baseElement).toBeTruthy()
   })
 })

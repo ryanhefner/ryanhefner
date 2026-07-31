@@ -10,6 +10,10 @@ import { SiteLayout } from '../components/layouts/SiteLayout'
 import { EpisodeList } from '../components/media/EpisodeList'
 import { Podcatchers } from '../components/podcast/Podcatchers'
 import { feeds } from '../data/feeds'
+import {
+  type PodcastListEpisode,
+  getPodcastListEpisodes,
+} from '../utils/podcast'
 
 // const newsletters = [
 //   {
@@ -30,7 +34,7 @@ import { feeds } from '../data/feeds'
 // ]
 
 const IndexPage = ({
-  feed,
+  episodes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
@@ -76,7 +80,7 @@ const IndexPage = ({
           </Link>{' '}
           for the newsletter.
         </Text>
-        <EpisodeList mt={24} episodes={feed.items} />
+        <EpisodeList mt={24} episodes={episodes} />
         <Podcatchers feeds={feeds} mt={24} />
         {/* <Flex flexDir="column" mt={24}>
           <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
@@ -128,7 +132,7 @@ export const getStaticProps = (async () => {
 
   const feed = await getFeed()
 
-  return { props: { feed } }
-}) satisfies GetStaticProps<{ feed: any }>
+  return { props: { episodes: getPodcastListEpisodes(feed) } }
+}) satisfies GetStaticProps<{ episodes: PodcastListEpisode[] }>
 
 export default IndexPage

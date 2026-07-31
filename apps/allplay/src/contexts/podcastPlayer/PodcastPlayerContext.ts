@@ -1,14 +1,16 @@
 import { createContext } from 'react'
-import type { Dispatch } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
+
+import type { PodcastListEpisode } from '../../utils/podcast'
 
 import { PlaybackOrder } from './PodcastPlayerProvider'
 
 export const PodcastPlayerContext = createContext<{
   continuousPlayback?: boolean
-  currentEpisode: any
-  setCurrentEpisode: Dispatch<any>
+  currentEpisode: PodcastListEpisode | null
+  setCurrentEpisode: (episode: PodcastListEpisode) => void
   playbackOrder: PlaybackOrder
-  setPlaybackOrder: Dispatch<any>
+  setPlaybackOrder: Dispatch<SetStateAction<PlaybackOrder>>
   startTime?: number
   currentTime: number
   isPlaying: boolean
@@ -19,14 +21,14 @@ export const PodcastPlayerContext = createContext<{
 }>({
   continuousPlayback: true,
   currentEpisode: null,
-  setCurrentEpisode: (value: any) => undefined,
+  setCurrentEpisode: () => undefined,
   playbackOrder: PlaybackOrder.ASC,
-  setPlaybackOrder: (value: any) => undefined,
+  setPlaybackOrder: () => undefined,
   startTime: undefined,
   currentTime: 0,
   isPlaying: false,
   isEnded: false,
   getAudioBuffer: () => null,
   getAudioBufferSourceNode: () => null,
-  seek: (url, offset) => {},
+  seek: () => undefined,
 })

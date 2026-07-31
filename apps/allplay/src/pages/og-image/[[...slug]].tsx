@@ -1,4 +1,5 @@
 import { Flex, Heading, Image, Text } from '@chakra-ui/react'
+import type { GetStaticPropsContext } from 'next'
 import { usePodcast } from 'use-podcast'
 
 type SharePageProps = {
@@ -82,15 +83,17 @@ export const getStaticPaths = async () => {
   ]
 
   // Podcast episode paths
-  // eslint-disable-next-line
+
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
   const feed = await getFeed()
   const episodePaths =
-    feed.items?.map((item: any) => ({
-      params: { slug: ['podcast', item.link.split('/').pop()] },
-    })) ?? []
+    feed?.items.flatMap((item) => {
+      const episodeSlug = item.link?.split('/').pop()
+
+      return episodeSlug ? [{ params: { slug: ['podcast', episodeSlug] } }] : []
+    }) ?? []
 
   return {
     paths: [...staticPaths, ...episodePaths],
@@ -98,8 +101,10 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async ({ params }: { params: any }) => {
-  const { slug } = params
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<{ slug?: string[] }>) => {
+  const { slug } = params ?? {}
   const path = `/${Array.isArray(slug) ? slug.join('/') : (slug ?? '')}`
 
   let title = ''
@@ -109,14 +114,13 @@ export const getStaticProps = async ({ params }: { params: any }) => {
     title = 'Newsletter'
     body = 'Subscribe and get weekly updates of what I am working on and into.'
   } else if (path.startsWith('/podcast/')) {
-    // eslint-disable-next-line
     const { getFeed } = usePodcast({
       url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
     const feed = await getFeed()
 
     const episode = feed?.items?.find(
-      (item: any) => item.link.split('/').pop() === slug[1],
+      (item) => item.link?.split('/').pop() === slug?.[1],
     )
     title = 'Podcast'
     body = episode?.title ?? ''

@@ -8,6 +8,8 @@ import {
 
 import { useWebAudioContext } from 'react-web-audio'
 
+import type { PodcastListEpisode } from '../../utils/podcast'
+
 import { PodcastPlayerContext } from './PodcastPlayerContext'
 
 type PodcastPlayerProviderProps = PropsWithChildren
@@ -20,8 +22,9 @@ export enum PlaybackOrder {
 export const PodcastPlayerProvider = ({
   children,
 }: PodcastPlayerProviderProps) => {
-  const [lastEpisode, setLastEpisode] = useState<any>(null)
-  const [currentEpisode, _setCurrentEpisode] = useState<any>(null)
+  const [, setLastEpisode] = useState<PodcastListEpisode | null>(null)
+  const [currentEpisode, _setCurrentEpisode] =
+    useState<PodcastListEpisode | null>(null)
   const [playbackOrder, setPlaybackOrder] = useState<PlaybackOrder>(
     PlaybackOrder.ASC,
   )
@@ -76,9 +79,9 @@ export const PodcastPlayerProvider = ({
   }, [currentEpisode, play])
 
   const setCurrentEpisode = useCallback(
-    (value: any) => {
+    (value: PodcastListEpisode) => {
       let newEpisode = false
-      _setCurrentEpisode((prevState: any) => {
+      _setCurrentEpisode((prevState) => {
         if (!prevState || prevState.guid !== value.guid) {
           pauseContext()
           setLastEpisode(value)

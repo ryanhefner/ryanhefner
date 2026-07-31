@@ -12,13 +12,17 @@ import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
 import { feeds } from '../../data/feeds'
 import {
+  type PodcastListEpisode,
+  getPodcastListEpisodes,
+} from '../../utils/podcast'
+import {
   ALLPLAY_PODCAST_DESCRIPTION,
   getBreadcrumbData,
   getPodcastPageData,
 } from '../../utils/structured-data'
 
 const EpisodesIndexPage = ({
-  feed,
+  episodes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
@@ -51,7 +55,7 @@ const EpisodesIndexPage = ({
         w="full"
       >
         <Podcatchers feeds={feeds} />
-        <EpisodeList episodes={feed.items} mt={24} />
+        <EpisodeList episodes={episodes} mt={24} />
       </Flex>
       <Box
         id="signup"
@@ -81,7 +85,7 @@ export const getStaticProps = (async () => {
 
   const feed = await getFeed()
 
-  return { props: { feed } }
-}) satisfies GetStaticProps<{ feed: any }>
+  return { props: { episodes: getPodcastListEpisodes(feed) } }
+}) satisfies GetStaticProps<{ episodes: PodcastListEpisode[] }>
 
 export default EpisodesIndexPage
