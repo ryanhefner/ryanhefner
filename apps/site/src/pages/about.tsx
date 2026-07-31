@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 // import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
@@ -16,11 +16,11 @@ import { getBreadcrumbData, getProfilePageData } from '../utils/structured-data'
 
 const TITLE = 'Some more about me'
 const DESCRIPTION =
-  'I’m a software developer and product designer living in <s>Brooklyn, NY</s> Atlanta, GA.'
+  'I’m a software developer and product designer living in Atlanta, GA, by way of Brooklyn, NY.'
 
 const AboutPage = () => (
   <>
-    <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <PageMeta title={TITLE} description={DESCRIPTION} />
     <Schema
       id="about-profile-jsonld"
       type="ProfilePage"

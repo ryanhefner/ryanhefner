@@ -1,5 +1,5 @@
 import { Text } from '@chakra-ui/react'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { Link } from '../../../components/base'
@@ -17,13 +17,13 @@ import {
   getCollectionPageData,
 } from '../../../utils/structured-data'
 
-const TITLE = 'Projects / Open Source Software | Ryan Hefner - All Play'
+const TITLE = 'Projects / Open Source Software'
 const DESCRIPTION =
   'It has been fun writing and maintaing open source software. Here are some of my contributions to the developer community.'
 
 const OSSIndexPage = () => (
   <>
-    <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <PageMeta title={TITLE} description={DESCRIPTION} />
     <Schema
       id="oss-collection-jsonld"
       type="CollectionPage"

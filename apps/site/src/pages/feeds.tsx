@@ -4,7 +4,7 @@ import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import { createPostkitRemarkPlugins } from '@postkit/react'
 import { allNows } from 'contentlayer/generated'
 import { Feed } from 'feed'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -18,7 +18,7 @@ import { PageHeading, SectionHeading } from '../components/typography'
 const FeedsPage = () => {
   return (
     <>
-      <SiteMeta
+      <PageMeta
         title="Feeds to subscribe to"
         description="RSS feeds you can subscribe to from the site."
       />

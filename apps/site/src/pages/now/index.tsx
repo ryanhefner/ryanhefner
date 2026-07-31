@@ -6,7 +6,7 @@
 //   Text,
 //   UnorderedList,
 // } from '@chakra-ui/react'
-// import { SiteMeta } from 'next-meta'
+// import { PageMeta } from 'next-meta'
 // import { FootnoteLink, Link } from '../../components/base'
 // import { PageWrapper } from '../../components/site'
 // import { PageHeading } from '../../components/typography'
@@ -16,7 +16,7 @@ import { allNows } from 'contentlayer/generated'
 import { NowLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 
-const TITLE = 'What I’m working on, now | Ryan Hefner - All Play'
+const TITLE = 'What I’m working on, now'
 const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 

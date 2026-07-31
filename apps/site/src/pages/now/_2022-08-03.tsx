@@ -1,25 +1,18 @@
 import { Box, Heading, List, Text } from '@chakra-ui/react'
-import Head from 'next/head'
+import { PageMeta } from 'next-meta'
 
 import { Link } from '../../components/base'
 import { NowLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 
-const TITLE = 'What I’m working on now | Ryan Hefner - All Play'
+const TITLE = 'What I’m working on now'
 const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
 const NowPage = () => (
   <>
-    <Head>
-      <title>{TITLE}</title>
-      <meta name="description" content={DESCRIPTION} />
-      <meta property="og:title" content={TITLE} />
-      <meta property="og:description" content={DESCRIPTION} />
-      <meta name="twitter:title" content={TITLE} />
-      <meta name="twitter:description" content={DESCRIPTION} />
-    </Head>
+    <PageMeta title={TITLE} description={DESCRIPTION} />
     <PageWrapper>
       <PageHeading>Now</PageHeading>
       <Box my={16}>

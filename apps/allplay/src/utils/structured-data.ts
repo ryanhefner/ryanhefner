@@ -1,7 +1,11 @@
+import { createLinkCardImage } from '@linkcards/next'
+import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
 
+const DEFAULT_ALLPLAY_SITE_URL = 'https://www.allplay.fm'
+
 export const ALLPLAY_SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
+  process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_ALLPLAY_SITE_URL
 
 export const ALLPLAY_PODCAST_FEED_URL =
   process.env.NEXT_PUBLIC_PODCAST_FEED_URL ??
@@ -28,18 +32,41 @@ type BreadcrumbItem = {
   url?: string
 }
 
-export const normalizeSiteUrl = (siteUrl = ALLPLAY_SITE_URL) =>
-  siteUrl.replace(/\/$/, '')
+export const normalizeSiteUrl = (siteUrl = ALLPLAY_SITE_URL) => {
+  try {
+    const url = new URL(siteUrl)
+
+    return url.hostname ? url.origin : DEFAULT_ALLPLAY_SITE_URL
+  } catch {
+    return DEFAULT_ALLPLAY_SITE_URL
+  }
+}
 
 export const absoluteUrl = (path: string, siteUrl = ALLPLAY_SITE_URL) => {
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    return path
+  const baseUrl = `${normalizeSiteUrl(siteUrl)}/`
+
+  try {
+    return new URL(path, baseUrl).toString()
+  } catch {
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`
+
+    return `${normalizeSiteUrl(siteUrl)}${normalizedPath}`
   }
+}
 
-  const baseUrl = normalizeSiteUrl(siteUrl)
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+export const getAllPlayLinkCardImage = (path: string): Image | undefined => {
+  const url = absoluteUrl(path)
+  const templateUrl = `${url.replace(/\/$/, '')}/social-image.png`
 
-  return `${baseUrl}${normalizedPath}`
+  return createLinkCardImage({
+    accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
+    imageAlt: 'All Play',
+    imageHeight: 630,
+    imageType: 'image/png',
+    imageWidth: 1200,
+    templateUrl,
+    url,
+  })
 }
 
 const stripMarkup = (value: string) =>

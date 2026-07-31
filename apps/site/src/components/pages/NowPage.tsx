@@ -3,7 +3,7 @@ import { UTCDateMini } from '@date-fns/utc'
 import { Now } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { PageWrapper } from '../../components/site'
@@ -22,7 +22,7 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
 
   return (
     <>
-      <SiteMeta
+      <PageMeta
         title={title ?? now.title}
         description={description ?? now.description}
       />

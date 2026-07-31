@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import { usePodcast } from 'use-podcast'
 
@@ -22,14 +22,14 @@ const EpisodesIndexPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <SiteMeta title={`Podcast`} description={ALLPLAY_PODCAST_DESCRIPTION}>
+      <PageMeta title="Podcast" description={ALLPLAY_PODCAST_DESCRIPTION}>
         <link
           rel="alternate"
           type="application/rss+xml"
           title="All Play w/ Ryan Hefner"
           href="https://feeds.transistor.fm/allplay"
         />
-      </SiteMeta>
+      </PageMeta>
       <Schema
         id="podcast-page-jsonld"
         type="CollectionPage"

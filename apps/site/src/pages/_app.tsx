@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
 
-import { LinkCard } from '@linkcards/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
@@ -16,7 +15,11 @@ import '@fontbase/suisse-mono'
 import '@fontbase/suisse-works'
 
 import { ThemeProvider } from '../providers/ThemeProvider'
-import { getRyanHefnerSiteGraphData } from '../utils/structured-data'
+import {
+  getRyanHefnerLinkCardImage,
+  getRyanHefnerSiteGraphData,
+  normalizeSiteUrl,
+} from '../utils/structured-data'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -26,7 +29,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+const siteUrl = normalizeSiteUrl()
 
 const TITLE =
   'The online home of Ryan Hefner, Software Developer & Eternal Tinkerer'
@@ -36,10 +39,9 @@ const DESCRIPTION =
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const path = router.asPath.split('?')[0]
-  const isHome = path === '/' || path === '/index'
-  const url = isHome ? siteUrl : `${siteUrl}${path}`
-  const ogImageUrl = `${url}/social-image.png`
+  const routePath = router.asPath.split(/[?#]/)[0]
+  const path = routePath === '/index' ? '/' : routePath
+  const image = getRyanHefnerLinkCardImage(path)
 
   const getLayout = Component.getLayout || ((page) => page)
 
@@ -74,9 +76,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <Graph id="ryan-hefner-site-jsonld" data={getRyanHefnerSiteGraphData()} />
       <MetaProvider
         baseUrl={siteUrl}
-        canonical={url}
+        canonical={path}
         title={TITLE}
         description={DESCRIPTION}
+        images={image ? [image] : undefined}
+        locale="en_US"
         siteName="Ryan Hefner - All Play"
         twitter={{
           card: 'summary_large_image',
@@ -86,13 +90,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         type="website"
         url={path}
       >
-        <LinkCard
-          accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
-          templateUrl={ogImageUrl}
-          url={url}
-          imageWidth={1200}
-          imageHeight={630}
-        />
         <FathomProvider
           clientOptions={{
             includedDomains: ['ryanhefner.com', 'www.ryanhefner.com'],

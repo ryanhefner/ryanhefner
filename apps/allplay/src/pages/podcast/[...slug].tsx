@@ -3,7 +3,7 @@ import { ReactNode, useCallback, useContext } from 'react'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import Markdown from 'react-markdown'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import Timecode from 'react-timecode'
@@ -45,18 +45,31 @@ const EpisodePage = ({
 
   return (
     <>
-      <SiteMeta
+      <PageMeta
         title={`Episode: ${episode?.title ?? 'N/A'} - Podcast`}
         description={description}
-        audioUrl={audioUrl}
-        audioType="audio/mpeg"
+        audio={
+          audioUrl
+            ? [
+                {
+                  title: episode.title,
+                  type: episode.enclosure?.type ?? 'audio/mpeg',
+                  url: audioUrl,
+                },
+              ]
+            : undefined
+        }
+        images={[
+          {
+            alt: `${episode.title} — All Play`,
+            height: 1024,
+            type: 'image/png',
+            url: '/assets/all-play.png',
+            width: 1024,
+          },
+        ]}
         twitter={{
           card: 'player',
-          image: {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/assets/all-play.png`,
-            width: 1024,
-            height: 1024,
-          },
           player: { url: episode.link, width: '500', height: '180' },
         }}
       >
@@ -85,7 +98,7 @@ const EpisodePage = ({
             />
           </>
         )}
-      </SiteMeta>
+      </PageMeta>
       <Schema
         id="podcast-episode-jsonld"
         type="PodcastEpisode"

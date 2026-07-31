@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react'
 
-// import { LinkCard } from '@linkcards/next'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -17,9 +16,13 @@ import '@fontbase/suisse-works'
 
 import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
 import { ThemeProvider } from '../providers/ThemeProvider'
-import { getAllPlaySiteGraphData } from '../utils/structured-data'
+import {
+  getAllPlayLinkCardImage,
+  getAllPlaySiteGraphData,
+  normalizeSiteUrl,
+} from '../utils/structured-data'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
+const siteUrl = normalizeSiteUrl()
 
 const TITLE =
   'Follow along as I, Ryan Hefner, share my journey building products and tools'
@@ -37,12 +40,10 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
-  const path = router.asPath.split('?')[0]
-  const isHome = path === '/' || path === '/index'
-  const url = isHome ? siteUrl : `${siteUrl}${path}`
-  // const ogImageUrl = `${url}/social-image.png`
+  const routePath = router.asPath.split(/[?#]/)[0]
+  const path = routePath === '/index' ? '/' : routePath
+  const image = getAllPlayLinkCardImage(path)
   const getLayout = Component.getLayout || ((page) => page)
-  // const isPodcast = path.startsWith('/podcast')
 
   return (
     <>
@@ -67,14 +68,11 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
       <Graph id="all-play-site-jsonld" data={getAllPlaySiteGraphData()} />
       <MetaProvider
         baseUrl={siteUrl}
-        canonical={url}
+        canonical={path}
         title={TITLE}
         description={DESCRIPTION}
-        image={{
-          url: `${process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}/${encodeURIComponent(url)}/social-image.png?url=${encodeURIComponent(url)}`,
-          width: 1200,
-          height: 630,
-        }}
+        images={image ? [image] : undefined}
+        locale="en_US"
         siteName="All Play"
         twitter={{
           card: 'summary_large_image',
@@ -84,13 +82,6 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         type="website"
         url={path}
       >
-        {/* <LinkCard
-          accountUrl={process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL}
-          templateUrl={ogImageUrl}
-          url={url}
-          imageWidth={1200}
-          imageHeight={630}
-        // /> */}
         <FathomProvider
           clientOptions={{
             includedDomains: ['allplay.fm', 'www.allplay.fm'],

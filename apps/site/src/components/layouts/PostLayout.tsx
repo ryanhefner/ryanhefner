@@ -4,7 +4,7 @@ import { UTCDateMini } from '@date-fns/utc'
 import { Thought, allThoughts } from 'contentlayer/generated'
 import { format } from 'date-fns'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { ArticleJsonLd, BreadcrumbJsonLd } from 'react-structured'
 import slugify from 'slugify'
 
@@ -36,7 +36,17 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
 
   return (
     <>
-      <SiteMeta title={thought.title} description={thought.description} />
+      <PageMeta
+        title={thought.title}
+        description={thought.description}
+        type="article"
+        article={{
+          author: 'Ryan Hefner',
+          publishedTime: thought.date,
+          modifiedTime: thought.date,
+          tag: thought.tags,
+        }}
+      />
       <ArticleJsonLd
         id="thought-jsonld"
         type="BlogPosting"
