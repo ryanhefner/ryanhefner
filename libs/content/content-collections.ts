@@ -44,7 +44,7 @@ const compile = async (
 export const newsletters = defineCollection({
   name: 'newsletters',
   typeName: 'Newsletter',
-  directory: 'src/lib/docs/newsletters',
+  directory: 'src/docs/newsletters',
   include: '**/*.md',
   schema: z.object({
     category: z.literal('newsletter').default('newsletter'),
@@ -61,7 +61,7 @@ export const newsletters = defineCollection({
 export const nows = defineCollection({
   name: 'nows',
   typeName: 'Now',
-  directory: 'src/lib/docs/now',
+  directory: 'src/docs/now',
   include: '**/*.md',
   schema: z.object({
     category: z.literal('now').default('now'),
@@ -79,7 +79,7 @@ export const nows = defineCollection({
 export const thoughts = defineCollection({
   name: 'thoughts',
   typeName: 'Thought',
-  directory: 'src/lib/docs/thoughts',
+  directory: 'src/docs/thoughts',
   include: '**/*.md',
   schema: z.object({
     category: z.literal('thought').default('thought'),
@@ -100,7 +100,7 @@ export const thoughts = defineCollection({
 export const updates = defineCollection({
   name: 'updates',
   typeName: 'Update',
-  directory: 'src/lib/docs/updates',
+  directory: 'src/docs/updates',
   include: '**/*.md',
   schema: z.object({
     category: z.literal('update').default('update'),

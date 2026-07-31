@@ -2,6 +2,7 @@
 
 const path = require('node:path')
 
+const { composePlugins, withNx } = require('@nx/next')
 const {
   createContentCollectionPlugin,
 } = require('@content-collections/next')
@@ -11,7 +12,7 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 const withContentCollections = createContentCollectionPlugin({
   configPath: path.join(
     __dirname,
-    '../../libs/contentlayer/content-collections.ts',
+    '../../libs/content/content-collections.ts',
   ),
 })
 
@@ -53,4 +54,7 @@ const nextConfig = {
   },
 }
 
-module.exports = withContentCollections(withMdx(nextConfig))
+const withNxAndMdx = composePlugins(withNx, withMdx)(nextConfig)
+
+module.exports = async (phase, context) =>
+  withContentCollections(await withNxAndMdx(phase, context))

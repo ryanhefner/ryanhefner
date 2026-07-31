@@ -49,7 +49,6 @@ Thumbs.db
 .env
 
 # generated content
-.contentlayer
 .content-collections
 vite.config.*.timestamp*
 vitest.config.*.timestamp*

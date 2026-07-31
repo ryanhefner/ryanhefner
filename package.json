@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "contentlayer": "contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts",
-    "check:metadata": "yarn contentlayer && nx run-many -t build -p site allplay --parallel=2 && node tools/scripts/check-metadata.mjs",
+    "check:metadata": "nx run-many -t build -p site allplay --parallel=2 && node tools/scripts/check-metadata.mjs",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
@@ -33,7 +32,6 @@
     "@swc/helpers": "^0.5.23",
     "@vercel/speed-insights": "^2.0.0",
     "axios": "^1.19.0",
-    "contentlayer2": "^0.5.3",
     "core-js": "^3.37.0",
     "cors": "^2.8.5",
     "date-fns": "^4.4.0",
@@ -43,7 +41,6 @@
     "fuse.js": "^7.5.0",
     "isomorphic-fetch": "^3.0.0",
     "next": "^16.2.12",
-    "next-contentlayer2": "^0.5.3",
     "next-meta": "^0.4.0",
     "next-proper": "^0.2.0",
     "next-sitemap": "^4.2.3",

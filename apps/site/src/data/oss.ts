@@ -31,10 +31,10 @@ export const withOss = [
     urls: ['https://emotion.sh/'],
   },
   {
-    name: 'contentlayer2',
+    name: '@content-collections/core',
     description:
       'Content modeling and generated data for the Now and Thoughts pages.',
-    urls: ['https://contentlayer.dev/'],
+    urls: ['https://www.content-collections.dev/'],
   },
   {
     name: '@postkit/react + @postkit/next',

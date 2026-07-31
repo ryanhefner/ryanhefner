@@ -22,10 +22,8 @@
       "@linkcards/next": ["./libs/linkcards/src/index.ts"],
       "@ryanhefner/postkit-theme": ["./libs/postkit-theme/src/index.ts"],
       "@waveforms/react": ["./libs/waveforms/src/index.ts"],
-      "contentlayer": ["./libs/contentlayer/src/index.ts"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "content-collections": [
-        "./libs/contentlayer/.content-collections/generated"
+        "./libs/content/.content-collections/generated"
       ],
       "emails": ["./libs/emails/src/index.ts"],
       "newsletter": ["./libs/newsletter/src/index.ts"],
@@ -44,9 +42,6 @@
     "types": ["*"],
     "esModuleInterop": false
   },
-  "include": [
-    "./.contentlayer/generated",
-    "./libs/contentlayer/.content-collections/generated"
-  ],
+  "include": ["./libs/content/.content-collections/generated"],
   "exclude": ["node_modules", "tmp"]
 }
