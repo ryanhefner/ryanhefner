@@ -7,7 +7,7 @@ const { createContentlayerPlugin } = require('next-contentlayer2')
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
 const withContentlayer = createContentlayerPlugin({
-  configPath: 'apps/site/contentlayer.config.ts',
+  configPath: 'libs/contentlayer/contentlayer.config.ts',
 })
 
 const nextConfig = {
