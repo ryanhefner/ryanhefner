@@ -20,6 +20,8 @@ import {
   getBreadcrumbData,
   getEpisodeAudioUrl,
   getEpisodeDescription,
+  getEpisodeEmbedUrl,
+  getEpisodeShareUrl,
   getPodcastEpisodeData,
 } from '../../utils/structured-data'
 
@@ -33,10 +35,8 @@ const EpisodePage = ({
     setCurrentEpisode(episode)
   }, [episode, setCurrentEpisode])
 
-  const shareUrl = episode.transcripts?.[0]?.$.url.replace(
-    /\/transcript\d+/,
-    '',
-  )
+  const shareUrl = getEpisodeShareUrl(episode)
+  const embedUrl = getEpisodeEmbedUrl(episode)
   const oembedUrl =
     shareUrl &&
     `https://share.transistor.fm/oembed?url=${encodeURIComponent(shareUrl)}`
@@ -69,8 +69,10 @@ const EpisodePage = ({
           },
         ]}
         twitter={{
-          card: 'player',
-          player: { url: episode.link, width: '500', height: '180' },
+          card: embedUrl ? 'player' : 'summary_large_image',
+          ...(embedUrl
+            ? { player: { url: embedUrl, width: '500', height: '180' } }
+            : {}),
         }}
       >
         <link

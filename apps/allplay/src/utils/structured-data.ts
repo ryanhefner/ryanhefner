@@ -96,6 +96,39 @@ export const getEpisodeSlug = (episode: any) =>
 export const getEpisodeUrl = (episode: any) =>
   absoluteUrl(`/podcast/${getEpisodeSlug(episode)}`)
 
+const getTransistorShareId = (episode: any) => {
+  const transcriptUrl = episode?.transcripts?.find(
+    (transcript: any) => transcript?.$?.url,
+  )?.$.url
+
+  if (!transcriptUrl) {
+    return undefined
+  }
+
+  try {
+    const url = new URL(transcriptUrl)
+    const [, resource, shareId] = url.pathname.split('/')
+
+    return url.hostname === 'share.transistor.fm' && resource === 's'
+      ? shareId
+      : undefined
+  } catch {
+    return undefined
+  }
+}
+
+export const getEpisodeShareUrl = (episode: any) => {
+  const shareId = getTransistorShareId(episode)
+
+  return shareId ? `https://share.transistor.fm/s/${shareId}` : undefined
+}
+
+export const getEpisodeEmbedUrl = (episode: any) => {
+  const shareId = getTransistorShareId(episode)
+
+  return shareId ? `https://share.transistor.fm/e/${shareId}` : undefined
+}
+
 export const getEpisodeAudioUrl = (episode: any) =>
   episode?.enclosure?.url
     ? `${episode.enclosure.url}?src=allplay.fm`
