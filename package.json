@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "contentlayer": "contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts",
+    "check:metadata": "yarn contentlayer && nx run-many -t build -p site allplay --parallel=2 && node tools/scripts/check-metadata.mjs",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"

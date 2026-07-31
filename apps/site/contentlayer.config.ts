@@ -51,6 +51,7 @@ export const Thought = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    updatedAt: { type: 'date', required: false },
     preview: { type: 'boolean', required: false },
     slug: { type: 'string', required: true },
     tags: { type: 'list', of: { type: 'string' }, required: false },

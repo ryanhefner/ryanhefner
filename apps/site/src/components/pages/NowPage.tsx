@@ -6,7 +6,6 @@ import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
-import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { mdxComponents } from '../../mdx-components'
 import {
@@ -19,13 +18,14 @@ interface NowPageProps {
   description?: string
   now: Now
   title?: string
+  url?: string
 }
 
-const NowPage = ({ description, now, title }: NowPageProps) => {
+const NowPage = ({ description, now, title, url = now.url }: NowPageProps) => {
   const MDXContent = useMDXComponent(now.body.code)
   const pageTitle = title ?? now.title
   const image = getRyanHefnerLinkCardImage(
-    now.url,
+    url,
     `Social card for “${pageTitle}” by Ryan Hefner`,
   )
 
@@ -39,7 +39,7 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
       <Schema
         id="now-page-jsonld"
         type="WebPage"
-        data={getNowPageData(now, title, description)}
+        data={getNowPageData(now, title, description, url)}
       />
       <BreadcrumbJsonLd
         id="now-breadcrumb-jsonld"

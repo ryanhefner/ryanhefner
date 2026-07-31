@@ -52,6 +52,12 @@
         "passWithNoTests": true
       }
     },
+    "check-metadata": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/check-metadata.mjs dist/apps/site/.next/server/pages"
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],

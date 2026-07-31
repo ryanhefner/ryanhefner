@@ -179,9 +179,10 @@ export const getNowPageData = (
   now: Now,
   title = now.title,
   description = now.description,
+  path = now.url,
 ): SchemaData<'WebPage'> => {
   const siteUrl = normalizeSiteUrl()
-  const url = absoluteUrl(now.url)
+  const url = absoluteUrl(path)
   const updatedAt = toIsoDate(now.date)
 
   return {
@@ -189,7 +190,7 @@ export const getNowPageData = (
     name: title,
     description,
     url,
-    image: socialImageUrl(now.url),
+    image: socialImageUrl(path, `Social card for “${title}” by Ryan Hefner`),
     dateModified: updatedAt,
     author: { '@id': `${siteUrl}/#person` },
     isPartOf: { '@id': `${siteUrl}/#website` },

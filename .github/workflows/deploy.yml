@@ -34,11 +34,12 @@ jobs:
       - name: Build step
         run: "npx contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts && npx nx build site --prod && npx nx run site:postbuild"
 
+      - name: Metadata check
+        run: "npx nx run site:check-metadata"
+
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "ryanhefner-site"
           entrypoint: "DENO_NEXT_START_DIRECTORY=dist/apps/site/.next; jsr:@deno/nextjs-start/v15"
           root: "."
-          
-          

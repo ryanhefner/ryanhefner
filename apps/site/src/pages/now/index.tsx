@@ -21,7 +21,7 @@ const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
 const NowPageIndex = ({ now }) => (
-  <NowPage description={DESCRIPTION} now={now} title={TITLE} />
+  <NowPage description={DESCRIPTION} now={now} title={TITLE} url="/now" />
 )
 
 NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>

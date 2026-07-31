@@ -56,6 +56,12 @@
         "jestConfig": "apps/allplay/jest.config.ts"
       }
     },
+    "check-metadata": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/check-metadata.mjs dist/apps/allplay/.next/server/pages"
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint"
     }
