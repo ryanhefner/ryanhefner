@@ -9,7 +9,12 @@ import { ArticleJsonLd, BreadcrumbJsonLd } from 'react-structured'
 import slugify from 'slugify'
 
 import { mdxComponents } from '../../mdx-components'
-import { getBreadcrumbData, getThoughtData } from '../../utils/structured-data'
+import {
+  absoluteUrl,
+  getBreadcrumbData,
+  getRyanHefnerLinkCardImage,
+  getThoughtData,
+} from '../../utils/structured-data'
 import { Link } from '../base'
 import { PageWrapper } from '../site'
 
@@ -25,6 +30,10 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
   const tagOutlineColor = useColorModeValue('black', 'white')
 
   const MDXContent = useMDXComponent(thought.body.code)
+  const image = getRyanHefnerLinkCardImage(
+    thought.url,
+    `Social card for “${thought.title}” by Ryan Hefner`,
+  )
 
   const moreThoughts = allThoughts
     .filter((item) => item.slug !== thought.slug)
@@ -39,11 +48,12 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
       <PageMeta
         title={thought.title}
         description={thought.description}
+        images={image ? [image] : undefined}
         type="article"
         article={{
-          author: 'Ryan Hefner',
+          author: absoluteUrl('/about'),
           publishedTime: thought.date,
-          modifiedTime: thought.date,
+          modifiedTime: thought.updatedAt,
           tag: thought.tags,
         }}
       />

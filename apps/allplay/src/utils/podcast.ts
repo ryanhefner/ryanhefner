@@ -50,3 +50,22 @@ export const getPodcastListEpisodes = (
         ]
       : [],
   ) ?? []
+
+export const getEpisodeAudioUrl = (
+  episode: Pick<PodcastEpisode, 'enclosure'>,
+) => {
+  const enclosureUrl = episode.enclosure?.url
+
+  if (!enclosureUrl) {
+    return undefined
+  }
+
+  try {
+    const url = new URL(enclosureUrl)
+    url.searchParams.set('src', 'allplay.fm')
+
+    return url.toString()
+  } catch {
+    return undefined
+  }
+}

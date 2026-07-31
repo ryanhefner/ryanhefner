@@ -3,7 +3,10 @@ import { useCallback, useContext } from 'react'
 import { Flex, HTMLChakraProps, Heading } from '@chakra-ui/react'
 
 import { PodcastPlayerContext } from '../../contexts'
-import type { PodcastListEpisode } from '../../utils/podcast'
+import {
+  type PodcastListEpisode,
+  getEpisodeAudioUrl,
+} from '../../utils/podcast'
 
 import { AudioPlayer } from './AudioPlayer'
 
@@ -42,7 +45,7 @@ export const EpisodeList = ({
           isSelected={currentEpisode?.guid === item.guid}
           slug={item.link.split('/').pop() ?? item.guid}
           title={item.title}
-          url={`${item.enclosure.url}?src=allplay.fm`}
+          url={getEpisodeAudioUrl(item) ?? item.enclosure.url}
           onPlay={() => handlePlay(item.guid)}
         />
       ))}

@@ -19,16 +19,19 @@ import { markdownComponents, markdownRemarkPlugins } from '../../mdx-components'
 import {
   type PlayablePodcastEpisode,
   type PodcastListEpisode,
+  getEpisodeAudioUrl,
   getPodcastListEpisodes,
   isPlayablePodcastEpisode,
 } from '../../utils/podcast'
 import {
+  ALLPLAY_PODCAST_TITLE,
+  absoluteUrl,
   getBreadcrumbData,
-  getEpisodeAudioUrl,
   getEpisodeDescription,
   getEpisodeEmbedUrl,
   getEpisodeShareUrl,
   getPodcastEpisodeData,
+  parsePodcastDuration,
 } from '../../utils/structured-data'
 
 const EpisodePage = ({
@@ -48,6 +51,8 @@ const EpisodePage = ({
     `https://share.transistor.fm/oembed?url=${encodeURIComponent(shareUrl)}`
   const description = getEpisodeDescription(episode)
   const audioUrl = getEpisodeAudioUrl(episode)
+  const audioDuration = parsePodcastDuration(episode.itunes.duration)
+  const artworkUrl = absoluteUrl('/assets/all-play.png')
 
   return (
     <>
@@ -58,6 +63,9 @@ const EpisodePage = ({
           audioUrl
             ? [
                 {
+                  album: ALLPLAY_PODCAST_TITLE,
+                  artist: 'Ryan Hefner',
+                  duration: audioDuration,
                   title: episode.title,
                   type: episode.enclosure?.type ?? 'audio/mpeg',
                   url: audioUrl,
@@ -67,10 +75,10 @@ const EpisodePage = ({
         }
         images={[
           {
-            alt: `${episode.title} — All Play`,
+            alt: `All Play w/ Ryan Hefner artwork for “${episode.title}”`,
             height: 1024,
             type: 'image/png',
-            url: '/assets/all-play.png',
+            url: artworkUrl,
             width: 1024,
           },
         ]}
@@ -142,7 +150,7 @@ const EpisodePage = ({
             isSelected={currentEpisode?.guid === episode.guid}
             size={AudioPlayerSize.LARGE}
             slug={episode.link.split('/').pop() ?? episode.guid}
-            url={`${episode.enclosure.url}?src=allplay.fm`}
+            url={audioUrl ?? episode.enclosure.url}
             onPlay={handlePlay}
           />
         </Box>

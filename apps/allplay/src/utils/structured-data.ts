@@ -3,6 +3,8 @@ import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
 import type { PodcastEpisode } from 'use-podcast'
 
+import { getEpisodeAudioUrl } from './podcast'
+
 const DEFAULT_ALLPLAY_SITE_URL = 'https://www.allplay.fm'
 
 export const ALLPLAY_SITE_URL =
@@ -130,11 +132,6 @@ export const getEpisodeEmbedUrl = (episode: PodcastEpisode) => {
   return shareId ? `https://share.transistor.fm/e/${shareId}` : undefined
 }
 
-export const getEpisodeAudioUrl = (episode: PodcastEpisode) =>
-  episode?.enclosure?.url
-    ? `${episode.enclosure.url}?src=allplay.fm`
-    : undefined
-
 export const getEpisodeDescription = (episode: PodcastEpisode) => {
   const description =
     episode?.contentSnippet ??
@@ -255,6 +252,7 @@ export const getPodcastEpisodeData = (
   const siteUrl = normalizeSiteUrl()
   const url = getEpisodeUrl(episode)
   const audioUrl = getEpisodeAudioUrl(episode)
+  const artworkUrl = absoluteUrl('/assets/all-play.png')
   const duration = secondsToIsoDuration(
     parsePodcastDuration(episode?.itunes?.duration),
   )
@@ -265,6 +263,7 @@ export const getPodcastEpisodeData = (
     description: getEpisodeDescription(episode),
     url,
     datePublished: toIsoDate(episode.isoDate ?? episode.pubDate),
+    image: artworkUrl,
     partOfSeries: { '@id': `${siteUrl}/podcast#series` },
     ...(duration ? { duration } : {}),
     ...(episode?.itunes?.episode
@@ -278,6 +277,7 @@ export const getPodcastEpisodeData = (
             name: episode.title,
             contentUrl: audioUrl,
             encodingFormat: episode?.enclosure?.type ?? 'audio/mpeg',
+            thumbnailUrl: artworkUrl,
             ...(duration ? { duration } : {}),
           },
         }

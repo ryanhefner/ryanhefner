@@ -54,13 +54,16 @@ export const absoluteUrl = (path: string, siteUrl = RYAN_HEFNER_SITE_URL) => {
   }
 }
 
-export const getRyanHefnerLinkCardImage = (path: string): Image | undefined => {
+export const getRyanHefnerLinkCardImage = (
+  path: string,
+  imageAlt = 'Ryan Hefner',
+): Image | undefined => {
   const url = absoluteUrl(path)
   const templateUrl = `${url.replace(/\/$/, '')}/social-image.png`
 
   return createLinkCardImage({
     accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
-    imageAlt: 'Ryan Hefner',
+    imageAlt,
     imageHeight: 630,
     imageType: 'image/png',
     imageWidth: 1200,
@@ -75,11 +78,11 @@ const toIsoDate = (value: string | Date) => {
   return Number.isNaN(date.getTime()) ? String(value) : date.toISOString()
 }
 
-const socialImageUrl = (path: string) => {
+const socialImageUrl = (path: string, imageAlt?: string) => {
   const url = absoluteUrl(path)
 
   return (
-    getRyanHefnerLinkCardImage(path)?.url ??
+    getRyanHefnerLinkCardImage(path, imageAlt)?.url ??
     `${url.replace(/\/$/, '')}/social-image.png`
   )
 }
@@ -148,6 +151,9 @@ export const getThoughtData = (thought: Thought): SchemaData<'BlogPosting'> => {
   const siteUrl = normalizeSiteUrl()
   const url = absoluteUrl(thought.url)
   const publishedAt = toIsoDate(thought.date)
+  const modifiedAt = thought.updatedAt
+    ? toIsoDate(thought.updatedAt)
+    : undefined
 
   return {
     '@id': `${url}#blog-posting`,
@@ -155,9 +161,12 @@ export const getThoughtData = (thought: Thought): SchemaData<'BlogPosting'> => {
     name: thought.title,
     description: thought.description,
     url,
-    image: socialImageUrl(thought.url),
+    image: socialImageUrl(
+      thought.url,
+      `Social card for “${thought.title}” by Ryan Hefner`,
+    ),
     datePublished: publishedAt,
-    dateModified: publishedAt,
+    ...(modifiedAt ? { dateModified: modifiedAt } : {}),
     author: { '@id': `${siteUrl}/#person` },
     publisher: { '@id': `${siteUrl}/#person` },
     isPartOf: { '@id': `${siteUrl}/#website` },

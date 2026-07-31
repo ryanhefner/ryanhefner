@@ -9,7 +9,11 @@ import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { mdxComponents } from '../../mdx-components'
-import { getBreadcrumbData, getNowPageData } from '../../utils/structured-data'
+import {
+  getBreadcrumbData,
+  getNowPageData,
+  getRyanHefnerLinkCardImage,
+} from '../../utils/structured-data'
 
 interface NowPageProps {
   description?: string
@@ -19,12 +23,18 @@ interface NowPageProps {
 
 const NowPage = ({ description, now, title }: NowPageProps) => {
   const MDXContent = useMDXComponent(now.body.code)
+  const pageTitle = title ?? now.title
+  const image = getRyanHefnerLinkCardImage(
+    now.url,
+    `Social card for “${pageTitle}” by Ryan Hefner`,
+  )
 
   return (
     <>
       <PageMeta
-        title={title ?? now.title}
+        title={pageTitle}
         description={description ?? now.description}
+        images={image ? [image] : undefined}
       />
       <Schema
         id="now-page-jsonld"
