@@ -1,8 +1,8 @@
 import { Box, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
-import { Now } from 'contentlayer/generated'
+import { useMDXComponent } from '@content-collections/mdx/react'
+import { Now } from 'content-collections'
 import { format } from 'date-fns'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
@@ -22,7 +22,7 @@ interface NowPageProps {
 }
 
 const NowPage = ({ description, now, title, url = now.url }: NowPageProps) => {
-  const MDXContent = useMDXComponent(now.body.code)
+  const MDXContent = useMDXComponent(now.mdx)
   const pageTitle = title ?? now.title
   const image = getRyanHefnerLinkCardImage(
     url,

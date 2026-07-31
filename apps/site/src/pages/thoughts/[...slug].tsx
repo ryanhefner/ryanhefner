@@ -1,4 +1,4 @@
-import { allThoughts } from 'contentlayer/generated'
+import { allThoughts } from 'content-collections'
 
 import { PostLayout } from '../../components/layouts'
 

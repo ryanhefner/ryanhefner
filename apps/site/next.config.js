@@ -1,20 +1,24 @@
 //@ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { composePlugins, withNx } = require('@nx/next')
+const path = require('node:path')
+
+const {
+  createContentCollectionPlugin,
+} = require('@content-collections/next')
 const withMdx = require('@next/mdx')()
-const { createContentlayerPlugin } = require('next-contentlayer2')
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
-const withContentlayer = createContentlayerPlugin({
-  configPath: 'libs/contentlayer/contentlayer.config.ts',
+const withContentCollections = createContentCollectionPlugin({
+  configPath: path.join(
+    __dirname,
+    '../../libs/contentlayer/content-collections.ts',
+  ),
 })
 
 const nextConfig = {
   experimental: {
     optimizePackageImports: ['@chakra-ui/react'],
   },
-  nx: {},
   pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   poweredByHeader: false,
   reactCompiler: true,
@@ -49,6 +53,4 @@ const nextConfig = {
   },
 }
 
-const plugins = [withNx, withContentlayer, withMdx]
-
-module.exports = composePlugins(...plugins)(nextConfig)
+module.exports = withContentCollections(withMdx(nextConfig))

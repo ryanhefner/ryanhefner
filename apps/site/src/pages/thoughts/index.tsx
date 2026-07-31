@@ -1,6 +1,6 @@
 import { Box, HStack, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
-import { allThoughts } from 'contentlayer/generated'
+import { allThoughts } from 'content-collections'
 import { format } from 'date-fns'
 
 import { Link } from '../../components/base'

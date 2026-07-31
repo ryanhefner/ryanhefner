@@ -1,4 +1,4 @@
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 import { GetServerSideProps } from 'next'
 import { getServerSideSitemapLegacy } from 'next-sitemap'
 

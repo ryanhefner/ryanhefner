@@ -1,5 +1,5 @@
 import { createLinkCardImage } from '@linkcards/next'
-import type { Now, Thought } from 'contentlayer/generated'
+import type { Now, Thought } from 'content-collections'
 import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
 

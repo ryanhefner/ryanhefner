@@ -2,7 +2,7 @@ import fs from 'fs'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
 import { createPostkitRemarkPlugins } from '@postkit/react'
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 import { Feed } from 'feed'
 import { PageMeta } from 'next-meta'
 import rehypeStringify from 'rehype-stringify'
@@ -106,7 +106,7 @@ export const getStaticProps = async () => {
           })
           .use(remarkRehype)
           .use(rehypeStringify)
-          .process(item.body.raw)
+          .process(item.content)
 
         feed.addItem({
           title: item.title,

@@ -1,9 +1,9 @@
 import { Box, Flex, HStack, Heading, Tag, Text, VStack } from '@chakra-ui/react'
 import { useColorModeValue } from 'chakra-color'
 import { UTCDateMini } from '@date-fns/utc'
-import { Thought, allThoughts } from 'contentlayer/generated'
+import { useMDXComponent } from '@content-collections/mdx/react'
+import { Thought, allThoughts } from 'content-collections'
 import { format } from 'date-fns'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
 import { PageMeta } from 'next-meta'
 import { ArticleJsonLd, BreadcrumbJsonLd } from 'react-structured'
 import slugify from 'slugify'
@@ -29,7 +29,7 @@ export const PostLayout = ({ thought }: PostLayoutProps) => {
   const tagColor = useColorModeValue('black', 'white')
   const tagOutlineColor = useColorModeValue('black', 'white')
 
-  const MDXContent = useMDXComponent(thought.body.code)
+  const MDXContent = useMDXComponent(thought.mdx)
   const image = getRyanHefnerLinkCardImage(
     thought.url,
     `Social card for “${thought.title}” by Ryan Hefner`,

@@ -48,8 +48,9 @@ Thumbs.db
 # Env Vars
 .env
 
-# contentlayer
+# generated content
 .contentlayer
+.content-collections
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 .cursor/rules/nx-rules.mdc

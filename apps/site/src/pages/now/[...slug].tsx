@@ -1,5 +1,5 @@
 import { UTCDateMini } from '@date-fns/utc'
-import { Now, allNows } from 'contentlayer/generated'
+import { Now, allNows } from 'content-collections'
 import { format } from 'date-fns'
 
 import { NowLayout } from '../../components/layouts'

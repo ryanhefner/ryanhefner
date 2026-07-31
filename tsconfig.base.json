@@ -24,6 +24,9 @@
       "@waveforms/react": ["./libs/waveforms/src/index.ts"],
       "contentlayer": ["./libs/contentlayer/src/index.ts"],
       "contentlayer/generated": ["./.contentlayer/generated"],
+      "content-collections": [
+        "./libs/contentlayer/.content-collections/generated"
+      ],
       "emails": ["./libs/emails/src/index.ts"],
       "newsletter": ["./libs/newsletter/src/index.ts"],
       "props": ["./libs/props/src/index.ts"],
@@ -41,6 +44,9 @@
     "types": ["*"],
     "esModuleInterop": false
   },
-  "include": ["./.contentlayer/generated"],
+  "include": [
+    "./.contentlayer/generated",
+    "./libs/contentlayer/.content-collections/generated"
+  ],
   "exclude": ["node_modules", "tmp"]
 }

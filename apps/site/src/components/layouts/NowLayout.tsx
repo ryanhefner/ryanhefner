@@ -1,6 +1,6 @@
 import { Box, Flex, HStack, Heading, Text } from '@chakra-ui/react'
 import { UTCDateMini } from '@date-fns/utc'
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 import { format } from 'date-fns'
 import { usePathname } from 'next/navigation'
 

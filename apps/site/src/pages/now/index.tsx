@@ -11,7 +11,7 @@
 // import { PageWrapper } from '../../components/site'
 // import { PageHeading } from '../../components/typography'
 // import { ProjectLink } from '../../constants'
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 
 import { NowLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
