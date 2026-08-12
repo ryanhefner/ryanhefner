@@ -29,9 +29,12 @@
         "entryFile": "libs/emails/src/index.ts",
         "external": [
           "chakra-email",
+          "node:fs/promises",
           "react",
           "react-dom",
-          "react/jsx-runtime"
+          "react-markdown",
+          "react/jsx-runtime",
+          "remark-gfm"
         ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",

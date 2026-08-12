@@ -13,6 +13,8 @@
     }
   },
   "dependencies": {
-    "chakra-email": "^0.1.0"
+    "chakra-email": "^0.1.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   }
 }
