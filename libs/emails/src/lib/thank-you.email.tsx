@@ -46,12 +46,7 @@ export function ThankYouEmail({
         In the meantime, you can catch up on previous issues and see what’s new
         with All Play.
       </Text>
-      <Button
-        href={newsletterUrl}
-        bg="brand.500"
-        color="white"
-        size="lg"
-      >
+      <Button href={newsletterUrl} bg="brand.500" color="white" size="lg">
         Visit the newsletter
       </Button>
       <Text color="gray.700" lineHeight="tall" mb={0} mt={8}>
