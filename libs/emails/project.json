@@ -1,0 +1,57 @@
+{
+  "name": "emails",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/emails/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "email-preview": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "cache": false,
+      "options": {
+        "cwd": "libs/emails",
+        "command": "chakra-email-preview --config chakra-email.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/emails",
+        "tsConfig": "libs/emails/tsconfig.lib.json",
+        "project": "libs/emails/package.json",
+        "entryFile": "libs/emails/src/index.ts",
+        "external": [
+          "chakra-email",
+          "react",
+          "react-dom",
+          "react/jsx-runtime"
+        ],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/emails/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
+      "options": {
+        "reportsDirectory": "{projectRoot}/../../coverage/libs/emails"
+      }
+    }
+  }
+}
