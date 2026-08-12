@@ -1,0 +1,46 @@
+# Springbar workspace for the personal site, All Play, and email previews.
+# Services stay manual so importing the workspace does not start processes.
+
+[workspace]
+name = "ryanhefner"
+key = "ryanhefner"
+tld = "test"
+
+[derive]
+nest = false
+
+[[unit]]
+id = "unt_ryanhefner_site"
+name = "site"
+working_dir = "."
+command = "NX_DAEMON=false npx nx serve site --port $PORT"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["ryanhefner.test"]
+role = "site"
+mode = "manual"
+readiness = { kind = "http", target = "/" }
+
+[[unit]]
+id = "unt_ryanhefner_allplay"
+name = "allplay"
+working_dir = "."
+command = "NX_DAEMON=false npx nx serve allplay --port $PORT"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["allplay.ryanhefner.test"]
+role = "site"
+mode = "manual"
+readiness = { kind = "http", target = "/" }
+
+[[unit]]
+id = "unt_ryanhefner_email_preview"
+name = "email-preview"
+working_dir = "."
+command = "node tools/scripts/springbar-email-preview.mjs"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["email.ryanhefner.test"]
+role = "site"
+mode = "manual"
+readiness = { kind = "http", target = "/api/health" }
