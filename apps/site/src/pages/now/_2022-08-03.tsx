@@ -2,7 +2,7 @@ import { Box, Heading, List, Text } from '@chakra-ui/react'
 import { PageMeta } from 'next-meta'
 
 import { Link } from '../../components/base'
-import { NowLayout } from '../../components/layouts'
+import { NowLayout, SiteLayout } from '../../components/layouts'
 import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 
@@ -102,6 +102,10 @@ const NowPage = () => (
   </>
 )
 
-NowPage.getLayout = (page) => <NowLayout>{page}</NowLayout>
+NowPage.getLayout = (page) => (
+  <SiteLayout>
+    <NowLayout>{page}</NowLayout>
+  </SiteLayout>
+)
 
 export default NowPage

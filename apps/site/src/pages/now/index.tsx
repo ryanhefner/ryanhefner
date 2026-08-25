@@ -13,7 +13,7 @@
 // import { ProjectLink } from '../../constants'
 import { allNows } from 'content-collections'
 
-import { NowLayout } from '../../components/layouts'
+import { NowLayout, SiteLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 
 const TITLE = 'What I’m working on, now'
@@ -24,7 +24,11 @@ const NowPageIndex = ({ now }) => (
   <NowPage description={DESCRIPTION} now={now} title={TITLE} url="/now" />
 )
 
-NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
+NowPageIndex.getLayout = (page) => (
+  <SiteLayout>
+    <NowLayout>{page}</NowLayout>
+  </SiteLayout>
+)
 
 export const getStaticProps = async () => {
   const now = allNows.sort((a, b) => {
