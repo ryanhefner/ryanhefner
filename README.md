@@ -15,23 +15,23 @@ These capabilities include generating applications, libraries, etc as well as th
 Below are our core plugins:
 
 - [React](https://reactjs.org)
-  - `npm install --save-dev @nx/react`
+  - `pnpm add --save-dev @nx/react`
 - Web (no framework frontends)
-  - `npm install --save-dev @nx/web`
+  - `pnpm add --save-dev @nx/web`
 - [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
+  - `pnpm add --save-dev @nrwl/angular`
 - [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
+  - `pnpm add --save-dev @nrwl/nest`
 - [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
+  - `pnpm add --save-dev @nrwl/express`
 - [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+  - `pnpm add --save-dev @nrwl/node`
 
 There are also many [community plugins](https://nx.dev/community) you could add.
 
 ## Generate an application
 
-Run `nx g @nx/react:app my-app` to generate an application.
+Run `pnpm exec nx g @nx/react:app my-app` to generate an application.
 
 > You can use any of the plugins above to generate applications as well.
 
@@ -39,7 +39,7 @@ When using Nx, you can create multiple applications and libraries in the same wo
 
 ## Generate a library
 
-Run `nx g @nx/react:lib my-lib` to generate a library.
+Run `pnpm exec nx g @nx/react:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
@@ -47,31 +47,31 @@ Libraries are shareable across libraries and applications. They can be imported 
 
 ## Development server
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `pnpm exec nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `nx g @nx/react:component my-component --project=my-app` to generate a new component.
+Run `pnpm exec nx g @nx/react:component my-component --project=my-app` to generate a new component.
 
 ## Build
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `pnpm exec nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+Run `pnpm exec nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+Run `pnpm exec nx affected:test` to execute the unit tests affected by a change.
 
 ## Running end-to-end tests
 
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `pnpm exec nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+Run `pnpm exec nx affected:e2e` to execute the end-to-end tests affected by a change.
 
 ## Understand your workspace
 
-Run `nx graph` to see a diagram of the dependencies of your projects.
+Run `pnpm exec nx graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 

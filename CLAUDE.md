@@ -4,22 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-This is an Nx monorepo using yarn as the package manager.
+This is an Nx monorepo using pnpm as the package manager.
 
 ### Common Commands
-- `yarn nx serve site` - Serve the main site app on localhost:4200  
-- `yarn nx serve allplay` - Serve the allplay app on localhost:4201
-- `yarn nx build <project>` - Build a specific project
-- `yarn nx test <project>` - Run tests for a specific project
-- `yarn nx lint <project>` - Lint a specific project
-- `yarn nx affected:build` - Build all affected projects
-- `yarn nx affected:test` - Test all affected projects
-- `yarn nx affected:lint` - Lint all affected projects
+- `pnpm exec nx serve site` - Serve the main site app on localhost:4200
+- `pnpm exec nx serve allplay` - Serve the allplay app on localhost:4201
+- `pnpm exec nx build <project>` - Build a specific project
+- `pnpm exec nx test <project>` - Run tests for a specific project
+- `pnpm exec nx lint <project>` - Lint a specific project
+- `pnpm exec nx affected -t build` - Build all affected projects
+- `pnpm exec nx affected -t test` - Test all affected projects
+- `pnpm exec nx affected -t lint` - Lint all affected projects
 
 ### Running Tests
-- `yarn nx test` - Run tests for the workspace
-- `yarn nx test site` - Run tests for the site app
-- `yarn nx test allplay` - Run tests for the allplay app
+- `pnpm exec nx test` - Run tests for the workspace
+- `pnpm exec nx test site` - Run tests for the site app
+- `pnpm exec nx test allplay` - Run tests for the allplay app
 - Tests use Jest and are configured per project
 
 ## Architecture

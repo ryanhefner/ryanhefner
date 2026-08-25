@@ -13,7 +13,7 @@ nest = false
 id = "unt_ryanhefner_site"
 name = "site"
 working_dir = "."
-command = "NX_DAEMON=false npx nx serve site --port $PORT"
+command = "NX_DAEMON=false pnpm exec nx serve site --port $PORT"
 runtime = { kind = "node", version = "24", manager = "nvm" }
 package_manager = "npm"
 hostnames = ["ryanhefner.test"]
@@ -25,7 +25,7 @@ readiness = { kind = "http", target = "/" }
 id = "unt_ryanhefner_allplay"
 name = "allplay"
 working_dir = "."
-command = "NX_DAEMON=false npx nx serve allplay --port $PORT"
+command = "NX_DAEMON=false pnpm exec nx serve allplay --port $PORT"
 runtime = { kind = "node", version = "24", manager = "nvm" }
 package_manager = "npm"
 hostnames = ["allplay.ryanhefner.test"]
