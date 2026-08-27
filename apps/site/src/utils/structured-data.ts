@@ -96,9 +96,16 @@ export const getRyanHefnerSiteGraphData = (): GraphData => {
         '@type': 'Person',
         '@id': `${siteUrl}/#person`,
         name: 'Ryan Hefner',
+        description:
+          'Software developer and product designer building products and open-source tools.',
         url: siteUrl,
         image: `${siteUrl}/assets/ryan-hefner-social.jpg`,
         jobTitle: ['Software Developer', 'Product Designer'],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Commune Software',
+          url: 'https://www.commune.software',
+        },
         homeLocation: {
           '@type': 'Place',
           name: 'Atlanta, GA',
