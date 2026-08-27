@@ -44,7 +44,7 @@ publishing platform"
     >
       <HStack gap={4} alignItems="center" flexWrap="wrap">
         <Text color="gray.400">
-          {`© ${new Date().getFullYear()} — `}All Play FM +{' '}
+          {`© ${new Date().getFullYear()} — `}All Play +{' '}
           <Link
             color="white"
             href="https://www.ryanhefner.com"

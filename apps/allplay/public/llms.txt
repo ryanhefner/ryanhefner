@@ -1,13 +1,13 @@
-# All Play FM
+# All Play
 
 > All Play is an independent podcast and newsletter by Ryan Hefner about the
 > ideas, process, tools, and pitfalls involved in building products and
 > open-source software.
 
-Allplay.fm is the canonical home of the All Play publication. It contains the
-podcast archive, episode notes, newsletter posts, listening links, and ways to
-subscribe. All Play is a media publication, not a social network, hosted
-software product, or paid membership service.
+The website at allplay.fm is the canonical home of the All Play publication. It
+contains the podcast archive, episode notes, newsletter posts, listening links,
+and ways to subscribe. All Play is a media publication, not a social network,
+hosted software product, or paid membership service.
 
 ## When to use this site
 

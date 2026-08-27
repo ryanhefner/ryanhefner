@@ -24,7 +24,7 @@ import {
 
 const siteUrl = normalizeSiteUrl()
 
-const TITLE = 'All Play FM — A podcast and newsletter by Ryan Hefner'
+const TITLE = 'All Play — A podcast and newsletter by Ryan Hefner'
 const DESCRIPTION =
   'Subscribe to the All Play newsletter, and listen to the All Play podcast episodes, sharing updates on the process, tools, and attempts I make as I build products and open-source tools.'
 
@@ -72,7 +72,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         description={DESCRIPTION}
         images={image ? [image] : undefined}
         locale="en_US"
-        siteName="All Play FM"
+        siteName="All Play"
         twitter={{
           card: 'summary_large_image',
           creator: '@ryanhefner',

@@ -10,7 +10,7 @@ import { getBreadcrumbData } from '../utils/structured-data'
 
 const TITLE = 'Privacy'
 const DESCRIPTION =
-  'How Allplay.fm handles analytics, newsletter subscriptions, technical logs, podcast services, and external links.'
+  'How the All Play website handles analytics, newsletter subscriptions, technical logs, podcast services, and external links.'
 
 const PrivacyPage = () => (
   <>
@@ -41,12 +41,13 @@ const PrivacyPage = () => (
         Analytics and hosting
       </Heading>
       <Text color="gray.400" fontSize="xl" mt={4}>
-        Allplay.fm uses Fathom Analytics to understand aggregate site traffic.
-        Fathom may process information such as the requested page, referring
-        site, browser or device characteristics, and approximate location. The
-        site is hosted by Vercel, which may process ordinary request and server
-        log information—including IP addresses, user agents, timestamps, URLs,
-        and response details—for delivery, reliability, debugging, and security.
+        The All Play website uses Fathom Analytics to understand aggregate site
+        traffic. Fathom may process information such as the requested page,
+        referring site, browser or device characteristics, and approximate
+        location. The site is hosted by Vercel, which may process ordinary
+        request and server log information—including IP addresses, user agents,
+        timestamps, URLs, and response details—for delivery, reliability,
+        debugging, and security.
       </Text>
 
       <Heading as="h2" mt={16}>

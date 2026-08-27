@@ -64,14 +64,14 @@ export const getAllPlayLinkCardImage = (path: string): Image | undefined => {
   return (
     createLinkCardImage({
       accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
-      imageAlt: 'All Play FM',
+      imageAlt: 'All Play',
       imageHeight: 630,
       imageType: 'image/png',
       imageWidth: 1200,
       templateUrl,
       url,
     }) ?? {
-      alt: 'All Play FM podcast artwork',
+      alt: 'All Play podcast artwork',
       height: 2048,
       type: 'image/png',
       url: absoluteUrl('/assets/all-play-cover.png'),
@@ -212,7 +212,6 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         '@type': 'Organization',
         '@id': allPlayOrganizationId,
         name: 'All Play',
-        alternateName: 'All Play FM',
         description:
           'An independent podcast and newsletter where Ryan Hefner documents building products and open-source tools.',
         url: siteUrl,

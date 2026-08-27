@@ -40,7 +40,7 @@ const renderDocument = ({
 const staticDocuments: Record<string, () => string> = {
   '/': () =>
     renderDocument({
-      title: 'All Play FM',
+      title: 'All Play',
       description:
         'An independent podcast and newsletter by Ryan Hefner about building products and open-source tools.',
       path: '/',
@@ -114,7 +114,7 @@ Newsletter messages include an unsubscribe link. All Play does not offer paid pl
     renderDocument({
       title: 'Privacy',
       description:
-        'How Allplay.fm handles analytics, newsletter subscriptions, technical logs, podcast services, and external links.',
+        'How the All Play website handles analytics, newsletter subscriptions, technical logs, podcast services, and external links.',
       path: '/privacy',
       content: `Last updated August 27, 2026.
 
@@ -122,7 +122,7 @@ All Play is a public podcast and newsletter. You can browse the site and listen 
 
 ## Analytics and hosting
 
-Allplay.fm uses Fathom Analytics to understand aggregate site traffic. Vercel hosts the site and may process ordinary request and server-log information for delivery, reliability, debugging, and security.
+The All Play website uses Fathom Analytics to understand aggregate site traffic. Vercel hosts the site and may process ordinary request and server-log information for delivery, reliability, debugging, and security.
 
 ## Newsletter and email
 
@@ -139,7 +139,8 @@ You can browse without subscribing, unsubscribe through any newsletter message, 
   '/withoss': () =>
     renderDocument({
       title: 'Made with open-source software',
-      description: 'Key open-source packages used to build Allplay.fm.',
+      description:
+        'Key open-source packages used to build the All Play website.',
       path: '/withoss',
       content: withOss
         .map(
@@ -258,7 +259,7 @@ export const getMarkdownDocument = async (
     status: 404,
     body: `# Page not found
 
-The requested path, \`${path}\`, does not exist on Allplay.fm.
+The requested path, \`${path}\`, does not exist on the All Play website.
 
 ## Try one of these destinations
 
