@@ -11,11 +11,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       lastmod: new Date().toISOString(),
     },
     {
+      loc: `${BASE_URL}/about`,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: `${BASE_URL}/contact`,
+      lastmod: new Date().toISOString(),
+    },
+    {
       loc: `${BASE_URL}/newsletter`,
       lastmod: new Date().toISOString(),
     },
     {
       loc: `${BASE_URL}/podcast`,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: `${BASE_URL}/privacy`,
       lastmod: new Date().toISOString(),
     },
     {
