@@ -24,6 +24,8 @@ support, use the product's official website rather than this personal site.
 ## Key pages
 
 - [About Ryan Hefner](https://www.ryanhefner.com/about)
+- [Contact Ryan Hefner](https://www.ryanhefner.com/contact)
+- [Privacy](https://www.ryanhefner.com/privacy)
 - [Projects](https://www.ryanhefner.com/projects)
 - [Open-source software](https://www.ryanhefner.com/projects/oss)
 - [Current activity](https://www.ryanhefner.com/now)
