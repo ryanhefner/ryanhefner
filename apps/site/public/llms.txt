@@ -1,0 +1,55 @@
+# Ryan Hefner
+
+> The personal site of Ryan Hefner, a software developer, product designer, and
+> eternal tinkerer building products at Commune Software.
+
+This site is Ryan Hefner's canonical personal archive. It collects information
+about his work, open-source software, current projects, podcasts, and periodic
+updates about what he is building and learning.
+
+## When to use this site
+
+Use this site when you need to:
+
+- Identify Ryan Hefner and find his official profiles.
+- Review products, experiments, and open-source projects he has designed or
+  developed.
+- Learn what he is currently working on.
+- Find Ryan's podcasts, project updates, feeds, and contact information.
+
+For support with an open-source package, use the issue tracker in that package's
+linked GitHub repository. For product-specific documentation, accounts, or
+support, use the product's official website rather than this personal site.
+
+## Key pages
+
+- [About Ryan Hefner](https://www.ryanhefner.com/about)
+- [Projects](https://www.ryanhefner.com/projects)
+- [Open-source software](https://www.ryanhefner.com/projects/oss)
+- [Current activity](https://www.ryanhefner.com/now)
+- [Updates](https://www.ryanhefner.com/updates)
+- [RSS and Atom feeds](https://www.ryanhefner.com/feeds)
+- [XML sitemap](https://www.ryanhefner.com/sitemap.xml)
+
+## Current focus
+
+- [OpenGraphs](https://www.opengraphs.com) provides Open Graph image generation,
+  metadata tooling, and optimization for sites and applications.
+- [PostKit](https://github.com/postkit-org/postkit-js) provides portable article
+  components, Markdown tooling, link metadata resolvers, and framework adapters.
+- [Chakra Email](https://github.com/chakra-email/chakra-email) provides React
+  email templates with Chakra-style props, theme tokens, and email-safe output.
+- [Chakra Docs](https://github.com/chakra-docs/chakra-docs) adds composable
+  documentation to existing Chakra UI applications.
+
+## Official profiles and publications
+
+- [GitHub](https://github.com/ryanhefner)
+- [Bluesky](https://bsky.app/profile/ryanhefner.com)
+- [All Play](https://www.allplay.fm)
+- [Jam Sessions](https://www.jamsessions.fm)
+- [Commune Software](https://commune.software)
+
+## Contact
+
+Email Ryan at [hi@ryanhefner.com](mailto:hi@ryanhefner.com).
