@@ -3,17 +3,24 @@
 const path = require('node:path')
 
 const { composePlugins, withNx } = require('@nx/next')
-const {
-  createContentCollectionPlugin,
-} = require('@content-collections/next')
+const { createContentCollectionPlugin } = require('@content-collections/next')
 const withMdx = require('@next/mdx')()
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
+const markdownRequest = {
+  type: /** @type {'header'} */ ('header'),
+  key: 'accept',
+  value: '(.*)text/markdown(.*)',
+}
+
+const markdownRewrite = (source, path = source) => ({
+  source,
+  destination: `/api/markdown?path=${path}`,
+  has: [markdownRequest],
+})
+
 const withContentCollections = createContentCollectionPlugin({
-  configPath: path.join(
-    __dirname,
-    '../../libs/content/content-collections.ts',
-  ),
+  configPath: path.join(__dirname, '../../libs/content/content-collections.ts'),
 })
 
 const nextConfig = {
@@ -24,13 +31,44 @@ const nextConfig = {
   poweredByHeader: false,
   reactCompiler: true,
   reactStrictMode: true,
-  async rewrites() {
+  async headers() {
     return [
       {
-        source: '/:path*/social-image',
-        destination: '/og-image/:path*',
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Vary',
+            value: 'Accept, Accept-Encoding',
+          },
+        ],
       },
     ]
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        markdownRewrite('/', '/'),
+        markdownRewrite('/about'),
+        markdownRewrite('/contact'),
+        markdownRewrite('/feeds'),
+        markdownRewrite('/now'),
+        markdownRewrite('/now/:path*'),
+        markdownRewrite('/privacy'),
+        markdownRewrite('/projects'),
+        markdownRewrite('/projects/:path*'),
+        markdownRewrite('/thoughts'),
+        markdownRewrite('/thoughts/:path*'),
+        markdownRewrite('/updates'),
+        markdownRewrite('/withoss'),
+      ],
+      afterFiles: [
+        {
+          source: '/:path*/social-image',
+          destination: '/og-image/:path*',
+        },
+      ],
+      fallback: [markdownRewrite('/:path*', '/:path*')],
+    }
   },
   transpilePackages: ['@linkcards/next'],
   /** @param {import('webpack').Configuration} config */
