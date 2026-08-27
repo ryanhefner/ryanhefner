@@ -20,7 +20,6 @@ export const ALLPLAY_PODCAST_DESCRIPTION =
   'Documenting the ideas, process and pitfalls that go into building products and open-source software and tools.'
 
 const ryanHefnerPersonId = 'https://www.ryanhefner.com/#person'
-const allPlayOrganizationId = `${normalizeSiteUrl()}/#organization`
 
 const podcastLinks = [
   'https://podcasts.apple.com/us/podcast/all-play-w-ryan-hefner/id1744906646?uo=4',
@@ -190,6 +189,7 @@ export const secondsToIsoDuration = (seconds?: number) => {
 
 export const getAllPlaySiteGraphData = (): GraphData => {
   const siteUrl = normalizeSiteUrl()
+  const allPlayOrganizationId = `${siteUrl}/#organization`
 
   return {
     '@graph': [
