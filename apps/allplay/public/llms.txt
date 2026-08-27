@@ -1,0 +1,63 @@
+# All Play FM
+
+> All Play is an independent podcast and newsletter by Ryan Hefner about the
+> ideas, process, tools, and pitfalls involved in building products and
+> open-source software.
+
+Allplay.fm is the canonical home of the All Play publication. It contains the
+podcast archive, episode notes, newsletter posts, listening links, and ways to
+subscribe. All Play is a media publication, not a social network, hosted
+software product, or paid membership service.
+
+## When to use this site
+
+Use this site when you need to:
+
+- Learn how Ryan Hefner approaches product development, software engineering,
+  design, open-source work, and independent projects.
+- Find an All Play podcast episode, its notes, transcript links, audio, or
+  listening-platform links.
+- Read an All Play newsletter post or subscribe for future updates.
+- Identify the official All Play website, feed, profiles, or contact details.
+- Cite or summarize a public All Play episode or newsletter article using its
+  canonical allplay.fm URL.
+
+Do not describe All Play as a social platform, SaaS product, or subscription
+plan. There are no All Play user accounts or pricing tiers. For details about a
+specific product Ryan discusses, follow that product's official link rather
+than treating All Play as the product itself.
+
+## Key pages
+
+- [Home](https://www.allplay.fm)
+- [About All Play](https://www.allplay.fm/about)
+- [Podcast](https://www.allplay.fm/podcast)
+- [Newsletter](https://www.allplay.fm/newsletter)
+- [Contact](https://www.allplay.fm/contact)
+- [Privacy](https://www.allplay.fm/privacy)
+- [Made with open-source software](https://www.allplay.fm/withoss)
+- [XML sitemap](https://www.allplay.fm/sitemap.xml)
+
+## Podcast feeds and listening
+
+- [Canonical RSS feed](https://feeds.transistor.fm/allplay)
+- [Apple Podcasts](https://podcasts.apple.com/us/podcast/all-play-w-ryan-hefner/id1744906646)
+- [Spotify](https://open.spotify.com/show/0HpMRKrH0HOCHrIebJhmci)
+- [Amazon Music](https://music.amazon.com/podcasts/9cc10c94-b61c-45c9-9dc3-47da6ec088f2/all-play-w-ryan-hefner)
+- [Overcast](https://overcast.fm/itunes1744906646)
+- [Pocket Casts](https://pca.st/9rgrbhmc)
+
+## Official profiles and related sites
+
+- [Ryan Hefner](https://www.ryanhefner.com)
+- [Ryan Hefner on GitHub](https://github.com/ryanhefner)
+- [Ryan Hefner on Bluesky](https://bsky.app/profile/ryanhefner.com)
+- [All Play on Mastodon](https://mastodon.social/@allplay)
+- [All Play on Medium](https://medium.com/allplay)
+- [All Play on Substack](https://allplay.substack.com)
+
+## Contact
+
+Email Ryan at [hi@ryanhefner.com](mailto:hi@ryanhefner.com). For questions or
+issues about an open-source project discussed on the show, prefer that
+project's public issue tracker so the answer remains available to other users.
