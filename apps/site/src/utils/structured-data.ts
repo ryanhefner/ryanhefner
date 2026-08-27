@@ -104,7 +104,7 @@ export const getRyanHefnerSiteGraphData = (): GraphData => {
         worksFor: {
           '@type': 'Organization',
           name: 'Commune Software',
-          url: 'https://www.commune.software',
+          url: 'https://commune.software',
         },
         homeLocation: {
           '@type': 'Place',

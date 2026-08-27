@@ -20,7 +20,7 @@ export const projects = [
   {
     name: 'Commune',
     description: 'A product studio, crafting products for the community.',
-    url: 'https://www.commune.software',
+    url: 'https://commune.software',
     imageUrl: '/assets/projects/commune-software.png',
   },
   {

@@ -5,7 +5,7 @@ tinkerer.
 
 I like crafting well-designed, nicely coded software that gracefully solves the
 problem at hand. I build products at
-[Commune Software](https://www.commune.software), publish open-source tools for
+[Commune Software](https://commune.software), publish open-source tools for
 the web, and share what I learn along the way.
 
 ## What I’m working on
