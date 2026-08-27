@@ -109,7 +109,7 @@ export const getRyanHefnerSiteGraphData = (): GraphData => {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         name: 'Ryan Hefner',
-        alternateName: 'Ryan Hefner - All Play',
+        alternateName: 'RyanHefner.com',
         description:
           'The online archive and play space for Ryan Hefner, software developer and product designer.',
         url: siteUrl,

@@ -81,7 +81,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         description={DESCRIPTION}
         images={image ? [image] : undefined}
         locale="en_US"
-        siteName="Ryan Hefner - All Play"
+        siteName="Ryan Hefner"
         twitter={{
           card: 'summary_large_image',
           creator: '@ryanhefner',
