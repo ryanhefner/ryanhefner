@@ -20,6 +20,7 @@ export const ALLPLAY_PODCAST_DESCRIPTION =
   'Documenting the ideas, process and pitfalls that go into building products and open-source software and tools.'
 
 const ryanHefnerPersonId = 'https://www.ryanhefner.com/#person'
+const allPlayOrganizationId = `${normalizeSiteUrl()}/#organization`
 
 const podcastLinks = [
   'https://podcasts.apple.com/us/podcast/all-play-w-ryan-hefner/id1744906646?uo=4',
@@ -61,15 +62,23 @@ export const getAllPlayLinkCardImage = (path: string): Image | undefined => {
   const url = absoluteUrl(path)
   const templateUrl = `${url.replace(/\/$/, '')}/social-image.png`
 
-  return createLinkCardImage({
-    accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
-    imageAlt: 'All Play',
-    imageHeight: 630,
-    imageType: 'image/png',
-    imageWidth: 1200,
-    templateUrl,
-    url,
-  })
+  return (
+    createLinkCardImage({
+      accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
+      imageAlt: 'All Play FM',
+      imageHeight: 630,
+      imageType: 'image/png',
+      imageWidth: 1200,
+      templateUrl,
+      url,
+    }) ?? {
+      alt: 'All Play FM podcast artwork',
+      height: 2048,
+      type: 'image/png',
+      url: absoluteUrl('/assets/all-play-cover.png'),
+      width: 2048,
+    }
+  )
 }
 
 const stripMarkup = (value: string) =>
@@ -188,11 +197,31 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         '@type': 'Person',
         '@id': ryanHefnerPersonId,
         name: 'Ryan Hefner',
+        description:
+          'Software developer and product designer who hosts the All Play podcast and newsletter.',
         url: 'https://www.ryanhefner.com',
+        jobTitle: ['Software Developer', 'Product Designer', 'Podcast Host'],
         sameAs: [
           'https://github.com/ryanhefner',
           'https://bsky.app/profile/ryanhefner.com',
           'https://mastodon.social/@ryanhefner',
+          'https://www.youtube.com/@ryan_hefner',
+        ],
+      },
+      {
+        '@type': 'Organization',
+        '@id': allPlayOrganizationId,
+        name: 'All Play',
+        alternateName: 'All Play FM',
+        description:
+          'An independent podcast and newsletter where Ryan Hefner documents building products and open-source tools.',
+        url: siteUrl,
+        logo: `${siteUrl}/assets/all-play.png`,
+        founder: { '@id': ryanHefnerPersonId },
+        sameAs: [
+          'https://medium.com/allplay',
+          'https://allplay.substack.com',
+          'https://mastodon.social/@allplay',
         ],
       },
       {
@@ -202,7 +231,8 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         url: siteUrl,
         description:
           'Updates on the process, tools, and attempts Ryan Hefner makes while building products and open-source tools.',
-        publisher: { '@id': ryanHefnerPersonId },
+        publisher: { '@id': allPlayOrganizationId },
+        creator: { '@id': ryanHefnerPersonId },
         inLanguage: 'en-US',
       },
       {
@@ -214,7 +244,7 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         image: `${siteUrl}/assets/all-play.png`,
         webFeed: ALLPLAY_PODCAST_FEED_URL,
         author: { '@id': ryanHefnerPersonId },
-        publisher: { '@id': ryanHefnerPersonId },
+        publisher: { '@id': allPlayOrganizationId },
         sameAs: podcastLinks,
       },
     ],

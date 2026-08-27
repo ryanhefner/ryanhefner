@@ -47,6 +47,7 @@ const IndexPage = ({
         w="full"
       >
         <Text
+          as="h1"
           color="gray.400"
           fontSize={{ base: '3xl', md: '5xl' }}
           fontWeight="normal"
@@ -112,7 +113,7 @@ const IndexPage = ({
         px={{ base: 4, md: 8 }}
         py={{ base: 12, md: 16 }}
       >
-        <Heading as="h3">Subscribe to the newsletter</Heading>
+        <Heading as="h2">Subscribe to the newsletter</Heading>
         <Text color="gray.400">
           Get updates when new episodes are posted, and other fun stuff that I
           am into.
