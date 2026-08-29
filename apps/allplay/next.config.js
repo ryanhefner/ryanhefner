@@ -21,6 +21,7 @@ const markdownRewrite = (source, path = source) => ({
 })
 
 const nextConfig = {
+  allowedDevOrigins: ['allplay.test'],
   experimental: {
     optimizePackageImports: ['@chakra-ui/react'],
   },

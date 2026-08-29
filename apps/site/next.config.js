@@ -24,6 +24,7 @@ const withContentCollections = createContentCollectionPlugin({
 })
 
 const nextConfig = {
+  allowedDevOrigins: ['ryanhefner.test'],
   experimental: {
     optimizePackageImports: ['@chakra-ui/react'],
   },
