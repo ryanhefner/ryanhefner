@@ -18,12 +18,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email, firstName } = JSON.parse(req.body)
 
-    await resend.contacts.create({
+    const { error } = await resend.contacts.create({
       email,
       firstName,
       unsubscribed: false,
       audienceId,
     })
+    if (error) {
+      res
+        .status(502)
+        .json({
+          success: false,
+          error: 'Unable to subscribe right now. Please try again.',
+        })
+      return
+    }
     res.status(200).json({ success: true })
   } catch (err) {
     console.error(err)

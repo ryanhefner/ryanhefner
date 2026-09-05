@@ -19,6 +19,7 @@ export const NewsletterForm = ({
   variant?: 'dark' | 'light'
 }) => {
   const [success, setSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [transition, setTransition] = useState<'in' | 'out'>('in')
 
@@ -47,28 +48,35 @@ export const NewsletterForm = ({
     }, 500)
   }, [])
 
-  const handleSubmit = useCallback((data: any) => {
-    setIsSubmitting(true)
-    fetch('/api/newsletter/subscribe', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error(response)
-          return
-        }
-
-        setSuccess(true)
-
-        setTimeout(() => {
-          reset()
-        }, 10000)
+  const handleSubmit = useCallback(
+    (data: any) => {
+      setIsSubmitting(true)
+      setSubmitError(null)
+      fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        body: JSON.stringify(data),
       })
-      .finally(() => {
-        setIsSubmitting(false)
-      })
-  }, [])
+        .then(async (response) => {
+          const result = await response.json()
+          if (!response.ok || result.success !== true) {
+            throw new Error('Unable to subscribe right now. Please try again.')
+          }
+
+          setSuccess(true)
+
+          setTimeout(() => {
+            reset()
+          }, 10000)
+        })
+        .catch(() => {
+          setSubmitError('Unable to subscribe right now. Please try again.')
+        })
+        .finally(() => {
+          setIsSubmitting(false)
+        })
+    },
+    [reset],
+  )
 
   return (
     <>
@@ -147,6 +155,11 @@ export const NewsletterForm = ({
           </Box>
         </Flex>
       </form>
+      {submitError && (
+        <Text role="alert" mt={4}>
+          {submitError}
+        </Text>
+      )}
       <Flex
         pos="absolute"
         top={0}
