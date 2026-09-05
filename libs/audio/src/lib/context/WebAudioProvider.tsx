@@ -118,7 +118,7 @@ export const WebAudioProvider = ({
 
         if (audioRef.current) {
           if (audioRef.current.src === url) {
-            if (startOffset) {
+            if (startOffset !== undefined) {
               audioRef.current.currentTime = startOffset
             }
 
@@ -130,6 +130,7 @@ export const WebAudioProvider = ({
           }
 
           audioRef.current.src = url
+          audioRef.current.currentTime = startOffset
 
           if (onEnded) {
             audioRef.current.addEventListener('ended', onEnded)
