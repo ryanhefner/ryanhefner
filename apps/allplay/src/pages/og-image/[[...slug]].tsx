@@ -103,6 +103,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params,
+  revalidateReason,
 }: GetStaticPropsContext<{ slug?: string[] }>) => {
   const { slug } = params ?? {}
   const path = `/${Array.isArray(slug) ? slug.join('/') : (slug ?? '')}`
@@ -117,7 +118,7 @@ export const getStaticProps = async ({
     const { getFeed } = usePodcast({
       url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
-    const feed = await getFeed()
+    const feed = await getFeed({ forceRefresh: revalidateReason !== 'build' })
 
     const episode = feed?.items?.find(
       (item) => item.link?.split('/').pop() === slug?.[1],

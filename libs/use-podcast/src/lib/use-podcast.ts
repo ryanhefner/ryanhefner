@@ -39,13 +39,15 @@ const parser = new Parser<Record<string, never>, PodcastEpisodeFields>({
   },
 })
 
-const feedCache = new Map<string, PodcastFeed>()
+const FEED_CACHE_TTL_MS = 60_000
+const feedCache = new Map<string, { feed: PodcastFeed; expiresAt: number }>()
 
 type UsePodcastOptions = {
   url?: string
 }
 
 type GetFeedOptions = {
+  forceRefresh?: boolean
   orderEpisodes?: 'ASC' | 'DESC'
 }
 
@@ -58,7 +60,7 @@ type GetEpisodeOptions = {
 }
 
 export const usePodcast = ({ url }: UsePodcastOptions = {}) => {
-  const loadFeed = async () => {
+  const loadFeed = async (forceRefresh = false) => {
     if (!url) {
       console.warn('No podcast feed URL provided.')
       return null
@@ -66,12 +68,12 @@ export const usePodcast = ({ url }: UsePodcastOptions = {}) => {
 
     const cachedFeed = feedCache.get(url)
 
-    if (cachedFeed) {
-      return cachedFeed
+    if (!forceRefresh && cachedFeed && cachedFeed.expiresAt > Date.now()) {
+      return cachedFeed.feed
     }
 
     const feed = await parser.parseURL(url)
-    feedCache.set(url, feed)
+    feedCache.set(url, { feed, expiresAt: Date.now() + FEED_CACHE_TTL_MS })
 
     return feed
   }
@@ -92,8 +94,8 @@ export const usePodcast = ({ url }: UsePodcastOptions = {}) => {
   const getFeed = async (
     options?: GetFeedOptions,
   ): Promise<PodcastFeed | null> => {
-    const { orderEpisodes = 'ASC' } = options ?? {}
-    const feed = await loadFeed()
+    const { orderEpisodes = 'ASC', forceRefresh = false } = options ?? {}
+    const feed = await loadFeed(forceRefresh)
 
     if (!feed) {
       return null

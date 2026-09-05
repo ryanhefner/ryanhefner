@@ -78,12 +78,12 @@ EpisodesIndexPage.getLayout = (page: ReactNode) => (
   <SiteLayout>{page}</SiteLayout>
 )
 
-export const getStaticProps = (async () => {
+export const getStaticProps = (async ({ revalidateReason }) => {
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  const feed = await getFeed()
+  const feed = await getFeed({ forceRefresh: revalidateReason !== 'build' })
 
   return { props: { episodes: getPodcastListEpisodes(feed) } }
 }) satisfies GetStaticProps<{ episodes: PodcastListEpisode[] }>

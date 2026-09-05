@@ -48,7 +48,7 @@ const handler = async function (req: NextApiRequest, res: NextApiResponse) {
       url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
 
-    const feed = await getFeed()
+    const feed = await getFeed({ forceRefresh: true })
 
     if (feed?.items) {
       for (const item of feed.items) {

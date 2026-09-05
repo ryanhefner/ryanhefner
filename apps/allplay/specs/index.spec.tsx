@@ -1,8 +1,12 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { render, screen, within } from '@testing-library/react'
 
-import Index from '../src/pages/index'
+import Index, { getStaticProps } from '../src/pages/index'
 import { system } from '../src/styles/theme'
+import type { GetStaticPropsContext } from 'next'
+
+const getFeed = jest.fn().mockResolvedValue({ items: [] })
+jest.mock('use-podcast', () => ({ usePodcast: () => ({ getFeed }) }))
 
 jest.mock('react-marquease', () => ({
   __esModule: true,
@@ -10,6 +14,15 @@ jest.mock('react-marquease', () => ({
 }))
 
 describe('Index', () => {
+  it.each(['build', 'on-demand', 'stale'] as const)(
+    'uses the correct freshness policy for %s generation',
+    async (revalidateReason) => {
+      await getStaticProps({ revalidateReason } as GetStaticPropsContext)
+      expect(getFeed).toHaveBeenLastCalledWith({
+        forceRefresh: revalidateReason !== 'build',
+      })
+    },
+  )
   it('introduces All Play and exposes podcast and newsletter navigation', () => {
     render(
       <ChakraProvider value={system}>

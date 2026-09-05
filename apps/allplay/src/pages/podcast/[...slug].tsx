@@ -257,14 +257,14 @@ export const getStaticPaths = async () => {
   return { paths, fallback: 'blocking' }
 }
 
-export const getStaticProps = (async ({ params }) => {
+export const getStaticProps = (async ({ params, revalidateReason }) => {
   const { slug } = params || {}
 
   const { getEpisode, getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  const feed = await getFeed()
+  const feed = await getFeed({ forceRefresh: revalidateReason !== 'build' })
   if (!slug?.[0]) {
     return { notFound: true }
   }
