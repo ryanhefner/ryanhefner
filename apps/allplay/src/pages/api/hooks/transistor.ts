@@ -1,44 +1,23 @@
-import Cors from 'cors'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { usePodcast } from 'use-podcast'
-
-const cors = Cors({
-  origin: '*',
-  methods: ['POST'],
-})
 
 export const config = {
   maxDuration: 60,
 }
 
-type Middleware = (
-  req: NextApiRequest,
-  res: NextApiResponse,
-  next: (result?: unknown) => void,
-) => void
-
-function runMiddleware(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Middleware,
-) {
-  return new Promise<void>((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
-
-      return resolve()
-    })
-  })
-}
-
 const handler = async function (req: NextApiRequest, res: NextApiResponse) {
-  // Run the middleware
-  await runMiddleware(req, res, cors)
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST')
+    return res.status(405).json({ message: 'Method not allowed' })
+  }
+
+  const secret = process.env.TRANSISTOR_REVALIDATE_KEY
+  if (!secret?.trim()) {
+    return res.status(503).json({ message: 'Revalidation is not configured' })
+  }
 
   // Validate secret
-  if (req.query.secret !== process.env.TRANSISTOR_REVALIDATE_KEY) {
+  if (req.query.secret !== secret) {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
