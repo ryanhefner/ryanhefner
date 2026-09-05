@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import type { PropsWithChildren } from 'react'
 import { render, screen, within } from '@testing-library/react'
 
 import Index, { getStaticProps } from '../src/pages/index'
@@ -10,7 +11,7 @@ jest.mock('use-podcast', () => ({ usePodcast: () => ({ getFeed }) }))
 
 jest.mock('react-marquease', () => ({
   __esModule: true,
-  default: ({ children }) => children,
+  default: ({ children }: PropsWithChildren) => children,
 }))
 
 describe('Index', () => {
@@ -33,12 +34,12 @@ describe('Index', () => {
     expect(introduction.textContent).toContain('Welcome to All Play!')
     expect(
       within(introduction)
-        .getByRole('link', { name: 'podcast', exact: true })
+        .getByRole('link', { name: 'podcast' })
         .getAttribute('href'),
     ).toBe('/podcast')
     expect(
       within(introduction)
-        .getByRole('link', { name: 'newsletter', exact: true })
+        .getByRole('link', { name: 'newsletter' })
         .getAttribute('href'),
     ).toBe('/newsletter')
   })
