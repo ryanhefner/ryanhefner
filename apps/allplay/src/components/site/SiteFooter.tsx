@@ -42,9 +42,9 @@ publishing platform"
       gap={6}
       justifyContent="space-between"
     >
-      <HStack gap={4} alignItems="center">
+      <HStack gap={4} alignItems="center" flexWrap="wrap">
         <Text color="gray.400">
-          {`© ${new Date().getFullYear()} — `}All Play FM +{' '}
+          {`© ${new Date().getFullYear()} — `}All Play +{' '}
           <Link
             color="white"
             href="https://www.ryanhefner.com"
@@ -55,6 +55,15 @@ publishing platform"
         </Text>
         <Link href="/withoss">
           <Image src="/assets/oss.svg" alt="With OSS" h={5} />
+        </Link>
+        <Link href="/about" color="gray.400">
+          About
+        </Link>
+        <Link href="/contact" color="gray.400">
+          Contact
+        </Link>
+        <Link href="/privacy" color="gray.400">
+          Privacy
         </Link>
       </HStack>
       <HStack gap={4} alignItems="center">

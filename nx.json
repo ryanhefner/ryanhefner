@@ -11,7 +11,7 @@
       "inputs": [
         "default",
         "^default",
-        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
         "{workspaceRoot}/tools/eslint-rules/**/*"
       ]
     },
@@ -64,13 +64,14 @@
       "default",
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json"
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/eslint.config.mjs"
     ]
   },
   "defaultBase": "main",
   "release": {
     "version": {
-      "preVersionCommand": "yarn nx run-many -t build"
+      "preVersionCommand": "pnpm exec nx run-many -t build"
     }
   },
   "analytics": false

@@ -1,15 +1,19 @@
 import { UTCDateMini } from '@date-fns/utc'
-import { Now, allNows } from 'contentlayer/generated'
+import { Now, allNows } from 'content-collections'
 import { format } from 'date-fns'
 
-import { NowLayout } from '../../components/layouts'
+import { NowLayout, SiteLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 
 const NowPageIndex = ({ now }: { now: Now }) => {
   return <NowPage now={now} />
 }
 
-NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
+NowPageIndex.getLayout = (page) => (
+  <SiteLayout>
+    <NowLayout>{page}</NowLayout>
+  </SiteLayout>
+)
 
 export const getStaticPaths = async () => {
   const paths = allNows.map((now) => ({

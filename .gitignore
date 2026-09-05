@@ -7,6 +7,7 @@
 
 # dependencies
 node_modules
+/.pnpm-store
 
 # IDEs and editors
 /.idea
@@ -30,6 +31,7 @@ node_modules
 /coverage
 /libpeerconnection.log
 npm-debug.log
+pnpm-debug.log*
 yarn-error.log
 testem.log
 /typings
@@ -48,8 +50,8 @@ Thumbs.db
 # Env Vars
 .env
 
-# contentlayer
-.contentlayer
+# generated content
+.content-collections
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 .cursor/rules/nx-rules.mdc
@@ -59,3 +61,4 @@ vitest.config.*.timestamp*
 .claude/settings.local.json
 .nx/polygraph
 .nx/self-healing
+.nx/migrate-runs

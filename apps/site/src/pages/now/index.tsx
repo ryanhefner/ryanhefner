@@ -6,25 +6,29 @@
 //   Text,
 //   UnorderedList,
 // } from '@chakra-ui/react'
-// import { SiteMeta } from 'next-meta'
+// import { PageMeta } from 'next-meta'
 // import { FootnoteLink, Link } from '../../components/base'
 // import { PageWrapper } from '../../components/site'
 // import { PageHeading } from '../../components/typography'
 // import { ProjectLink } from '../../constants'
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 
-import { NowLayout } from '../../components/layouts'
+import { NowLayout, SiteLayout } from '../../components/layouts'
 import { NowPage } from '../../components/pages'
 
-const TITLE = 'What I’m working on, now | Ryan Hefner - All Play'
+const TITLE = 'What I’m working on, now'
 const DESCRIPTION =
   'A break-down of things that I’m focusing on right now. A listing of projects that are in-development, on-going initiatives, and upcoming projects that are on the horizon.'
 
 const NowPageIndex = ({ now }) => (
-  <NowPage description={DESCRIPTION} now={now} title={TITLE} />
+  <NowPage description={DESCRIPTION} now={now} title={TITLE} url="/now" />
 )
 
-NowPageIndex.getLayout = (page) => <NowLayout>{page}</NowLayout>
+NowPageIndex.getLayout = (page) => (
+  <SiteLayout>
+    <NowLayout>{page}</NowLayout>
+  </SiteLayout>
+)
 
 export const getStaticProps = async () => {
   const now = allNows.sort((a, b) => {

@@ -1,10 +1,12 @@
-import { allThoughts } from 'contentlayer/generated'
+import { allThoughts } from 'content-collections'
 
-import { PostLayout } from '../../components/layouts'
+import { PostLayout, SiteLayout } from '../../components/layouts'
 
 const ThoughtPage = ({ thought }) => {
   return <PostLayout thought={thought} />
 }
+
+ThoughtPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticPaths = async () => {
   const paths = allThoughts.map((thought) => ({

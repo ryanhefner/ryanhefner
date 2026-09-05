@@ -1,0 +1,20 @@
+{
+  "name": "emails",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./index.esm.js",
+  "module": "./index.esm.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.esm.js",
+      "default": "./index.esm.js"
+    }
+  },
+  "dependencies": {
+    "chakra-email": "^0.1.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  }
+}

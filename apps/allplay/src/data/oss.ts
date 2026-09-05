@@ -32,19 +32,15 @@ export const withOss = [
   },
   {
     name: 'react-markdown',
-    description: 'Markdown rendering for podcast show notes.',
+    description:
+      'Host renderer for podcast show notes using Postkit components.',
     urls: ['https://github.com/remarkjs/react-markdown'],
   },
   {
-    name: 'remark-gfm',
+    name: '@postkit/react + @postkit/next',
     description:
-      'GitHub Flavored Markdown support in show notes and MDX content.',
-    urls: ['https://github.com/remarkjs/remark-gfm'],
-  },
-  {
-    name: 'prism-react-renderer',
-    description: 'Code highlighting for Markdown content.',
-    urls: ['https://github.com/FormidableLabs/prism-react-renderer'],
+      'Markdown processing, article components, and Next.js MDX rendering.',
+    urls: ['https://github.com/org-postkit/postkit-js'],
   },
   {
     name: 'rss-parser',

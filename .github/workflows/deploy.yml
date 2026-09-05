@@ -16,7 +16,10 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
 
       - name: Install Deno
         uses: denoland/setup-deno@v2
@@ -24,21 +27,27 @@ jobs:
           deno-version: v2.x
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: lts/*
+          node-version: 24
+          cache: pnpm
 
       - name: Install step
-        run: "yarn install"
+        # Fail with an actionable package list before attempting a clean install.
+        run: 'node tools/scripts/check-release-dependencies.mjs && pnpm install --frozen-lockfile'
+
+      - name: Dependency audit
+        run: 'pnpm deps:audit'
 
       - name: Build step
-        run: "npx contentlayer2 build -c ./libs/contentlayer/contentlayer.config.ts && npx nx build site --prod && npx nx run site:postbuild"
+        run: 'pnpm exec nx build site --prod && pnpm exec nx run site:postbuild'
+
+      - name: Metadata check
+        run: 'pnpm exec nx run site:check-metadata'
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "ryanhefner-site"
-          entrypoint: "DENO_NEXT_START_DIRECTORY=dist/apps/site/.next; jsr:@deno/nextjs-start/v15"
-          root: "."
-          
-          
+          project: 'ryanhefner-site'
+          entrypoint: 'DENO_NEXT_START_DIRECTORY=dist/apps/site/.next; jsr:@deno/nextjs-start/v15'
+          root: '.'

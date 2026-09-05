@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "scripts": {
     "start": "next start",
-    "postbuild": "npx next-sitemap"
+    "postbuild": "next-sitemap"
   }
 }

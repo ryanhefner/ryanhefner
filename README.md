@@ -1,90 +1,47 @@
-# Ryanhefner
+# Hey, I’m Ryan Hefner.
 
-This project was generated using [Nx](https://nx.dev).
+Software developer by necessity, product designer by heart, and eternal
+tinkerer.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+I like crafting well-designed, nicely coded software that gracefully solves the
+problem at hand. I build products at
+[Commune Software](https://commune.software), publish open-source tools for
+the web, and share what I learn along the way.
 
-🔎 **Smart, Fast and Extensible Build System**
+## What I’m working on
 
-## Adding capabilities to your workspace
+- [OpenGraphs](https://www.opengraphs.com) — Open Graph image generation,
+  metadata tooling, and optimization for sites and apps.
+- [PostKit](https://github.com/postkit-org/postkit-js) — Portable article
+  components, Markdown tooling, link metadata resolvers, and framework adapters.
+- [Chakra Email](https://github.com/chakra-email/chakra-email) — React email
+  templates with Chakra-style props, theme tokens, and email-safe rendering.
+- [Chakra Docs](https://github.com/chakra-docs/chakra-docs) — Composable
+  documentation for existing Chakra UI apps, with flexible content sources and
+  framework adapters.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Open source
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+- [next-meta](https://github.com/ryanhefner/next-meta) — Composable metadata,
+  Open Graph, and Twitter Card management for Next.js.
+- [react-structured](https://github.com/ryanhefner/react-structured) — Type-safe
+  React components for Schema.org JSON-LD and rich results.
+- [react-fathom](https://github.com/ryanhefner/react-fathom) — Privacy-focused
+  Fathom Analytics for React, Next.js, and React Native.
+- [use-bluesky](https://github.com/ryanhefner/use-bluesky) — React hooks for the
+  Bluesky API.
 
-Below are our core plugins:
+There are plenty more experiments, utilities, and works in progress in my
+[repositories](https://github.com/ryanhefner?tab=repositories) and on my
+[projects page](https://www.ryanhefner.com/projects).
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nx/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nx/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+## Follow along
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+I talk through the process of building products and sharpening my craft on
+[All Play](https://www.allplay.fm), and get together with fellow builders for
+longer conversations on [Jam Sessions](https://www.jamsessions.fm).
 
-## Generate an application
-
-Run `nx g @nx/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nx/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@ryanhefner/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nx/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[Website](https://www.ryanhefner.com) ·
+[Bluesky](https://bsky.app/profile/ryanhefner.com) ·
+[YouTube](https://www.youtube.com/@ryan_hefner) ·
+[All Play](https://www.allplay.fm)

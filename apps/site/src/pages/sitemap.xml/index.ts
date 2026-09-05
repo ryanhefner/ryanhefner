@@ -1,4 +1,4 @@
-import { allNows } from 'contentlayer/generated'
+import { allNows } from 'content-collections'
 import { GetServerSideProps } from 'next'
 import { getServerSideSitemapLegacy } from 'next-sitemap'
 
@@ -13,6 +13,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
     {
       loc: `${BASE_URL}/about`,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: `${BASE_URL}/contact`,
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: `${BASE_URL}/privacy`,
       lastmod: new Date().toISOString(),
     },
     {

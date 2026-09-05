@@ -1,7 +1,14 @@
+import { createLinkCardImage } from '@linkcards/next'
+import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
+import type { PodcastEpisode } from 'use-podcast'
+
+import { getEpisodeAudioUrl } from './podcast'
+
+const DEFAULT_ALLPLAY_SITE_URL = 'https://www.allplay.fm'
 
 export const ALLPLAY_SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.allplay.fm'
+  process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_ALLPLAY_SITE_URL
 
 export const ALLPLAY_PODCAST_FEED_URL =
   process.env.NEXT_PUBLIC_PODCAST_FEED_URL ??
@@ -28,18 +35,49 @@ type BreadcrumbItem = {
   url?: string
 }
 
-export const normalizeSiteUrl = (siteUrl = ALLPLAY_SITE_URL) =>
-  siteUrl.replace(/\/$/, '')
+export const normalizeSiteUrl = (siteUrl = ALLPLAY_SITE_URL) => {
+  try {
+    const url = new URL(siteUrl)
+
+    return url.hostname ? url.origin : DEFAULT_ALLPLAY_SITE_URL
+  } catch {
+    return DEFAULT_ALLPLAY_SITE_URL
+  }
+}
 
 export const absoluteUrl = (path: string, siteUrl = ALLPLAY_SITE_URL) => {
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    return path
+  const baseUrl = `${normalizeSiteUrl(siteUrl)}/`
+
+  try {
+    return new URL(path, baseUrl).toString()
+  } catch {
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`
+
+    return `${normalizeSiteUrl(siteUrl)}${normalizedPath}`
   }
+}
 
-  const baseUrl = normalizeSiteUrl(siteUrl)
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+export const getAllPlayLinkCardImage = (path: string): Image | undefined => {
+  const url = absoluteUrl(path)
+  const templateUrl = `${url.replace(/\/$/, '')}/social-image.png`
 
-  return `${baseUrl}${normalizedPath}`
+  return (
+    createLinkCardImage({
+      accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
+      imageAlt: 'All Play',
+      imageHeight: 630,
+      imageType: 'image/png',
+      imageWidth: 1200,
+      templateUrl,
+      url,
+    }) ?? {
+      alt: 'All Play podcast artwork',
+      height: 2048,
+      type: 'image/png',
+      url: absoluteUrl('/assets/all-play-cover.png'),
+      width: 2048,
+    }
+  )
 }
 
 const stripMarkup = (value: string) =>
@@ -63,18 +101,46 @@ const toIsoDate = (value?: string) => {
   return Number.isNaN(date.getTime()) ? value : date.toISOString()
 }
 
-export const getEpisodeSlug = (episode: any) =>
+export const getEpisodeSlug = (episode: PodcastEpisode) =>
   episode?.link?.split('/').filter(Boolean).pop()
 
-export const getEpisodeUrl = (episode: any) =>
+export const getEpisodeUrl = (episode: PodcastEpisode) =>
   absoluteUrl(`/podcast/${getEpisodeSlug(episode)}`)
 
-export const getEpisodeAudioUrl = (episode: any) =>
-  episode?.enclosure?.url
-    ? `${episode.enclosure.url}?src=allplay.fm`
-    : undefined
+const getTransistorShareId = (episode: PodcastEpisode) => {
+  const transcriptUrl = episode?.transcripts?.find(
+    (transcript) => transcript?.$?.url,
+  )?.$.url
 
-export const getEpisodeDescription = (episode: any) => {
+  if (!transcriptUrl) {
+    return undefined
+  }
+
+  try {
+    const url = new URL(transcriptUrl)
+    const [, resource, shareId] = url.pathname.split('/')
+
+    return url.hostname === 'share.transistor.fm' && resource === 's'
+      ? shareId
+      : undefined
+  } catch {
+    return undefined
+  }
+}
+
+export const getEpisodeShareUrl = (episode: PodcastEpisode) => {
+  const shareId = getTransistorShareId(episode)
+
+  return shareId ? `https://share.transistor.fm/s/${shareId}` : undefined
+}
+
+export const getEpisodeEmbedUrl = (episode: PodcastEpisode) => {
+  const shareId = getTransistorShareId(episode)
+
+  return shareId ? `https://share.transistor.fm/e/${shareId}` : undefined
+}
+
+export const getEpisodeDescription = (episode: PodcastEpisode) => {
   const description =
     episode?.contentSnippet ??
     episode?.descriptionMarkdown ??
@@ -123,6 +189,7 @@ export const secondsToIsoDuration = (seconds?: number) => {
 
 export const getAllPlaySiteGraphData = (): GraphData => {
   const siteUrl = normalizeSiteUrl()
+  const allPlayOrganizationId = `${siteUrl}/#organization`
 
   return {
     '@graph': [
@@ -130,11 +197,30 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         '@type': 'Person',
         '@id': ryanHefnerPersonId,
         name: 'Ryan Hefner',
+        description:
+          'Software developer and product designer who hosts the All Play podcast and newsletter.',
         url: 'https://www.ryanhefner.com',
+        jobTitle: ['Software Developer', 'Product Designer', 'Podcast Host'],
         sameAs: [
           'https://github.com/ryanhefner',
           'https://bsky.app/profile/ryanhefner.com',
           'https://mastodon.social/@ryanhefner',
+          'https://www.youtube.com/@ryan_hefner',
+        ],
+      },
+      {
+        '@type': 'Organization',
+        '@id': allPlayOrganizationId,
+        name: 'All Play',
+        description:
+          'An independent podcast and newsletter where Ryan Hefner documents building products and open-source tools.',
+        url: siteUrl,
+        logo: `${siteUrl}/assets/all-play.png`,
+        founder: { '@id': ryanHefnerPersonId },
+        sameAs: [
+          'https://medium.com/allplay',
+          'https://allplay.substack.com',
+          'https://mastodon.social/@allplay',
         ],
       },
       {
@@ -144,7 +230,8 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         url: siteUrl,
         description:
           'Updates on the process, tools, and attempts Ryan Hefner makes while building products and open-source tools.',
-        publisher: { '@id': ryanHefnerPersonId },
+        publisher: { '@id': allPlayOrganizationId },
+        creator: { '@id': ryanHefnerPersonId },
         inLanguage: 'en-US',
       },
       {
@@ -156,7 +243,7 @@ export const getAllPlaySiteGraphData = (): GraphData => {
         image: `${siteUrl}/assets/all-play.png`,
         webFeed: ALLPLAY_PODCAST_FEED_URL,
         author: { '@id': ryanHefnerPersonId },
-        publisher: { '@id': ryanHefnerPersonId },
+        publisher: { '@id': allPlayOrganizationId },
         sameAs: podcastLinks,
       },
     ],
@@ -189,11 +276,12 @@ export const getPodcastPageData = (): SchemaData<'CollectionPage'> => {
 }
 
 export const getPodcastEpisodeData = (
-  episode: any,
+  episode: PodcastEpisode,
 ): SchemaData<'PodcastEpisode'> => {
   const siteUrl = normalizeSiteUrl()
   const url = getEpisodeUrl(episode)
   const audioUrl = getEpisodeAudioUrl(episode)
+  const artworkUrl = absoluteUrl('/assets/all-play.png')
   const duration = secondsToIsoDuration(
     parsePodcastDuration(episode?.itunes?.duration),
   )
@@ -204,6 +292,7 @@ export const getPodcastEpisodeData = (
     description: getEpisodeDescription(episode),
     url,
     datePublished: toIsoDate(episode.isoDate ?? episode.pubDate),
+    image: artworkUrl,
     partOfSeries: { '@id': `${siteUrl}/podcast#series` },
     ...(duration ? { duration } : {}),
     ...(episode?.itunes?.episode
@@ -217,6 +306,7 @@ export const getPodcastEpisodeData = (
             name: episode.title,
             contentUrl: audioUrl,
             encodingFormat: episode?.enclosure?.type ?? 'audio/mpeg',
+            thumbnailUrl: artworkUrl,
             ...(duration ? { duration } : {}),
           },
         }

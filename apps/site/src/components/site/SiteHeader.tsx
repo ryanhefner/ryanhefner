@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Image, Text } from '@chakra-ui/react'
-import { allUpdates } from 'contentlayer/generated'
+import { allUpdates } from 'content-collections'
 
 import { Link } from '../base'
 

@@ -20,9 +20,11 @@
       "@fontbase/suisse-mono": ["./libs/suisse-mono/src/index.css"],
       "@fontbase/suisse-works": ["./libs/suisse-works/src/index.css"],
       "@linkcards/next": ["./libs/linkcards/src/index.ts"],
+      "@ryanhefner/postkit-theme": ["./libs/postkit-theme/src/index.ts"],
       "@waveforms/react": ["./libs/waveforms/src/index.ts"],
-      "contentlayer": ["./libs/contentlayer/src/index.ts"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
+      "content-collections": [
+        "./libs/content/.content-collections/generated"
+      ],
       "emails": ["./libs/emails/src/index.ts"],
       "newsletter": ["./libs/newsletter/src/index.ts"],
       "props": ["./libs/props/src/index.ts"],
@@ -31,10 +33,15 @@
       "react-web-audio": ["./libs/audio/src/index.ts"],
       "transistor-client": ["./libs/transistor/client/src/index.ts"],
       "use-podcast": ["./libs/use-podcast/src/index.ts"],
+      "search": ["./libs/search/src/index.ts"],
       "chakra-color": ["./libs/chakra-color/src/index.ts"],
       "chakra-color/dark-only": ["./libs/chakra-color/src/dark-only.ts"]
-    }
+    },
+    "strict": false,
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": false
   },
-  "include": ["./.contentlayer/generated"],
+  "include": ["./libs/content/.content-collections/generated"],
   "exclude": ["node_modules", "tmp"]
 }

@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { NewsletterForm } from 'newsletter'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 import { usePodcast } from 'use-podcast'
 
@@ -12,24 +12,28 @@ import { EpisodeList } from '../../components/media/EpisodeList'
 import { Podcatchers } from '../../components/podcast'
 import { feeds } from '../../data/feeds'
 import {
+  type PodcastListEpisode,
+  getPodcastListEpisodes,
+} from '../../utils/podcast'
+import {
   ALLPLAY_PODCAST_DESCRIPTION,
   getBreadcrumbData,
   getPodcastPageData,
 } from '../../utils/structured-data'
 
 const EpisodesIndexPage = ({
-  feed,
+  episodes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <SiteMeta title={`Podcast`} description={ALLPLAY_PODCAST_DESCRIPTION}>
+      <PageMeta title="Podcast" description={ALLPLAY_PODCAST_DESCRIPTION}>
         <link
           rel="alternate"
           type="application/rss+xml"
           title="All Play w/ Ryan Hefner"
           href="https://feeds.transistor.fm/allplay"
         />
-      </SiteMeta>
+      </PageMeta>
       <Schema
         id="podcast-page-jsonld"
         type="CollectionPage"
@@ -51,7 +55,7 @@ const EpisodesIndexPage = ({
         w="full"
       >
         <Podcatchers feeds={feeds} />
-        <EpisodeList episodes={feed.items} mt={24} />
+        <EpisodeList episodes={episodes} mt={24} />
       </Flex>
       <Box
         id="signup"
@@ -74,14 +78,14 @@ EpisodesIndexPage.getLayout = (page: ReactNode) => (
   <SiteLayout>{page}</SiteLayout>
 )
 
-export const getStaticProps = (async () => {
+export const getStaticProps = (async ({ revalidateReason }) => {
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  const feed = await getFeed()
+  const feed = await getFeed({ forceRefresh: revalidateReason !== 'build' })
 
-  return { props: { feed } }
-}) satisfies GetStaticProps<{ feed: any }>
+  return { props: { episodes: getPodcastListEpisodes(feed) } }
+}) satisfies GetStaticProps<{ episodes: PodcastListEpisode[] }>
 
 export default EpisodesIndexPage

@@ -1,60 +1,44 @@
-import Cors from 'cors'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { usePodcast } from 'use-podcast'
-
-const cors = Cors({
-  origin: '*',
-  methods: ['POST'],
-})
 
 export const config = {
   maxDuration: 60,
 }
 
-function runMiddleware(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Function,
-) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
-
-      return resolve(result)
-    })
-  })
-}
-
 const handler = async function (req: NextApiRequest, res: NextApiResponse) {
-  // Run the middleware
-  await runMiddleware(req, res, cors)
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST')
+    return res.status(405).json({ message: 'Method not allowed' })
+  }
+
+  const secret = process.env.TRANSISTOR_REVALIDATE_KEY
+  if (!secret?.trim()) {
+    return res.status(503).json({ message: 'Revalidation is not configured' })
+  }
 
   // Validate secret
-  if (req.query.secret !== process.env.TRANSISTOR_REVALIDATE_KEY) {
+  if (req.query.secret !== secret) {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
   // Revalidate episode passed
   try {
-    // eslint-disable-next-line
     const { getFeed } = usePodcast({
       url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
     })
 
-    const feed = await getFeed()
+    const feed = await getFeed({ forceRefresh: true })
 
     if (feed?.items) {
       for (const item of feed.items) {
-        console.debug(
-          `Revalidate episode page: /podcast/${item.link.split('/').pop()}`,
-        )
-        await res.revalidate(`/podcast/${item.link.split('/').pop()}`)
-        console.debug(
-          `Revalidate og-image: /podcast/${item.link.split('/').pop()}`,
-        )
-        await res.revalidate(`/og-image/podcast/${item.link.split('/').pop()}`)
+        const slug = item.link?.split('/').pop()
+
+        if (slug) {
+          console.debug(`Revalidate episode page: /podcast/${slug}`)
+          await res.revalidate(`/podcast/${slug}`)
+          console.debug(`Revalidate og-image: /podcast/${slug}`)
+          await res.revalidate(`/og-image/podcast/${slug}`)
+        }
       }
     }
 

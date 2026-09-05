@@ -1,8 +1,12 @@
-import type { Now, Thought } from 'contentlayer/generated'
+import { createLinkCardImage } from '@linkcards/next'
+import type { Now, Thought } from 'content-collections'
+import type { Image } from 'next-meta'
 import type { GraphData, SchemaData } from 'react-structured'
 
+const DEFAULT_RYAN_HEFNER_SITE_URL = 'https://www.ryanhefner.com'
+
 export const RYAN_HEFNER_SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
+  process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_RYAN_HEFNER_SITE_URL
 
 const profileUrls = [
   'https://github.com/ryanhefner',
@@ -28,18 +32,44 @@ type CollectionItem = {
   url: string
 }
 
-export const normalizeSiteUrl = (siteUrl = RYAN_HEFNER_SITE_URL) =>
-  siteUrl.replace(/\/$/, '')
+export const normalizeSiteUrl = (siteUrl = RYAN_HEFNER_SITE_URL) => {
+  try {
+    const url = new URL(siteUrl)
+
+    return url.hostname ? url.origin : DEFAULT_RYAN_HEFNER_SITE_URL
+  } catch {
+    return DEFAULT_RYAN_HEFNER_SITE_URL
+  }
+}
 
 export const absoluteUrl = (path: string, siteUrl = RYAN_HEFNER_SITE_URL) => {
-  if (path.startsWith('http://') || path.startsWith('https://')) {
-    return path
+  const baseUrl = `${normalizeSiteUrl(siteUrl)}/`
+
+  try {
+    return new URL(path, baseUrl).toString()
+  } catch {
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`
+
+    return `${normalizeSiteUrl(siteUrl)}${normalizedPath}`
   }
+}
 
-  const baseUrl = normalizeSiteUrl(siteUrl)
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+export const getRyanHefnerLinkCardImage = (
+  path: string,
+  imageAlt = 'Ryan Hefner',
+): Image | undefined => {
+  const url = absoluteUrl(path)
+  const templateUrl = `${url.replace(/\/$/, '')}/social-image.png`
 
-  return `${baseUrl}${normalizedPath}`
+  return createLinkCardImage({
+    accountUrl: process.env.NEXT_PUBLIC_LINKCARDS_ACCOUNT_URL,
+    imageAlt,
+    imageHeight: 630,
+    imageType: 'image/png',
+    imageWidth: 1200,
+    templateUrl,
+    url,
+  })
 }
 
 const toIsoDate = (value: string | Date) => {
@@ -48,7 +78,14 @@ const toIsoDate = (value: string | Date) => {
   return Number.isNaN(date.getTime()) ? String(value) : date.toISOString()
 }
 
-const socialImageUrl = (path: string) => `${absoluteUrl(path)}/social-image.png`
+const socialImageUrl = (path: string, imageAlt?: string) => {
+  const url = absoluteUrl(path)
+
+  return (
+    getRyanHefnerLinkCardImage(path, imageAlt)?.url ??
+    `${url.replace(/\/$/, '')}/social-image.png`
+  )
+}
 
 export const getRyanHefnerSiteGraphData = (): GraphData => {
   const siteUrl = normalizeSiteUrl()
@@ -59,9 +96,16 @@ export const getRyanHefnerSiteGraphData = (): GraphData => {
         '@type': 'Person',
         '@id': `${siteUrl}/#person`,
         name: 'Ryan Hefner',
+        description:
+          'Software developer and product designer building products and open-source tools.',
         url: siteUrl,
         image: `${siteUrl}/assets/ryan-hefner-social.jpg`,
         jobTitle: ['Software Developer', 'Product Designer'],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Commune Software',
+          url: 'https://commune.software',
+        },
         homeLocation: {
           '@type': 'Place',
           name: 'Atlanta, GA',
@@ -72,7 +116,7 @@ export const getRyanHefnerSiteGraphData = (): GraphData => {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         name: 'Ryan Hefner',
-        alternateName: 'Ryan Hefner - All Play',
+        alternateName: 'RyanHefner.com',
         description:
           'The online archive and play space for Ryan Hefner, software developer and product designer.',
         url: siteUrl,
@@ -114,6 +158,9 @@ export const getThoughtData = (thought: Thought): SchemaData<'BlogPosting'> => {
   const siteUrl = normalizeSiteUrl()
   const url = absoluteUrl(thought.url)
   const publishedAt = toIsoDate(thought.date)
+  const modifiedAt = thought.updatedAt
+    ? toIsoDate(thought.updatedAt)
+    : undefined
 
   return {
     '@id': `${url}#blog-posting`,
@@ -121,9 +168,12 @@ export const getThoughtData = (thought: Thought): SchemaData<'BlogPosting'> => {
     name: thought.title,
     description: thought.description,
     url,
-    image: socialImageUrl(thought.url),
+    image: socialImageUrl(
+      thought.url,
+      `Social card for “${thought.title}” by Ryan Hefner`,
+    ),
     datePublished: publishedAt,
-    dateModified: publishedAt,
+    ...(modifiedAt ? { dateModified: modifiedAt } : {}),
     author: { '@id': `${siteUrl}/#person` },
     publisher: { '@id': `${siteUrl}/#person` },
     isPartOf: { '@id': `${siteUrl}/#website` },
@@ -136,9 +186,10 @@ export const getNowPageData = (
   now: Now,
   title = now.title,
   description = now.description,
+  path = now.url,
 ): SchemaData<'WebPage'> => {
   const siteUrl = normalizeSiteUrl()
-  const url = absoluteUrl(now.url)
+  const url = absoluteUrl(path)
   const updatedAt = toIsoDate(now.date)
 
   return {
@@ -146,7 +197,7 @@ export const getNowPageData = (
     name: title,
     description,
     url,
-    image: socialImageUrl(now.url),
+    image: socialImageUrl(path, `Social card for “${title}” by Ryan Hefner`),
     dateModified: updatedAt,
     author: { '@id': `${siteUrl}/#person` },
     isPartOf: { '@id': `${siteUrl}/#website` },
