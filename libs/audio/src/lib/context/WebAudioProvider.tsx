@@ -123,7 +123,13 @@ export const WebAudioProvider = ({
             }
 
             if (audioRef.current.paused) {
-              await audioRef.current.play()
+              try {
+                await audioRef.current.play()
+              } catch (err) {
+                onError?.(err)
+                onErrorLocal?.(err)
+                return null
+              }
             }
 
             return { audioRef: audioRef.current }
@@ -140,11 +146,13 @@ export const WebAudioProvider = ({
             audioRef.current.addEventListener('error', onErrorLocal)
           }
 
-          await audioRef.current.play().catch((err) => {
+          try {
+            await audioRef.current.play()
+          } catch (err) {
             onError?.(err)
             onErrorLocal?.(err)
             return null
-          })
+          }
 
           return { audioRef: audioRef.current }
         }

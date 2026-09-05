@@ -41,6 +41,7 @@ export const PodcastPlayerProvider = ({
   const play = useCallback((url: string, startOffset = 0) => {
     const asyncPlay = async () => {
       const playResponse = await playContext(url, {
+        onError: () => setIsPlaying(false),
         onEnded: () => {
           setIsEnded(true)
           setIsPlaying(false)
@@ -66,6 +67,7 @@ export const PodcastPlayerProvider = ({
         return
       }
 
+      setIsPlaying(false)
       console.warn('No playResponse for: ', url)
     }
 

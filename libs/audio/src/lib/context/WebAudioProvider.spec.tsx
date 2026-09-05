@@ -14,6 +14,28 @@ afterEach(() => {
 })
 
 describe('WebAudioProvider', () => {
+  it.each([false, true])(
+    'reports failure when playing a source (already selected: %s)',
+    async (sameSource) => {
+      const onError = vi.fn()
+      const { result } = renderHook(useWebAudioContext, {
+        wrapper: WebAudioProvider,
+      })
+      const url = 'https://example.com/episode.mp3'
+      if (sameSource)
+        await act(async () => {
+          await result.current.play(url)
+        })
+      const error = new Error('Playback denied')
+      vi.mocked(HTMLMediaElement.prototype.play).mockRejectedValue(error)
+      let response: unknown
+      await act(async () => {
+        response = await result.current.play(url, { onError })
+      })
+      expect(response).toBeNull()
+      expect(onError).toHaveBeenCalledWith(error)
+    },
+  )
   it('seeks the current source back to zero', async () => {
     const { result } = renderHook(useWebAudioContext, {
       wrapper: WebAudioProvider,
