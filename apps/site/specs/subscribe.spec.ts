@@ -22,7 +22,9 @@ describe('newsletter subscriptions', () => {
   })
   beforeEach(() => createContact.mockReset())
 
-  async function subscribe() {
+  async function subscribe(
+    body: unknown = JSON.stringify({ email: 'reader@example.com' }),
+  ) {
     const json = jest.fn()
     const res = {
       status: jest.fn().mockReturnThis(),
@@ -31,7 +33,7 @@ describe('newsletter subscriptions', () => {
     await handler(
       {
         method: 'POST',
-        body: JSON.stringify({ email: 'reader@example.com' }),
+        body,
       } as NextApiRequest,
       res,
     )
@@ -55,5 +57,33 @@ describe('newsletter subscriptions', () => {
     const { res, json } = await subscribe()
     expect(res.status).toHaveBeenCalledWith(200)
     expect(json).toHaveBeenCalledWith({ success: true })
+  })
+
+  it('accepts and normalizes an already-parsed JSON request', async () => {
+    createContact.mockResolvedValue({ data: { id: 'contact' }, error: null })
+    const { res } = await subscribe({
+      email: ' reader@example.com ',
+      firstName: ' Reader ',
+    })
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(createContact).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: 'reader@example.com',
+        firstName: 'Reader',
+      }),
+    )
+  })
+
+  it.each([
+    null,
+    [],
+    {},
+    { email: 'invalid' },
+    { email: 'reader@example.com', firstName: 123 },
+    '{broken',
+  ])('rejects invalid input before calling Resend: %j', async (body) => {
+    const { res } = await subscribe(body)
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(createContact).not.toHaveBeenCalled()
   })
 })
