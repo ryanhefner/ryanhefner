@@ -1,4 +1,4 @@
-import { Button, Heading, Text, render, renderPlainText } from 'chakra-email'
+import { Button, Heading, Section, Text, render, renderPlainText } from 'chakra-email'
 
 import { EmailShell } from './components/email-shell'
 
@@ -46,9 +46,18 @@ export function ThankYouEmail({
         In the meantime, you can catch up on previous issues and see what’s new
         with All Play.
       </Text>
-      <Button href={newsletterUrl} bg="brand.500" color="white" size="lg">
-        Visit the newsletter
-      </Button>
+      <Section>
+        <Button
+          href={newsletterUrl}
+          variant="outline"
+          borderColor="gray.300"
+          borderRadius={0}
+          color="gray.900"
+          size="md"
+        >
+          Visit the newsletter
+        </Button>
+      </Section>
       <Text color="gray.700" lineHeight="tall" mb={0} mt={8}>
         Thanks,
         <br />

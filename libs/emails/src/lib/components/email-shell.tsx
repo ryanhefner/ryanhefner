@@ -13,21 +13,13 @@ import {
   Text,
 } from 'chakra-email'
 
+import { emailTheme } from './email-theme'
+
 export interface EmailShellProps {
   children: ReactNode
   preview: string
   title: string
   unsubscribeUrl?: string
-}
-
-const allPlayEmailTheme = {
-  tokens: {
-    colors: {
-      brand: {
-        500: { value: '#EF4444' },
-      },
-    },
-  },
 }
 
 export function EmailShell({
@@ -37,15 +29,15 @@ export function EmailShell({
   unsubscribeUrl,
 }: EmailShellProps) {
   return (
-    <ChakraEmailProvider theme={allPlayEmailTheme}>
+    <ChakraEmailProvider theme={emailTheme}>
       <Html lang="en">
         <Head>
           <title>{title}</title>
         </Head>
         <Preview>{preview}</Preview>
-        <Body bg="gray.100" color="gray.900" fontFamily="sans" m={0} py={8}>
+        <Body bg="white" color="gray.900" fontFamily="sans" m={0} py={8}>
           <Container bg="white" maxW="600px" mx="auto" p={8}>
-            <Heading as="h2" color="brand.500" fontSize="lg" mb={8} mt={0}>
+            <Heading as="h2" color="gray.900" fontSize="lg" mb={8} mt={0}>
               — All Play
             </Heading>
             {children}

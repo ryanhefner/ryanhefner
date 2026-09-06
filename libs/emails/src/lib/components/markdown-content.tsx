@@ -59,7 +59,7 @@ const components = {
   ),
   a: ({ children, href }) =>
     href ? (
-      <Link color="brand.500" href={href}>
+      <Link color="gray.900" href={href}>
         {children}
       </Link>
     ) : (
@@ -81,7 +81,7 @@ const components = {
     </ListItem>
   ),
   blockquote: ({ children }) => (
-    <Blockquote borderColor="brand.500" color="gray.700" my={6} pl={5}>
+    <Blockquote borderColor="gray.300" color="gray.700" my={6} pl={5}>
       {children}
     </Blockquote>
   ),
@@ -91,7 +91,7 @@ const components = {
     </Code>
   ),
   pre: ({ children }) => (
-    <Pre bg="gray.900" color="gray.50" mb={6} p={5}>
+    <Pre bg="gray.100" color="gray.900" mb={6} p={5}>
       {children}
     </Pre>
   ),

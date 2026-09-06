@@ -11,6 +11,8 @@ import {
   renderPlainText,
 } from 'chakra-email'
 
+import { emailTheme } from './components/email-theme'
+
 export interface EmailsProps {
   recipientName?: string
 }
@@ -29,13 +31,13 @@ export function Emails({ recipientName }: EmailsProps) {
   const greeting = recipientName ? `Welcome, ${recipientName}!` : 'Welcome!'
 
   return (
-    <ChakraEmailProvider>
+    <ChakraEmailProvider theme={emailTheme}>
       <Html lang="en">
         <Head>
           <title>Welcome to Emails!</title>
         </Head>
         <Preview>Welcome to Emails!</Preview>
-        <Body bg="gray.50" color="gray.900" fontFamily="sans">
+        <Body bg="white" color="gray.900" fontFamily="sans" m={0} py={8}>
           <Container bg="white" maxW="600px" mx="auto" p={8}>
             <Heading as="h1" fontSize="2xl" mb={4}>
               {greeting}
