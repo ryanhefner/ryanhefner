@@ -1,2 +1,2 @@
 export * from './postkit-theme'
-export * from './theme'
+export { system } from '@ryanhefner/theme/site'

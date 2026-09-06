@@ -13,7 +13,7 @@ describe('ThankYouEmail', () => {
     expect(html).toContain('Thanks for subscribing, Ryan!')
     expect(html).toContain('https://allplay.fm/newsletter')
     expect(html).toContain('https://example.com/unsubscribe')
-    expect(html).toContain('border:1px solid #D4D4D4')
+    expect(html).toContain('border:1px solid #aaa')
     expect(html).not.toContain('#EF4444')
   })
 

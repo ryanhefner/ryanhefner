@@ -36,7 +36,10 @@
           "react/jsx-runtime",
           "remark-gfm"
         ],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "rollupConfig": [
+          "@nx/react/plugins/bundle-rollup",
+          "libs/emails/rollup.config.cjs"
+        ],
         "compiler": "babel",
         "assets": [
           {

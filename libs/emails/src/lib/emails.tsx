@@ -11,7 +11,7 @@ import {
   renderPlainText,
 } from 'chakra-email'
 
-import { emailTheme } from './components/email-theme'
+import { emailTheme } from '@ryanhefner/theme/email'
 
 export interface EmailsProps {
   recipientName?: string

@@ -21,6 +21,9 @@
       "@fontbase/suisse-works": ["./libs/suisse-works/src/index.css"],
       "@linkcards/next": ["./libs/linkcards/src/index.ts"],
       "@ryanhefner/postkit-theme": ["./libs/postkit-theme/src/index.ts"],
+      "@ryanhefner/theme": ["./libs/theme/src/index.ts"],
+      "@ryanhefner/theme/site": ["./libs/theme/src/site.ts"],
+      "@ryanhefner/theme/email": ["./libs/theme/src/email.ts"],
       "@waveforms/react": ["./libs/waveforms/src/index.ts"],
       "content-collections": [
         "./libs/content/.content-collections/generated"

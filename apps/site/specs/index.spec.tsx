@@ -1,8 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { system } from '@ryanhefner/theme/site'
 import { render, screen } from '@testing-library/react'
 
 import Index from '../src/pages/index'
-import { system } from '../src/styles/theme'
 
 jest.mock('react-marquease', () => ({
   __esModule: true,

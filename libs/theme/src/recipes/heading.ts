@@ -1,8 +1,10 @@
 import { defineRecipe } from '@chakra-ui/react'
 
+import { themeTypography } from '../tokens'
+
 export const headingRecipe = defineRecipe({
   base: {
-    fontWeight: 'medium', // Override default fontWeight from 'semibold' to 'medium'
+    fontWeight: themeTypography.headingWeight,
     textStyle: '3xl', // Set default fontSize directly in base (overrides default size variant)
   },
   variants: {

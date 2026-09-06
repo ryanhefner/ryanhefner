@@ -2,6 +2,18 @@
 
 This library was generated with [Nx](https://nx.dev).
 
+## Styling
+
+All templates share a neutral palette and a Suisse Intl-first sans-serif font
+stack, including headings, buttons, and Markdown code. The theme lives in
+`libs/theme`: shared tokens drive both the main site and emails, with an
+email-safe adapter at `@ryanhefner/theme/email`. Buttons use a simple unfilled
+outline. The adapter preserves the sans-serif-only, neutral email styling.
+
+The emails do not embed or download font files. Suisse Intl is used when
+available on the recipient's device; otherwise the stack falls back to Arial,
+Helvetica, or the client's sans-serif font.
+
 ## Previewing emails
 
 Run `pnpm email:dev` from the workspace root to start Chakra Email Preview at

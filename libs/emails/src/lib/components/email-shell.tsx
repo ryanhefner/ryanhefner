@@ -13,7 +13,7 @@ import {
   Text,
 } from 'chakra-email'
 
-import { emailTheme } from './email-theme'
+import { emailTheme } from '@ryanhefner/theme/email'
 
 export interface EmailShellProps {
   children: ReactNode

@@ -1,5 +1,7 @@
 import { defineRecipe } from '@chakra-ui/react'
 
+import { themeTypography } from '../tokens'
+
 /**
  * Button recipe to match Chakra UI v2 defaults
  * v2 defaults:
@@ -12,6 +14,6 @@ export const buttonRecipe = defineRecipe({
     borderRadius: 'xs',
     textStyle: 'md',
     fontSize: 'md', // Match v2 default
-    fontWeight: 'semibold', // Match v2 default (v3 might default to 'medium')
+    fontWeight: themeTypography.buttonWeight,
   },
 })

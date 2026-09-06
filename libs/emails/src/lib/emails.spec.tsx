@@ -6,7 +6,7 @@ describe('Emails', () => {
 
     expect(html).toContain('<!DOCTYPE html PUBLIC')
     expect(html).toContain('Welcome, Ryan!')
-    expect(html).toContain('background-color:#ffffff')
+    expect(html).toContain('background-color:#fff')
   })
 
   it('renders a plain-text alternative', async () => {

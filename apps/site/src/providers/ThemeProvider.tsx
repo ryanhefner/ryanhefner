@@ -2,10 +2,10 @@
 
 import { ChakraProvider } from '@chakra-ui/react'
 import { PostkitProvider } from '@postkit/react'
+import { system } from '@ryanhefner/theme/site'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 
 import { ryanHefnerPostkitTheme } from '../styles/postkit-theme'
-import { system } from '../styles/theme'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
