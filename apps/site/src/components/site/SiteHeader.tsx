@@ -21,9 +21,7 @@ export const SiteHeader = () => (
     <HStack>
       <div id="hcard-Ryan-Hefner" className="vcard">
         <Link
-          href={
-            process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ryanhefner.com'
-          }
+          href="/"
           className="h-card url fn p-author u-url u-uid"
           color="white"
           rel="author"
