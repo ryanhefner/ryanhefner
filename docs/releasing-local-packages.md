@@ -1,23 +1,16 @@
 # Releasing the sites after local package testing
 
-The workspace intentionally uses Yalc builds for testing. These files are local
+The workspace can use Yalc builds for testing. These files are local
 and are not available in a clean CI checkout. Vercel and the deployment workflow
 run `node tools/scripts/check-release-dependencies.mjs` before installation so
 the failure identifies which packages still need published versions.
 
-The current local dependencies are:
+Postkit and Chakra Email now use public npm packages at 0.2.0. There are no
+active Yalc dependency references in the root manifests or workspace overrides.
+Old `next-meta` and `react-marquease` entries in `yalc.lock` are leftovers;
+those packages use npm dependencies.
 
-| Package                 | Local version |
-| ----------------------- | ------------- |
-| `@postkit/core`         | 0.1.1         |
-| `@postkit/next`         | 0.1.1         |
-| `@postkit/react`        | 0.1.1         |
-| `@postkit/unfurl`       | 0.1.1         |
-| `chakra-email`          | 0.1.0         |
-| `@chakra-email/core`    | 0.1.0         |
-| `@chakra-email/preview` | 0.1.0         |
-
-Before deployment:
+When returning to public dependencies after local testing:
 
 1. Publish the tested library changes from their owning repositories. If a
    version is already published but its contents differ from Yalc, publish a new
@@ -32,7 +25,6 @@ Before deployment:
 5. Commit the manifests and lockfile together. Do not commit registry credentials
    or local Yalc artifacts.
 
-On September 5, 2026, the registry listed only `@postkit/react@0.1.0`; the local
-0.1.1 build therefore could not be replaced by an equivalent published release.
-The Chakra Email facade also reports 0.1.0 locally, so check its actual changes
-against the published release before switching.
+The requested 0.2.0 releases have exact-version release-age exceptions in
+`pnpm-workspace.yaml`. Other newly published versions remain subject to the
+one-week policy.
