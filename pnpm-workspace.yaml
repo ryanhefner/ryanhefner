@@ -57,7 +57,7 @@ overrides:
   # mdx-bundler only calls the stable `v4()` API; use the patched CJS-compatible
   # UUID line for GHSA-w5hq-g745-h8pq.
   'mdx-bundler@10.1.1>uuid': 11.1.1
-  vite: 8.2.1
+  vite: 8.2.2
 
 allowBuilds:
   # These scripts validate or prepare the platform-specific native binaries
