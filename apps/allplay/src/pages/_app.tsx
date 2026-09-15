@@ -10,9 +10,9 @@ import { NextFathomTrackViewPages } from 'react-fathom/next'
 import { Graph } from 'react-structured'
 import { WebAudioProvider } from 'react-web-audio'
 
-import '@fontbase/suisse-intl'
-import '@fontbase/suisse-mono'
-import '@fontbase/suisse-works'
+import '@fontstack/commune--allplay-mono/css'
+import '@fontstack/commune--allplay-sans/css'
+import '@fontstack/commune--allplay-serif/css'
 
 import { PodcastPlayerProvider } from '../contexts/podcastPlayer'
 import { ThemeProvider } from '../providers/ThemeProvider'
