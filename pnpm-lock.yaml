@@ -7,6 +7,13 @@ settings:
 overrides:
   brace-expansion@: 5.0.9
   mdx-bundler@10.1.1>uuid: 11.1.1
+  qs@>=6.0.0 <6.16.0: 6.16.0
+  fast-uri@>=3.0.0 <3.1.6: 3.1.6
+  js-yaml@>=3.0.0 <3.15.2: 3.15.2
+  js-yaml@>=4.0.0 <4.3.2: 4.3.2
+  svgo@>=4.0.0 <4.1.0: 4.1.0
+  nx@23.2.0>smol-toml: 1.8.0
+  remark-mdx-frontmatter@4.0.0>toml: 4.2.0
   vite: 8.2.2
 
 importers:
@@ -6168,8 +6175,8 @@ packages:
   fast-string-width@3.0.2:
     resolution: {integrity: sha512-gX8LrtNEI5hq8DVUfRQMbr5lpaS4nMIWV+7XEbXk2b8kiQIizgnlr12B4dA3ZEx3308ze0O4Q1R+cHts8kyUJg==}
 
-  fast-uri@3.1.5:
-    resolution: {integrity: sha512-gHwA1O9LDIcKunMKhObS/HimwtehO1nPUECKAu5TpKgaO19fcWEl4bliWe1jWxVFvIXztJjjQ4L8XQ1EU9f7Jw==}
+  fast-uri@3.1.6:
+    resolution: {integrity: sha512-7Ical1vFEMr0onbVzEDIreM22I4khW+fzyQPwvAFWBp1iwdshSZRsL4jjRvPG9JP1uiqMHRto+YU6R2/CzDz5Q==}
 
   fast-wrap-ansi@0.2.0:
     resolution: {integrity: sha512-rLV8JHxTyhVmFYhBJuMujcrHqOT2cnO5Zxj37qROj23CP39GXubJRBUFF0z8KFK77Uc0SukZUf7JZhsVEQ6n8w==}
@@ -7144,10 +7151,6 @@ packages:
 
   js-yaml@3.15.2:
     resolution: {integrity: sha512-6EuL879VkRA+1Cz578mKMiKvjPNEuk6+r1JaFzoSWejZmtf7xWbIyw1e3KkxlkzTIt9Taw6JBhEppG7utc1P+w==}
-    hasBin: true
-
-  js-yaml@4.3.1:
-    resolution: {integrity: sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==}
     hasBin: true
 
   js-yaml@4.3.2:
@@ -8627,10 +8630,6 @@ packages:
   pure-rand@7.0.1:
     resolution: {integrity: sha512-oTUZM/NAZS8p7ANR3SHh30kXB+zK2r2BPcEn/awJIbOvq82WoMN4p62AWWp3Hhw50G0xMsw1mhIBLqHw64EcNQ==}
 
-  qs@6.15.3:
-    resolution: {integrity: sha512-O9gl3zCl5h5blw1KGUzQKhA5oUXSl8rwUIM5o0S3nCXMliSvy5Dzx7/DJcI+SwgICv+IneSZwhBh1oSyEHA71A==}
-    engines: {node: '>=0.6'}
-
   qs@6.16.0:
     resolution: {integrity: sha512-h6fhOIaRrID2CbEY2fqs+7t+UXZo+MLAnU5gRIq85uFtdiUPCdsApMlHhXogKVM4HM2DVbIjGNTTYH2OcmP1vA==}
     engines: {node: '>=0.6'}
@@ -9246,8 +9245,8 @@ packages:
     resolution: {integrity: sha512-vZ7rfeehZui7wQs438JXBckYLkIIdfHOXsaVEUMyS5fHo1483l1bMdo0EDSWYclY0yZKFOipDy4KHuKs6ssvdg==}
     engines: {node: '>=8.0.0'}
 
-  smol-toml@1.6.1:
-    resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
+  smol-toml@1.8.0:
+    resolution: {integrity: sha512-kCZr2V3ch9i00x8zXRhjUNVcjG9ijES5dDudkXvUVCT5QlJNQWElSJdZqyPemffHoLNUYwOcou0Fy+ojN0uHSQ==}
     engines: {node: '>= 18'}
 
   snake-case@3.0.4:
@@ -9623,8 +9622,9 @@ packages:
     resolution: {integrity: sha512-dRXchy+C0IgK8WPC6xvCHFRIWYUbqqdEIKPaKo/AcTUNzwLTK6AH7RjdLWsEZcAN/TBdtfUw3PYEgPr5VPr6ww==}
     engines: {node: '>=14.16'}
 
-  toml@3.0.0:
-    resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
+  toml@4.2.0:
+    resolution: {integrity: sha512-TvAJjbHZlYmI323+srtqHQFyJsoWy6mI09ppkuj9+iRsqsVKG9fvTcOP7FHF2UCb0QSYtjEavffrKzdd0XgClg==}
+    engines: {node: '>=20'}
 
   toposort@2.0.2:
     resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==}
@@ -15190,7 +15190,7 @@ snapshots:
   ajv@8.20.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.5
+      fast-uri: 3.1.6
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -15574,7 +15574,7 @@ snapshots:
       http-errors: 2.0.1
       iconv-lite: 0.4.24
       on-finished: 2.4.1
-      qs: 6.15.3
+      qs: 6.16.0
       raw-body: 2.5.3
       type-is: 1.6.18
       unpipe: 1.0.0
@@ -15904,7 +15904,7 @@ snapshots:
   cosmiconfig@8.3.6(typescript@6.0.3):
     dependencies:
       import-fresh: 3.3.1
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
@@ -16919,7 +16919,7 @@ snapshots:
       parseurl: 1.3.3
       path-to-regexp: 0.1.13
       proxy-addr: 2.0.7
-      qs: 6.15.3
+      qs: 6.16.0
       range-parser: 1.2.1
       safe-buffer: 5.2.1
       send: 0.19.2(supports-color@7.2.0)
@@ -16983,7 +16983,7 @@ snapshots:
     dependencies:
       fast-string-truncated-width: 3.0.3
 
-  fast-uri@3.1.5: {}
+  fast-uri@3.1.6: {}
 
   fast-wrap-ansi@0.2.0:
     dependencies:
@@ -18311,10 +18311,6 @@ snapshots:
       argparse: 1.0.10
       esprima: 4.0.1
 
-  js-yaml@4.3.1:
-    dependencies:
-      argparse: 2.0.1
-
   js-yaml@4.3.2:
     dependencies:
       argparse: 2.0.1
@@ -19563,7 +19559,7 @@ snapshots:
       semver: 7.8.4
       signal-exit: 3.0.7
       sisteransi: 1.0.5
-      smol-toml: 1.6.1
+      smol-toml: 1.8.0
       string-width: 4.2.3
       string_decoder: 1.3.0
       strip-ansi: 6.0.1
@@ -20227,11 +20223,6 @@ snapshots:
 
   pure-rand@7.0.1: {}
 
-  qs@6.15.3:
-    dependencies:
-      es-define-property: 1.0.1
-      side-channel: 1.1.1
-
   qs@6.16.0:
     dependencies:
       es-define-property: 1.0.1
@@ -20513,7 +20504,7 @@ snapshots:
       '@types/mdast': 4.0.4
       estree-util-is-identifier-name: 3.0.0
       estree-util-value-to-estree: 3.5.0
-      toml: 3.0.0
+      toml: 4.2.0
       unified: 11.0.5
       yaml: 2.9.0
 
@@ -21012,7 +21003,7 @@ snapshots:
 
   slugify@1.6.9: {}
 
-  smol-toml@1.6.1: {}
+  smol-toml@1.8.0: {}
 
   snake-case@3.0.4:
     dependencies:
@@ -21468,7 +21459,7 @@ snapshots:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
 
-  toml@3.0.0: {}
+  toml@4.2.0: {}
 
   toposort@2.0.2: {}
 
