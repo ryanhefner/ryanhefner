@@ -38,11 +38,11 @@ export function ThankYouEmail({
       <Heading as="h1" fontSize="3xl" lineHeight="short" mb={5} mt={0}>
         {greeting}
       </Heading>
-      <Text color="gray.700" fontSize="lg" lineHeight="tall" mb={5}>
+      <Text color="fg.muted" fontSize="lg" lineHeight="tall" mb={5}>
         You’re on the list. I’ll send you new podcast episodes, notes from
         things I’m building, and other useful or interesting finds.
       </Text>
-      <Text color="gray.700" lineHeight="tall" mb={7}>
+      <Text color="fg.muted" lineHeight="tall" mb={7}>
         In the meantime, you can catch up on previous issues and see what’s new
         with All Play.
       </Text>
@@ -50,15 +50,15 @@ export function ThankYouEmail({
         <Button
           href={newsletterUrl}
           variant="outline"
-          borderColor="gray.300"
+          borderColor="border.outline"
           borderRadius={0}
-          color="gray.900"
+          color="fg"
           size="md"
         >
           Visit the newsletter
         </Button>
       </Section>
-      <Text color="gray.700" lineHeight="tall" mb={0} mt={8}>
+      <Text color="fg.muted" lineHeight="tall" mb={0} mt={8}>
         Thanks,
         <br />
         Ryan

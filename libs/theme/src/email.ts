@@ -29,11 +29,35 @@ export const emailTheme = {
     ...themeSemanticTokens,
     colors: {
       ...themeSemanticTokens.colors,
+      bg: {
+        DEFAULT: themeSemanticTokens.colors['bg.body'],
+      },
+      fg: {
+        muted: {
+          value: { _light: '{colors.gray.700}', _dark: '{colors.gray.300}' },
+        },
+        subtle: {
+          value: { _light: '{colors.gray.500}', _dark: '{colors.gray.400}' },
+        },
+      },
+      border: {
+        outline: {
+          value: { _light: '{colors.gray.300}', _dark: '{colors.gray.600}' },
+        },
+      },
       accent: {
-        DEFAULT: { value: '{colors.gray.900}' },
-        fg: { value: '{colors.gray.900}' },
-        subtle: { value: '{colors.gray.100}' },
-        contrast: { value: '{colors.white}' },
+        DEFAULT: {
+          value: { _light: '{colors.gray.900}', _dark: '{colors.gray.50}' },
+        },
+        fg: {
+          value: { _light: '{colors.gray.900}', _dark: '{colors.gray.50}' },
+        },
+        subtle: {
+          value: { _light: '{colors.gray.100}', _dark: '{colors.gray.800}' },
+        },
+        contrast: {
+          value: { _light: '{colors.white}', _dark: '{colors.black}' },
+        },
       },
     },
   },

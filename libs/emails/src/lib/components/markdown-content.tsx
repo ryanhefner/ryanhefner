@@ -53,25 +53,25 @@ const components = {
     </Heading>
   ),
   p: ({ children }) => (
-    <Text color="gray.700" lineHeight="tall" mb={5} mt={0}>
+    <Text color="fg.muted" lineHeight="tall" mb={5} mt={0}>
       {children}
     </Text>
   ),
   a: ({ children, href }) =>
     href ? (
-      <Link color="gray.900" href={href}>
+      <Link color="fg" href={href}>
         {children}
       </Link>
     ) : (
       <Text as="span">{children}</Text>
     ),
   ul: ({ children }) => (
-    <List as="ul" color="gray.700" mb={5} mt={0} pl={6}>
+    <List as="ul" color="fg.muted" mb={5} mt={0} pl={6}>
       {children}
     </List>
   ),
   ol: ({ children }) => (
-    <List as="ol" color="gray.700" mb={5} mt={0} pl={6}>
+    <List as="ol" color="fg.muted" mb={5} mt={0} pl={6}>
       {children}
     </List>
   ),
@@ -81,21 +81,21 @@ const components = {
     </ListItem>
   ),
   blockquote: ({ children }) => (
-    <Blockquote borderColor="gray.300" color="gray.700" my={6} pl={5}>
+    <Blockquote borderColor="border.outline" color="fg.muted" my={6} pl={5}>
       {children}
     </Blockquote>
   ),
   code: ({ children }) => (
-    <Code bg="gray.100" borderRadius="base" fontSize="sm" px={1}>
+    <Code bg="bg.muted" borderRadius="base" fontSize="sm" px={1}>
       {children}
     </Code>
   ),
   pre: ({ children }) => (
-    <Pre bg="gray.100" color="gray.900" mb={6} p={5}>
+    <Pre bg="bg.muted" color="fg" mb={6} p={5}>
       {children}
     </Pre>
   ),
-  hr: () => <Hr borderColor="gray.200" my={8} />,
+  hr: () => <Hr borderColor="border" my={8} />,
   img: ({ alt, height, src, width }) =>
     typeof src === 'string' ? (
       <Img
@@ -131,17 +131,17 @@ const components = {
   tfoot: ({ children }) => <TableFoot>{children}</TableFoot>,
   tr: ({ children }) => <TableRow>{children}</TableRow>,
   th: ({ children }) => (
-    <TableHeader bg="gray.100" borderColor="gray.200" p={3} textAlign="left">
+    <TableHeader bg="bg.muted" borderColor="border" p={3} textAlign="left">
       {children}
     </TableHeader>
   ),
   td: ({ children }) => (
-    <TableCell borderColor="gray.200" p={3}>
+    <TableCell borderColor="border" p={3}>
       {children}
     </TableCell>
   ),
   caption: ({ children }) => (
-    <TableCaption color="gray.500" fontSize="sm" mb={2}>
+    <TableCaption color="fg.subtle" fontSize="sm" mb={2}>
       {children}
     </TableCaption>
   ),

@@ -1,6 +1,9 @@
-import { renderEmails } from '../emails'
-import { renderNewsletterEmail } from '../newsletter.email'
-import { renderThankYouEmail } from '../thank-you.email'
+import { createElement } from 'react'
+import { render as renderMarkup } from 'chakra-email'
+
+import { Emails, renderEmails } from '../emails'
+import { NewsletterEmail, renderNewsletterEmail } from '../newsletter.email'
+import { ThankYouEmail, renderThankYouEmail } from '../thank-you.email'
 import { themeTokens, themeTypography } from '@ryanhefner/theme'
 import { emailFontFamily, emailTheme } from '@ryanhefner/theme/email'
 
@@ -60,5 +63,47 @@ describe('shared email styling', () => {
     }
     expect(html).not.toContain('oklch(')
     expect(html).not.toContain('var(--')
+  })
+
+  const modeTemplates = [
+    ['welcome', createElement(Emails)],
+    ['thank-you', createElement(ThankYouEmail)],
+    ['newsletter', createElement(NewsletterEmail, {
+      title: 'Dark-mode newsletter',
+      markdown: '## Heading\n\nReadable text and a [link](https://allplay.fm).',
+    })],
+  ] as const
+
+  it.each(modeTemplates)('renders %s on true black in dark mode', async (_, element) => {
+    for (const colorMode of ['light', 'dark'] as const) {
+      const html = await renderMarkup(element, { colorMode })
+      const document = new DOMParser().parseFromString(html, 'text/html')
+      const background = colorMode === 'dark' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)'
+      const container = document.querySelector<HTMLElement>('table[role="presentation"]')
+
+      expect(document.body.style.backgroundColor).toBe(background)
+      expect(container?.style.backgroundColor).toBe(background)
+      expect(document.body.style.color).not.toBe(background)
+      expect(document.querySelector<HTMLElement>('h1')?.style.color).not.toBe(background)
+      expect(document.querySelector<HTMLElement>('p')?.style.color).not.toBe(background)
+    }
+  })
+
+  it.each(modeTemplates)('emits true-black system-mode CSS for %s', async (_, element) => {
+    const html = await renderMarkup(element)
+    const document = new DOMParser().parseFromString(html, 'text/html')
+    const css = document.querySelector('style[data-chakra-email-color-mode]')?.textContent ?? ''
+    const rules = new Map([...css.matchAll(/\.([\w-]+)\{([^}]+)\}/g)]
+      .map((match) => [match[1], match[2]]))
+
+    expect(css).toContain('@media (prefers-color-scheme: dark)')
+    expect(document.querySelector('meta[name="color-scheme"]')?.getAttribute('content'))
+      .toBe('light dark')
+    for (const element of [document.body, document.querySelector('table[role="presentation"]')]) {
+      expect(element).not.toBeNull()
+      expect([...element!.classList].some((name) =>
+        /background-color:\s*#000(?:000)?\s*!important/.test(rules.get(name) ?? ''),
+      )).toBe(true)
+    }
   })
 })

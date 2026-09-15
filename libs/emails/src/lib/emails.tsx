@@ -37,12 +37,12 @@ export function Emails({ recipientName }: EmailsProps) {
           <title>Welcome to Emails!</title>
         </Head>
         <Preview>Welcome to Emails!</Preview>
-        <Body bg="white" color="gray.900" fontFamily="sans" m={0} py={8}>
-          <Container bg="white" maxW="600px" mx="auto" p={8}>
+        <Body bg="bg.body" color="fg" fontFamily="sans" m={0} py={8}>
+          <Container bg="bg.body" maxW="600px" mx="auto" p={8}>
             <Heading as="h1" fontSize="2xl" mb={4}>
               {greeting}
             </Heading>
-            <Text color="gray.700" m={0}>
+            <Text color="fg.muted" m={0}>
               Welcome to Emails!
             </Text>
           </Container>

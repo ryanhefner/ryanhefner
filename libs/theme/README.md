@@ -11,9 +11,13 @@ palette, sizes, semantic colors, and heading/button weights.
   It does not import Chakra UI or its browser CSS-variable system.
 
 Email templates retain their email-safe sizes and spacing instead of inheriting
-web-only recipes. The installed Chakra Email renderer resolves conditional
-tokens to their base/light values; sharing the theme does not enable adaptive
-dark-mode email output. Suisse Intl is a font-family preference, not an embedded
+web-only recipes. Chakra Email's system-mode rendering emits light inline styles
+plus dark-mode CSS. The email body and content container use the shared `bg.body`
+token: white in light mode, true black (`#000`) in dark mode. Text and borders use
+adaptive neutral tokens to remain readable. Clients that ignore dark-mode CSS
+retain the light fallback or apply their own color transformations.
+
+Suisse Intl is a font-family preference, not an embedded
 font download; the emails retain Arial/Helvetica/sans-serif fallbacks.
 
 All Play's separate app theme and the shared Postkit editorial theme are unchanged.

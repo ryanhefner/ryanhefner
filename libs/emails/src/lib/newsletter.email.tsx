@@ -51,9 +51,9 @@ export function NewsletterEmail({
       </Heading>
       <MarkdownContent markdown={markdown} />
       {issueUrl ? (
-        <Text color="gray.500" fontSize="sm" lineHeight="base" mb={0} mt={8}>
+        <Text color="fg.subtle" fontSize="sm" lineHeight="base" mb={0} mt={8}>
           Prefer reading on the web?{' '}
-          <Link color="gray.700" href={issueUrl}>
+          <Link color="fg.muted" href={issueUrl}>
             View this issue online
           </Link>
           .

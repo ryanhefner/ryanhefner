@@ -17,11 +17,34 @@ const preview = await createPreviewServer({
 const upstream = await preview.listen()
 
 const proxy = createServer((incoming, outgoing) => {
+  const origin = incoming.headers.origin
+
+  if (origin) {
+    let isSameOrigin = false
+
+    try {
+      isSameOrigin = new URL(origin).host === incoming.headers.host
+    } catch {
+      // Treat malformed origins as cross-origin requests.
+    }
+
+    if (!isSameOrigin) {
+      outgoing.writeHead(403, {
+        'content-type': 'text/plain; charset=utf-8',
+      })
+      outgoing.end('Cross-origin request rejected.')
+      return
+    }
+  }
+
   const upstreamRequest = requestHttp(
     {
       headers: {
         ...incoming.headers,
         host: `${upstream.host}:${upstream.port}`,
+        ...(origin
+          ? { origin: `http://${upstream.host}:${upstream.port}` }
+          : {}),
       },
       host: upstream.host,
       method: incoming.method,
