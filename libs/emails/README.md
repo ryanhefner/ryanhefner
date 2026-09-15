@@ -20,6 +20,16 @@ Run `pnpm email:dev` from the workspace root to start Chakra Email Preview at
 <http://127.0.0.1:4100>. Templates and representative preview props are
 discovered from `src/lib` using `chakra-email.config.ts`.
 
+To review the same templates in React Email's preview application, run:
+
+```sh
+pnpm email:dev:react-email
+```
+
+The React Email preview is available at <http://127.0.0.1:4101>. Its thin
+wrappers in `react-email` import the production templates and their existing
+preview props, so both preview applications exercise the same email markup.
+
 ## Rendering a newsletter from Markdown
 
 Use `renderNewsletterEmailFromMarkdownFile` on the server to reference a

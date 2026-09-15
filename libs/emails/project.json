@@ -14,6 +14,15 @@
         "command": "chakra-email-preview --config chakra-email.config.ts"
       }
     },
+    "react-email-preview": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "cache": false,
+      "options": {
+        "cwd": "libs/emails",
+        "command": "email dev --dir react-email --port ${PORT:-4101}"
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
