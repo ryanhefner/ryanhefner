@@ -8,8 +8,13 @@
 # dependencies
 node_modules
 /.pnpm-store
+/.yalc/
+/yalc.lock
+# Local registry credentials must not be committed.
+/.npmrc
 
 # IDEs and editors
+/.cursor/mcp.json
 /.idea
 .project
 .classpath
@@ -46,6 +51,10 @@ Thumbs.db
 
 # Next.js
 .next
+*.tsbuildinfo
+
+# React Email preview
+.react-email
 
 # Env Vars
 .env

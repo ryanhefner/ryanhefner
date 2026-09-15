@@ -7,7 +7,8 @@ the failure identifies which packages still need published versions.
 
 Postkit and Chakra Email now use public npm packages at 0.2.0. There are no
 active Yalc dependency references in the root manifests or workspace overrides.
-Old `next-meta` and `react-marquease` entries in `yalc.lock` are leftovers;
+Local Yalc artifacts (`.yalc/` and `yalc.lock`) are ignored, not committed.
+Any old local `next-meta` and `react-marquease` entries are leftovers;
 those packages use npm dependencies.
 
 When returning to public dependencies after local testing:
