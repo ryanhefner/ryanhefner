@@ -111,7 +111,7 @@
     "@types/cors": "^2.8.19",
     "@types/jest": "30.0.0",
     "@types/mdx": "^2.0.14",
-    "@types/node": "^24.13.3",
+    "@types/node": "^24.13.5",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@types/turndown": "^5.0.4",
