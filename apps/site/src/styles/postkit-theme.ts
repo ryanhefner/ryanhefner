@@ -15,6 +15,7 @@ export const ryanHefnerPostkitTheme = createEditorialPostkitTheme({
         lineHeight: 1.5,
       },
       a: {
+        color: 'blue.fg',
         alignItems: 'center',
         borderRadius: 'l1',
         cursor: 'pointer',
@@ -22,6 +23,7 @@ export const ryanHefnerPostkitTheme = createEditorialPostkitTheme({
         gap: 1.5,
         outline: 'none',
         textDecoration: 'none',
+        '& code': { color: 'inherit' },
         _focusVisible: {
           outlineColor: 'colorPalette.focusRing',
           outlineOffset: '2px',
