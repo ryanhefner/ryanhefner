@@ -12,6 +12,13 @@ node_modules
 /yalc.lock
 # Local registry credentials must not be committed.
 
+# Font binaries are supplied by Fontstack packages, not stored in this repo.
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.eot
+
 # IDEs and editors
 /.cursor/mcp.json
 /.idea

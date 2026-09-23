@@ -40,7 +40,6 @@ The repository is organized as an Nx monorepo with:
 - `libs/linkcards/` - Link card components (`@linkcards/next`)
 - `libs/newsletter/` - Newsletter functionality
 - `libs/props/` - Shared prop types and utilities
-- `libs/suisse-intl/`, `libs/suisse-mono/`, `libs/suisse-works/` - Font libraries
 - `libs/transistor/` - Transistor FM podcast integration (client + React components)
 - `libs/use-podcast/` - Custom podcast hooks
 - `libs/waveforms/` - Waveform visualization components (`@waveforms/react`)
@@ -48,6 +47,7 @@ The repository is organized as an Nx monorepo with:
 ### Technology Stack
 - **Framework:** Next.js with React 19
 - **Styling:** Emotion (styled-system), Chakra UI  
+- **Fonts:** Private `@fontstack/commune--*` packages, imported through their `/css` exports
 - **Content:** Content Collections for typed markdown/MDX processing
 - **State Management:** React hooks, context patterns
 - **Testing:** Jest, Playwright for E2E
@@ -65,7 +65,7 @@ Key path mappings defined in `tsconfig.base.json`:
 - `@waveforms/react` → `libs/waveforms/src/index.ts`
 - `react-transistor-fm` → `libs/transistor/react/src/index.ts`
 - `transistor-client` → `libs/transistor/client/src/index.ts`
-- And various font and utility libraries
+- And other shared utility libraries
 
 ### Code Organization
 - Each app follows Next.js App Router structure with `pages/`, `components/`, `styles/`
