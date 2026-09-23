@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { Box, Center, Heading, Text } from '@chakra-ui/react'
+import { Box, Center, Flex, Heading, Text } from '@chakra-ui/react'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts'
@@ -27,11 +27,31 @@ const Custom404Page = () => (
         You peeking in on me!?
       </Heading>
       <Text fontSize="2xl" mt={16}>
-        Sorry, nothing to see here.
+        That page doesn’t exist. Try one of these destinations instead.
       </Text>
-      <Link href="/" color="blue.500" fontSize="3xl" mt={16}>
-        Go home
-      </Link>
+      <Flex justify="center" flexWrap="wrap" gap={6} mt={16}>
+        <Link href="/" color="blue.500" fontSize="xl">
+          Home
+        </Link>
+        <Link href="/about" color="blue.500" fontSize="xl">
+          About
+        </Link>
+        <Link href="/podcast" color="blue.500" fontSize="xl">
+          Podcast
+        </Link>
+        <Link href="/newsletter" color="blue.500" fontSize="xl">
+          Newsletter
+        </Link>
+        <Link href="/contact" color="blue.500" fontSize="xl">
+          Contact
+        </Link>
+        <Link href="/llms.txt" color="blue.500" fontSize="xl">
+          Agent guidance
+        </Link>
+        <Link href="/sitemap.xml" color="blue.500" fontSize="xl">
+          Sitemap
+        </Link>
+      </Flex>
     </Center>
   </Box>
 )

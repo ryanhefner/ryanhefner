@@ -12,7 +12,8 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/allplay"
+        "outputPath": "dist/apps/allplay",
+        "webpack": true
       },
       "configurations": {
         "development": {
@@ -53,6 +54,12 @@
       ],
       "options": {
         "jestConfig": "apps/allplay/jest.config.ts"
+      }
+    },
+    "check-metadata": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/check-metadata.mjs dist/apps/allplay/.next/server/pages"
       }
     },
     "lint": {

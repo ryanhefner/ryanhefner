@@ -20,7 +20,7 @@ export const projects = [
   {
     name: 'Commune',
     description: 'A product studio, crafting products for the community.',
-    url: 'https://www.commune.software',
+    url: 'https://commune.software',
     imageUrl: '/assets/projects/commune-software.png',
   },
   {
@@ -133,6 +133,18 @@ export const projects = [
 ]
 
 export const oss = [
+  {
+    name: 'react-fathom',
+    description:
+      'Privacy-focused Fathom Analytics integration for React, Next.js, and React Native.',
+    url: 'https://github.com/ryanhefner/react-fathom',
+  },
+  {
+    name: 'react-structured',
+    description:
+      'Type-safe React components for Schema.org JSON-LD structured data and rich results.',
+    url: 'https://github.com/ryanhefner/react-structured',
+  },
   {
     name: 'use-bluesky',
     description: 'React hooks to interact with the Bluesky API.',

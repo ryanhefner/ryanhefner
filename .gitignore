@@ -7,8 +7,20 @@
 
 # dependencies
 node_modules
+/.pnpm-store
+/.yalc/
+/yalc.lock
+# Local registry credentials must not be committed.
+
+# Font binaries are supplied by Fontstack packages, not stored in this repo.
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.eot
 
 # IDEs and editors
+/.cursor/mcp.json
 /.idea
 .project
 .classpath
@@ -30,6 +42,7 @@ node_modules
 /coverage
 /libpeerconnection.log
 npm-debug.log
+pnpm-debug.log*
 yarn-error.log
 testem.log
 /typings
@@ -44,12 +57,16 @@ Thumbs.db
 
 # Next.js
 .next
+*.tsbuildinfo
+
+# React Email preview
+.react-email
 
 # Env Vars
 .env
 
-# contentlayer
-.contentlayer
+# generated content
+.content-collections
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 .cursor/rules/nx-rules.mdc
@@ -59,3 +76,4 @@ vitest.config.*.timestamp*
 .claude/settings.local.json
 .nx/polygraph
 .nx/self-healing
+.nx/migrate-runs

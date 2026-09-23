@@ -1,5 +1,5 @@
 import { Flex, Heading, Text } from '@chakra-ui/react'
-import { allNows, allThoughts, allUpdates } from 'contentlayer/generated'
+import { allNows, allThoughts, allUpdates } from 'content-collections'
 
 type SharePageProps = {
   body: string

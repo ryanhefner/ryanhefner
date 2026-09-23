@@ -1,4 +1,4 @@
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
 import { SiteLayout } from '../../components/layouts'
@@ -15,13 +15,13 @@ import {
   getCollectionPageData,
 } from '../../utils/structured-data'
 
-const TITLE = 'Projects | Ryan Hefner - All Play'
+const TITLE = 'Projects'
 const DESCRIPTION =
   'Some of the projects I’ve had the pleasure to build/contribute to.'
 
 const ProjectsPage = () => (
   <>
-    <SiteMeta title={TITLE} description={DESCRIPTION} />
+    <PageMeta title={TITLE} description={DESCRIPTION} />
     <Schema
       id="projects-collection-jsonld"
       type="CollectionPage"

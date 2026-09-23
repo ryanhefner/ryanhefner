@@ -10,6 +10,10 @@ import { SiteLayout } from '../components/layouts/SiteLayout'
 import { EpisodeList } from '../components/media/EpisodeList'
 import { Podcatchers } from '../components/podcast/Podcatchers'
 import { feeds } from '../data/feeds'
+import {
+  type PodcastListEpisode,
+  getPodcastListEpisodes,
+} from '../utils/podcast'
 
 // const newsletters = [
 //   {
@@ -30,7 +34,7 @@ import { feeds } from '../data/feeds'
 // ]
 
 const IndexPage = ({
-  feed,
+  episodes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
@@ -43,6 +47,7 @@ const IndexPage = ({
         w="full"
       >
         <Text
+          as="h1"
           color="gray.400"
           fontSize={{ base: '3xl', md: '5xl' }}
           fontWeight="normal"
@@ -76,7 +81,7 @@ const IndexPage = ({
           </Link>{' '}
           for the newsletter.
         </Text>
-        <EpisodeList mt={24} episodes={feed.items} />
+        <EpisodeList mt={24} episodes={episodes} />
         <Podcatchers feeds={feeds} mt={24} />
         {/* <Flex flexDir="column" mt={24}>
           <Heading as="h2" color="gray.400" fontSize="lg" mb={4}>
@@ -108,7 +113,7 @@ const IndexPage = ({
         px={{ base: 4, md: 8 }}
         py={{ base: 12, md: 16 }}
       >
-        <Heading as="h3">Subscribe to the newsletter</Heading>
+        <Heading as="h2">Subscribe to the newsletter</Heading>
         <Text color="gray.400">
           Get updates when new episodes are posted, and other fun stuff that I
           am into.
@@ -121,14 +126,14 @@ const IndexPage = ({
 
 IndexPage.getLayout = (page: ReactNode) => <SiteLayout>{page}</SiteLayout>
 
-export const getStaticProps = (async () => {
+export const getStaticProps = (async ({ revalidateReason }) => {
   const { getFeed } = usePodcast({
     url: process.env.NEXT_PUBLIC_PODCAST_FEED_URL,
   })
 
-  const feed = await getFeed()
+  const feed = await getFeed({ forceRefresh: revalidateReason !== 'build' })
 
-  return { props: { feed } }
-}) satisfies GetStaticProps<{ feed: any }>
+  return { props: { episodes: getPodcastListEpisodes(feed) } }
+}) satisfies GetStaticProps<{ episodes: PodcastListEpisode[] }>
 
 export default IndexPage

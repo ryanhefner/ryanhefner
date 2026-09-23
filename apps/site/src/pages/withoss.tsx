@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts'
@@ -20,7 +20,7 @@ const OssPage = () => {
 
   return (
     <>
-      <SiteMeta description={DESCRIPTION} title={TITLE} />
+      <PageMeta description={DESCRIPTION} title={TITLE} />
       <PageWrapper>
         <Flex
           align={{ base: 'flex-start', xl: 'center' }}

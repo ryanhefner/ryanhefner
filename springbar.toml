@@ -1,0 +1,62 @@
+# Springbar workspace for the personal site, All Play, and email previews.
+# Sites and email previews launch lazily on first request.
+
+[workspace]
+name = "ryanhefner"
+key = "ryanhefner"
+tld = "test"
+
+[derive]
+nest = false
+
+[[unit]]
+id = "unt_ryanhefner_site"
+name = "site"
+working_dir = "."
+command = "NX_DAEMON=false npx nx serve site --port $PORT"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["ryanhefner.test"]
+role = "site"
+mode = "lazy"
+readiness = { kind = "http", target = "/" }
+port = 4049
+depends_on = []
+
+[[unit]]
+id = "unt_ryanhefner_allplay"
+name = "allplay"
+working_dir = "."
+command = "NX_DAEMON=false npx nx serve allplay --port $PORT"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["allplay.test"]
+role = "site"
+mode = "lazy"
+readiness = { kind = "http", target = "/" }
+port = 4050
+depends_on = []
+
+[[unit]]
+id = "unt_ryanhefner_email_preview"
+name = "email-preview"
+working_dir = "."
+command = "node tools/scripts/springbar-email-preview.mjs"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["email.ryanhefner.test"]
+role = "site"
+mode = "lazy"
+readiness = { kind = "http", target = "/api/health" }
+
+[[unit]]
+id = "unt_ryanhefner_react_email_preview"
+name = "react-email-preview"
+working_dir = "."
+command = "NX_DAEMON=false npx nx run emails:react-email-preview"
+runtime = { kind = "node", version = "24", manager = "nvm" }
+package_manager = "npm"
+hostnames = ["react-email.ryanhefner.test"]
+role = "site"
+mode = "lazy"
+readiness = { kind = "http", target = "/" }

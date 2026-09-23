@@ -1,14 +1,15 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
-import Head from 'next/head'
+import { PageMeta } from 'next-meta'
 
 import { Link } from '../../components/base'
 import { PageWrapper } from '../../components/site'
 
 const ProjectsArchivePage = () => (
   <>
-    <Head>
-      <title>Ryan Hefner - All Play - Projects</title>
-    </Head>
+    <PageMeta
+      title="Projects / Archive"
+      description="An archive of projects Ryan Hefner has designed and built."
+    />
     <PageWrapper>
       <Heading
         as="h1"

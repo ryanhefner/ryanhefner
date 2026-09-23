@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Icon, Image, Text, chakra } from '@chakra-ui/react'
+import { Flex, HStack, Icon, Image, Text, chakra } from '@chakra-ui/react'
 import { useColorMode, useColorModeValue } from 'chakra-color'
 import { ImRss } from 'react-icons/im'
 
@@ -50,6 +50,16 @@ export const SiteFooter = () => {
         </Text>
       </Flex>
       <HStack gap={{ base: 3, md: 6 }} mb={{ base: 5, md: 0 }}>
+        <Link href="/contact">
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            Contact
+          </Text>
+        </Link>
+        <Link href="/privacy">
+          <Text as="span" fontFamily="mono" fontSize="sm">
+            Privacy
+          </Text>
+        </Link>
         <Link
           href="https://www.github.com/ryanhefner"
           target="_blank"

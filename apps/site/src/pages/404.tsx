@@ -1,4 +1,4 @@
-import { Center, Text } from '@chakra-ui/react'
+import { Center, Flex, Text } from '@chakra-ui/react'
 
 import { Link } from '../components/base'
 import { SiteLayout } from '../components/layouts'
@@ -22,11 +22,34 @@ const Custom404Page = () => (
         You peeking in on me!?
       </PageHeading>
       <Text fontSize="2xl" mt={16}>
-        Sorry, nothing to see here.
+        Sorry, nothing to see here. Try one of these instead.
       </Text>
-      <Link href="/" color="blue.500" fontSize="3xl" mt={16}>
-        Go home
-      </Link>
+      <Flex
+        as="nav"
+        aria-label="Page recovery"
+        flexWrap="wrap"
+        justifyContent="center"
+        gap={{ base: 4, md: 8 }}
+        fontSize={{ base: '2xl', md: '3xl' }}
+        mt={16}
+      >
+        <Link href="/" color="blue.500">
+          Home
+        </Link>
+        <Link href="/projects" color="blue.500">
+          Projects
+        </Link>
+        <Link href="/about" color="blue.500">
+          About
+        </Link>
+        <Link href="/contact" color="blue.500">
+          Contact
+        </Link>
+      </Flex>
+      <Text fontFamily="mono" fontSize="sm" mt={10}>
+        Agents can also check <Link href="/llms.txt">llms.txt</Link> or the{' '}
+        <Link href="/sitemap.xml">sitemap</Link>.
+      </Text>
     </Center>
   </PageWrapper>
 )

@@ -1,39 +1,45 @@
 import { Box, Text } from '@chakra-ui/react'
-import { useColorModeValue } from 'chakra-color'
 import { UTCDateMini } from '@date-fns/utc'
-import { Now } from 'contentlayer/generated'
+import { useMDXComponent } from '@content-collections/mdx/react'
+import { Now } from 'content-collections'
 import { format } from 'date-fns'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import { BreadcrumbJsonLd, Schema } from 'react-structured'
 
-import { PageWrapper } from '../../components/site'
 import { PageHeading } from '../../components/typography'
 import { mdxComponents } from '../../mdx-components'
-import { getBreadcrumbData, getNowPageData } from '../../utils/structured-data'
+import {
+  getBreadcrumbData,
+  getNowPageData,
+  getRyanHefnerLinkCardImage,
+} from '../../utils/structured-data'
 
 interface NowPageProps {
   description?: string
   now: Now
   title?: string
+  url?: string
 }
 
-const NowPage = ({ description, now, title }: NowPageProps) => {
-  const codeBg = useColorModeValue('gray.100', 'gray.800')
-  const codeColor = useColorModeValue('black', 'white')
-
-  const MDXContent = useMDXComponent(now.body.code)
+const NowPage = ({ description, now, title, url = now.url }: NowPageProps) => {
+  const MDXContent = useMDXComponent(now.mdx)
+  const pageTitle = title ?? now.title
+  const image = getRyanHefnerLinkCardImage(
+    url,
+    `Social card for “${pageTitle}” by Ryan Hefner`,
+  )
 
   return (
     <>
-      <SiteMeta
-        title={title ?? now.title}
+      <PageMeta
+        title={pageTitle}
         description={description ?? now.description}
+        images={image ? [image] : undefined}
       />
       <Schema
         id="now-page-jsonld"
         type="WebPage"
-        data={getNowPageData(now, title, description)}
+        data={getNowPageData(now, title, description, url)}
       />
       <BreadcrumbJsonLd
         id="now-breadcrumb-jsonld"
@@ -63,7 +69,7 @@ const NowPage = ({ description, now, title }: NowPageProps) => {
         </Text>
       </Box>
       <Box fontSize={{ base: 'lg', md: 'xl' }} my={16} maxW="container.md">
-        <MDXContent components={mdxComponents({ codeBg, codeColor })} />
+        <MDXContent components={mdxComponents} />
       </Box>
     </>
   )

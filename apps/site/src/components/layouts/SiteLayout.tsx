@@ -77,7 +77,21 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => {
           Skip to main content
         </Link>
         <SiteHeader />
-        <Flex id="main-content" flexDir="column" flex={1} tabIndex={-1}>
+        <Flex
+          id="main-content"
+          flexDir="column"
+          flex={1}
+          tabIndex={-1}
+          css={{
+            // Scope the color to inline body links, leaving navigation, linked
+            // cards, and the marquee with their own color treatments.
+            '& :where(p, li, blockquote, dd, figcaption) a[href]:not(nav a):not([role="navigation"] a):not([role="button"])':
+              {
+                color: 'blue.fg',
+                '& code': { color: 'inherit' },
+              },
+          }}
+        >
           <ViewTransition>{children}</ViewTransition>
         </Flex>
         <SiteFooter />

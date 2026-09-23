@@ -118,18 +118,25 @@ export const WebAudioProvider = ({
 
         if (audioRef.current) {
           if (audioRef.current.src === url) {
-            if (startOffset) {
+            if (startOffset !== undefined) {
               audioRef.current.currentTime = startOffset
             }
 
             if (audioRef.current.paused) {
-              await audioRef.current.play()
+              try {
+                await audioRef.current.play()
+              } catch (err) {
+                onError?.(err)
+                onErrorLocal?.(err)
+                return null
+              }
             }
 
             return { audioRef: audioRef.current }
           }
 
           audioRef.current.src = url
+          audioRef.current.currentTime = startOffset
 
           if (onEnded) {
             audioRef.current.addEventListener('ended', onEnded)
@@ -139,11 +146,13 @@ export const WebAudioProvider = ({
             audioRef.current.addEventListener('error', onErrorLocal)
           }
 
-          await audioRef.current.play().catch((err) => {
+          try {
+            await audioRef.current.play()
+          } catch (err) {
             onError?.(err)
             onErrorLocal?.(err)
             return null
-          })
+          }
 
           return { audioRef: audioRef.current }
         }

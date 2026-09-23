@@ -1,0 +1,16 @@
+{
+  "name": "search",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/search/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "options": { "reportsDirectory": "{workspaceRoot}/coverage/libs/search" }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

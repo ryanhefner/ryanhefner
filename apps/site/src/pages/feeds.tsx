@@ -1,9 +1,10 @@
 import fs from 'fs'
 
 import { Box, Flex, HStack, Text } from '@chakra-ui/react'
-import { allNows } from 'contentlayer/generated'
+import { createPostkitRemarkPlugins } from '@postkit/react'
+import { allNows } from 'content-collections'
 import { Feed } from 'feed'
-import { SiteMeta } from 'next-meta'
+import { PageMeta } from 'next-meta'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -17,7 +18,7 @@ import { PageHeading, SectionHeading } from '../components/typography'
 const FeedsPage = () => {
   return (
     <>
-      <SiteMeta
+      <PageMeta
         title="Feeds to subscribe to"
         description="RSS feeds you can subscribe to from the site."
       />
@@ -51,7 +52,15 @@ const FeedsPage = () => {
 FeedsPage.getLayout = (page) => <SiteLayout>{page}</SiteLayout>
 
 export const getStaticProps = async () => {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
+  const SITE_URL = (() => {
+    try {
+      return new URL(
+        process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:4200',
+      ).origin
+    } catch {
+      return 'http://localhost:4200'
+    }
+  })()
 
   const feedOptions = {
     title: 'Ryan Hefner | All | RSS Feed',
@@ -90,9 +99,14 @@ export const getStaticProps = async () => {
       .map(async (item) => {
         const content = await unified()
           .use(remarkParse)
+          .use({
+            plugins: createPostkitRemarkPlugins({
+              postkit: { output: 'hast' },
+            }),
+          })
           .use(remarkRehype)
           .use(rehypeStringify)
-          .process(item.body.raw)
+          .process(item.content)
 
         feed.addItem({
           title: item.title,
