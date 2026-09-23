@@ -1,4 +1,4 @@
-name: Deploy
+name: CI
 on:
   push:
     branches: main
@@ -6,14 +6,11 @@ on:
     branches: main
 
 jobs:
-  deploy:
-    name: Deploy
+  validate:
+    name: Validate
     runs-on: ubuntu-latest
-    env:
-      FONTSTACK_TOKEN: ${{ secrets.FONTSTACK_TOKEN }}
 
     permissions:
-      id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
 
     steps:
@@ -22,11 +19,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
-
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
 
       - name: Install Node.js
         uses: actions/setup-node@v7
@@ -37,6 +29,7 @@ jobs:
       - name: Install step
         # Fail with an actionable package list before attempting a clean install.
         env:
+          FONTSTACK_TOKEN: ${{ secrets.FONTSTACK_TOKEN }}
           # Use a shell-safe name: Linux pnpm launchers can drop URL-shaped env keys.
           PNPM_CONFIG__AUTH: |
             {
@@ -55,14 +48,7 @@ jobs:
         run: 'pnpm deps:audit'
 
       - name: Build step
-        run: 'pnpm exec nx build site --prod && pnpm exec nx run site:postbuild'
+        run: 'pnpm exec nx build site --prod'
 
       - name: Metadata check
         run: 'pnpm exec nx run site:check-metadata'
-
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: 'ryanhefner-site'
-          entrypoint: 'DENO_NEXT_START_DIRECTORY=dist/apps/site/.next; jsr:@deno/nextjs-start/v15'
-          root: '.'
