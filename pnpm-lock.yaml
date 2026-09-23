@@ -200,14 +200,14 @@ importers:
         specifier: 11.11.0
         version: 11.11.0
       '@fontstack/commune--allplay-mono':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 1.0.0
+        version: 1.0.0
       '@fontstack/commune--allplay-sans':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 1.0.0
+        version: 1.0.0
       '@fontstack/commune--allplay-serif':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 1.0.0
+        version: 1.0.0
       '@hookform/resolvers':
         specifier: ^5.9.1
         version: 5.9.1(@sinclair/typebox@0.34.52)(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(react-hook-form@7.88.0(react@19.3.0))(typanion@3.14.0)(yup@1.7.1)(zod@4.6.5)
@@ -2097,14 +2097,14 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
-  '@fontstack/commune--allplay-mono@1.0.2':
-    resolution: {integrity: sha512-seLT+K7iF3WEgHCp0bgNSpwPnw//swzVTZBRNHklRLVXc+LGcxM3ARF4JsAXNxzW2L7oHSwNk9Suo9l9Jz53WQ==}
+  '@fontstack/commune--allplay-mono@1.0.0':
+    resolution: {integrity: sha512-LCzczD8LsKoqJcmSiaJDRnmi9oBci6e2k5stuMO1Cvb/xJ1G2G02cbO6TWbZ3YPp3j8UzKpq2FHwLRAc4jjkqQ==}
 
-  '@fontstack/commune--allplay-sans@1.0.2':
-    resolution: {integrity: sha512-bdDwVq9NTOnrID+uke23WI6jmZU9wjg9uNKRMwFuP5cMP1d5Rho1rJWxCLeajWBRj1Lp25c9eKPk6Beq+oT7wA==}
+  '@fontstack/commune--allplay-sans@1.0.0':
+    resolution: {integrity: sha512-akTYT7vQ8sk7dOkMlPWHFIbdKClVYJf9gvPvch/9hiT0ighOr27pLRJNqhp4aaV4YOsoPsJRsN4bpcFk69qhWw==}
 
-  '@fontstack/commune--allplay-serif@1.0.2':
-    resolution: {integrity: sha512-gHlCeJnUNomUcFlKPN3rhVkUCeYXINcZDe8QMnJKJpJj8yF5G3mjmZ6TWfhoYDVo2VHGwpnIhnIF4wzqrYEM7Q==}
+  '@fontstack/commune--allplay-serif@1.0.0':
+    resolution: {integrity: sha512-SNMLRdeTt8mD47+rhkF4WwcRQ89TETCFfs90D7P7lmRSM3dF3KRHBOff6lyqPHi0NokLiPzyu+gKccsD677rCw==}
 
   '@hookform/resolvers@5.9.1':
     resolution: {integrity: sha512-7b7vsbraJxKgjVSA1Nur9tLwj539WGJUBLA7QNvXnFoT2pM5Z7G+6rlukk4B2/QrTZy6huRtH6wKeESPKuIr6w==}
@@ -12045,11 +12045,11 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@fontstack/commune--allplay-mono@1.0.2': {}
+  '@fontstack/commune--allplay-mono@1.0.0': {}
 
-  '@fontstack/commune--allplay-sans@1.0.2': {}
+  '@fontstack/commune--allplay-sans@1.0.0': {}
 
-  '@fontstack/commune--allplay-serif@1.0.2': {}
+  '@fontstack/commune--allplay-serif@1.0.0': {}
 
   '@hookform/resolvers@5.9.1(@sinclair/typebox@0.34.52)(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(react-hook-form@7.88.0(react@19.3.0))(typanion@3.14.0)(yup@1.7.1)(zod@4.6.5)':
     dependencies:

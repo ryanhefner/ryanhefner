@@ -10,9 +10,6 @@ minimumReleaseAgeStrict: true
 minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeIgnoreMissingTime: false
 minimumReleaseAgeExclude:
-  - '@fontstack/commune--allplay-mono@1.0.2'
-  - '@fontstack/commune--allplay-sans@1.0.2'
-  - '@fontstack/commune--allplay-serif@1.0.2'
   # User-approved npm migration on 2026-09-11; only these exact releases bypass the age gate.
   - '@postkit/core@0.2.0'
   - '@postkit/next@0.2.0'
@@ -22,6 +19,9 @@ minimumReleaseAgeExclude:
   - 'chakra-email@0.2.0'
   - '@chakra-email/core@0.2.0'
   - '@chakra-email/preview@0.2.0'
+  - '@fontstack/commune--allplay-mono@1.0.0'
+  - '@fontstack/commune--allplay-sans@1.0.0'
+  - '@fontstack/commune--allplay-serif@1.0.0'
 
 # Reject recent releases whose registry provenance is weaker than earlier
 # releases, while avoiding false positives for older packages without metadata.
