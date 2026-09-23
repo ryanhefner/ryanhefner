@@ -36,10 +36,20 @@ jobs:
 
       - name: Install step
         # Fail with an actionable package list before attempting a clean install.
+        env:
+          # Use a shell-safe name: Linux pnpm launchers can drop URL-shaped env keys.
+          PNPM_CONFIG__AUTH: |
+            {
+              "https://registry.fontstack.com": {
+                "@fontstack": {
+                  "authToken": ${{ toJSON(secrets.FONTSTACK_TOKEN) }}
+                }
+              }
+            }
         run: |
           node tools/scripts/check-release-dependencies.mjs
           : "${FONTSTACK_TOKEN:?Set the FONTSTACK_TOKEN repository Actions secret}"
-          env "pnpm_config_//registry.fontstack.com/:_authToken=$FONTSTACK_TOKEN" pnpm install --frozen-lockfile
+          pnpm install --frozen-lockfile
 
       - name: Dependency audit
         run: 'pnpm deps:audit'

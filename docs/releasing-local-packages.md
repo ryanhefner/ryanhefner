@@ -34,8 +34,11 @@ one-week policy.
 
 The committed `.npmrc` only maps `@fontstack` to its registry. Since pnpm
 11.5.3, token environment placeholders in a project-level `.npmrc` are ignored.
-The Vercel install command and GitHub Actions deployment workflow instead pass
-`FONTSTACK_TOKEN` through pnpm's host-scoped authentication environment variable.
+The Vercel install command passes `FONTSTACK_TOKEN` through pnpm's host-scoped
+authentication environment variable to Corepack. GitHub Actions uses
+`PNPM_CONFIG__AUTH` with the registry URL and `@fontstack` scope instead: its
+shell-safe name survives Linux shell launchers that can discard URL-shaped
+environment keys. The workflow uses `toJSON` to safely escape the secret.
 Both fail before installation if the token is missing or empty.
 
 - In each Vercel site project, set `FONTSTACK_TOKEN` for Preview and Production
