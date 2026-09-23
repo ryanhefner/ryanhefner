@@ -61,8 +61,8 @@ overrides:
   'js-yaml@>=3.0.0 <3.15.2': 3.15.2
   'js-yaml@>=4.0.0 <4.3.2': 4.3.2
   'svgo@>=4.0.0 <4.1.0': 4.1.0
-  # Nx 23.2.0 still pins the vulnerable TOML parser; use its patched v1 API.
-  'nx@23.2.0>smol-toml': 1.8.0
+  # Nx 23.2.1 still pins the vulnerable TOML parser; use its patched v1 API.
+  'nx@23.2.1>smol-toml': 1.8.0
   # This plugin only uses the named parse() export. TOML v3 has no patched
   # release; narrowly replace this consumer with the CJS-compatible v4 fix.
   'remark-mdx-frontmatter@4.0.0>toml': 4.2.0
