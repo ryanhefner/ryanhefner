@@ -9,6 +9,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+      FONTSTACK_TOKEN: ${{ secrets.FONTSTACK_TOKEN }}
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -34,7 +36,10 @@ jobs:
 
       - name: Install step
         # Fail with an actionable package list before attempting a clean install.
-        run: 'node tools/scripts/check-release-dependencies.mjs && pnpm install --frozen-lockfile'
+        run: |
+          node tools/scripts/check-release-dependencies.mjs
+          : "${FONTSTACK_TOKEN:?Set the FONTSTACK_TOKEN repository Actions secret}"
+          env "pnpm_config_//registry.fontstack.com/:_authToken=$FONTSTACK_TOKEN" pnpm install --frozen-lockfile
 
       - name: Dependency audit
         run: 'pnpm deps:audit'

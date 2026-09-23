@@ -29,3 +29,30 @@ When returning to public dependencies after local testing:
 The requested 0.2.0 releases have exact-version release-age exceptions in
 `pnpm-workspace.yaml`. Other newly published versions remain subject to the
 one-week policy.
+
+## Private Fontstack registry authentication
+
+The committed `.npmrc` only maps `@fontstack` to its registry. Since pnpm
+11.5.3, token environment placeholders in a project-level `.npmrc` are ignored.
+The Vercel install command and GitHub Actions deployment workflow instead pass
+`FONTSTACK_TOKEN` through pnpm's host-scoped authentication environment variable.
+Both fail before installation if the token is missing or empty.
+
+- In each Vercel site project, set `FONTSTACK_TOKEN` for Preview and Production
+  (and any custom deployment environments). Use the install command from
+  `vercel.json`; remove or update any dashboard override, then redeploy.
+- In GitHub, create the repository Actions secret `FONTSTACK_TOKEN`. The deploy
+  workflow maps it into the environment. Fork pull requests do not receive this
+  secret and cannot install the private fonts.
+- For a local clean install, export `FONTSTACK_TOKEN` securely in your shell, then
+  run:
+
+  ```sh
+  : "${FONTSTACK_TOKEN:?Set FONTSTACK_TOKEN in your shell}"
+  env "pnpm_config_//registry.fontstack.com/:_authToken=$FONTSTACK_TOKEN" \
+    corepack pnpm install --frozen-lockfile
+  ```
+
+Do not commit the token or enable shell tracing around authenticated commands.
+The frozen lockfile and supply-chain policies remain enabled. See
+[pnpm's authentication documentation](https://pnpm.io/npmrc#environment-variables-in-auth-settings).
